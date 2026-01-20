@@ -1,0 +1,19 @@
+<div
+  class="cart-shipping"
+  data-min-spend="{{ settings.min_spend | times: 100.0 }}"
+  data-total="{{ cart.total_price }}"
+  data-message=" {{ settings.message_shipping }}"
+>
+  <svg class="cart-shipping__icon" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M14.002 17.9998V5.99976C14.002 5.72361 13.7781 5.49976 13.502 5.49976H2.50195C2.22581 5.49976 2.00195 5.72361 2.00195 5.99976V17.9998C2.00195 18.2759 2.22581 18.4998 2.50195 18.4998H4.00195M14.002 17.9998C14.002 18.2759 13.7781 18.4998 13.502 18.4998H8.00195M14.002 17.9998V8.99976C14.002 8.72361 14.2258 8.49976 14.502 8.49976H17.7948C17.9275 8.49976 18.0546 8.55243 18.1484 8.6462L21.8555 12.3533C21.9493 12.4471 22.002 12.5743 22.002 12.7069V17.9998C22.002 18.2759 21.7781 18.4998 21.502 18.4998H20.002M14.002 17.9998C14.002 18.2759 14.2258 18.4998 14.502 18.4998H16.002M4.00195 18.4998C4.00195 19.6043 4.89738 20.4998 6.00195 20.4998C7.10652 20.4998 8.00195 19.6043 8.00195 18.4998M4.00195 18.4998C4.00195 17.3952 4.89738 16.4998 6.00195 16.4998C7.10652 16.4998 8.00195 17.3952 8.00195 18.4998M16.002 18.4998C16.002 19.6043 16.8974 20.4998 18.002 20.4998C19.1065 20.4998 20.002 19.6043 20.002 18.4998M16.002 18.4998C16.002 17.3952 16.8974 16.4998 18.002 16.4998C19.1065 16.4998 20.002 17.3952 20.002 18.4998" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+  </svg>
+  <div class="cart-shipping--info">
+    <p class="cart-shipping__message cart-shipping__message_default  active"></p>
+    <p class="cart-shipping__message cart-shipping__message_success ">
+      {{ settings.message_shipping_free }}
+    </p>
+    <span class="cart-shipping__progress">
+      <span class="cart-shipping__progress-current"></span>
+    </span>
+  </div>
+</div>

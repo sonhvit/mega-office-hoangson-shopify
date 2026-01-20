@@ -1,0 +1,133 @@
+{{ 'component-collection-card.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign image_size = section.settings.image_ratio
+
+  case image_size
+    when 'square'
+      assign section_size = '100%'
+      assign slide_class = image_size
+    when 'landscape'
+      assign section_size = '56.25%'
+      assign slide_class = image_size
+    else
+      assign section_size = '133%'
+      assign slide_class = image_size
+  endcase
+%}
+{% liquid
+  assign border_radius = section.settings.image_radius
+
+  case border_radius
+    when 'square'
+      assign image_radius = '10px'
+    else
+      assign image_radius = '50%'
+  endcase
+%}
+{% liquid
+  assign card_per_row = section.settings.collections_to_show
+
+  case card_per_row
+    when 1
+      assign desc_count = 1000
+    else
+      assign desc_count = 40
+  endcase
+%}
+{% liquid
+  if section.settings.card_variant
+    assign card_variant = section.settings.card_variant
+  else
+    assign card_variant = 'simple'
+  endif
+%}
+
+<div
+  class="collections__card collections__card--{{ collection.id }} collections__card--{{ card_variant }} collections__card--{{ section.settings.layout }}"
+  {{ block.shopify_attributes }}
+>
+  {% if collection != blank %}
+    <a
+      href="{{ collection.url | default: '#' }}"
+      class=" collections__card__link_overlay"
+      aria-label="{{ collection.title }}"
+    >
+      <span class="visibility-hidden">{{ collection.title }}</span>
+    </a>
+  {% endif %}
+  {% style %}
+    #shopify-section-{{ section.id }} {
+    	--image-height: {{ section_size }};
+    	--image-radius: {{ image_radius }};
+    }
+  {% endstyle %}
+  {% liquid
+    assign collection_product_image = collection.featured_image
+
+    if block.settings.image
+      assign collection_product_image = block.settings.image
+    endif
+  %}
+  <div class="collections__card--image  {{ slide_class }}">
+    {%- if collection_product_image != blank -%}
+      {% liquid
+        assign image_height = collection_product_image.width | divided_by: collection_product_image.aspect_ratio
+				assign sizes = '(min-width: 750px) 50vw, 100vw'
+      %}
+      {% if collection != blank %}
+        <a
+          href="{{ collection.url | default: '#' }}"
+          class=" collections__card__link_overlay"
+          aria-label="{{ collection.title }}"
+        >
+          <span class="visibility-hidden">{{ collection.title }}</span>
+        </a>
+      {% endif %}
+      {{
+        collection_product_image
+        | image_url: width: collection_product_image.width
+        | image_tag:
+          loading: 'lazy',
+          sizes: sizes,
+          height: image_height,
+          widths: '360, 550, 750, 900, 1100, 1420, 1700, 1920, 2200, 2400, 2600'
+      }}
+    {% elsif collection == blank or collection.featured_image == blank %}
+      {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+  </div>
+  <div class="collections__card__details collections__card__details--{{ section.settings.text_align  }}">
+    <div class="collections__card__information">
+      {% if collection != blank %}
+        <a
+          class="collections__card__title  {% if cardInDrawer %} small-font {% else %} large-font{% endif %}"
+          href="{{ collection.url | default: '#' }}"
+          aria-label="{{ collection.title }}"
+        >
+          {{- collection.title -}}
+        </a>
+      {% else %}
+        <p class="collections__card__title  {%if cardInDrawer %} small-font {% else %} large-font{% endif %}">
+          {{- 'general.card.collection_name' | t -}}
+        </p>
+      {% endif %}
+      {% if section.settings.show_desc %}
+        {%- if collection.description != blank -%}
+          <p class="collections__card__desc small-font">
+            {{- collection.description | strip_html | truncate: desc_count, '...' -}}
+          </p>
+        {% endif %}
+      {% endif %}
+    </div>
+    {% if collection != blank and section.settings.show_button %}
+      <a
+        href="{{ collection.url | default: '#' }}"
+        aria-label="{{ collection.title }}"
+        class="collections__card__button button button--simple"
+      >
+        <span class="collections__card__button--text button-label">{{ 'general.card.shop__now' | t }}</span>
+      </a>
+    {% endif %}
+  </div>
+</div>

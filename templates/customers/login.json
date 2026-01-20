@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-login",
+      "settings": {
+        "color_scheme": "",
+        "overlay_opacity": 0.1,
+        "height": "landscape",
+        "text": "Welcome back! Enter your credentials to access your account and manage your settings.",
+        "text_align": "left",
+        "margin_top": "no-indent",
+        "margin_bottom": "xl"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

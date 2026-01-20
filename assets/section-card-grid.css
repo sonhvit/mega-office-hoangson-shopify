@@ -1,0 +1,98 @@
+.card-grid__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+}
+.card-grid__content--item {
+  padding-top: 2rem;
+  border-radius: var(--border-radius-large);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.card-grid__content--item__details {
+  padding: 0 2rem;
+}
+@media screen and (min-width: 990px) {
+  .card-grid__content--item__details {
+    padding: 0 4rem;
+  }
+}
+.card-grid__content--item__details__subheading {
+  margin: 0;
+  color: rgb(var(--color-foreground-secondary));
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.card-grid__content--item__details__heading {
+  margin: 0;
+}
+.card-grid__content--item--media {
+  display: flex;
+  position: relative;
+}
+.card-grid__content--item--media::before {
+  content: "";
+  display: block;
+  padding-bottom: var(--image-height);
+}
+.card-grid__content--item--media img,
+.card-grid__content--item--media svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius-large);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.card-grid__content--item--media.adapt img,
+.card-grid__content--item--media.adapt svg {
+  position: unset;
+}
+.card-grid__content--item--media__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(var(--color-overlay));
+  z-index: 1;
+  pointer-events: none;
+  border-radius: var(--border-radius-large);
+}
+@media screen and (min-width: 990px) {
+  .card-grid__content--item {
+    padding-top: 4rem;
+    gap: 4rem;
+  }
+}
+.card-grid__content--item.item-without-padding {
+  padding-top: 0;
+  justify-content: flex-end;
+}
+@media screen and (min-width: 576px) {
+  .card-grid__content--2.collections-grid--simple, .card-grid__content--3.collections-grid--simple {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 750px) {
+  .card-grid__content--2, .card-grid__content--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .card-grid__content--2.collections-grid--simple, .card-grid__content--3.collections-grid--simple {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 990px) {
+  .card-grid__content--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card-grid__content--3.collections-grid--simple {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

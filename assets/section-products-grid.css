@@ -1,0 +1,12 @@
+.products-grid-section .products-grid {
+  margin: 0;
+}
+.products-grid-section .products-grid .collection-wrapper {
+  border: none;
+}
+.products-grid-section .products-grid .collection-product-list .collection-product-card {
+  width: 100%;
+}
+.products-grid-section .products-grid .products-grid {
+  grid-column: span 2;
+}

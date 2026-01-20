@@ -1,0 +1,391 @@
+{{ 'section-countdown.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'countdown.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  {% render 'section-margin' %}
+{%- endstyle -%}
+
+{% liquid
+  assign timezone = 'now' | date: '%Z' | plus: 0 | append: ''
+
+  if timezone.size > 1
+    assign timezone = 'now' | date: '%Z' | divided_by: 100 | times: 3600.0 | plus: 1800
+  else
+    assign timezone = 'now' | date: '%Z' | minus: 1 | times: 3600.0
+  endif
+
+  assign date_merge = section.settings.date_picker | append: '-' | append: section.settings.time_picker | append: ':00'
+  assign date_now = 'now' | date: '%s' | minus: 0
+  assign date_settings = date_merge | date: '%s' | minus: 0
+
+  if date_now < date_settings
+    assign distance = date_settings | minus: date_now
+    assign days = distance | divided_by: 3600 | divided_by: 24 | floor | append: ''
+    assign hours = distance | modulo: 86400 | divided_by: 3600 | floor | append: ''
+    assign minutes = distance | modulo: 3600 | divided_by: 60 | floor | append: ''
+    assign seconds = distance | modulo: 60 | floor | append: ''
+  else
+    assign days = '00'
+    assign hours = '00'
+    assign minutes = '00'
+    assign seconds = '00'
+  endif
+%}
+
+<countdown-timer
+  class="countdown js-countdown  js-countdown-{{ section.id }}"
+  data-date="{{ section.settings.date_picker }}"
+  data-time="{{ section.settings.time_picker }}"
+	data-enable-mock-timer="{{ section.settings.enable_mock_timer | default: false }}"
+	data-enable-mock-picker-day="{{ section.settings.mock_date_picker_day | default: 2 }}"
+  data-enable-mock-picker-hours="{{ section.settings.mock_date_picker_hours | default: 3 }}"
+  data-completed="{{ section.settings.completed_countdown }}"
+>
+  <div class="countdown__container">
+    <div class="container">
+      <div
+        class="countdown__wrapper main__countdown__wrapper color-{{ section.settings.color_scheme }}"
+      >
+				<div class="countdown__content_wrapper">
+        <div class="countdown__content">
+          {%- if section.settings.heading != blank -%}
+            <h2
+              class="countdown__heading {{ section.settings.heading_size }}"
+            >
+              {{ section.settings.heading }}
+            </h2>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.date_picker != blank or section.settings.countdown_heading -%}
+          <div>
+            {%- if section.settings.date_picker != blank -%}
+              <div class="countdown__main countdown__centered">
+                <div class="countdown__block">
+                  <div class="countdown__block_num countdown-block-font">
+                    <span class="countdown_block_days h3">
+                      {% if days.size > 1 %}
+                        {{ days }}
+                      {% else %}
+                        {{ 0 | append: days }}
+                      {% endif %}
+                    </span>
+                    <span class="extra-small-font">
+                      {{- 'general.countdown.days' | t }}
+                    </span>
+                  </div>
+                </div>
+                {% render 'icon-colon' %}
+                <div class="countdown__block">
+                  <div class="countdown__block_num countdown-block-font">
+                    <span class="countdown_block_hours h3">
+                      {% if hours.size > 1 %}
+                        {{ hours }}
+                      {% else %}
+                        {{ 0 | append: hours }}
+                      {% endif %}
+                    </span>
+                    <span class="extra-small-font">
+                      {{- 'general.countdown.hours' | t -}}
+                    </span>
+                  </div>
+                </div>
+                {% render 'icon-colon' %}
+                <div class="countdown__block">
+                  <div class="countdown__block_num countdown-block-font">
+                    <span class="countdown_block_minutes h3">
+                      {% if minutes.size > 1 %}
+                        {{ minutes }}
+                      {% else %}
+                        {{ 0 | append: minutes }}
+                      {% endif %}
+                    </span>
+                    <span class="extra-small-font">
+                      {{- 'general.countdown.minutes' | t -}}
+                    </span>
+                  </div>
+                </div>
+                {% render 'icon-colon' %}
+                <div class="countdown__block">
+                  <div class="countdown__block_num countdown-block-font">
+                    <span class="countdown_block_seconds h3">
+                      {% if seconds.size > 1 %}
+                        {{ seconds }}
+                      {% else %}
+                        {{ 0 | append: seconds }}
+                      {% endif %}
+                    </span>
+                    <span class="extra-small-font">
+                      {{- 'general.countdown.seconds' | t -}}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+            {% if section.settings.countdown_heading %}
+              <div class="countdown__end-info">
+                <h3 class="h3 countdown__end-info-text">
+                  {{ section.settings.countdown_heading }}
+                </h3>
+              </div>
+            {% endif %}
+          </div>
+        {%- endif -%}
+				</div>
+        {% render 'button', layout: section, class: 'countdown' %}
+        {%- if section.settings.image != blank -%}
+          <div class="countdown__bg">
+            <span
+              class="countdown__bg-overlay"
+              style="background-color: rgba(var(--color-overlay), {{ section.settings.opacity_overlay }})"
+            ></span>
+            {{
+              section.settings.image
+              | image_url: width: section.settings.image.width
+              | image_tag:
+                class: 'countdown__image',
+                loading: 'lazy',
+                widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946, 2200, 2400, 2600, 2800, 3000, 3200, 3400, 3600, 3900'
+            }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</countdown-timer>
+
+{% schema %}
+{
+  "name": "t:sections.countdown.name",
+  "tag": "section",
+  "class": "countdown-section spaced-section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "background-1",
+      "label": "t:sections.all.color_scheme.label"
+    },
+		{
+			"type": "checkbox",
+			"id": "enable_mock_timer",
+			"default": false,
+			"label": "t:sections.countdown.settings.enable_mock_timer.label",
+			"info": "t:sections.countdown.settings.enable_mock_timer.info"
+		},
+    {
+      "type": "text",
+      "id": "date_picker",
+      "default": "2025-10-01",
+      "info": "YYYY-MM-DD",
+      "label": "t:sections.countdown.settings.date_picker.label",
+			"visible_if": "{{ section.settings.enable_mock_timer == false }}"
+    },
+    {
+      "type": "text",
+      "id": "time_picker",
+      "default": "00:00",
+      "info": "hh:mm",
+      "label": "t:sections.countdown.settings.time_picker.label",
+			"visible_if": "{{ section.settings.enable_mock_timer == false }}"
+    },
+		{
+			"type": "range",
+			"id": "mock_date_picker_day",
+			"min": 1,
+			"max": 31,
+			"step": 1,
+			"default": 2,
+			"label": "t:sections.countdown.settings.mock_date_picker_day.label",
+			"visible_if": "{{ section.settings.enable_mock_timer }}"
+		},
+		{
+			"type": "range",
+			"id": "mock_date_picker_hours",
+			"min": 1,
+			"max": 23,
+			"step": 1,
+			"default": 3,
+			"label": "t:sections.countdown.settings.mock_date_picker_hours.label",
+			"visible_if": "{{ section.settings.enable_mock_timer }}"
+		},
+    {
+      "type": "select",
+      "id": "completed_countdown",
+      "options": [
+        {
+          "value": "hide_section",
+          "label": "t:sections.countdown.settings.completed_countdown.options_1.label"
+        },
+        {
+          "value": "show_text",
+          "label": "t:sections.countdown.settings.completed_countdown.options_2.label"
+        }
+      ],
+      "default": "show_text",
+      "label": "t:sections.countdown.settings.completed_countdown.label",
+			"visible_if": "{{ section.settings.enable_mock_timer == false }}"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "countdown_heading",
+      "default": "Header after countdown",
+      "label": "t:sections.countdown.settings.countdown_heading.label",
+			"visible_if": "{{ section.settings.enable_mock_timer == false }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.countdown.settings.header__1.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.countdown.settings.image.label"
+    },
+    {
+      "type": "range",
+      "id": "opacity_overlay",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "label": "t:sections.countdown.settings.opacity_overlay.label",
+      "default": 0
+    },
+
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Some heading",
+      "label": "t:sections.all.heading.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__2.label"
+        }
+      ],
+      "default": "h3",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.button.header.content"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Button label",
+      "label": "t:sections.all.button.label.label",
+      "info": "t:sections.all.button.label.info"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.all.button.link.label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.all.button.style.options__1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.all.button.style.options__2.label"
+        },
+        {
+          "value": "tertiary",
+          "label": "t:sections.all.button.style.options__3.label"
+        }
+      ],
+      "default": "primary",
+      "label": "t:sections.all.button.style.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-margin.header.content"
+    },
+    {
+      "type": "select",
+      "id": "margin_top",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-margin.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-margin.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-margin.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-margin.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-margin.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-margin.options__6.label"
+        }
+      ],
+      "default": "no-indent",
+      "label": "t:sections.all.section-margin.margin_top.label"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-margin.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-margin.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-margin.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-margin.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-margin.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-margin.options__6.label"
+        }
+      ],
+      "default": "xl",
+      "label": "t:sections.all.section-margin.margin_bottom.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.countdown.presets.name"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,606 @@
+{% comment %}
+	<details-modal class="header__search">
+	  {%- if settings.quickview_show -%}
+	    <link
+	      rel="preload"
+	      href="{{ 'section-main-product.css' | asset_url }}"
+	      as="style"
+	      onload="this.onload=null;this.rel='stylesheet'"
+	    >
+	    <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="all">
+	    <link
+	      rel="preload"
+	      href="{{ 'quick-add.css' | asset_url }}"
+	      as="style"
+	      onload="this.onload=null;this.rel='stylesheet'"
+	    >
+
+	    <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+	    <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+	  {%- endif -%}
+	  <details>
+	    <summary
+	      class="header__icon header__icon--search link--text header__icon--summary focus-inset modal__toggle"
+	      aria-haspopup="dialog"
+	      role="button"
+	    >
+	      {% render 'icon-search' %}
+	      <span class="header__search-heading">{{ 'general.search.search' | t }}</span>
+	    </summary>
+	    <div
+	      class="header__search-inner search color-background-1"
+	      role="dialog"
+	      aria-modal="true"
+	      aria-label="{{ 'general.search.search' | t }}"
+	    >
+	      <div class="search__content">
+	        {%- if settings.predictive_search_enabled -%}
+	          <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+	        {%- endif -%}
+	        <form action="{{ routes.search_url }}" method="get" role="search" class="search search__form">
+	          <div class="field color-{{ section.settings.search_color_scheme }} {% if section.settings.enable_box_shadow %}form--shadow{% endif %}">
+	            <input
+	              class="search__input field__input"
+	              id="Search-In-Modal-1"
+	              type="search"
+	              name="q"
+	              value="{{ search.terms | escape }}"
+	              placeholder="{{ 'general.search.placeholder' | t }}"
+	              {%- if settings.predictive_search_enabled -%}
+	                role="combobox"
+	                aria-expanded="false"
+	                aria-owns="predictive-search-results-list"
+	                aria-controls="predictive-search-results-list"
+	                aria-haspopup="listbox"
+	                aria-autocomplete="list"
+	                autocorrect="off"
+	                autocomplete="off"
+	                autocapitalize="off"
+	                spellcheck="false"
+	              {%- endif -%}
+	            >
+	            <label class="visually-hidden" for="Search-In-Modal-1">{{ 'general.search.search' | t }}</label>
+	            <input type="hidden" name="options[prefix]" value="last">
+	            <button
+	              class="search__button button button--primary search__button field__button focus-inset"
+	              aria-label="{{ 'general.search.search' | t }}"
+	            >
+	              {% render 'icon-search' %}
+	            </button>
+	          </div>
+
+	          {%- if settings.predictive_search_enabled -%}
+	            <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+	              <div class="predictive-search__loading-state">
+	                {% render 'icon-spinner' %}
+	              </div>
+	            </div>
+
+	            <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+	          {%- endif -%}
+	        </form>
+	        {%- if settings.predictive_search_enabled -%}
+	          </predictive-search>
+	        {%- endif -%}
+	        {% render 'search-modal' %}
+	      </div>
+	    </div>
+	  </details>
+	</details-modal>
+{% endcomment %}
+
+{% liquid
+	assign has_modal_content = false
+
+	if section.settings.recommended_products != blank or section.settings.enable_promo_1 or section.settings.enable_promo_2
+		assign has_modal_content = true
+	endif
+%}
+
+<header-search
+	class="search-banner__search search header-search{% if has_modal_content %} predictive-initially-opened{% endif %}"
+	id="{{ section.id }}"
+	role="dialog"
+	aria-modal="true"
+	aria-label="{{ 'general.search.search' | t }}"
+>
+	<div class="header-row__overlay"></div>
+	<div class="search__content">
+		{% if collections.size > 0 and settings.collections_filter_search_enabled %}
+			<div class="category_button" tabindex="0">
+				<div class="category_name">
+					<div class="collection_list_items__image">
+						{% if settings.search_all_collections_featured_image != blank or settings.search_all_collections_featured_image_dark != blank %}
+							{% if settings.search_all_collections_featured_image != blank %}
+								{{
+									settings.search_all_collections_featured_image
+									| image_url:
+										width: settings.search_all_collections_featured_image.width
+									| image_tag: class: 'header__heading-logo', loading: 'lazy', widths: '360, 535, 720'
+								}}
+							{% endif %}
+							{% if settings.search_all_collections_featured_image_dark != blank %}
+								{{
+									settings.search_all_collections_featured_image_dark
+									| image_url:
+										width: settings.search_all_collections_featured_image_dark.width
+									| image_tag: class: 'header__heading-logo header__heading-logo--overlay', loading: 'lazy', widths: '360, 535, 720'
+								}}
+							{% endif %}
+						{% else %}
+							{{
+								'detailed-apparel-1'
+								| placeholder_svg_tag: 'placeholder-svg'
+							}}
+						{% endif %}
+					</div>
+					<span class="category_button_name small-font">All products</span>
+				</div>
+				{% render 'icon-arrow' %}
+			</div>
+
+			<div class="collection_list" inert>
+				<div
+					class="collection_list_items active"
+					data-category-name="All products"
+					data-category-handle="all"
+					tabindex="0"
+				>
+					<div class="collection_list_items__image">
+						{% if settings.search_all_collections_featured_image != blank or settings.search_all_collections_featured_image_dark != blank %}
+							{% if settings.search_all_collections_featured_image != blank %}
+								{{
+									settings.search_all_collections_featured_image
+									| image_url:
+										width: settings.search_all_collections_featured_image.width
+									| image_tag: class: 'header__heading-logo', loading: 'lazy', widths: '360, 535, 720'
+								}}
+							{% endif %}
+							{% if settings.search_all_collections_featured_image_dark != blank %}
+								{{
+									settings.search_all_collections_featured_image_dark
+									| image_url:
+										width: settings.search_all_collections_featured_image_dark.width
+									| image_tag: class: 'header__heading-logo header__heading-logo--overlay', loading: 'lazy', widths: '360, 535, 720'
+								}}
+							{% endif %}
+						{% else %}
+							{{
+								'detailed-apparel-1'
+								| placeholder_svg_tag: 'placeholder-svg'
+							}}
+						{% endif %}
+					</div>
+					<span class="collection_list_items__link full-unstyled-link small-font">
+						<span>{{ 'sections.collection_template.all' | t }}</span>
+					</span>
+				</div>
+				{%- for collection_list in collections -%}
+					<div
+						class="collection_list_items"
+						data-category-name="{{ collection_list.title }}"
+						data-category-handle="{{ collection_list.handle }}"
+						tabindex="0"
+					>
+						<div class="collection_list_items__image">
+							{% if collection_list.metafields.custom.collection_icon != blank or collection_list.metafields.custom.collection_icon_dark_mode != blank %}
+								{% if collection_list.metafields.custom.collection_icon != blank %}
+									{{
+										collection_list.metafields.custom.collection_icon
+										| image_url:
+											width: collection_list.metafields.custom.collection_icon.width
+										| image_tag: class: 'header__heading-logo', loading: 'lazy', widths: '360, 535, 720'
+									}}
+								{% endif %}
+								{% if collection_list.metafields.custom.collection_icon_dark_mode != blank %}
+									{{
+										collection_list.metafields.custom.collection_icon_dark_mode
+										| image_url:
+											width: collection_list.metafields.custom.collection_icon_dark_mode.width
+										| image_tag: class: 'header__heading-logo header__heading-logo--overlay', loading: 'lazy', widths: '360, 535, 720'
+									}}
+								{% endif %}
+							{% elsif collection_list.featured_image != blank %}
+								{{
+									collection_list.featured_image
+									| image_url: width: collection_list.featured_image.width
+									| image_tag: loading: 'lazy', widths: '360, 535, 720'
+								}}
+							{% else %}
+								{{
+									'detailed-apparel-1'
+									| placeholder_svg_tag: 'placeholder-svg'
+								}}
+							{% endif %}
+						</div>
+						<span class="collection_list_items__link full-unstyled-link small-font">
+							<span>{{ collection_list.title }}</span>
+						</span>
+					</div>
+				{%- endfor -%}
+			</div>
+		{% endif %}
+
+		<predictive-search class="search__main {% if collections.size > 0 %}search__main-collection{% endif %}">
+			<div
+				class="search-modal__form search__main-form category-all"
+				data-loading-text="{{ 'accessibility.loading' | t }}"
+			>
+				<div class="search__container">
+					<form
+						action="{{ routes.search_url }}"
+						method="get"
+						role="search"
+						class="search search__form"
+					>
+						<div class="field">
+							<input
+								class="search__input field__input"
+								id="Search-In-Modal-1"
+								type="search"
+								dir="ltr"
+								name="q"
+								value="{{ search.terms | escape }}"
+								placeholder="{{ 'general.search.placeholder' | t }}"
+								role="combobox"
+								aria-expanded="false"
+								aria-owns="predictive-search-results-list"
+								aria-controls="predictive-search-results-list"
+								aria-haspopup="listbox"
+								aria-autocomplete="list"
+								autocorrect="off"
+								autocomplete="off"
+								autocapitalize="off"
+								spellcheck="false"
+							>
+							<label class="visually-hidden" for="Search-In-Modal-1">
+								{{- 'general.search.search' | t -}}
+							</label>
+							<input type="hidden" name="options[prefix]" value="last">
+							<button
+								class="search__button button focus-inset"
+								aria-label="{{ 'general.search.search' | t }}"
+							>
+								{% render 'icon-search' %}
+							</button>
+						</div>
+
+						<div
+							class="predictive-search predictive-search--header color-background-1"
+							tabindex="-1"
+							data-section="banner"
+							id="predictive-search-{{ section.id }}"
+						>
+							<div
+								class="predictive-search-results-container"
+								data-predictive-search
+							></div>
+
+							{%- if has_modal_content
+								or section.settings.enable_promo_1
+								or section.settings.enable_promo_2
+							-%}
+								<div class="predictive-search-initial-content">
+									{% comment %} POPULAR SEARCHES AND RECOMMENDED PRODUCTS {% endcomment %}
+									{%- if section.settings.recommended_products != blank %}
+										<div class="predictive-search-main">
+											{% comment %} RECOMMENDED PRODUCTS {% endcomment %}
+											{%- if section.settings.recommended_products != blank -%}
+												<div class="predictive-search-recommended">
+													{%- if section.settings.recommended_products_heading
+															!= blank
+													-%}
+														<span class="predictive-search-recommended__title">
+															{{- section.settings.recommended_products_heading -}}
+														</span>
+													{%- endif -%}
+													<ul class="predictive-search-recommended-list list-unstyled">
+														{%- for search_product in section.settings.recommended_products -%}
+															<li class="predictive-search-recommended-list__item">
+																{% render 'product-card-horizontal',
+																	product_card_product: search_product,
+																	media_size: 'portrait',
+																	media_fit: 'cover',
+																	show_secondary_image: true,
+																	section_id: section.id,
+																	add_id: forloop.index,
+																	font_size: 'extra-small-font'
+																%}
+															</li>
+														{%- endfor -%}
+													</ul>
+													<a
+														href="{{ routes.all_products_collection_url }}"
+														class="shop-all-link unstyled-link small-font button--simple"
+													>
+														<span class="button-label">
+															{{- 'sections.header.shop_all' | t -}}
+														</span>
+														{% render 'icon-arrow' %}
+													</a>
+												</div>
+											{%- endif -%}
+										</div>
+									{%- endif -%}
+
+									{% comment %} SEARCH PROMO BANNER {% endcomment %}
+									{% if section.settings.enable_promo_1
+										or section.settings.enable_promo_2
+									%}
+										<div class="mega-menu-banner">
+											<div class="mega-menu__promo">
+												{% if section.settings.enable_promo_1 %}
+													{% if section.settings.promo_link_1 != blank %}
+														<a href="{{ section.settings.promo_link_1 }}" class="mega-menu__promo-wrapper color-inverse mega-menu__promo-link unstyled-link{% if section.settings.promo_image_1 == blank %} mega-menu__promo-link-without-image{% endif %}">
+													{% else %}
+														<div class="mega-menu__promo-wrapper color-inverse">
+													{% endif %}
+														{% if section.settings.promo_heading_1 != blank or section.settings.promo_logo_1 != blank %}
+															<div class="mega-menu__promo-block">
+																{% if section.settings.promo_logo_1 != blank %}
+																	<div class="promo_logo-wrapper">
+																		{% liquid
+																			assign image_height = section.settings.promo_logo_1.width | divided_by: section.settings.promo_logo_1.aspect_ratio
+																		%}
+																		{{
+																			section.settings.promo_logo_1
+																			| image_url: width: section.settings.promo_logo_1.width
+																			| image_tag:
+																					class: 'promo_logo promo_logo_1',
+																					loading: 'lazy',
+																					width: section.settings.promo_logo_1.width,
+																					height: image_height,
+																					sizes: '100vw',
+																					widths: '55, 110, 220, 550'
+																		}}
+																	</div>
+																{% endif %}
+																{% if section.settings.promo_heading_1 != blank %}
+																	<h5 class="mega-menu__promo-heading">{{ section.settings.promo_heading_1 }}</h5>
+																{% endif %}
+															</div>
+														{% endif %}
+
+														{% if section.settings.promo_image_1 != blank %}
+															<div class="promo_image-wrapper">
+																{% liquid
+																	assign image_height = section.settings.promo_image_1.width | divided_by: section.settings.promo_image_1.aspect_ratio
+																%}
+																{{
+																	section.settings.promo_image_1
+																	| image_url: width: section.settings.promo_image_1.width
+																	| image_tag:
+																			class: 'promo_image promo_image_1',
+																			loading: 'lazy',
+																			width: section.settings.promo_image_1.width,
+																			height: image_height,
+																			sizes: '100vw',
+																			widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000'
+																}}
+															</div>
+														{% endif %}
+													{% if section.settings.promo_link_1 != blank %}
+														</a>
+													{% else %}
+														</div>
+													{% endif %}
+												{% endif %}
+												{%- if section.settings.enable_promo_2 -%}
+													{% if section.settings.promo_link_2 != blank %}
+														<a href="{{ section.settings.promo_link_2 }}" class="mega-menu__promo-wrapper color-inverse mega-menu__promo-link unstyled-link{% if section.settings.promo_image_2 == blank %} mega-menu__promo-link-without-image{% endif %}">
+													{% else %}
+														<div class="mega-menu__promo-wrapper color-inverse">
+													{% endif %}
+														{% if section.settings.promo_heading_2 != blank
+															or section.settings.promo_logo_2 != blank
+														%}
+															<div class="mega-menu__promo-block">
+																{% if section.settings.promo_logo_2 != blank %}
+																	<div class="promo_logo-wrapper">
+																		{% liquid
+																			assign image_height = section.settings.promo_logo_2.width | divided_by: section.settings.promo_logo_2.aspect_ratio
+																		%}
+																		{{
+																			section.settings.promo_logo_2
+																			| image_url:
+																				width: section.settings.promo_logo_2.width
+																			| image_tag:
+																				class: 'promo_logo promo_logo_2',
+																				loading: 'lazy',
+																				width: section.settings.promo_logo_2.width,
+																				height: image_height,
+																				sizes: '100vw',
+																				widths: '55, 110, 220, 550'
+																		}}
+																	</div>
+																{% endif %}
+																{% if section.settings.promo_heading_2 != blank
+																%}
+																	<h5 class="mega-menu__promo-heading">
+																		{{ section.settings.promo_heading_2 }}
+																	</h5>
+																{% endif %}
+															</div>
+														{% endif %}
+														{% if section.settings.promo_image_2 != blank %}
+															<div class="promo_image-wrapper">
+																{% liquid
+																	assign image_height_2 = section.settings.promo_image_2.width | divided_by: section.settings.promo_image_2.aspect_ratio
+																%}
+																{{
+																	section.settings.promo_image_2
+																	| image_url:
+																		width: section.settings.promo_image_2.width
+																	| image_tag:
+																		class: 'promo_image promo_image_2',
+																		loading: 'lazy',
+																		width: section.settings.promo_image_2.width,
+																		height: image_height_2,
+																		sizes: '100vw',
+																		widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000'
+																}}
+															</div>
+														{% endif %}
+													{% if section.settings.promo_link_2 != blank %}
+														</a>
+													{% else %}
+														</div>
+													{% endif %}
+												{%- endif -%}
+											</div>
+										</div>
+									{% endif %}
+								</div>
+							{%- endif -%}
+							{% comment %}
+								<div class="predictive-search__loading-state">
+									{% render 'icon-spinner' %}
+								</div>
+							{% endcomment %}
+						</div>
+
+						<span
+							class="predictive-search-status visually-hidden"
+							role="status"
+							aria-hidden="true"
+						></span>
+					</form>
+				</div>
+			</div>
+		</predictive-search>
+	</div>
+</header-search>
+{%- if settings.collections_filter_search_enabled -%}
+<script>
+	(function () {
+		const initSection = (section) => {
+		const categoryButton = section.querySelector(".category_button");
+		const categoryButtonName = section.querySelector(".category_button_name");
+		const categoryButtonImage = section.querySelector(".category_button .collection_list_items__image");
+		const searchCollectioModal = section.querySelector(
+			".search-banner__search"
+		);
+		const searchModal = section.querySelector(".search__main-form");
+		const collectionList = section.querySelector(".collection_list");
+		const categoryItems = section.querySelectorAll(".collection_list_items");
+		const headerOverlay = section.querySelector(".header-row__overlay");
+
+		
+		{% comment %}categoryButton?.addEventListener('click', function () {
+			searchCollectioModal.classList.toggle('open');
+			collectionList.classList.toggle('active');
+			document.body.classList.toggle('opened-search');
+		});{% endcomment %}
+
+		const toggleCategoryMenu = () => {
+			searchCollectioModal.classList.toggle("open");
+			collectionList.classList.toggle("active");
+			document.body.classList.toggle("opened-search");
+			if (collectionList.classList.contains("active")) {
+				collectionList.removeAttribute("inert");
+			} else {
+				collectionList.setAttribute("inert", "");
+			}
+		};
+
+		categoryButton?.addEventListener("click", toggleCategoryMenu);
+
+		categoryButton?.addEventListener("keydown", function (e) {
+			if (e.key === "Enter" || e.key === " ") {
+				e.preventDefault();
+				toggleCategoryMenu();
+			}
+		});
+
+		categoryItems?.forEach((item, index) => {
+			const activateItem = () => {
+				const selectedCategory = item.getAttribute("data-category-name");
+				const selectedCategoryHandle = item.getAttribute(
+					"data-category-handle"
+				);
+
+				const isAlreadyActive = item.classList.contains("active");
+				if (isAlreadyActive) return;
+
+				categoryItems.forEach((i) => i.classList.remove("active"));
+				searchModal.classList.forEach((cls) => {
+					if (cls.startsWith("category-")) {
+						searchModal.classList.remove(cls);
+					}
+				});
+
+				const oldStyle = searchModal.querySelector("#dynamic-style");
+				if (oldStyle) oldStyle.remove();
+
+				item.classList.add("active");
+				const maxWidth = 100;
+				categoryButtonName.textContent = selectedCategory;
+				searchModal.classList.add(`category-${selectedCategoryHandle}`);
+
+				if (categoryButtonName.scrollWidth > maxWidth) {
+					while (
+						categoryButtonName.scrollWidth > maxWidth &&
+						categoryButtonName.textContent.length > 0
+					) {
+						categoryButtonName.textContent =
+							categoryButtonName.textContent.slice(0, -1);
+					}
+					categoryButtonName.textContent += "...";
+				}
+
+				const itemImage = item.querySelector(".collection_list_items__image");
+				if (itemImage && categoryButtonImage) {
+					categoryButtonImage.innerHTML = itemImage.innerHTML;
+				}
+
+				if (index > 0) {
+					const style = document.createElement("style");
+					style.id = "dynamic-style";
+					style.innerHTML = `
+					.search__main-collection .predictive-search__list-item:not(.category-${selectedCategoryHandle}) {
+						display: none;
+					}
+				`;
+					searchModal.appendChild(style);
+				}
+
+				collectionList.classList.remove("active");
+				searchCollectioModal.classList.remove("open");
+				document.body.classList.remove("opened-search");
+				if (collectionList.classList.contains("active")) {
+					collectionList.removeAttribute("inert");
+				} else {
+					collectionList.setAttribute("inert", "");
+				}
+			};
+
+			item.addEventListener("click", activateItem);
+
+			item.addEventListener("keydown", function (e) {
+				if (e.key === "Enter" || e.key === " ") {
+					e.preventDefault();
+					activateItem();
+				}
+			});
+		});
+
+		headerOverlay?.addEventListener("click", function () {
+			categoryItems.forEach((i) => i.classList.remove("active"));
+			collectionList.classList.remove("active");
+			searchCollectioModal.classList.remove("open");
+			document.body.classList.remove("opened-search");
+			if (collectionList.classList.contains("active")) {
+				collectionList.removeAttribute("inert");
+			} else {
+				collectionList.setAttribute("inert", "");
+			}
+		});
+	};
+
+	initSection(document.currentScript.parentElement);
+	document.addEventListener("shopify:section:load", function (section) {
+		initSection(section.target);
+	});
+	})();
+</script>
+{%- endif -%}

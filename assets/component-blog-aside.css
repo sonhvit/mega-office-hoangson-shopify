@@ -1,0 +1,99 @@
+.blog-aside__header {
+  margin: 0;
+  margin-bottom: 1.6rem;
+}
+@media screen and (min-width: 576px) {
+  .blog-aside__header {
+    margin-bottom: 2rem;
+  }
+}
+.blog-aside__posts:not(:last-child) {
+  padding-bottom: 2rem;
+}
+@media screen and (min-width: 576px) {
+  .blog-aside__posts:not(:last-child) {
+    padding-bottom: 2.4rem;
+  }
+}
+.blog-aside__banner .banner-slider__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  height: auto;
+}
+.blog-aside__banner .banner-slider__item::before {
+  content: "";
+  width: 0;
+  height: 100%;
+  display: block;
+  padding-bottom: 133%;
+}
+.blog-aside__banner .banner-slider__item .banner-slider__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(var(--color-overlay));
+  z-index: 2;
+  pointer-events: none;
+}
+.blog-aside__banner .banner-slider__item--details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: auto;
+  gap: 0.8rem;
+}
+.blog-aside__banner .banner-slider__item--details__action {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1.6rem;
+}
+.blog-aside__banner .banner-slider__item--details__heading {
+  padding: 0.4rem;
+  margin: 0;
+}
+.blog-aside__banner .banner-slider__item--details__badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.4rem;
+}
+.blog-aside__banner .banner-slider__item--details__badge_text {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.blog-aside__banner .banner-slider__item--details.flex-end {
+  justify-content: flex-end;
+}
+.blog-aside__banner .banner-slider__item__image > img {
+  display: block;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.main-blog__aside div:last-child {
+  position: sticky;
+  top: 1rem;
+  transition: top var(--duration-default);
+}
+
+.shopify-section-header-sticky:not(.shopify-section-header-hidden) ~ main .main-blog__aside div:last-child {
+  top: calc(var(--header-height) + 1rem);
+}

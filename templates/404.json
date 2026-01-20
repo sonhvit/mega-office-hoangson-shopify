@@ -1,0 +1,138 @@
+{
+	"sections": {
+		"main": {
+			"type": "main-404",
+			"settings": {
+				"padding_top": "s",
+				"padding_bottom": "xl"
+			}
+		},
+		"popular_products_8RwxJe": {
+			"type": "popular-products",
+			"name": "t:sections.popular-products.presets.name",
+			"settings": {
+				"per_row": 6,
+				"layout": "slider",
+				"heading": "You May Be Interested",
+				"heading_size": "h3",
+				"button_label": "",
+				"button_style": "tertiary",
+				"autoplay": false,
+				"stop_autoplay": true,
+				"show_arrows": true,
+				"slideshow_speed": 1.1,
+				"slideshow_delay": 3,
+				"image_ratio": "portrait",
+				"image_fit": "cover",
+				"show_two_cards": true,
+				"show_secondary_image": true,
+				"show_sku": false,
+				"show_vendor": false,
+				"show_collection_name": true,
+				"show_color_swatch": true,
+				"show_inventory": true,
+				"show_desc": false,
+				"margin_top": "no-indent",
+				"margin_bottom": "l"
+			}
+		},
+		"collapsible_content_UHQPpw": {
+			"type": "collapsible-content",
+			"blocks": {
+				"accordion_DMVNWm": {
+					"type": "accordion",
+					"settings": {
+						"subheading": "Shipping",
+						"question": "How long does it typically take to process an order?",
+						"answer": "<p>Order processing typically takes 1–2 business days before shipping. Once your order has been processed, you’ll receive a confirmation and tracking information.</p>",
+						"opened": true,
+						"button_label": "",
+						"button_link": "",
+						"button_style": "tertiary"
+					}
+				},
+				"accordion_hDYrig": {
+					"type": "accordion",
+					"settings": {
+						"subheading": "",
+						"question": "Can I change the contents of my order?",
+						"answer": "<p>Yes, changes can be made if the order hasn’t entered processing. Make sure to update your order details promptly after purchase.</p>",
+						"opened": false,
+						"button_label": "",
+						"button_link": "",
+						"button_style": "tertiary"
+					}
+				},
+				"accordion_qt3wKb": {
+					"type": "accordion",
+					"settings": {
+						"subheading": "",
+						"question": "Do you ship internationally?",
+						"answer": "<p>Yes, international shipping is available. Delivery times and costs vary based on your location and selected shipping method.</p>",
+						"opened": false,
+						"button_label": "",
+						"button_link": "",
+						"button_style": "tertiary"
+					}
+				},
+				"accordion_AEMxyw": {
+					"type": "accordion",
+					"settings": {
+						"subheading": "",
+						"question": "Is my personal information secure during checkout?",
+						"answer": "<p>Yes, all data is encrypted and processed securely to protect your privacy.</p>",
+						"opened": false,
+						"button_label": "",
+						"button_link": "",
+						"button_style": "tertiary"
+					}
+				},
+				"accordion_RcxMQq": {
+					"type": "accordion",
+					"settings": {
+						"subheading": "returns & refund",
+						"question": "What is your return policy?",
+						"answer": "<p>You can return most items within 30 days of delivery for a full refund or exchange.</p>",
+						"opened": false,
+						"button_label": "",
+						"button_link": "",
+						"button_style": "tertiary"
+					}
+				},
+				"accordion_hiUFAN": {
+					"type": "accordion",
+					"settings": {
+						"subheading": "",
+						"question": "How long does it take to process a refund?",
+						"answer": "<p>Refunds are usually processed within 5-7 business days after we receive your returned item.</p>",
+						"opened": false,
+						"button_label": "Read All",
+						"button_style": "tertiary"
+					}
+				}
+			},
+			"block_order": [
+				"accordion_DMVNWm",
+				"accordion_hDYrig",
+				"accordion_qt3wKb",
+				"accordion_AEMxyw",
+				"accordion_RcxMQq",
+				"accordion_hiUFAN"
+			],
+			"name": "t:sections.collapsible-content.name",
+			"settings": {
+				"color_scheme": "",
+				"heading": "Contact Support",
+				"heading_size": "h3",
+				"text": "Round-the-clock support for a smooth shopping experience.",
+				"button_label": "Contact Support",
+				"button_style": "secondary",
+				"padding_top": "no-indent",
+				"padding_bottom": "no-indent",
+				"margin_top": "no-indent",
+				"margin_bottom": "l"
+			}
+		}
+	},
+	"order": ["main", "popular_products_8RwxJe", "collapsible_content_UHQPpw"]
+}

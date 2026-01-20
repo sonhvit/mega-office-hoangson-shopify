@@ -1,0 +1,42 @@
+{{ 'component-simple-price.css' | asset_url | stylesheet_tag }}
+
+{% comment %}{% liquid
+	if layout != blank
+		assign badge_subheading = layout.settings.badge_subheading
+		assign badge_heading = layout.settings.badge_heading
+		if layout.settings.button_style != blank
+			assign btn_style = layout.settings.button_style
+		else
+			assign btn_style = 'simple'
+		endif
+	endif
+%}{% endcomment %}
+
+<div class="simple-price-box">
+	<div class="simple-price-wrapper">
+		{%- if layout.settings.badge_subheading != blank -%}
+			<div class="simple-price__sale">
+				{{ layout.settings.badge_subheading  | strip_html | truncate: 5}}
+			</div>
+		{%- endif -%}
+		{%- if layout.settings.badge_heading != blank -%}
+			<div class="simple-item--regular">
+				{{ layout.settings.badge_heading | strip_html | truncate: 10}}
+			</div>
+		{%- endif -%}
+	</div>
+
+	<div class="simple-item__country-box">
+		{%- if layout.settings.enable_prefix != blank -%}
+			<div class="simple-item__country">
+				{{ layout.settings.enable_prefix  }}
+			</div>
+		{%- endif -%}
+		{%- if layout.settings.enable_new != blank -%}
+			<h2 class="simple-item__new">
+				{{ layout.settings.enable_new }}
+			</h2>
+		{%- endif -%}
+	</div>
+
+</div>

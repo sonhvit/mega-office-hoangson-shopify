@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-list-collections",
+      "settings": {
+        "heading": "Collections",
+        "heading_size": "h2",
+        "description": "This is where you can introduce the collection’s theme, product range, or special features.",
+        "sort": "alphabetical_reversed",
+        "collections_to_show": 7,
+        "image_ratio": "square",
+        "image_radius": "circle",
+        "text_align": "center",
+        "show_desc": false,
+        "show_button": false,
+        "columns_mobile": "1",
+        "padding_top": "no-indent",
+        "padding_bottom": "xl",
+        "margin_top": "no-indent",
+        "margin_bottom": "no-indent"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

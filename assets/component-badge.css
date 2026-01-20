@@ -1,0 +1,30 @@
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.8rem;
+  word-break: break-word;
+  border-radius: 0.4rem;
+  font-weight: var(--font-heading-card-weight);
+  text-transform: none;
+  line-height: 1.5;
+  overflow: hidden;
+  font-size: 1.2rem;
+}
+.badge span {
+  display: inline-flex;
+  align-items: center;
+}
+.badge--sale {
+  color: rgb(var(--color-sale-badge-text));
+  background-color: rgb(var(--color-sale-badge-background));
+}
+.badge--soldout {
+  color: rgb(var(--color-soldout-badge-text));
+  background-color: rgb(var(--color-soldout-badge-background));
+  border: 0.1rem solid rgb(var(--color-soldout-badge-border));
+}
+.badge--custom {
+  color: rgb(var(--color-custom-badge-text));
+  background-color: rgb(var(--color-custom-badge-background));
+}

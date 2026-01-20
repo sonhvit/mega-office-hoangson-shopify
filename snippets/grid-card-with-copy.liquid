@@ -1,0 +1,212 @@
+{{ 'grid-card-with-copy.css' | asset_url | stylesheet_tag }}
+
+{% comment %}<script src="{{ 'copy.js' | asset_url }}" defer="defer"></script>{% endcomment %}
+{% liquid
+	assign card_image = block.settings.image
+	assign overlay_opacity = block.settings.overlay_opacity
+	assign overlay_opacity_mobile = block.settings.overlay_opacity_mobile
+	assign title = block.settings.heading
+	assign description = block.settings.description
+	assign heading_size = block.settings.heading_size
+	assign button_label = block.settings.button_label
+%}
+
+{% liquid
+	assign image_size = image_size
+
+	case image_size
+		when 'square'
+			assign section_size = '100%'
+			assign slide_class = image_size
+		when 'landscape'
+			assign section_size = '72.414%'
+			assign slide_class = image_size
+		else
+			assign section_size = '133%'
+			assign slide_class = image_size
+	endcase
+%}
+<div
+	style="--image-height: {{ section_size }}; --padding: {{ block.settings.card_padding }}px"
+	class="banner-grid__card grid-card-copy grid-card-copy-{{ block.id }} color-{{ block.settings.color_scheme }}  full_image_card"
+>
+	<div class="grid-card-copy__details">
+		<div class="grid-card-copy__details--container 	{% if block.settings.small_badege_text == blank and  block.settings.sale_badge_type == "none" %} details-flex-end	{% endif %}">
+			{% if block.settings.small_badege_text != blank
+				or block.settings.sale_badge_type != 'none'
+			%}
+				<div class="
+						grid-card-copy__details--container__badges_area {% if block.settings.small_badege_text == blank
+							and block.settings.sale_badge_type != "none"
+						%} details-flex-end{% endif %}
+					">
+					{% if block.settings.small_badege_text != blank %}
+						<div
+							class="grid-card-copy__details__badge"
+							style="background: {{ block.settings.small_badge_bg_color }}"
+						>
+							{%- if block.settings.small_badge_image != blank -%}
+								{{
+									block.settings.small_badge_image
+									| image_url: width: block.settings.small_badge_image.width
+									| image_tag:
+										loading: 'lazy',
+										sizes: '100vw',
+										widths: '550, 720',
+										height: 16,
+										width: 16,
+										class: 'grid-card-copy__details__badge_image'
+								}}
+							{% endif %}
+							{% if block.settings.small_badege_text != blank %}
+								<span
+									class="grid-card-copy__details__badge_text"
+									style="color: {{ block.settings.small_badge_text_color }}"
+								>
+									{{ block.settings.small_badege_text }}
+								</span>
+							{% endif %}
+						</div>
+					{% endif %}
+					{% if block.settings.sale_badge_type != 'none' %}
+						{% if block.settings.sale_badge_type == 'circle' %}
+							<div class="simple-price__area">
+								{% render 'circle-badge', layout: block %}
+							</div>
+						{% else %}
+							<div class="simple-price__area">
+								{%- render 'simple-price',
+									layout: block,
+									badge_subheading: block.settings.simple_badge_subheading,
+									badge_heading: block.settings.simple_badge_subheading
+								-%}
+							</div>
+						{% endif %}
+					{% endif %}
+				</div>
+			{% endif %}
+			<div class="grid-card-copy__details--container__top">
+				{% if title != blank %}
+					<h3
+						class="grid-card-copy__details__heading  {{ heading_size }}"
+						style="max-width: {{ block.settings.heading_max_width }}px"
+					>
+						{{ title }}
+					</h3>
+				{% endif %}
+				{% if description != blank %}
+					<p class="grid-card-copy__details__desc">{{ description }}</p>
+				{% endif %}
+				{% if button_label != blank or block.settings.promocode_text != blank %}
+					<div class="grid-card-copy__details__action">
+						{% if block.settings.promocode_text != blank %}
+							<div class="grid-card-copy__details__action-promo ">
+								{{ block.settings.promocode_text }}
+								<div
+									class="copy-promo"
+									data-code="{{ block.settings.promocode_text }}"
+									tabindex="0"
+								>
+									{% render 'icon-banner-copy' %}
+								</div>
+								<div id="tooltip" class="tooltip">
+									<span> {{ 'general.share.success_message' | t }}</span>
+								</div>
+							</div>
+						{% endif %}
+						{% if button_label != blank %}
+							{% render 'button', layout: block %}
+						{% endif %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+	{%- if card_image != blank -%}
+		{% liquid
+			assign image_height = card_image.width | divided_by: card_image.aspect_ratio
+		%}
+		{% style %}
+			.grid-card-copy-{{ block.id }} {
+				--overlay-opacity-grid-card-copy: {{ overlay_opacity }};
+				--overlay-opacity-mobile-grid-card-copy: {{ overlay_opacity_mobile }}
+			}
+		{% endstyle %}
+		<div class="grid-card-copy__image {{ slide_class }}">
+			{% if block.settings.overlay_link != blank %}
+				<a
+					class="grid-card-copy__image__overlay grid-card-copy__image__overlay--link overlay-link-hover"
+					href="{{ block.settings.overlay_link }}"
+					style="opacity: 0"
+				>
+					<span class="visibility-hidden">
+						{{- block.settings.overlay_link -}}
+					</span>
+				</a>
+			{% endif %}
+			<div
+				class="grid-card-copy__image__overlay"
+			></div>
+			{%- if card_image != blank -%}
+				{{
+					card_image
+					| image_url: width: card_image.width
+					| image_tag:
+						loading: 'lazy',
+						sizes: '100vw',
+						widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000',
+						height: image_height,
+						width: card_image.width,
+						class: 'overlay-link-image-hover'
+				}}
+			{%- endif -%}
+		</div>
+	{%- endif -%}
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const promoBlocks = document.querySelectorAll(
+			'.grid-card-copy__details__action-promo'
+		);
+
+		if (!promoBlocks.length) return;
+
+		promoBlocks.forEach((block) => {
+			const copyBtn = block.querySelector('.copy-promo');
+			const tooltip = block.querySelector('.tooltip');
+
+			if (!copyBtn) return;
+
+			const copyToClipboard = (text) => {
+				return navigator.clipboard?.writeText(text).catch(() => {
+					return Promise.reject();
+				});
+			};
+
+			const showTooltip = () => {
+				if (!tooltip) return;
+				tooltip.classList.add('show');
+				setTimeout(() => tooltip.classList.remove('show'), 2000);
+			};
+
+			const handleCopy = (e) => {
+				e.preventDefault();
+				const promoCode = copyBtn.getAttribute('data-code');
+
+				copyToClipboard(promoCode)
+					.then(showTooltip)
+					.catch(showTooltip);
+			};
+
+			copyBtn.addEventListener('click', handleCopy);
+
+			copyBtn.addEventListener('keydown', (e) => {
+				if (e.key === 'Enter' || e.key === ' ') {
+					handleCopy(e);
+				}
+			});
+		});
+	});
+</script>

@@ -1,0 +1,33 @@
+{% liquid
+  assign section_heading = section.settings.heading
+  assign section_description = section.settings.description
+  assign section_button_label = section.settings.button_label
+%}
+{%- if section_heading != blank or section_button_label != blank or section_description != blank -%}
+  <div class="section-header">
+    <div class="container">
+      {% comment %} {%- if if section_heading != blank and section_description == blank -%} without-description {% endif %} {% endcomment %}
+      <div class="section-header__wrapper">
+        {%- if section_heading != blank or section_button_label != blank or section_description != blank -%}
+          <div class=" {%- if section_heading != blank and section_description == blank -%} without-description {% endif %} {%- if section_heading == blank and section_description == blank -%} only-button-content {% endif %} section-header__content ">
+            {%- if section_heading != blank or section_description != blank -%}
+              <div class="section-header__details">
+                {%- if section_heading != blank -%}
+                  <h4 class="{{ section.settings.heading_size }} section-header__title">
+                    {{ section_heading }}
+                  </h4>
+                {% endif %}
+                {%- if section_description != blank -%}
+                  <div class="section-header__desc richtext__content">
+                    {{ section_description }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+            {% render 'button', layout: section %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{%- endif -%}

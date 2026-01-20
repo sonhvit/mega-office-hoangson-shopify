@@ -1,0 +1,113 @@
+.rich-text {
+  margin: auto;
+  text-align: center;
+}
+.rich-text--align-left {
+  text-align: left;
+}
+.rich-text--align-left .rich-text__heading,
+.rich-text--align-left .rich-text__text {
+  margin-right: auto;
+}
+.rich-text--align-right {
+  text-align: left;
+}
+.rich-text--align-right .rich-text__heading,
+.rich-text--align-right .rich-text__text {
+  margin-left: auto;
+}
+.rich-text--align-right .rich-text__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+@media screen and (min-width: 750px) {
+  .rich-text--align-right .rich-text__text ol,
+.rich-text--align-right .rich-text__text ul {
+    width: max-content;
+    max-width: 100%;
+  }
+}
+.rich-text--align-right .rich-text__text ol > li,
+.rich-text--align-right .rich-text__text ul > li {
+  padding-left: 1.4rem;
+}
+@media screen and (min-width: 576px) {
+  .rich-text--align-right {
+    text-align: right;
+  }
+}
+.rich-text--align-center {
+  text-align: left;
+}
+.rich-text--align-center .rich-text__heading,
+.rich-text--align-center .rich-text__text {
+  margin-inline: auto;
+}
+.rich-text--align-center .rich-text__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (min-width: 750px) {
+  .rich-text--align-center .rich-text__text ol,
+.rich-text--align-center .rich-text__text ul {
+    width: max-content;
+    max-width: 100%;
+  }
+}
+.rich-text--align-center .rich-text__text ol > li,
+.rich-text--align-center .rich-text__text ul > li {
+  padding-left: 1.4rem;
+}
+@media screen and (min-width: 576px) {
+  .rich-text--align-center {
+    text-align: center;
+  }
+}
+.rich-text__heading {
+  max-width: 101rem;
+}
+@media screen and (max-width: 576px) {
+  .rich-text__heading {
+    font-size: calc(var(--font-heading-h2-scale) * 2.6rem);
+  }
+}
+.rich-text__subheading {
+  display: block;
+}
+.rich-text__text {
+  max-width: 45rem;
+}
+.rich-text__text * {
+  color: rgb(var(--color-foreground-secondary));
+}
+.rich-text--full-width {
+  max-width: initial;
+  width: 100%;
+}
+.rich-text:not(.rich-text--full-width) .rich-text__blocks {
+  border-radius: 0.4rem;
+  padding-inline: 2rem;
+}
+@media screen and (min-width: 1150px) {
+  .rich-text:not(.rich-text--full-width) .rich-text__blocks {
+    padding-inline: 4rem;
+  }
+}
+.rich-text__blocks {
+  margin: auto;
+}
+.rich-text__blocks > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.rich-text__blocks * {
+  overflow-wrap: break-word;
+}
+.rich-text__blocks > * + * {
+  margin-top: 1rem;
+}
+.rich-text__blocks > * + a {
+  margin-top: 2.4rem;
+}

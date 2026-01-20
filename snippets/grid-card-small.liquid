@@ -1,0 +1,156 @@
+{{ 'grid-card-small.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+	assign card_image = block.settings.image
+	assign overlay_opacity = block.settings.overlay_opacity
+	assign overlay_opacity_mobile = block.settings.overlay_opacity_mobile
+	assign title = block.settings.heading
+	assign heading_size = block.settings.heading_size
+%}
+
+{% if block.settings.color_scheme != block.settings.color_scheme_mobile %}
+	<style>
+		@media screen and (max-width: 989.9px) {
+			{% assign scheme = block.settings.color_scheme_mobile %}
+
+			[data-scheme=light] .grid-card-small-{{ block.id }}.color-{{ block.settings.color_scheme }} {
+				--color-background: {{ scheme.settings.colors_background_1.red }},{{ scheme.settings.colors_background_1.green }},{{ scheme.settings.colors_background_1.blue }};
+				--color-background-secondary: {{ scheme.settings.colors_background_2.red }},{{ scheme.settings.colors_background_2.green }},{{ scheme.settings.colors_background_2.blue }};
+				{% if scheme.settings.background_gradient != empty %}
+					--gradient-background: {{ scheme.settings.background_gradient }};
+				{% else %}
+					--gradient-background: {{ scheme.settings.colors_background_1 }};
+				{% endif %}
+				--color-foreground: {{ scheme.settings.colors_text.red }}, {{ scheme.settings.colors_text.green }}, {{ scheme.settings.colors_text.blue }};
+				--color-foreground-secondary: {{ scheme.settings.colors_secondary_text.red }}, {{ scheme.settings.colors_secondary_text.green }}, {{ scheme.settings.colors_secondary_text.blue }};
+				--color-foreground-title: {{ scheme.settings.colors_text_title.red }}, {{ scheme.settings.colors_text_title.green }}, {{ scheme.settings.colors_text_title.blue }};
+				--color-overlay: {{ scheme.settings.colors_background_overlay.red }},{{ scheme.settings.colors_background_overlay.green }},{{ scheme.settings.colors_background_overlay.blue }};
+				--color-accent: {{ scheme.settings.color_accent.red }}, {{ scheme.settings.color_accent.green }}, {{ scheme.settings.color_accent.blue }};
+			}
+
+			@media (prefers-color-scheme: light) {
+				[data-scheme=auto] .grid-card-small-{{ block.id }}.color-{{ block.settings.color_scheme }} {
+					--color-background: {{ scheme.settings.colors_background_1.red }},{{ scheme.settings.colors_background_1.green }},{{ scheme.settings.colors_background_1.blue }};
+					--color-background-secondary: {{ scheme.settings.colors_background_2.red }},{{ scheme.settings.colors_background_2.green }},{{ scheme.settings.colors_background_2.blue }};
+					{% if scheme.settings.background_gradient != empty %}
+						--gradient-background: {{ scheme.settings.background_gradient }};
+					{% else %}
+						--gradient-background: {{ scheme.settings.colors_background_1 }};
+					{% endif %}
+					--color-foreground: {{ scheme.settings.colors_text.red }}, {{ scheme.settings.colors_text.green }}, {{ scheme.settings.colors_text.blue }};
+					--color-foreground-secondary: {{ scheme.settings.colors_secondary_text.red }}, {{ scheme.settings.colors_secondary_text.green }}, {{ scheme.settings.colors_secondary_text.blue }};
+					--color-foreground-title: {{ scheme.settings.colors_text_title.red }}, {{ scheme.settings.colors_text_title.green }}, {{ scheme.settings.colors_text_title.blue }};
+					--color-overlay: {{ scheme.settings.colors_background_overlay.red }},{{ scheme.settings.colors_background_overlay.green }},{{ scheme.settings.colors_background_overlay.blue }};
+					--color-accent: {{ scheme.settings.color_accent.red }}, {{ scheme.settings.color_accent.green }}, {{ scheme.settings.color_accent.blue }};
+				}
+			}
+		}
+	</style>
+{% endif %}
+
+{% liquid
+	assign image_size = image_size
+
+	case image_size
+		when 'square'
+			assign section_size = '100%'
+			assign slide_class = image_size
+		when 'landscape'
+			assign section_size = '72.414%'
+			assign slide_class = image_size
+		else
+			assign section_size = '133%'
+			assign slide_class = image_size
+	endcase
+%}
+<div
+	style="--image-height: {{ section_size }}"
+	class="banner-grid__card grid-card-small grid-card-small-{{ block.id }} card-heading--{{ block.settings.heading_position }}  color-{{ block.settings.color_scheme }}   full_image_card {% if block.settings.show_badge == false  %} without_badge {% endif %}"
+>
+	<div class="grid-card-small-content">
+		<div class="grid-card-small__details">
+			<div class="grid-card-small__details--container">
+				<div class="grid-card-small__details--container__top">
+					{% if block.settings.small_badege_text != blank %}
+						<div
+							class="grid-card-small__details__badge"
+							style="background: {{ block.settings.small_badge_bg_color }}"
+						>
+							{%- if block.settings.small_badge_image != blank -%}
+								{{
+									block.settings.small_badge_image
+									| image_url: width: block.settings.small_badge_image.width
+									| image_tag:
+										loading: 'lazy',
+										sizes: '100vw',
+										widths: '550, 720',
+										height: 16,
+										width: 16,
+										class: 'grid-card-small__details__badge_image'
+								}}
+							{% endif %}
+							{% if block.settings.small_badege_text != blank %}
+								<span
+									class="grid-card-small__details__badge_text"
+									style="color: {{ block.settings.small_badge_text_color }}"
+								>
+									{{ block.settings.small_badege_text }}
+								</span>
+							{% endif %}
+						</div>
+					{% endif %}
+					{% if title != blank %}
+						<h3 class="grid-card-small__details__heading  {{ heading_size }}">
+							{{ title }}
+						</h3>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{% if block.settings.show_badge %}
+			<div class="simple-price__area">
+				{%- render 'simple-price', layout: block -%}
+			</div>
+		{% endif %}
+		{%- if card_image != blank -%}
+			{% liquid
+				assign image_height = card_image.width | divided_by: card_image.aspect_ratio
+			%}
+			{% style %}
+				.grid-card-small-{{ block.id }} {
+					--overlay-opacity-small-card: {{ overlay_opacity }};
+					--overlay-opacity-mobile-small-card: {{ overlay_opacity_mobile }}
+				}
+			{% endstyle %}
+			<div class="grid-card-small__image {{ slide_class }}">
+				{% if block.settings.overlay_link != blank %}
+					<a
+						class="grid-card-small__image__overlay grid-card-small__image__overlay--link overlay-link-hover"
+						href="{{ block.settings.overlay_link }}"
+						style="opacity: 0"
+					>
+						<span class="visibility-hidden">
+							{{- block.settings.overlay_link -}}
+						</span>
+					</a>
+				{% endif %}
+				<div
+					class="grid-card-small__image__overlay"
+				></div>
+				{%- if card_image != blank -%}
+					{{
+						card_image
+						| image_url: width: card_image.width
+						| image_tag:
+							loading: 'lazy',
+							sizes: '100vw',
+							widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000',
+							height: image_height,
+							width: card_image.width,
+							class: 'overlay-link-image-hover'
+					}}
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+	</div>
+</div>

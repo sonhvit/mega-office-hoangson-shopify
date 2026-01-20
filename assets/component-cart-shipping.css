@@ -1,0 +1,57 @@
+:root {
+  --progress-prev: 0%;
+}
+
+.cart-shipping {
+  --progress: 0%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+.cart-shipping svg {
+  color: rgb(var(--color-accent));
+}
+.cart-shipping--info {
+  width: calc(100% - 24px);
+}
+.cart-shipping__message {
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+}
+.cart-shipping__message.active {
+  display: flex;
+}
+.cart-shipping .cart-shipping__message_success.active {
+  display: flex;
+  color: rgb(var(--color-success));
+}
+.cart-shipping .cart-shipping__message_success.active + .cart-shipping__progress {
+  display: none;
+}
+.cart-shipping .cart-shipping__icon.active {
+  color: rgb(var(--color-success));
+}
+.cart-shipping__progress {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 0.2rem;
+  background: rgb(var(--color-border-input));
+  overflow: hidden;
+  margin-top: 0.8rem;
+}
+.cart-shipping__progress-current {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgb(var(--color-accent));
+  width: var(--progress-prev);
+  transition: width var(--duration-default);
+}
+.cart-shipping__message {
+  color: rgb(var(--color-foreground-secondary));
+}

@@ -1,0 +1,34 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": "no-indent",
+        "padding_bottom": "m"
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "position": "center",
+        "color_scheme": "",
+        "heading": "",
+        "heading_size": "h2",
+        "description": "",
+        "heading_form": "Contact form",
+        "heading_form_size": "h2",
+        "text_form": "Required fields are marked with *.",
+        "additional_text": "",
+        "button_style": "primary",
+        "padding_top": "no-indent",
+        "padding_bottom": "no-indent",
+        "margin_top": "no-indent",
+        "margin_bottom": "l"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "form"
+  ]
+}

@@ -1,0 +1,291 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h4"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "description": "",
+            "enable_read_more": true,
+            "heading": "About the Product"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "show_size_guide": false,
+            "size_guide_decription": "",
+            "page": ""
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes": false
+          }
+        },
+        "inventory": {
+          "type": "inventory",
+          "settings": {
+            "max_stock": 100
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_quantity": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "dropdown_information": {
+          "type": "dropdown_information",
+          "settings": {
+            "heading": "Free 90-Day Returns",
+            "description": "<p>Not quite right? Return any item within 90 days, free of charge. Hassle-free and customer-friendly — just the way it should be.</p>",
+            "default_open": true
+          }
+        },
+        "dropdown_information-1": {
+          "type": "dropdown_information",
+          "settings": {
+            "heading": "Shipping Information",
+            "description": "<p>Expect prompt delivery and easy tracking — every order comes with updates along the way.</p>",
+            "default_open": false
+          }
+        },
+        "characteristics_Y4rhr9": {
+          "type": "characteristics",
+          "settings": {
+            "heading": "Characteristics"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "description",
+        "variant_picker",
+        "price",
+        "inventory",
+        "buy_buttons",
+        "dropdown_information",
+        "dropdown_information-1",
+        "characteristics_Y4rhr9"
+      ],
+      "settings": {
+        "desktop_alignment": "right",
+        "mobile_alignment": "before",
+        "gallery_type": "slider_previews",
+        "aspect_ratio": "3/4",
+        "image_fit": "cover",
+        "image_fit_modal": "contain",
+        "padding_bottom": "l"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "per_row": 6,
+        "layout": "slider",
+        "heading": "You May Also Like",
+        "heading_size": "h3",
+        "button_label": "Shop All",
+        "button_style": "tertiary",
+        "autoplay": false,
+        "stop_autoplay": true,
+        "show_arrows": true,
+        "slideshow_speed": 1.1,
+        "slideshow_delay": 3,
+        "image_ratio": "5/4",
+        "image_fit": "cover",
+        "show_two_cards": true,
+        "show_secondary_image": true,
+        "show_sku": false,
+        "show_vendor": false,
+        "show_collection_name": true,
+        "show_color_swatch": false,
+        "show_inventory": true,
+        "show_desc": false,
+        "margin_top": "no-indent",
+        "margin_bottom": "l"
+      }
+    },
+    "multicolumn_rmqAa9": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_with_icon_wKbKTC": {
+          "type": "column_with_icon",
+          "settings": {
+            "heading": "Returns & Exchanges",
+            "text": "Not happy? Return or exchange your items quickly and hassle-free.",
+            "text_align": "center",
+            "button_label": "Learn More",
+            "button_style": "tertiary"
+          }
+        },
+        "column_with_icon_qirLhD": {
+          "type": "column_with_icon",
+          "settings": {
+            "heading": "Check Your Order Status",
+            "text": "Stay updated every step of the way — from purchase to delivery.",
+            "text_align": "center",
+            "button_label": "Learn More",
+            "button_style": "tertiary"
+          }
+        },
+        "column_with_icon_jfkjbt": {
+          "type": "column_with_icon",
+          "settings": {
+            "heading": "Visit Our Support Center",
+            "text": "Need assistance? Find answers and support anytime, anywhere.",
+            "text_align": "center",
+            "button_label": "Learn More",
+            "button_style": "tertiary"
+          }
+        },
+        "column_with_icon_K4b4An": {
+          "type": "column_with_icon",
+          "settings": {
+            "heading": "Price-Match Guarantee",
+            "text": "Found a better price? We’ll match it so you get the best deal.",
+            "text_align": "center",
+            "button_label": "Learn More",
+            "button_style": "tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "column_with_icon_wKbKTC",
+        "column_with_icon_qirLhD",
+        "column_with_icon_jfkjbt",
+        "column_with_icon_K4b4An"
+      ],
+      "name": "t:sections.multicolumn.name",
+      "settings": {
+        "color_scheme": "",
+        "multicolumn_to_show": 4,
+        "padding_top": "no-indent",
+        "padding_bottom": "no-indent",
+        "margin_top": "no-indent",
+        "margin_bottom": "l"
+      }
+    },
+    "collapsible_content_UHQPpw": {
+      "type": "collapsible-content",
+      "blocks": {
+        "accordion_DMVNWm": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "Shipping",
+            "question": "How long does it typically take to process an order?",
+            "answer": "<p>Order processing typically takes 1–2 business days before shipping. Once your order has been processed, you’ll receive a confirmation and tracking information.</p>",
+            "opened": true,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_hDYrig": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Can I change the contents of my order?",
+            "answer": "<p>Yes, changes can be made if the order hasn’t entered processing. Make sure to update your order details promptly after purchase.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_qt3wKb": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Do you ship internationally?",
+            "answer": "<p>Yes, international shipping is available. Delivery times and costs vary based on your location and selected shipping method.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_AEMxyw": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Is my personal information secure during checkout?",
+            "answer": "<p>Yes, all data is encrypted and processed securely to protect your privacy.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_RcxMQq": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "returns & refund",
+            "question": "What is your return policy?",
+            "answer": "<p>You can return most items within 30 days of delivery for a full refund or exchange.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_hiUFAN": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "How long does it take to process a refund?",
+            "answer": "<p>Refunds are usually processed within 5-7 business days after we receive your returned item.</p>",
+            "opened": false,
+            "button_label": "Read All",
+            "button_style": "tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_DMVNWm",
+        "accordion_hDYrig",
+        "accordion_qt3wKb",
+        "accordion_AEMxyw",
+        "accordion_RcxMQq",
+        "accordion_hiUFAN"
+      ],
+      "name": "t:sections.collapsible-content.name",
+      "settings": {
+        "color_scheme": "",
+        "heading": "Contact Support",
+        "heading_size": "h3",
+        "text": "Round-the-clock support for a smooth shopping experience.",
+        "button_label": "Contact Support",
+        "button_style": "secondary",
+        "padding_top": "no-indent",
+        "padding_bottom": "no-indent",
+        "margin_top": "no-indent",
+        "margin_bottom": "l"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "multicolumn_rmqAa9",
+    "collapsible_content_UHQPpw"
+  ]
+}

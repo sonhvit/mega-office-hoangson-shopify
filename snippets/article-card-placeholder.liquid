@@ -1,0 +1,45 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+	assign image_size = section.settings.image_ratio
+
+	case image_size
+		when 'square'
+			assign section_size = '100%'
+			assign slide_class = image_size
+		when 'landscape'
+			assign section_size = '56.25%'
+			assign slide_class = image_size
+		else
+			assign section_size = '133%'
+			assign slide_class = image_size
+	endcase
+%}
+
+<article class="article-card  article-card__{{ section.settings.post_layout }} ">
+	{% style %}
+		#shopify-section-{{ section.id }} {
+			--image-height: {{ section_size }};
+		}
+	{% endstyle %}
+	<div class="article-card--image ">
+		{{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+	</div>
+	<div class="article-content ">
+		<div class="article-card__info ">
+			<div class="article-card__main-content">
+				<header class="article-card__header">
+					<h2 class="article-card__title h4">
+						{{ 'sections.featured_article.onboarding_title' | t }}
+					</h2>
+					{%- if section.settings.show_excerpt -%}
+						<p class="article-card__excerpt">
+							{{ 'sections.featured_article.onboarding_desc' | t }}
+
+						</p>
+					{%- endif -%}
+				</header>
+			</div>
+		</div>
+	</div>
+</article>

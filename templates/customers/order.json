@@ -1,0 +1,47 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-order",
+      "settings": {
+        "margin_top": "no-indent",
+        "margin_bottom": "l",
+        "padding_top": "no-indent",
+        "padding_bottom": "no-indent"
+      }
+    },
+    "popular_products_MtfVcw": {
+      "type": "popular-products",
+      "name": "t:sections.popular-products.presets.name",
+      "settings": {
+        "per_row": 6,
+        "layout": "slider",
+        "heading": "You May Be Interested",
+        "heading_size": "h3",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "autoplay": false,
+        "stop_autoplay": true,
+        "show_arrows": true,
+        "slideshow_speed": 1.1,
+        "slideshow_delay": 3,
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_two_cards": true,
+        "show_secondary_image": true,
+        "show_sku": false,
+        "show_vendor": false,
+        "show_collection_name": true,
+        "show_color_swatch": false,
+        "show_inventory": true,
+        "show_desc": false,
+        "margin_top": "no-indent",
+        "margin_bottom": "xl"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "popular_products_MtfVcw"
+  ]
+}

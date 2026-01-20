@@ -1,0 +1,124 @@
+{{ 'grid-card-horizontal.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+	assign card_image = block.settings.image
+	assign full_image = block.settings.full_image
+	assign overlay_opacity = block.settings.overlay_opacity
+	assign overlay_opacity_mobile = block.settings.overlay_opacity_mobile
+	assign title = block.settings.heading
+	assign description = block.settings.description
+	assign heading_size = block.settings.heading_size
+	assign button_label = block.settings.button_label
+%}
+
+{% liquid
+	assign image_size = image_size
+
+	case image_size
+		when 'square'
+			assign section_size = '100%'
+			assign slide_class = image_size
+		when 'landscape'
+			assign section_size = '62.5%'
+			assign slide_class = image_size
+		else
+			assign section_size = '133%'
+			assign slide_class = image_size
+	endcase
+%}
+<div
+	style="--image-height: {{ section_size }}; --padding: {{ block.settings.card_padding }}px"
+	class="banner-grid__card grid-card-horizontal grid-card-horizontal-{{ block.id }} color-{{ block.settings.color_scheme }}  {% if full_image  %} full_image_card {% else %} not_full_image_card {% endif %} {% if block.settings.show_badge == false  %} without_badge{% endif %}"
+>
+	<div class="grid-card-horizontal__details">
+		<div class="grid-card-horizontal__details--container">
+			<div class="grid-card-horizontal__details--container__top">
+				{% if block.settings.small_badege_text != blank %}
+					<div
+						class="grid-card-horizontal__details__badge"
+						style="background: {{ block.settings.small_badge_bg_color }}"
+					>
+						{%- if block.settings.small_badge_image != blank -%}
+							{{
+								block.settings.small_badge_image
+								| image_url: width: block.settings.small_badge_image.width
+								| image_tag:
+									loading: 'lazy',
+									sizes: '100vw',
+									widths: '550, 720',
+									height: 16,
+									width: 16,
+									class: 'grid-card-horizontal__details__badge_image'
+							}}
+						{% endif %}
+						{% if block.settings.small_badege_text != blank %}
+							<span
+								class="grid-card-horizontal__details__badge_text"
+								style="color: {{ block.settings.small_badge_text_color }}"
+							>
+								{{ block.settings.small_badege_text }}
+							</span>
+						{% endif %}
+					</div>
+				{% endif %}
+				{% if title != blank %}
+					<h3 class="grid-card-horizontal__details__heading  {{ heading_size }}">
+						{{ title }}
+					</h3>
+				{% endif %}
+				{% if description != blank %}
+					<p class="grid-card-horizontal__details__desc">{{ description }}</p>
+				{% endif %}
+			</div>
+			{% if button_label != blank %}
+				{% render 'button', layout: block %}
+			{% endif %}
+		</div>
+	</div>
+	{% if block.settings.show_badge %}
+		<div class="simple-price__area simple-price__area--{{ block.settings.badge_position }} 	{% if card_image != blank %}simple-price__area--absalute{% endif %}">
+			{%- render 'simple-price', layout: block -%}
+		</div>
+	{% endif %}
+	{% if block.settings.overlay_link != blank and card_image != blank %}
+		<a
+			class="grid-card-horizontal__image__overlay grid-card-horizontal__image__overlay--link overlay-link-hover"
+			href="{{ block.settings.overlay_link }}"
+			style="opacity: 0"
+		>
+			<span class="visibility-hidden">
+				{{- block.settings.overlay_link -}}
+			</span>
+		</a>
+	{% endif %}
+	{%- if card_image != blank -%}
+		{% liquid
+			assign image_height = card_image.width | divided_by: card_image.aspect_ratio
+		%}
+		<div class="grid-card-horizontal__image {{ slide_class }}">
+			{% style %}
+				.grid-card-horizontal-{{ block.id }} {
+					--overlay-opacity-card-horizontal: {{ overlay_opacity }};
+					--overlay-opacity-mobile-card-horizontal: {{ overlay_opacity_mobile }}
+				}
+			{% endstyle %}
+
+			<div
+				class="grid-card-horizontal__image__overlay"
+			></div>
+			{%- if card_image != blank -%}
+				{{
+					card_image
+					| image_url: width: card_image.width
+					| image_tag:
+						loading: 'lazy',
+						sizes: '100vw',
+						widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000',
+						height: image_height,
+						width: card_image.width,
+						class: 'overlay-link-image-hover'
+				}}
+			{%- endif -%}
+		</div>
+	{%- endif -%}
+</div>

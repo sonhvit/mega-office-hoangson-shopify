@@ -1,0 +1,832 @@
+{%- if section.settings.enable_tab_banner -%}
+	{{ 'component-header-banner.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+<template id="mega-menu-template">
+	<mega-menu
+		class="mega-menu color-background-1 background"
+		id="mega-menu"
+		role="dialog"
+		aria-modal="true"
+		aria-labelledby="mega-menu-btn"
+	>
+		<div class="mega-menu-content">
+			{% comment %} render mega menu and promo tab banner {% endcomment %}
+			{%- if section.blocks.size >= 1 or section.settings.enable_tab_banner -%}
+				<div class="mega-menu-main-container container">
+					{% comment %} render mobile mega menu {% endcomment %}
+					{%- if section.blocks.size >= 1 -%}
+						<div class="mega-menu-mobile">
+							<nav class="menu-drawer__navigation">
+								<ul class="menu-drawer__menu list-menu" role="list">
+									{%- for block in section.blocks -%}
+										{%- if block.type == 'tab' -%}
+											{% liquid
+												assign has_custom_dm_icon = false
+
+												if block.settings.tab_custom_icon_dm != blank
+													assign has_custom_dm_icon = true
+												endif
+											%}
+											<li
+												class="{% if has_custom_dm_icon %}mega-menu-nav-list__item--with_dm_icon{% endif %}"
+												{{ block.shopify_attributes }}
+											>
+												{%- if block.settings.tab_menu_1 != blank
+													or block.settings.tab_menu_2 != blank
+													or block.settings.tab_menu_3 != blank
+													or block.settings.tab_menu_4 != blank
+												-%}
+													<details>
+														<summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
+															{%- if block.settings.tab_link != blank -%}
+																<a
+																	href="{{ block.settings.tab_link }}"
+																	class="menu-drawer__menu-link link link--text list-menu__item{% if block.settings.tab_highlighted %} mega-menu-nav-list__tab--highlighted{% endif %} focus-inset"
+																	{% if settings.links_blank
+																		and block.settings.tab_link
+																			== 'external_link'
+																	%}
+																		target="_blank"
+																	{% endif %}
+																>
+																	{%- if block.settings.tab_custom_icon != blank
+																	-%}
+																		{%- assign height = 24
+																			| divided_by: block.settings.tab_custom_icon.aspect_ratio
+																			| round: 2
+																		-%}
+																		{{
+																			block.settings.tab_custom_icon
+																			| image_url: width: 96
+																			| image_tag:
+																				width: 24,
+																				height: height,
+																				widths: '24, 48, 72, 96',
+																				class: 'mega-menu-nav-list__tab-icon header__heading-logo'
+																		}}
+																	{%- endif -%}
+																	{%- if has_custom_dm_icon -%}
+																		{%- assign height = 24
+																			| divided_by: block.settings.tab_custom_icon_dm.aspect_ratio
+																			| round: 2
+																		-%}
+																		{{
+																			block.settings.tab_custom_icon_dm
+																			| image_url: width: 96
+																			| image_tag:
+																				width: 24,
+																				height: height,
+																				widths: '24, 48, 72, 96',
+																				class: 'mega-menu-nav-list__tab-icon mega-menu-nav-list__tab-icon--dark-mode header__heading-logo header__heading-logo--overlay'
+																		}}
+																	{%- endif -%}
+
+																	{%- if block.settings.tab_title != blank -%}
+																		<span class="header-link-style">
+																			{{- block.settings.tab_title | strip -}}
+																		</span>
+																	{%- endif -%}
+																</a>
+															{%- else -%}
+																<div class="menu-drawer__menu-link link link--text list-menu__item{% if block.settings.tab_highlighted %} mega-menu-nav-list__tab--highlighted{% endif %}">
+																	{%- if block.settings.tab_custom_icon != blank
+																	-%}
+																		{%- assign height = 24
+																			| divided_by: block.settings.tab_custom_icon.aspect_ratio
+																			| round: 2
+																		-%}
+																		{{
+																			block.settings.tab_custom_icon
+																			| image_url: width: 96
+																			| image_tag:
+																				width: 24,
+																				height: height,
+																				widths: '24, 48, 72, 96',
+																				class: 'mega-menu-nav-list__tab-icon'
+																		}}
+																	{%- endif -%}
+																	{%- if has_custom_dm_icon -%}
+																		{%- assign height = 24
+																			| divided_by: block.settings.tab_custom_icon_dm.aspect_ratio
+																			| round: 2
+																		-%}
+																		{{
+																			block.settings.tab_custom_icon_dm
+																			| image_url: width: 96
+																			| image_tag:
+																				width: 24,
+																				height: height,
+																				widths: '24, 48, 72, 96',
+																				class: 'mega-menu-nav-list__tab-icon mega-menu-nav-list__tab-icon--dark-mode'
+																		}}
+																	{%- endif -%}
+
+																	{%- if block.settings.tab_title != blank -%}
+																		<span class="header-link-style">
+																			{{- block.settings.tab_title | strip -}}
+																		</span>
+																	{%- endif -%}
+																</div>
+															{%- endif -%}
+															{% render 'icon-caret' %}
+														</summary>
+														<div
+															id="mega-menu-link-{{ block.settings.tab_title | strip | default: forloop.index }}"
+															class="menu-drawer__submenu motion-reduce"
+															tabindex="-1"
+														>
+															{%- for i in (1..4) -%}
+																{%- assign heading_setting = 'tab_title_'
+																	| append: i
+																-%}
+																{%- assign menu_setting = 'tab_menu_'
+																	| append: i
+																-%}
+																<div class="menu-drawer__inner-submenu">
+																	<ul
+																		class="menu-drawer__menu list-menu"
+																		role="list"
+																		tabindex="-1"
+																	>
+																		{%- if block.settings[heading_setting]
+																				!= blank
+																		-%}
+																			<span class="mega-menu-tab-nav__list-title">
+																				{{-
+																					block.settings[heading_setting]
+																					| strip
+																				-}}
+																			</span>
+																		{%- endif -%}
+																		{%- for childlink in block.settings[menu_setting].links -%}
+																			<li>
+																				<a
+																					href="{{ childlink.url }}"
+																					class="menu-drawer__menu-item menu-drawer__submenu-link link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %} menu-drawer__menu-item--child"
+																					{% if childlink.current %}
+																						aria-current="page"
+																					{% endif %}
+																					{% if settings.links_blank
+																						and childlink.type == 'http_link'
+																					%}
+																						target="_blank"
+																					{% endif %}
+																				>
+																					{{- childlink.title | escape -}}
+																				</a>
+																			</li>
+																		{%- endfor -%}
+																	</ul>
+																</div>
+															{%- endfor -%}
+														</div>
+													</details>
+												{%- else -%}
+													{%- if block.settings.tab_link != blank -%}
+														<a
+															href="{{ block.settings.tab_link }}"
+															class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if block.settings.tab_highlighted %} mega-menu-nav-list__tab--highlighted{% endif %} focus-inset"
+															{% if settings.links_blank
+																and block.settings.tab_link == 'external_link'
+															%}
+																target="_blank"
+															{% endif %}
+														>
+															<span class="menu-drawer__menu-link">
+																{%- if block.settings.tab_custom_icon != blank
+																-%}
+																	{%- assign height = 24
+																		| divided_by: block.settings.tab_custom_icon.aspect_ratio
+																		| round: 2
+																	-%}
+																	{{
+																		block.settings.tab_custom_icon
+																		| image_url: width: 96
+																		| image_tag:
+																			width: 24,
+																			height: height,
+																			widths: '24, 48, 72, 96',
+																			class: 'mega-menu-nav-list__tab-icon header__heading-logo'
+																	}}
+																{%- endif -%}
+																{%- if has_custom_dm_icon -%}
+																	{%- assign height = 24
+																		| divided_by: block.settings.tab_custom_icon_dm.aspect_ratio
+																		| round: 2
+																	-%}
+																	{{
+																		block.settings.tab_custom_icon_dm
+																		| image_url: width: 96
+																		| image_tag:
+																			width: 24,
+																			height: height,
+																			widths: '24, 48, 72, 96',
+																			class: 'mega-menu-nav-list__tab-icon mega-menu-nav-list__tab-icon--dark-mode header__heading-logo header__heading-logo--overlay'
+																	}}
+																{%- endif -%}
+
+																{%- if block.settings.tab_title != blank -%}
+																	<span class="header-link-style">
+																		{{- block.settings.tab_title | strip -}}
+																	</span>
+																{%- endif -%}
+																{% render 'icon-caret' %}
+															</span>
+														</a>
+													{%- else -%}
+														<span class="menu-drawer__menu-item list-menu__item link link--text{% if block.settings.tab_highlighted %} mega-menu-nav-list__tab--highlighted{% endif %}">
+															<span class="menu-drawer__menu-link">
+																{%- if block.settings.tab_custom_icon != blank
+																-%}
+																	{%- assign height = 24
+																		| divided_by: block.settings.tab_custom_icon.aspect_ratio
+																		| round: 2
+																	-%}
+																	{{
+																		block.settings.tab_custom_icon
+																		| image_url: width: 96
+																		| image_tag:
+																			width: 24,
+																			height: height,
+																			widths: '24, 48, 72, 96',
+																			class: 'mega-menu-nav-list__tab-icon header__heading-logo'
+																	}}
+																{%- endif -%}
+																{%- if has_custom_dm_icon -%}
+																	{%- assign height = 24
+																		| divided_by: block.settings.tab_custom_icon_dm.aspect_ratio
+																		| round: 2
+																	-%}
+																	{{
+																		block.settings.tab_custom_icon_dm
+																		| image_url: width: 96
+																		| image_tag:
+																			width: 24,
+																			height: height,
+																			widths: '24, 48, 72, 96',
+																			class: 'mega-menu-nav-list__tab-icon mega-menu-nav-list__tab-icon--dark-mode header__heading-logo header__heading-logo--overlay'
+																	}}
+																{%- endif -%}
+
+																{%- if block.settings.tab_title != blank -%}
+																	<span class="header-link-style">
+																		{{- block.settings.tab_title | strip -}}
+																	</span>
+																{%- endif -%}
+															</span>
+														</span>
+													{%- endif -%}
+												{%- endif -%}
+											</li>
+										{%- endif -%}
+									{%- endfor -%}
+								</ul>
+							</nav>
+						</div>
+					{%- endif -%}
+
+					{% comment %} render desktop mega menu and promo tab banner {% endcomment %}
+					{%- if section.blocks.size >= 1
+						or section.settings.enable_tab_banner
+					-%}
+						<div class="mega-menu-main{% if section.blocks.size >= 1 %} mega-menu-main--with-nav{% endif %}">
+							{%- if section.blocks.size >= 1 -%}
+								<nav class="mega-menu-nav">
+									<ul class="mega-menu-nav-list list-unstyled">
+										{%- for block in section.blocks -%}
+											{%- if block.type == 'tab' -%}
+												{%- if block.settings.tab_title != blank
+													or block.settings.icon != 'none'
+													or block.settings.tab_custom_icon != blank
+													or block.settings.tab_custom_icon_dm != blank
+												-%}
+													{% liquid
+														assign has_custom_dm_icon = false
+
+														if block.settings.tab_custom_icon_dm != blank
+															assign has_custom_dm_icon = true
+														endif
+													%}
+													<li
+														class="mega-menu-nav-list__item{% if has_custom_dm_icon %} mega-menu-nav-list__item--with_dm_icon{% endif %}"
+														{{ block.shopify_attributes }}
+													>
+														{%- if block.settings.tab_link != blank -%}
+															<a
+																class="mega-menu-nav-list__tab{% if forloop.first %} active{% endif %}{% if block.settings.tab_highlighted %} mega-menu-nav-list__tab--highlighted{% endif %} focus-inset"
+																href="{{ block.settings.tab_link }}"
+																aria-label="{{ block.settings.tab_title | strip }}"
+																data-tab-id="mega-menu-tab-{{ block.id }}"
+															>
+																{%- if block.settings.tab_custom_icon != blank
+																-%}
+																	{%- assign height = 24
+																		| divided_by: block.settings.tab_custom_icon.aspect_ratio
+																		| round: 2
+																	-%}
+																	{{
+																		block.settings.tab_custom_icon
+																		| image_url: width: 96
+																		| image_tag:
+																			width: 24,
+																			height: height,
+																			widths: '24, 48, 72, 96',
+																			class: 'mega-menu-nav-list__tab-icon header__heading-logo'
+																	}}
+																{%- endif -%}
+																{%- if has_custom_dm_icon -%}
+																	{%- assign height = 24
+																		| divided_by: block.settings.tab_custom_icon_dm.aspect_ratio
+																		| round: 2
+																	-%}
+																	{{
+																		block.settings.tab_custom_icon_dm
+																		| image_url: width: 96
+																		| image_tag:
+																			width: 24,
+																			height: height,
+																			widths: '24, 48, 72, 96',
+																			class: 'mega-menu-nav-list__tab-icon mega-menu-nav-list__tab-icon--dark-mode header__heading-logo header__heading-logo--overlay'
+																	}}
+																{%- endif -%}
+
+																{%- if block.settings.tab_title != blank -%}
+																	<span class="mega-menu-nav-list__tab-title header-link-style small-font">
+																		{{- block.settings.tab_title | strip -}}
+																	</span>
+																{%- endif -%}
+																{% render 'icon-caret' %}
+															</a>
+														{%- else -%}
+															<button
+																class="mega-menu-nav-list__tab{% if forloop.first %} active{% endif %}{% if block.settings.tab_highlighted %} mega-menu-nav-list__tab--highlighted{% endif %} focus-inset"
+																aria-label="{{ block.settings.tab_title | strip }}"
+																data-tab-id="mega-menu-tab-{{ block.id }}"
+															>
+																{%- if block.settings.tab_custom_icon != blank
+																-%}
+																	{%- assign height = 24
+																		| divided_by: block.settings.tab_custom_icon.aspect_ratio
+																		| round: 2
+																	-%}
+																	{{
+																		block.settings.tab_custom_icon
+																		| image_url: width: 96
+																		| image_tag:
+																			width: 24,
+																			height: height,
+																			widths: '24, 48, 72, 96',
+																			class: 'mega-menu-nav-list__tab-icon header__heading-logo'
+																	}}
+																{%- endif -%}
+																{%- if has_custom_dm_icon -%}
+																	{%- assign height = 24
+																		| divided_by: block.settings.tab_custom_icon_dm.aspect_ratio
+																		| round: 2
+																	-%}
+																	{{
+																		block.settings.tab_custom_icon_dm
+																		| image_url: width: 96
+																		| image_tag:
+																			width: 24,
+																			height: height,
+																			widths: '24, 48, 72, 96',
+																			class: 'mega-menu-nav-list__tab-icon mega-menu-nav-list__tab-icon--dark-mode header__heading-logo header__heading-logo--overlay'
+																	}}
+																{%- endif -%}
+																{%- if block.settings.tab_title != blank -%}
+																	<span class="mega-menu-nav-list__tab-title header-link-style small-font">
+																		{{- block.settings.tab_title | strip -}}
+																	</span>
+																{%- endif -%}
+																{% render 'icon-caret' %}
+															</button>
+														{%- endif -%}
+													</li>
+												{%- endif -%}
+											{%- endif -%}
+										{%- endfor -%}
+									</ul>
+								</nav>
+							{%- endif -%}
+
+							<div class="mega-menu-tabs">
+								<div class="mega-menu-tab">
+									{%- for block in section.blocks -%}
+										{%- if block.type == 'tab' -%}
+											{% if block.settings.tab_menu_1 != blank
+												or block.settings.tab_menu_2 != blank
+												or block.settings.tab_menu_3 != blank
+												or block.settings.tab_menu_4 != blank
+											%}
+												<div
+													class="mega-menu-tab__nav-container{% if forloop.first %} active{% endif %}"
+													id="mega-menu-tab-{{ block.id }}"
+													{{ block.shopify_attributes }}
+												>
+													{% comment %}{%- if block.settings.tab_title != blank -%}
+														<span class="mega-menu-nav-list__tab-title h3">
+															{{- block.settings.tab_title | strip -}}
+														</span>
+													{%- endif -%}{% endcomment %}
+													<div class="mega-menu-tab__nav-container-wrapper">
+														{%- for i in (1..4) -%}
+															{%- assign heading_setting = 'tab_title_'
+																| append: i
+															-%}
+															{%- assign menu_setting = 'tab_menu_'
+																| append: i
+															-%}
+															{%- assign link_url_setting = 'tab_link_url_'
+																| append: i
+															-%}
+
+															<nav class="mega-menu-tab-nav">
+																{%- if block.settings[heading_setting] != blank
+																-%}
+																	<span class="mega-menu-tab-nav__list-title">
+																		{{-
+																			block.settings[heading_setting]
+																			| strip
+																		-}}
+																	</span>
+																{%- endif -%}
+																<ul class="mega-menu-tab-nav__list list-unstyled">
+																	{%- for link in block.settings[menu_setting].links -%}
+																		<li class="mega-menu-tab-nav__list-item">
+																			<a
+																				href="{{ link.url }}"
+																				class="mega-menu-tab-nav__list-link focus-inset small-font"
+																				aria-label="{{ link.title | strip }}"
+																			>
+																				<span>
+																					<span class="mega-menu-tab-nav__list-link-title small-font">
+																						{{- link.title | strip -}}
+																					</span>
+																				</span>
+																			</a>
+																		</li>
+																	{%- endfor -%}
+																	{% if block.settings[menu_setting].links
+																			!= blank
+																	%}
+																		<li>
+																			<a
+																				href="{{ block.settings[link_url_setting] | default: routes.all_products_collection_url }}"
+																				class="shop-all-link unstyled-link small-font button--simple"
+																			>
+																				<span class="button-label">{{- 'sections.header.shop_all' | t -}}</span>
+																				{% render 'icon-arrow' %}
+																			</a>
+																		</li>
+																	{% endif %}
+																</ul>
+															</nav>
+														{%- endfor -%}
+													</div>
+												</div>
+											{% endif %}
+										{%- endif -%}
+									{%- endfor -%}
+
+									{% comment %}{%- if section.settings.enable_tab_banner -%}{% endcomment %}
+									{% if section.settings.enable_promo_1
+										or section.settings.enable_promo_2
+									%}
+										<div class="mega-menu-banner">
+											<div class="mega-menu__promo">
+												{% if section.settings.enable_promo_1 %}
+													{% if section.settings.promo_link_1 != blank %}
+														<a href="{{ section.settings.promo_link_1 }}" class="mega-menu__promo-wrapper color-inverse mega-menu__promo-link unstyled-link{% if section.settings.promo_image_1 == blank %} mega-menu__promo-link-without-image{% endif %}">
+													{% else %}
+														<div class="mega-menu__promo-wrapper color-inverse">
+													{% endif %}
+														{% if section.settings.promo_heading_1 != blank or section.settings.promo_logo_1 != blank %}
+															<div class="mega-menu__promo-block">
+																{% if section.settings.promo_logo_1 != blank %}
+																	<div class="promo_logo-wrapper">
+																		{% liquid
+																			assign image_height = section.settings.promo_logo_1.width | divided_by: section.settings.promo_logo_1.aspect_ratio
+																		%}
+																		{{
+																			section.settings.promo_logo_1
+																			| image_url: width: section.settings.promo_logo_1.width
+																			| image_tag:
+																					class: 'promo_logo promo_logo_1',
+																					loading: 'lazy',
+																					width: section.settings.promo_logo_1.width,
+																					height: image_height,
+																					sizes: '100vw',
+																					widths: '55, 110, 220, 550'
+																		}}
+																	</div>
+																{% endif %}
+																{% if section.settings.promo_heading_1 != blank %}
+																	<h5 class="mega-menu__promo-heading">{{ section.settings.promo_heading_1 }}</h5>
+																{% endif %}
+															</div>
+														{% endif %}
+
+														{% if section.settings.promo_image_1 != blank %}
+															<div class="promo_image-wrapper">
+																{% liquid
+																	assign image_height = section.settings.promo_image_1.width | divided_by: section.settings.promo_image_1.aspect_ratio
+																%}
+																{{
+																	section.settings.promo_image_1
+																	| image_url: width: section.settings.promo_image_1.width
+																	| image_tag:
+																			class: 'promo_image promo_image_1',
+																			loading: 'lazy',
+																			width: section.settings.promo_image_1.width,
+																			height: image_height,
+																			sizes: '100vw',
+																			widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000'
+																}}
+															</div>
+														{% endif %}
+													{% if section.settings.promo_link_1 != blank %}
+														</a>
+													{% else %}
+														</div>
+													{% endif %}
+												{% endif %}
+												{%- if section.settings.enable_promo_2 -%}
+													{% if section.settings.promo_link_2 != blank %}
+														<a href="{{ section.settings.promo_link_2 }}" class="mega-menu__promo-wrapper color-inverse mega-menu__promo-link unstyled-link{% if section.settings.promo_image_2 == blank %} mega-menu__promo-link-without-image{% endif %}">
+													{% else %}
+														<div class="mega-menu__promo-wrapper color-inverse">
+													{% endif %}
+														{% if section.settings.promo_heading_2 != blank
+															or section.settings.promo_logo_2 != blank
+														%}
+															<div class="mega-menu__promo-block">
+																{% if section.settings.promo_logo_2 != blank %}
+																	<div class="promo_logo-wrapper">
+																		{% liquid
+																			assign image_height = section.settings.promo_logo_2.width | divided_by: section.settings.promo_logo_2.aspect_ratio
+																		%}
+																		{{
+																			section.settings.promo_logo_2
+																			| image_url:
+																				width: section.settings.promo_logo_2.width
+																			| image_tag:
+																				class: 'promo_logo promo_logo_2',
+																				loading: 'lazy',
+																				width: section.settings.promo_logo_2.width,
+																				height: image_height,
+																				sizes: '100vw',
+																				widths: '55, 110, 220, 550'
+																		}}
+																	</div>
+																{% endif %}
+																{% if section.settings.promo_heading_2 != blank
+																%}
+																	<h5 class="mega-menu__promo-heading">
+																		{{ section.settings.promo_heading_2 }}
+																	</h5>
+																{% endif %}
+															</div>
+														{% endif %}
+														{% if section.settings.promo_image_2 != blank %}
+															<div class="promo_image-wrapper">
+																{% liquid
+																	assign image_height_2 = section.settings.promo_image_2.width | divided_by: section.settings.promo_image_2.aspect_ratio
+																%}
+																{{
+																	section.settings.promo_image_2
+																	| image_url:
+																		width: section.settings.promo_image_2.width
+																	| image_tag:
+																		class: 'promo_image promo_image_2',
+																		loading: 'lazy',
+																		width: section.settings.promo_image_2.width,
+																		height: image_height_2,
+																		sizes: '100vw',
+																		widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000'
+																}}
+															</div>
+														{% endif %}
+													{% if section.settings.promo_link_2 != blank %}
+														</a>
+													{% else %}
+														</div>
+													{% endif %}
+												{%- endif -%}
+											</div>
+										</div>
+									{% endif %}
+									{% comment %}{%- endif -%}{% endcomment %}
+								</div>
+							</div>
+						</div>
+					{%- endif -%}
+				</div>
+			{%- endif -%}
+		</div>
+	</mega-menu>
+</template>
+
+{% schema %}
+{
+	"name": "t:sections.mega_menu.name",
+	"class": "shopify-section-mega-menu",
+	"limit": 1,
+	"enabled_on": {
+		"groups": ["header"]
+	},
+	"settings": [
+		{
+			"type": "paragraph",
+			"content": "t:sections.mega_menu.settings.info_text.content"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.header.blocks.mega_menu_columns.settings.mega_menu_header_9.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "enable_promo_1",
+			"default": true,
+			"label": "t:sections.header.blocks.mega_menu_columns.settings.enable_promo.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "promo_image_1",
+			"label": "t:sections.all.image.label"
+		},
+		{
+			"type": "url",
+			"id": "promo_link_1",
+			"label": "t:sections.all.button.overlay_link.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "promo_heading_1",
+			"default": "Some heading",
+			"label": "t:sections.all.heading.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "promo_logo_1",
+			"label": "t:sections.all.image.logo"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.header.blocks.mega_menu_columns.settings.mega_menu_header_10.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "enable_promo_2",
+			"default": true,
+			"label": "t:sections.header.blocks.mega_menu_columns.settings.enable_promo.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "promo_image_2",
+			"label": "t:sections.all.image.label"
+		},
+		{
+			"type": "url",
+			"id": "promo_link_2",
+			"label": "t:sections.all.button.overlay_link.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "promo_heading_2",
+			"default": "Some heading",
+			"label": "t:sections.all.heading.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "promo_logo_2",
+			"label": "t:sections.all.image.logo"
+		}
+	],
+	"blocks": [
+		{
+			"type": "tab",
+			"name": "t:sections.mega_menu.blocks.tab.name",
+			"settings": [
+				{
+					"type": "text",
+					"id": "tab_title",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_title.label",
+					"default": "t:sections.mega_menu.blocks.tab.settings.tab_title.default"
+				},
+				{
+					"type": "url",
+					"id": "tab_link",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_link.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "tab_highlighted",
+					"default": false,
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_highlighted.label"
+				},
+				{
+					"type": "image_picker",
+					"id": "tab_custom_icon",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_custom_icon.label"
+				},
+				{
+					"type": "image_picker",
+					"id": "tab_custom_icon_dm",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_custom_icon_dm.label",
+					"info": "t:sections.mega_menu.blocks.tab.settings.tab_custom_icon_dm.info"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.mega_menu.blocks.tab.settings.tab_menus_heading.label_1"
+				},
+				{
+					"type": "text",
+					"id": "tab_title_1",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_menu_title.label",
+					"default": "t:sections.mega_menu.blocks.tab.settings.tab_menu_title.default"
+				},
+				{
+					"type": "link_list",
+					"id": "tab_menu_1",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_menu.label",
+					"info": "t:sections.mega_menu.blocks.tab.settings.tab_menu.info"
+				},
+				{
+					"type": "url",
+					"id": "tab_link_url_1",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_link_url.label",
+					"info": "t:sections.mega_menu.blocks.tab.settings.tab_link_url.info"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.mega_menu.blocks.tab.settings.tab_menus_heading.label_2"
+				},
+				{
+					"type": "text",
+					"id": "tab_title_2",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_menu_title.label",
+					"default": "t:sections.mega_menu.blocks.tab.settings.tab_menu_title.default"
+				},
+				{
+					"type": "link_list",
+					"id": "tab_menu_2",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_menu.label",
+					"info": "t:sections.mega_menu.blocks.tab.settings.tab_menu.info"
+				},
+				{
+					"type": "url",
+					"id": "tab_link_url_2",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_link_url.label",
+					"info": "t:sections.mega_menu.blocks.tab.settings.tab_link_url.info"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.mega_menu.blocks.tab.settings.tab_menus_heading.label_3"
+				},
+				{
+					"type": "text",
+					"id": "tab_title_3",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_menu_title.label",
+					"default": "t:sections.mega_menu.blocks.tab.settings.tab_menu_title.default"
+				},
+				{
+					"type": "link_list",
+					"id": "tab_menu_3",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_menu.label",
+					"info": "t:sections.mega_menu.blocks.tab.settings.tab_menu.info"
+				},
+				{
+					"type": "url",
+					"id": "tab_link_url_3",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_link_url.label",
+					"info": "t:sections.mega_menu.blocks.tab.settings.tab_link_url.info"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.mega_menu.blocks.tab.settings.tab_menus_heading.label_4"
+				},
+				{
+					"type": "text",
+					"id": "tab_title_4",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_menu_title.label",
+					"default": "t:sections.mega_menu.blocks.tab.settings.tab_menu_title.default"
+				},
+				{
+					"type": "link_list",
+					"id": "tab_menu_4",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_menu.label",
+					"info": "t:sections.mega_menu.blocks.tab.settings.tab_menu.info"
+				},
+				{
+					"type": "url",
+					"id": "tab_link_url_4",
+					"label": "t:sections.mega_menu.blocks.tab.settings.tab_link_url.label",
+					"info": "t:sections.mega_menu.blocks.tab.settings.tab_link_url.info"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

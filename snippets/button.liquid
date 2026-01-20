@@ -1,0 +1,47 @@
+{% liquid
+	if layout != blank
+		assign btn_label = layout.settings.button_label
+		assign btn_link = layout.settings.button_link
+		if layout.settings.button_style != blank
+			assign btn_style = layout.settings.button_style
+		else
+			assign btn_style = custom_btn_style
+		else
+			assign btn_style = 'simple'
+		endif
+	endif
+%}
+
+{% if shop_all %}
+	{%- if btn_label != blank -%}
+		<button
+			aria-label="{{- btn_label | escape -}}"
+			class="button button--{{ btn_style }}{% if class %} {{ class }}{% endif %}{% if shop_all_show_icon %} button--with-burger-icon{% endif %} {% if shop_all_enable_mobile %} header-shop-all-button-mobile{% endif %} focus-inset"
+			id="mega-menu-btn"
+			data-mega-menu-btn
+			data-button-link="{{ btn_link }}"
+		>
+			{%- if shop_all_show_icon -%}
+				{% render 'icon-burger' %}
+				{% render 'icon-close' %}
+			{%- endif -%}
+			<span class="button__label">
+				{{- btn_label -}}
+			</span>
+		</button>
+	{%- endif -%}
+{% else %}
+	{% if btn_label != blank %}
+		<a
+			{% if btn_link != blank %}
+				href="{{ btn_link }}"
+			{% endif %}
+			class="{% if class %}{{ class }}__button {% endif %}button button--{{ btn_style }} focus-inset"
+			{% if btn_link == blank %}
+				aria-disabled="true"
+			{% endif %}
+		>
+			<span class="button-label">{{ btn_label | strip }}</span>
+		</a>
+	{% endif %}
+{% endif %}

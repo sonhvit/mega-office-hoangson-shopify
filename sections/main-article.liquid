@@ -1,0 +1,1127 @@
+{{ 'component-blog-aside.css' | asset_url | stylesheet_tag }}
+{{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'copy.js' | asset_url }}" defer="defer"></script>
+
+{% liquid
+	assign image_size = section.settings.main_image_ratio
+
+	case image_size
+		when 'square'
+			assign section_size = '100%'
+			assign slide_class = image_size
+		when 'landscape'
+			assign section_size = '33.58%'
+			assign slide_class = image_size
+		else
+			assign section_size = '133%'
+			assign slide_class = image_size
+	endcase
+%}
+
+{%- style -%}
+	{% render 'section-padding' %}
+
+	 .article-template__header--overlay .article-template__wrapper::before {
+	   background-color: rgba(var(--color-overlay), {{ section.settings.opacity_overlay }} );
+	 }
+{%- endstyle -%}
+
+{% liquid
+	assign full_width = false
+	for block in section.blocks
+		if block.type == 'article-header'
+			if block.settings.full_width
+				assign full_width = true
+			endif
+		endif
+		if block.type == 'aside'
+			assign aside = true
+			if block.settings.tags_show
+				for article in blog.articles
+					for tag in article.tags
+						assign all_tags = all_tags | append: tag | append: ','
+					endfor
+				endfor
+				assign all_tags = all_tags | split: ',' | uniq | compact
+			endif
+		endif
+	endfor
+%}
+
+<article
+	class="		article-template section-{{ section.id }}-padding"
+	itemscope
+	itemtype="http://schema.org/BlogPosting"
+>
+	<div class="container">
+		{% if section.settings.main_image_position == 'bottom' %}		
+			{%- for block in section.blocks -%}
+				{% if block.type == 'article-header' %}
+					<div class="article-template--content--header">
+						<div class="article-template__info ">
+							<div class="article-template__info--top">
+								{%- if article.tags != blank
+									and block.settings.blog_show_tags == true
+								-%}
+									<ul class="article-template__tags">
+										{% for tag in article.tags %}
+											<li class="article-template__tag body-small">
+												<a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article-template__tag_link">
+													<span class="extra-small-font" title="{{ tag }}">
+														{{- tag -}}
+													</span>
+												</a>
+											</li>
+										{% endfor %}
+									</ul>
+								{%- endif -%}
+								{%- if block.settings.blog_show_date
+									or block.settings.blog_show_author
+								-%}
+									<div class="article-template__author-info">
+										<span class="article-card__date extra-small-font">
+											{%- if block.settings.blog_show_date -%}
+												{{-
+													article.published_at
+													| time_tag: format: 'abbreviated_date'
+												-}}
+											{%- endif -%}
+											{%- if block.settings.blog_show_author -%}
+												{%- if block.settings.blog_show_author
+													and block.settings.blog_show_date
+												-%}
+													, {{ ' ' }}
+												{%- endif -%}
+	
+												{{ 'general.blog.author' | t }}
+												{{- article.author -}}
+											{%- endif -%}
+										</span>
+									</div>
+								{%- endif -%}
+							</div>
+							<div class="article-template__text">
+								<h1
+									class="article-template__title"
+									itemprop="headline"
+								>
+									{{ article.title | escape }}
+								</h1>
+								{%- if article.excerpt.size > 0
+									and block.settings.blog_show_excerpt
+								-%}
+									<div class="article-template__excerpt body-large">
+										{{ article.excerpt }}
+									</div>
+								{%- endif -%}
+							</div>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+		{% if article.image %}
+			<div class="article-template__image">
+				{%- for block in section.blocks -%}
+					{% if block.type == 'article-header' %}
+						{% liquid
+							assign image = article.image
+						%}
+						<div
+							class="article-template__hero"
+							style="--image-height: {{ section_size }}"
+							itemprop="image"
+							{{ block.shopify_attributes }}
+						>
+							{%- if image != blank -%}
+								{% capture sizes %} 
+												calc(100vw - 40px)
+											{% endcapture %}
+								{{
+									image
+									| image_url: width: image.width
+									| image_tag:
+										loading: 'lazy',
+										widths: '360, 535, 720, 940, 1070, 1100, 1150, 1300, 1400, 1500, 1600, 1700, 1800, 1900',
+										sizes: sizes
+								}}
+							{%- endif -%}
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		{% endif %}
+		{% liquid
+			assign block_name = section.blocks | where: 'type', 'aside'
+		%}
+
+		<div class="article-template--content  {% if block_name != blank %} article-template--content__with-sidebar{% endif %}">
+			<div class="article-template--content__main">
+				{%- for block in section.blocks -%}
+					{% if section.settings.main_image_position == 'top' %}
+						{% if block.type == 'article-header' %}
+							<div class="article-template--content--header">
+								<div class="article-template__info ">
+									<div class="article-template__info--top">
+										{%- if article.tags != blank
+											and block.settings.blog_show_tags == true
+										-%}
+											<ul class="article-template__tags">
+												{% for tag in article.tags %}
+													<li class="article-template__tag body-small">
+														<a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article-template__tag_link">
+															<span class="extra-small-font" title="{{ tag }}">
+																{{- tag -}}
+															</span>
+														</a>
+													</li>
+												{% endfor %}
+											</ul>
+										{%- endif -%}
+										{%- if block.settings.blog_show_date
+											or block.settings.blog_show_author
+										-%}
+											<div class="article-template__author-info">
+												<span class="article-card__date extra-small-font">
+													{%- if block.settings.blog_show_date -%}
+														{{-
+															article.published_at
+															| time_tag: format: 'abbreviated_date'
+														-}}
+													{%- endif -%}
+													{%- if block.settings.blog_show_author -%}
+														{%- if block.settings.blog_show_author
+															and block.settings.blog_show_date
+														-%}
+															, {{ ' ' }}
+														{%- endif -%}
+	
+														{{ 'general.blog.author' | t }}
+														{{- article.author -}}
+													{%- endif -%}
+												</span>
+											</div>
+										{%- endif -%}
+									</div>
+									<div class="article-template__text">
+										<h1
+											class="article-template__title"
+											itemprop="headline"
+										>
+											{{ article.title | escape }}
+										</h1>
+										{%- if article.excerpt.size > 0
+											and block.settings.blog_show_excerpt
+										-%}
+											<div class="article-template__excerpt body-large">
+												{{ article.excerpt }}
+											</div>
+										{%- endif -%}
+									</div>
+								</div>
+							</div>
+						{% endif %}
+					{% endif %}
+					{% if block.type == 'content' %}
+						<div
+							class="article-template__block article-template__content"
+							itemprop="articleBody"
+							{{ block.shopify_attributes }}
+						>
+							<div class="article-template__content-wrapper">
+								<div class="article-template__content-rte rte body-large">
+									{{ article.content }}
+								</div>
+							</div>
+						</div>
+					{% endif %}
+					{% if block.type == '@app' %}
+						<div
+							class="container page-width--narrow"
+							{{ block.shopify_attributes }}
+						>
+							{% render block %}
+						</div>
+					{% endif %}
+					{% if block.type == 'article-footer' %}
+						{% if block.settings.blog_show_author
+							or block.settings.blog_show_tags
+							or block.settings.blog_show_date
+							or block.settings.show_share
+							or block.settings.show_share_facebook
+							or block.settings.show_share_twitter
+							or block.settings.show_share_pinterest
+							or block.settings.show_share_copy
+						%}
+							<div
+								class="article-template__block article-template__footer"
+								{{ block.shopify_attributes }}
+							>
+								{% if block.settings.show_share %}
+									{%- if block.settings.show_share_facebook
+										or block.settings.show_share_twitter
+										or block.settings.show_share_pinterest
+										or block.settings.show_share_copy
+									-%}
+										<div class="article-template__share">
+											<ul class="share-buttons-simple">
+												<li>
+													<p class="socials-title ">
+														{{ 'general.share.share_post' | t }}
+													</p>
+												</li>
+												{%- if block.settings.show_share_twitter -%}
+													<li class="share-buttons-simple__item">
+														<a
+															href="https://twitter.com/share?url={{ shop.url | append: article.url }}&text={{ article.title | escape }}"
+															class="share-buttons-simple__button twitter-btn focus-inset small-font"
+															target="_blank"
+														>
+															{{ 'general.share.links.twitter' | t }}
+														</a>
+													</li>
+												{%- endif -%}
+
+												{%- if block.settings.show_share_facebook -%}
+													<li class="share-buttons-simple__item">
+														<a
+															href="https://www.facebook.com/sharer.php?u={{ shop.url | append: article.url }}"
+															class="share-buttons-simple__button facebook-btn focus-inset small-font"
+															target="_blank"
+														>
+															{{ 'general.share.links.facebook' | t }}
+														</a>
+													</li>
+												{%- endif -%}
+
+												{%- if block.settings.show_share_pinterest -%}
+													<li class="share-buttons-simple__item">
+														<a
+															href="https://pinterest.com/pin/create/bookmarklet/?media={{ image | image_url: width: 1100, height: 1100 }}&url={{ shop.url | append: article.url }}&description={{ article.title | escape }}"
+															class="share-buttons-simple__button pinterest-btn focus-inset small-font"
+															target="_blank"
+														>
+															{{ 'general.share.links.pinterest' | t }}
+														</a>
+													</li> 
+												{%- endif -%}
+
+												{%- if block.settings.show_share_copy -%}
+													<li class="share-buttons-simple__item copy-wrapper">
+														<a
+															href="{{ shop.url | append: article.url }}"
+															class="share-buttons-simple__button copy-btn focus-inset small-font"
+														>
+															{{ 'general.share.links.copy' | t }}
+															{% render 'icon-copy-small' %}
+														</a>
+														<div id="tooltip" class="tooltip"> <span> {{ 'general.share.success_message' | t }}</span></div>
+													</li>
+												{%- endif -%}
+											</ul>
+										</div>
+									{%- endif -%}
+								{% endif %}
+
+								{%- if block.settings.blog_show_date
+									or block.settings.blog_show_author
+									or block.settings.blog_show_tags == true
+								-%}
+									<div class="article-template__bottom">
+										{%- if block.settings.blog_show_date
+											or block.settings.blog_show_tags == true
+											or block.settings.blog_show_author
+										-%}
+											<div class="article-template__bottom--left">
+												{%- if article.tags != blank
+													and block.settings.blog_show_tags == true
+												-%}
+													<ul class="article-template__tags">
+														{% for tag in article.tags %}
+															<li class="article-template__tag body-small">
+																<a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article-template__tag_link">
+																	<span class="extra-small-font" title="{{ tag }}">{{ tag }}</span>
+																</a>
+															</li>
+														{% endfor %}
+													</ul>
+												{%- endif -%}
+												{%- if block.settings.blog_show_date
+													or block.settings.blog_show_author
+												-%}
+													<div class="article-template__author-info">
+														<span class="article-template__date extra-small-font">
+															{%- if block.settings.blog_show_date -%}
+																{{ 'general.blog.posted' | t }}
+																{{-
+																	article.published_at
+																	| time_tag: format: 'abbreviated_date'
+																-}}
+															{%- endif -%}
+															{%- if block.settings.blog_show_date -%}
+																<span class="article-template__date extra-small-font">
+																	{{ 'general.blog.update' | t }}
+																	{{-
+																		article.published_at
+																		| time_tag: format: 'abbreviated_date'
+																	-}}
+																</span>
+															{%- endif -%}
+															{%- if block.settings.blog_show_author -%}
+																{%- if block.settings.blog_show_author
+																	and block.settings.blog_show_date
+																-%}
+																	, {{ " " }}
+																{%- endif -%}
+
+																{{ 'general.blog.author' | t }}
+																{{- article.author -}}
+															{%- endif -%}
+														</span>
+													</div>
+												{%- endif -%}
+											</div>
+										{% endif %}
+									</div>
+								{% endif %}
+							</div>
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+			</div>
+			<div class="article-template--content__sidebar">
+				{%- for block in section.blocks -%}
+					{%- case block.type -%}
+						{%- when 'aside' -%}
+							<aside
+								class="article-template__aside blog-aside"
+								{{ block.shopify_attributes }}
+							>
+								{% if block.settings.post_show %}
+									<div class="blog-aside__posts">
+										{% if block.settings.posts_heading != blank %}
+											<h4 class="blog-aside__header">
+												{{ block.settings.posts_heading }}
+											</h4>
+										{% endif %}
+										{% if block.settings.posts_blog != blank %}
+											<div class="
+													article
+													main-blog__articles--list__small
+													load-more-grid
+												">
+												{% for article in block.settings.posts_blog.articles
+													limit: 4
+												%}
+													<div>
+														{% render 'article-card',
+															section: section,
+															blog: blog,
+															article: article,
+															image_ratio: 'square',
+															post_heading_size: 'h5',
+															show_image: true,
+															show_tags: false,
+															show_date: true,
+															show_author: true,
+															show_excerpt: false,
+															section_author_image: false,
+															card_size: 'small-article',
+															card_variant: 'horizontal'
+														%}
+													</div>
+												{% endfor %}
+											</div>
+										{% endif %}
+									</div>
+								{% endif %}
+								{% if block.settings.banner_show %}
+									<div class="blog-aside__banner">
+										{% if block.settings.banner_heading != blank %}
+											<h4 class="blog-aside__header">
+												{{ block.settings.banner_heading }}
+											</h4>
+										{% endif %}
+										<div
+											class="banner-slider__item color-{{ block.settings.banner_color_scheme }}"
+											{{ block.shopify_attributes }}
+										>
+											{% if block.settings.banner_image != blank %}
+												<div
+													class="banner-slider__overlay"
+													style="opacity: {{ block.settings.overlay_opacity }}"
+												></div>
+											{% endif %}
+											<div class="banner-slider__item--details {% if block.settings.badege_text == blank  %} flex-end {% endif %}">
+												{% if block.settings.badege_text != blank %}
+													<div
+														class="banner-slider__item--details__badge"
+														style="background: {{ block.settings.badge_bg_color }}"
+													>
+														{%- if block.settings.badge_image != blank -%}
+															{{
+																block.settings.badge_image
+																| image_url:
+																	width: block.settings.badge_image.width
+																| image_tag:
+																	loading: 'lazy',
+																	sizes: '100vw',
+																	widths: '550, 720',
+																	height: 16,
+																	width: 16,
+																	class: 'banner-slider__badge_image'
+															}}
+														{% endif %}
+														{% if block.settings.badege_text != blank %}
+															<span
+																class="banner-slider__badge_text"
+																style="color: {{ block.settings.badge_text_color }}"
+															>
+																{{ block.settings.badege_text }}
+															</span>
+														{% endif %}
+													</div>
+												{% endif %}
+												{% if block.settings.banner_title != blank
+													or block.settings.button_label != blank
+												%}
+													<div class="banner-slider__item--details__action">
+														{% if block.settings.banner_title != blank %}
+															<h4 class="banner-slider__item--details__heading">
+																{{ block.settings.banner_title }}
+															</h4>
+														{% endif %}
+														{%- if block.settings.button_label != blank -%}
+															{% render 'button',
+																layout: block,
+																class: 'button--full-width'
+															%}
+														{% endif %}
+													</div>
+												{% endif %}
+											</div>
+
+											{%- if block.settings.banner_image != blank -%}
+												{% liquid
+													assign image_height = block.settings.banner_image.width | divided_by: block.settings.banner_image.aspect_ratio
+												%}
+												<div class="banner-slider__item__image {{ slide_class }}">
+													{%- if block.settings.banner_image != blank -%}
+														{{
+															block.settings.banner_image
+															| image_url:
+																width: block.settings.banner_image.width
+															| image_tag:
+																loading: 'lazy',
+																sizes: '100vw',
+																widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000',
+																height: image_height,
+																width: block.settings.banner_image.width,
+																class: 'banner-slider__image banner-slider__image--light'
+														}}
+													{%- endif -%}
+												</div>
+											{%- endif -%}
+										</div>
+									</div>
+								{% endif %}
+							</aside>
+					{% endcase %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+	{%- if blog.comments_enabled? -%}
+		<div class="article-template__comment-wrapper background-secondary">
+			<div id="comments" class="page-width page-width--narrow">
+				{%- if article.comments_count > 0 -%}
+					{%- assign anchorId = '#Comments-' | append: article.id -%}
+
+					<h2 id="Comments-{{ article.id }}" tabindex="-1">
+						{{ 'blogs.article.comments' | t: count: article.comments_count }}
+					</h2>
+					{% paginate article.comments by 5 %}
+						<div class="article-template__comments">
+							{%- if comment.status == 'pending' and comment.content -%}
+								<article
+									id="{{ comment.id }}"
+									class="article-template__comments-comment"
+								>
+									{{ comment.content }}
+									<footer class="right">
+										<span class="circle-divider caption-with-letter-spacing">
+											{{- comment.author -}}
+										</span>
+									</footer>
+								</article>
+							{%- endif -%}
+
+							{%- for comment in article.comments -%}
+								<article
+									id="{{ comment.id }}"
+									class="article-template__comments-comment"
+								>
+									{{ comment.content }}
+									<footer class="right">
+										<span class="circle-divider caption-with-letter-spacing">
+											{{- comment.author -}}</span
+										><span class="caption-with-letter-spacing">
+											{{- comment.created_at | time_tag: format: 'date' -}}
+										</span>
+									</footer>
+								</article>
+							{%- endfor -%}
+							{% render 'pagination', paginate: paginate, anchor: anchorId %}
+						</div>
+					{% endpaginate %}
+				{%- endif -%}
+				{% form 'new_comment', article %}
+					{%- liquid
+						assign post_message = 'blogs.article.success'
+						if blog.moderated? and comment.status == 'unapproved'
+							assign post_message = 'blogs.article.success_moderated'
+						endif
+					-%}
+					<h2>{{ 'blogs.article.comment_form_title' | t }}</h2>
+					{%- if form.errors -%}
+						<div class="form__message" role="alert">
+							<h3
+								class="form-status caption-large text-body"
+								tabindex="-1"
+								autofocus
+							>
+								{% render 'icon-error' %}
+								{{ 'templates.contact.form.error_heading' | t }}
+							</h3>
+						</div>
+						<ul class="form-status-list caption-large">
+							{%- for field in form.errors -%}
+								<li>
+									<a href="#CommentForm-{{ field }}" class="link">
+										{%- if form.errors.translated_fields[field]
+												contains 'author'
+										-%}
+											{{ 'blogs.article.name' | t }}
+										{%- elsif form.errors.translated_fields[field]
+												contains 'body'
+										-%}
+											{{ 'blogs.article.message' | t }}
+										{%- else -%}
+											{{ form.errors.translated_fields[field] }}
+										{%- endif -%}
+										{{ form.errors.messages[field] }}
+									</a>
+								</li>
+							{%- endfor -%}
+						</ul>
+					{%- elsif form.posted_successfully? -%}
+						<div class="form-status-list form__message" role="status">
+							<h3 class="form-status" tabindex="-1" autofocus>
+								{% render 'icon-success' %}
+								{{ post_message | t }}
+							</h3>
+						</div>
+					{%- endif -%}
+
+					<div
+						{% if blog.moderated? == false %}
+							class="article-template__comments-fields"
+						{% endif %}
+					>
+						<div class="article-template__comment-fields">
+							<div class="field field--with-error">
+								<input
+									type="text"
+									name="comment[author]"
+									id="CommentForm-author"
+									class="field__input"
+									autocomplete="name"
+									value="{{ form.author }}"
+									aria-required="true"
+									required
+									{% if form.errors contains 'author' %}
+										aria-invalid="true"
+										aria-describedby="CommentForm-author-error"
+									{% endif %}
+									placeholder="{{ 'blogs.article.name' | t }}"
+								>
+								<label for="CommentForm-author">
+									{{- 'blogs.article.name' | t -}}
+								</label>
+								{%- if form.errors contains 'author' -%}
+									<small id="CommentForm-author-error">
+										<span class="form__message">
+											{%- render 'icon-error' -%}
+											{{- 'blogs.article.name' | t }}
+											{{ form.errors.messages.author }}.</span
+										>
+									</small>
+								{%- endif -%}
+							</div>
+							<div class="field field--with-error">
+								<input
+									type="email"
+									name="comment[email]"
+									id="CommentForm-email"
+									class="field__input"
+									autocomplete="email"
+									value="{{ form.email }}"
+									autocorrect="off"
+									autocapitalize="off"
+									aria-required="true"
+									pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+									required
+									{% if form.errors contains 'email' %}
+										aria-invalid="true"
+										aria-describedby="CommentForm-email-error"
+									{% endif %}
+									placeholder="{{ 'blogs.article.email' | t }}"
+								>
+								<label for="CommentForm-email">
+									{{- 'blogs.article.email' | t -}}
+								</label>
+								{%- if form.errors contains 'email' -%}
+									<small id="CommentForm-email-error">
+										<span class="form__message">
+											{%- render 'icon-error' -%}
+											{{- 'blogs.article.email' | t }}
+											{{ form.errors.messages.email }}.</span
+										>
+									</small>
+								{%- endif -%}
+							</div>
+						</div>
+						<div class="field field--with-error">
+							<textarea
+								rows="5"
+								name="comment[body]"
+								id="CommentForm-body"
+								class="text-area field__input"
+								aria-required="true"
+								required
+								{% if form.errors contains 'body' %}
+									aria-invalid="true"
+									aria-describedby="CommentForm-body-error"
+								{% endif %}
+								placeholder="{{ 'blogs.article.message' | t }}"
+							>{{ form.body }}</textarea>
+							<label for="CommentForm-body">
+								{{- 'blogs.article.message' | t -}}
+							</label>
+						</div>
+						{%- if form.errors contains 'body' -%}
+							<small id="CommentForm-body-error">
+								<span class="form__message">
+									{%- render 'icon-error' -%}
+									{{- 'blogs.article.message' | t }}
+									{{ form.errors.messages.body }}.</span
+								>
+							</small>
+						{%- endif -%}
+					</div>
+					{%- if blog.moderated? -%}
+						<p class="article-template__comment-warning caption">
+							{{ 'blogs.article.moderated' | t }}
+						</p>
+					{%- endif -%}
+					<button type="submit" class="button button--primary focus-inset">
+						{{ 'blogs.article.post' | t }}
+					</button>
+				{% endform %}
+			</div>
+		</div>
+	{%- endif -%}
+</article>
+
+<script type="application/ld+json">
+	{
+	  "@context": "http://schema.org",
+	  "@type": "Article",
+	  "articleBody": {{ article.content | strip_html | json }},
+	  "mainEntityOfPage": {
+	    "@type": "WebPage",
+	    "@id": {{ request.origin | append: page.url | json }}
+	  },
+	  "headline": {{ article.title | json }},
+	  {% if article.excerpt != blank %}
+	    "description": {{ article.excerpt | strip_html | json }},
+	  {% endif %}
+	  {% if article.image %}
+				{% assign image_size = article.image.width | append: 'x' %}
+	    "image": [
+	      {{ article | image_url: image_size | prepend: "https:" | json }}
+	    ],
+	  {% endif %}
+	  "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+	  "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+	  "author": {
+	    "@type": "Person",
+	    "name": {{ article.author | json }}
+	  },
+	  "publisher": {
+	    "@type": "Organization",
+	    {% if settings.share_image %}
+					{% assign image_size = settings.share_image.width | append: 'x' %}
+	      "logo": {
+	        "@type": "ImageObject",
+	        "height": {{ settings.share_image.height | json }},
+	        "url": {{ settings.share_image | image_url: image_size | prepend: "https:" | json }},
+	        "width": {{ settings.share_image.width | json }}
+	      },
+	    {% endif %}
+	    "name": {{ shop.name | json }}
+	  }
+	}
+</script>
+
+{% schema %}
+{
+	"name": "t:sections.main-article.name",
+	"tag": "section",
+	"class": "section-main-article",
+	"settings": [
+		{
+			"type": "select",
+			"id": "main_image_ratio",
+			"options": [
+				{
+					"value": "landscape",
+					"label": "t:sections.all.card.image_ratio_2.options__1.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:sections.all.card.image_ratio_2.options__2.label"
+				},
+				{
+					"value": "square",
+					"label": "t:sections.all.card.image_ratio_2.options__3.label"
+				}
+			],
+			"default": "landscape",
+			"label": "t:sections.featured-blog.settings.image_ratio.label"
+		},
+		{
+			"type": "select",
+			"id": "main_image_position",
+			"options": [
+				{
+					"value": "top",
+					"label": "t:sections.main-article.settings.main_image_position.options__1.label"
+				},
+				{
+					"value": "bottom",
+					"label": "t:sections.main-article.settings.main_image_position.options__2.label"
+				}
+			],
+			"default": "top",
+			"label": "t:sections.main-article.settings.main_image_position.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-padding.header.content"
+		},
+		{
+			"type": "select",
+			"id": "padding_top",
+			"options": [
+				{
+					"value": "no-indent",
+					"label": "t:sections.all.section-padding.options__1.label"
+				},
+				{
+					"value": "xs",
+					"label": "t:sections.all.section-padding.options__2.label"
+				},
+				{
+					"value": "s",
+					"label": "t:sections.all.section-padding.options__3.label"
+				},
+				{
+					"value": "m",
+					"label": "t:sections.all.section-padding.options__4.label"
+				},
+				{
+					"value": "l",
+					"label": "t:sections.all.section-padding.options__5.label"
+				},
+				{
+					"value": "xl",
+					"label": "t:sections.all.section-padding.options__6.label"
+				}
+			],
+			"default": "no-indent",
+			"label": "t:sections.all.section-padding.padding_top.label"
+		},
+		{
+			"type": "select",
+			"id": "padding_bottom",
+			"options": [
+				{
+					"value": "no-indent",
+					"label": "t:sections.all.section-padding.options__1.label"
+				},
+				{
+					"value": "xs",
+					"label": "t:sections.all.section-padding.options__2.label"
+				},
+				{
+					"value": "s",
+					"label": "t:sections.all.section-padding.options__3.label"
+				},
+				{
+					"value": "m",
+					"label": "t:sections.all.section-padding.options__4.label"
+				},
+				{
+					"value": "l",
+					"label": "t:sections.all.section-padding.options__5.label"
+				},
+				{
+					"value": "xl",
+					"label": "t:sections.all.section-padding.options__6.label"
+				}
+			],
+			"default": "l",
+			"label": "t:sections.all.section-padding.padding_bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "@app"
+		},
+		{
+			"type": "article-header",
+			"name": "t:sections.main-article.blocks.article-header.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "checkbox",
+					"id": "blog_show_tags",
+					"default": true,
+					"label": "t:sections.main-article.blocks.article-header.settings.blog_show_tags.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "blog_show_excerpt",
+					"default": false,
+					"label": "t:sections.main-article.blocks.article-header.settings.blog_show_excerpt.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "blog_show_author",
+					"default": true,
+					"label": "t:sections.main-article.blocks.article-header.settings.blog_show_author.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "blog_show_date",
+					"default": true,
+					"label": "t:sections.main-article.blocks.article-header.settings.blog_show_date.label"
+				}
+			]
+		},
+		{
+			"type": "content",
+			"name": "t:sections.main-article.blocks.content.name",
+			"limit": 1
+		},
+		{
+			"type": "article-footer",
+			"name": "t:sections.main-article.blocks.article-footer.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "checkbox",
+					"id": "blog_show_author",
+					"default": true,
+					"label": "t:sections.main-article.blocks.article-footer.settings.blog_show_author.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "blog_show_tags",
+					"default": true,
+					"label": "t:sections.main-article.blocks.article-header.settings.blog_show_tags.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "blog_show_date",
+					"default": true,
+					"label": "t:sections.main-article.blocks.article-footer.settings.blog_show_date.label"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.main-article.blocks.article-header.settings.header__2.content"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_share",
+					"default": true,
+					"label": "t:sections.main-article.settings.show_share.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_share_facebook",
+					"default": true,
+					"label": "t:sections.main-article.settings.show_share_facebook.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_share_twitter",
+					"default": true,
+					"label": "t:sections.main-article.settings.show_share_twitter.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_share_pinterest",
+					"default": true,
+					"label": "t:sections.main-article.settings.show_share_pinterest.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_share_copy",
+					"default": true,
+					"label": "t:sections.main-article.settings.show_share_copy.label"
+				}
+			]
+		},
+		{
+			"type": "aside",
+			"name": "t:sections.main-blog.blocks.aside.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "header",
+					"content": "t:sections.main-blog.blocks.aside.settings.posts_header.content"
+				},
+				{
+					"type": "checkbox",
+					"id": "post_show",
+					"default": false,
+					"label": "t:sections.main-blog.blocks.aside.settings.enable_posts.label"
+				},
+				{
+					"type": "text",
+					"id": "posts_heading",
+					"label": "t:sections.all.heading.label",
+					"default": "Heading"
+				},
+				{
+					"type": "blog",
+					"id": "posts_blog",
+					"label": "t:sections.main-blog.blocks.aside.settings.posts_blog.label"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.main-blog.blocks.aside.settings.banner_header.content"
+				},
+				{
+					"type": "checkbox",
+					"id": "banner_show",
+					"default": true,
+					"label": "t:sections.main-blog.blocks.aside.settings.enable_banner.label"
+				},
+				{
+					"type": "text",
+					"id": "banner_heading",
+					"label": "t:sections.all.heading.label",
+					"default": "Heading"
+				},
+				{
+					"type": "color_scheme",
+					"id": "banner_color_scheme",
+					"default": "background-3",
+					"label": "t:sections.all.color_scheme.label"
+				},
+				{
+					"type": "image_picker",
+					"id": "banner_image",
+					"label": "t:sections.main-blog.blocks.aside.settings.banner_image.label"
+				},
+				{
+					"type": "inline_richtext",
+					"id": "banner_title",
+					"label":"t:sections.main-blog.blocks.aside.settings.banner_title.label",
+					"default": "Some heading"
+				},
+				{
+					"type": "range",
+					"id": "overlay_opacity",
+					"min": 0,
+					"max": 1,
+					"step": 0.1,
+					"label": "t:sections.all.overlay_opacity.label",
+					"default": 0.3
+				},
+			
+				{
+					"type": "header",
+					"content": "t:sections.banner-slider.blocks.column.settings.header__1.label"
+				},
+				{
+					"type": "color",
+					"id": "badge_bg_color",
+					"label": "t:sections.all.background_color.label",
+					"default": "#FFDE1B"
+				},
+				{
+					"type": "color",
+					"id": "badge_text_color",
+					"label": "t:sections.banner-slider.blocks.column.settings.badge_text_color.label",
+					"default": "#000000"
+				},
+				{
+					"type": "inline_richtext",
+					"id": "badege_text",
+					"label": "t:sections.all.heading.label",
+					"info": "t:sections.all.badge.info"
+				},
+				{
+					"type": "image_picker",
+					"id": "badge_image",
+					"label": "t:sections.all.icon_pack.label"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.all.button.header.content"
+				},
+				{
+					"type": "text",
+					"id": "button_label",
+					"default": "Button label",
+					"label": "t:sections.all.button.label.label",
+					"info": "t:sections.all.button.label.info"
+				},
+				{
+					"type": "url",
+					"id": "button_link",
+					"label": "t:sections.all.button.link.label"
+				},
+				{
+					"type": "select",
+					"id": "button_style",
+					"options": [
+						{
+							"value": "primary",
+							"label": "t:sections.all.button.style.options__1.label"
+						},
+						{
+							"value": "secondary",
+							"label": "t:sections.all.button.style.options__2.label"
+						},
+						{
+							"value": "tertiary",
+							"label": "t:sections.all.button.style.options__3.label"
+						}
+					],
+					"default": "tertiary",
+					"label": "t:sections.all.button.style.label"
+				}
+			]
+		}
+	]
+}
+{% endschema %}
+
+{% comment %}
+{% endcomment %}

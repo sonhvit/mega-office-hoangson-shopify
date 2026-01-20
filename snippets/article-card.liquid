@@ -1,0 +1,127 @@
+{% comment %}
+  	Renders an article card for a given blog with settings to either show the image or not.
+
+  	Accepts:
+  	- blog: {Object} Blog object
+  	- article: {Object} Article object
+  	- show_image: {String} The setting either show the article image or not. If it's not included it will show the image by default
+  	- show_date: {String} The setting either show the article date or not. If it's not included it will not show the image by default
+  	- show_author: {String} The setting either show the article author or not. If it's not included it will not show the author by default
+
+  	Usage:
+  {% render 'article-card' blog: blog, article: article, show_image: section.settings.show_image %}
+{% endcomment %}
+
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign image_size = image_ratio
+
+  case image_size
+    when 'square'
+      assign section_size = '100%'
+      assign slide_class = image_size
+    when 'landscape'
+      assign section_size = '56.25%'
+      assign slide_class = image_size
+    else
+      assign section_size = '133%'
+      assign slide_class = image_size
+  endcase
+%}
+
+{% if section.settings.post_layout %}
+  {%- assign post_layout = section.settings.post_layout -%}
+{% else %}
+  {%- assign post_layout = card_variant -%}
+{% endif %}
+
+<article
+  class="article-card  article-card__{{ post_layout }} {{ card_size }} {%- if show_image == false and post_layout == 'horizontal' -%} horizontal_without_image {%- endif -%}"
+  id="article--{{ article.id }}"
+  style="--image-height: {{ section_size }}"
+>
+  {%- if show_image == true -%}
+    <div class="article-card--image  {{ slide_class }} ">
+      <a class="article-card--image--link" href="{{ article.url }}"> </a>
+      <div
+        class="article-card--image__overlay"
+        style="opacity: {{ section.settings.overlay_opacity }}"
+      ></div>
+      {% if article.image %}
+        {% liquid
+          assign image_height = article.image.width | divided_by: article.image.aspect_ratio
+        %}
+        {% capture sizes %}
+          (min-width: 990px) 940px, (min-width: 750px) calc((100vw - 40px) / 2), calc((100vw - 40px))
+        {% endcapture %}
+        {{
+          article.image
+          | image_url: width: article.image.width
+          | image_tag: loading: 'lazy', sizes: sizes, height: image_height, widths: '165, 360, 535, 720, 940, 1066'
+        }}
+      {% else %}
+        {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  {%- endif -%}
+  <div class="article-content  {% if section.settings.layout == 'static'  %}   article-content-height {% endif %} {% if post_layout == 'overlay' and show_image == false  %}   overlay-card-bg {% endif %} ">
+    <div class=" {% if show_tags == false or article.tags == blank  %}   only-content {% endif %} {% if section.settings.show_image == false %}  article-without-image {% endif %}  article-card__info ">
+      {%- if show_tags and article.tags != blank -%} 
+        <ul class="article-card__tags">
+          {% for tag in article.tags %}
+            <li class="article-card__tag extra-small-font">
+              <a
+                href="{{ blog.url }}/tagged/{{ tag | handle }}"
+                class="color-{{ section.settings.color_scheme }}"
+              >
+                <span title="{{ tag }}">{{ tag }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {%- endif -%}
+      <div class="article-card__main-content {% if post_layout == 'overlay'  %}   color-inverse {% endif %}">
+        <header class="article-card__header">
+          <h2
+            class="article-card__title {% if post_heading_size %} {{ post_heading_size }} {% else %} h5 {% endif %}"
+            id="Article-{{ article.id }}"
+          >
+            <a href="{{ article.url }}" class="article-card__link">
+              {{ article.title | escape }}
+            </a>
+          </h2>
+          {%- if show_excerpt and article.excerpt_or_content.size > 0 -%}
+            <p class="article-card__excerpt">
+              {{ article.excerpt_or_content | strip_html | truncate: 150 }}
+            </p>
+          {%- endif -%}
+        </header>
+
+        <div class="article-card__bottom">
+          {% if show_author or show_date %}
+            <div class="article-card__author">
+              <div class="article-card__author-info">
+								{%- if show_date or show_author -%}
+									<span class="article-card__date extra-small-font">
+										{%- if show_date -%}
+											{{- article.published_at | time_tag: format: 'abbreviated_date' -}}
+										{%- endif -%}
+										{%- if show_author -%}
+											{%- if show_author and show_date -%}
+												, {{ ' ' }}
+											{%- endif -%}
+
+											{{ 'general.blog.author' | t }}
+											{{- article.author -}}
+										{%- endif -%}
+									</span>
+								{%- endif -%}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

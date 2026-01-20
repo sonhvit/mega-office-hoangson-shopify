@@ -1,0 +1,49 @@
+{% liquid
+	if layout != blank
+		assign badge_subheading = layout.settings.circle_badge_subheading
+		assign badge_heading = layout.settings.circle_badge_heading
+		assign badge_heading_font_size = layout.settings.badge_heading_font_size
+		assign badge_prefix = layout.settings.badge_prefix
+		assign badge_suffix = layout.settings.badge_suffix
+	endif
+%}
+{% comment %}{% if badge_heading != blank %}{% endcomment %}
+<div class="circle_badge-wrapper">
+	<div class="circle_badge-container">
+		<div class="svg-container">
+			<svg
+				width="84"
+				height="76"
+				viewBox="0 0 84 76"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path d="M72.8361 13.9596C72.9253 13.6821 73.013 13.4039 73.0992 13.125C73.1121 13.0834 73.125 13.0417 73.1378 13C42.4685 16.7012 17.5376 39.0369 10 68.3519C10.0525 68.3431 10.105 68.3342 10.1574 68.3253C40.1574 47.4596 49.6574 38.9596 72.8361 13.9596Z" fill="white"/>
+			</svg>
+		</div>
+		<div class="circle_badge-container__overlay"></div>
+		<div class="circle_badge-content">
+			{% if badge_subheading != blank %}
+				<p class="circle_badge-content__subheading">
+					{% comment %}{{ badge_subheading }}{% endcomment %}
+					{{- badge_subheading | strip_html | truncate: 15, '' -}}
+				</p>
+			{% endif %}
+			<div class="circle_badge-content__main">
+				{% if badge_prefix != blank %}
+					<p class="circle_badge-content__main--prefix">{{ badge_prefix }}</p>
+				{% endif %}
+				<h2
+					class="circle_badge-content__main--title"
+					style=" font-size:{{ badge_heading_font_size }}px"
+				>
+					{{ badge_heading }}
+				</h2>
+				{% if badge_suffix != blank %}
+					<p class="circle_badge-content__main--suffix">{{ badge_suffix }}</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+{% comment %}{% endif %}{% endcomment %}

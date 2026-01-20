@@ -1,0 +1,105 @@
+--color-background: 30, 30, 30;
+{% if scheme.id == 'background-1' or forloop.index == 1 %}
+	--color-background: 30, 30, 30;
+	--color-background-secondary: 16, 16, 16;
+	--color-border-input: 44, 44, 44;
+	--color-border-input-hover: 48, 48, 48;
+	--color-background-input: 44, 44, 44;
+	--color-background-input-hover: 48, 48, 48;
+	--color-text-input: 255, 255, 255;
+{% else %}
+--color-background: 44, 44, 44;
+--color-background-secondary: 71, 71, 71;
+--color-border-input: 35, 35, 35;
+--color-border-input-hover: 37, 37, 37;
+--color-background-input: 35, 35, 35;
+--color-background-input-hover: 37, 37, 37;
+--color-text-input: 255, 255, 255;
+
+{% endif %}
+{% if scheme.settings.background_gradient != empty %}
+	--gradient-background: linear-gradient(91.72deg, #8DB6E4 0%, #C9896E 100%);
+{% else %}
+	--gradient-background: rgb(var(--color-background));
+{% endif %}
+--color-blog-slider-heading-hover: 203, 211, 218;
+--color-overlay: 0, 0, 0;
+--color-foreground: 231, 231, 232;
+--color-foreground-secondary: 255, 255, 255;
+--color-foreground-title: 255, 255, 255;
+--color-border: 56, 54, 57;
+--color-checkmark: 0, 0, 0;
+--color-slider-arrows: 0, 0, 0;
+--color-link: 229, 229, 229;
+--alpha-link: 0.5;
+
+{% comment %}--color-button: 245, 245, 245;
+--color-button-hover: 220, 220, 220;
+--color-button-text: 31, 30, 32;
+--color-button-text-hover: 31, 30, 32;
+--color-button-secondary: 60, 60, 60;
+--color-button-secondary-hover: 65, 65, 65;
+--color-button-secondary-text: 255, 255, 255;
+--color-button-secondary-text-hover: 200, 200, 200;
+--color-button-tertiary-text: 255, 255, 255;
+--color-button-tertiary-text-hover: 200, 200, 200;{% endcomment %}
+--color-button-text: {{ scheme.settings.colors_primary_button_labels.red }}, {{ scheme.settings.colors_primary_button_labels.green }}, {{ scheme.settings.colors_primary_button_labels.blue }};
+--color-button-text-hover: {{ scheme.settings.colors_primary_button_labels_hover.red }}, {{ scheme.settings.colors_primary_button_labels_hover.green }}, {{ scheme.settings.colors_primary_button_labels_hover.blue }};
+--color-button: {{ scheme.settings.colors_primary_button_background.red }}, {{ scheme.settings.colors_primary_button_background.green }}, {{ scheme.settings.colors_primary_button_background.blue }};
+--color-button-hover: {{ scheme.settings.colors_primary_button_background_hover.red }}, {{ scheme.settings.colors_primary_button_background_hover.green }}, {{ scheme.settings.colors_primary_button_background_hover.blue }};
+
+--color-button-secondary: {{ scheme.settings.colors_secondary_button_background.red }}, {{ scheme.settings.colors_secondary_button_background.green }}, {{ scheme.settings.colors_secondary_button_background.blue }};
+--color-button-secondary-hover: {{ scheme.settings.colors_secondary_button_background_hover.red }}, {{ scheme.settings.colors_secondary_button_background_hover.green }}, {{ scheme.settings.colors_secondary_button_background_hover.blue }};
+--color-button-secondary-text: {{ scheme.settings.colors_secondary_button_labels.red }}, {{ scheme.settings.colors_secondary_button_labels.green }}, {{ scheme.settings.colors_secondary_button_labels.blue }};
+--color-button-secondary-text-hover: {{ scheme.settings.colors_secondary_button_labels_hover.red }}, {{ scheme.settings.colors_secondary_button_labels_hover.green }}, {{ scheme.settings.colors_secondary_button_labels_hover.blue }};
+
+--color-button-tertiary-text: {{ scheme.settings.colors_tertiary_button_labels.red }}, {{ scheme.settings.colors_tertiary_button_labels.green }}, {{ scheme.settings.colors_tertiary_button_labels.blue }};
+--color-button-tertiary-text-hover: {{ scheme.settings.colors_tertiary_button_labels_hover.red }}, {{ scheme.settings.colors_tertiary_button_labels_hover.green }}, {{ scheme.settings.colors_tertiary_button_labels_hover.blue }};
+
+--color-sale-badge-text: {{ scheme.settings.colors_sale_badge_label.red }}, {{ scheme.settings.colors_sale_badge_label.green }}, {{ scheme.settings.colors_sale_badge_label.blue }};
+--color-sale-badge-background: {{ scheme.settings.colors_sale_badge_background.red }}, {{ scheme.settings.colors_sale_badge_background.green }}, {{ scheme.settings.colors_sale_badge_background.blue }};
+--color-soldout-badge-text: {{ scheme.settings.colors_soldout_badge_label.red }}, {{ scheme.settings.colors_soldout_badge_label.green }}, {{ scheme.settings.colors_soldout_badge_label.blue }};
+--color-soldout-badge-background: {{ scheme.settings.colors_soldout_badge_background.red }}, {{ scheme.settings.colors_soldout_badge_background.green }}, {{ scheme.settings.colors_soldout_badge_background.blue }};
+--color-soldout-badge-border: {{ scheme.settings.colors_soldout_badge_border.red }}, {{ scheme.settings.colors_soldout_badge_border.green }}, {{ scheme.settings.colors_soldout_badge_border.blue }};
+--color-custom-badge-text: {{ scheme.settings.colors_custom_badge_label.red }}, {{ scheme.settings.colors_custom_badge_label.green }}, {{ scheme.settings.colors_custom_badge_label.blue }};
+--color-custom-badge-background: {{ scheme.settings.colors_custom_badge_background.red }}, {{ scheme.settings.colors_custom_badge_background.green }}, {{ scheme.settings.colors_custom_badge_background.blue }};
+--color-inventory-status-in: {{ scheme.settings.colors_inventory_status_in.red }}, {{ scheme.settings.colors_inventory_status_in.green }}, {{ scheme.settings.colors_inventory_status_in.blue }};
+--color-inventory-status-out: {{ scheme.settings.colors_inventory_status_out.red }}, {{ scheme.settings.colors_inventory_status_out.green }}, {{ scheme.settings.colors_inventory_status_out.blue }};
+
+--alpha-button-background: 1;
+--alpha-button-border: 1;
+--color-social: 255, 255, 255;
+--color-placeholder-input: 255, 255, 255;
+--color-price-regular: 229, 229, 229;
+--color-price-after-sale: 229, 229, 229;
+--color-price-before-sale: 169, 169, 169;
+--color-error-background: 0, 0, 0;
+--color-title-text: 255, 255, 255;
+--color-accent : 180, 180, 180;
+--menu-shadow-color: 0,0,0;
+--menu-shadow-alpha: 0.3;
+--swiper-navigation-color: rgb(var(--color-foreground));
+--swiper-pagination-color : rgb(var(--color-foreground));
+--color-slider-arrows: 255, 255, 255;
+--color-pagination-bullet-active: 255, 255, 255;
+--color-badge-background: 255, 255, 255;
+--color-badge-text: 255, 255, 255;
+--color-badge-custom-background: 245, 245, 245;
+--color-badge-custom-text: 231, 231, 232;
+--color-pagination-bullet-dis: 109, 107, 107;
+--color-border-btn:  56, 54, 57;
+
+
+.product-card {
+	--color-overlay: 255, 255, 255;
+}
+{% comment %}
+{% if scheme.id == 'background-2' or forloop.index == 2 %}
+	--color-foreground-title: 0, 0, 0;
+	--color-foreground: 0, 0, 0;
+	--color-foreground-secondary: 0, 0, 0;
+	--color-background: 44, 44, 44;
+{% endif %}{% endcomment %}
+{% if scheme.id == 'background-4' or forloop.index == 4 %}
+	--color-background: 0, 0, 0;
+{% endif %}

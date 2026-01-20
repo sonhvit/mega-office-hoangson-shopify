@@ -1,0 +1,417 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  {% render 'section-margin' %}
+{% endstyle %}
+
+{% liquid
+  assign image_size = section.settings.height
+
+  case image_size
+    when 'square'
+      assign section_size = '100%'
+      assign slide_class = image_size
+    when 'landscape'
+      assign section_size = '56.25%'
+      assign slide_class = image_size
+    else
+      assign section_size = '133%'
+      assign slide_class = image_size
+  endcase
+%}
+
+<div
+  class="login-section-wrapper"
+>
+  {% style %}
+    #shopify-section-{{ section.id }} {
+      --image-height: {{ section_size }};
+    }
+  {% endstyle %}
+  <div class="customer register container {% if section.blocks.size > 0 %}customer--collage{% endif %}">
+    <div class="login__wrapper">
+      <div class="login__form color-{{ section.settings.color_scheme }} {% if section.settings.image == blank %} without-image  {% endif %}">
+        <div class="register__content">
+          <div class="page-header  page-header--{{ section.settings.text_align }}">
+            {% if section.settings.logo_image != blank %}
+              {% capture sizes %}
+                  (min-width: 1100px) 1920px, calc((100vw - 20px))
+                {% endcapture %}
+              {{
+                section.settings.logo_image
+                | image_url: width: 118
+                | image_tag:
+                  loading: 'lazy',
+                  sizes: sizes,
+                  height: 118,
+                  width: 118,
+                  widths: '360, 535, 720, 956',
+                  class: 'form--logo__image'
+              }}
+            {% endif %}
+            <div class="page-header__inner page-header__inner--{{ section.settings.text_align }}">
+              <h1 class="login__title h2">
+                {{ 'customer.register.title' | t }}
+              </h1>
+              {% if section.settings.text != blank %}
+                <p class="register__desc body-text">
+                  {{ section.settings.text }}
+                </p>
+              {% endif %}
+            </div>
+          </div>
+          {%- form 'create_customer', novalidate: 'novalidate' -%}
+            <div class="field">
+              <input
+                type="text"
+                name="customer[first_name]"
+                id="RegisterForm-FirstName"
+                {% if form.first_name %}
+                  value="{{ form.first_name }}"
+                {% endif %}
+                 spellcheck="false"
+                autocomplete="given-name"
+                aria-required="true"
+                placeholder=" "
+                 {% if form.errors contains 'first_name' %}
+                  aria-invalid="true"
+                  aria-describedby="RegisterForm-FirstName-error"
+                {% endif %}
+                required
+              >
+              <label for="RegisterForm-FirstName" class="input-label">
+                {{- 'customer.register.first_name' | t -}}
+              </label>
+                {%- if form.errors contains 'first_name' -%}
+                <span
+                  id="RegisterForm-FirstName-error"
+                  class="form__message body-small"
+                >
+                  {{ form.errors.translated_fields.first_name | capitalize }}
+                  {{ form.errors.messages.first_name }}.
+                </span>
+              {%- endif -%}
+            </div>
+            <div class="field">
+              <input
+                type="text"
+                name="customer[last_name]"
+                id="RegisterForm-LastName"
+                {% if form.last_name %}
+                  value="{{ form.last_name }}"
+                {% endif %}
+                 spellcheck="false"
+                autocomplete="family-name"
+                aria-required="true"
+                {% if form.errors contains 'last_name' %}
+                  aria-invalid="true"
+                  aria-describedby="RegisterForm-LastName-error"
+                {% endif %}
+                placeholder=" "
+                required
+              >
+              <label for="RegisterForm-LastName" class="input-label">
+                {{- 'customer.register.last_name' | t -}}
+              </label>
+              {%- if form.errors contains 'last_name' -%}
+                <span
+                  id="RegisterForm-LastName-error"
+                  class="form__message body-small"
+                >
+                  {{ form.errors.translated_fields.last_name | capitalize }}
+                  {{ form.errors.messages.last_name }}.
+                </span>
+              {%- endif -%}
+            </div>
+            <div class="field field--email">
+              <input
+                type="email"
+                name="customer[email]"
+                id="RegisterForm-email"
+                {% if form.email %}
+                  value="{{ form.email }}"
+                {% endif %}
+                spellcheck="false"
+                autocapitalize="off"
+                autocomplete="email"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                  aria-describedby="RegisterForm-email-error"
+                {% endif %}
+                placeholder=" "
+                required
+              >
+
+              <label for="RegisterForm-email" class="input-label">
+                {{- 'customer.register.email' | t -}}
+              </label>
+              {%- if form.errors contains 'email' -%}
+                <span
+                  id="RegisterForm-email-error"
+                  class="form__message body-small"
+                >
+                  {{ form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email }}.
+                </span>
+              {%- endif -%}
+            </div>
+            <div class="field field--pass">
+              <div class="button-pass-visibility">
+                {% render 'icon-eye' %}
+                {% render 'icon-eye-close' %}
+              </div>
+              <input
+                type="password"
+                name="customer[password]"
+                id="RegisterForm-password"
+                aria-required="true"
+                placeholder=" "
+                {% if form.errors contains 'password' %}
+                  aria-invalid="true"
+                  aria-describedby="RegisterForm-password-error"
+                {% endif %}
+                required
+              >
+              <label for="RegisterForm-password" class="input-label">
+                {{- 'customer.register.password' | t -}}
+              </label>
+              {%- if form.errors contains 'password' -%}
+                <span
+                  id="RegisterForm-password-error"
+                  class="form__message body-small"
+                >
+                  {{ form.errors.translated_fields.password | capitalize }}
+                  {{ form.errors.messages.password }}.
+                </span>
+              {%- endif -%}
+
+              {%- if form.errors contains 'form' -%}
+                <span
+                  id="RegisterForm-email-error"
+                  class="form__message body-small"
+                >
+                  {{ 'customer.login_page.customer_exist' | t }}
+                </span>
+              {%- endif -%}
+            </div>
+            {% if section.settings.confirm_text != blank %}
+              <p class="form-confirming_text extra-small-font form-confirming_text--left">
+                {{ section.settings.confirm_text }}
+              </p>
+            {% endif %}
+
+            <div class="login__buttons login__buttons--space-between">
+              <button
+                id="RegisterSubmit"
+                class="button button--primary register__create-acc focus-inset"
+              >
+                {{ 'customer.register.submit' | t }}
+              </button>
+
+              <div class="login__create-acc login__create-acc--center">
+                <span class="small-font">{{ 'customer.register.have_account' | t }}</span>
+                <a
+                  href="{{ routes.account_login_url }}"
+                  class="button button--simple button--arrow focus-inset"
+                >
+                  <span class=" go-to-btn small-font button-label">{{ 'customer.login_page.title' | t }}</span>
+                  {% render 'icon-button-arrow' %}
+                </a>
+              </div>
+            </div>
+          {%- endform -%}
+        </div>
+        {%- if section.settings.image != blank -%}
+          {% liquid
+            assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+          %}
+          <div class="form--image {{ slide_class }}">
+            <div
+              class="form--image__overlay"
+              style="opacity: {{ section.settings.overlay_opacity }}"
+            ></div>
+            {% capture sizes %}
+                (min-width: 1100px) 1920px, calc((100vw - 20px))
+              {% endcapture %}
+            {{
+              section.settings.image
+              | image_url: width: section.settings.image.width
+              | image_tag:
+                loading: 'lazy',
+                sizes: sizes,
+                height: image_height,
+                width: section.settings.image.width,
+                widths: '360, 535, 720, 956',
+                class: 'newsletter__image'
+            }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+    {% if section.blocks.size > 0 %}
+      {% render 'account-collage', section: section %}
+    {% endif %}
+  </div>
+</div>
+<script>
+  const form = document.getElementById('create_customer');
+  const button = document.getElementById('RegisterSubmit');
+
+  button.addEventListener('click', () => {
+    if (!form.checkValidity()) {
+      form.reportValidity();
+    }
+  });
+</script>
+{% schema %}
+{
+  "name": "t:sections.main-register.name",
+  "tag": "section",
+  "class": "spaced-section login-section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "background-2",
+      "label": "t:sections.all.color_scheme.label"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.label"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "label": "t:sections.all.overlay_opacity.label",
+      "default": 0.1
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "options": [
+        {
+          "value": "square",
+          "label": "t:sections.all.card.image_ratio_2.options__3.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:sections.all.card.image_ratio_2.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.all.card.image_ratio_2.options__2.label"
+        }
+      ],
+      "default": "landscape",
+      "label": "t:sections.all.aspect_ratio.label"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "default": "Join us for faster checkout, order tracking, and personalized offers.",
+      "label": "t:sections.all.text.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "t:sections.main-register.settings.logo_image.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "confirm_text",
+      "default": "By clicking on the “Sign Up” button, I confirm my agreement with the Privacy Policy and Terms of Use",
+      "label": "t:sections.main-register.settings.confirm_text.label"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "t:sections.all.text_align.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.text_align.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.all.text_align.options__2.label"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-margin.header.content"
+    },
+    {
+      "type": "select",
+      "id": "margin_top",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-margin.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-margin.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-margin.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-margin.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-margin.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-margin.options__6.label"
+        }
+      ],
+      "default": "s",
+      "label": "t:sections.all.section-margin.margin_top.label"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "no-indent",
+          "label": "t:sections.all.section-margin.options__1.label"
+        },
+        {
+          "value": "xs",
+          "label": "t:sections.all.section-margin.options__2.label"
+        },
+        {
+          "value": "s",
+          "label": "t:sections.all.section-margin.options__3.label"
+        },
+        {
+          "value": "m",
+          "label": "t:sections.all.section-margin.options__4.label"
+        },
+        {
+          "value": "l",
+          "label": "t:sections.all.section-margin.options__5.label"
+        },
+        {
+          "value": "xl",
+          "label": "t:sections.all.section-margin.options__6.label"
+        }
+      ],
+      "default": "s",
+      "label": "t:sections.all.section-margin.margin_bottom.label"
+    }
+  ]
+}
+{% endschema %}

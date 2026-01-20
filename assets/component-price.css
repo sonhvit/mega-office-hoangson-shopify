@@ -1,0 +1,108 @@
+.price-wrapper {
+  margin-top: 1.6rem;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  font-family: var(--font-price-card-family);
+  font-style: var(--font-prcie-card-style);
+  font-weight: var(--font-prcie-card-weight);
+  font-size: calc(var(--font-price-card-scale) * 0.8rem);
+  letter-spacing: calc(var(--font-price-card-letter-spacing) * 0.1);
+  color: rgb(var(--color-price-regular));
+}
+@media screen and (min-width: 1150px) {
+  .price {
+    font-size: calc(var(--font-price-card-scale) * 1rem);
+  }
+}
+.price-item--regular {
+  color: rgb(var(--color-price-regular));
+}
+.price-item--sale {
+  color: rgb(var(--color-price-after-sale));
+}
+.price--on-sale .price-item--regular {
+  text-decoration: line-through;
+  text-underline-offset: -0.4rem;
+  color: rgb(var(--color-price-before-sale));
+  text-decoration-color: rgb(var(--color-price-before-sale));
+  font-weight: var(--font-body-weight);
+  font-size: 14px;
+}
+.price--on-sale .price__sale {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 0.6rem;
+}
+
+.price.price--unavailable {
+  visibility: hidden;
+}
+
+.price dl {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.price dd {
+  margin: 0;
+}
+
+.price .price__last:last-of-type {
+  margin: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .price {
+    margin-bottom: 0;
+  }
+}
+.price--product {
+  font-size: 2rem;
+}
+@media screen and (min-width: 750px) {
+  .price--product {
+    font-size: 2.8rem;
+  }
+}
+.price--product.price--on-sale .price__compare,
+.price--product.price--on-sale .price-item--regular {
+  font-size: 1.6rem;
+  font-weight: var(--font-prcie-card-weight);
+  letter-spacing: -0.03em;
+}
+@media screen and (min-width: 750px) {
+  .price--product.price--on-sale .price__compare,
+.price--product.price--on-sale .price-item--regular {
+    font-size: 2.2rem;
+  }
+}
+
+.price--sold-out .price__availability,
+.price__regular {
+  display: block;
+}
+
+.price__sale,
+.price__availability,
+.price--on-sale .price__regular,
+.price--on-sale .price__availability,
+.price--no-compare .price__compare {
+  display: none;
+}
+
+.unit-price {
+  font-size: 1.1rem;
+  letter-spacing: 0.04rem;
+  line-height: 1.2;
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  color: rgb(var(--color-card-price-old));
+}

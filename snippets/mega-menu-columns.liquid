@@ -1,0 +1,168 @@
+{% for block in blocks %}
+	{% assign mega_menu_trigger = block.settings.mega_menu_trigger
+		| handle
+		| strip
+	%}
+	{% if link.handle == mega_menu_trigger and block.type == 'mega_menu' %}
+		<div class="header__mega-menu mega-menu mega-menu--columns mega-menu--columns-{{ block.settings.column_to_show }}  color-background-1">
+			<div class="header__mega-menu-wrapper container">
+				<div class="mega-menu__columns mega-menu__columns--{{ block.settings.column_to_show }}">
+					{% for i in (1..8) %}
+						{%- assign enable_column_setting = 'enable_column_' | append: i -%}
+						{%- assign heading_setting = 'heading_' | append: i -%}
+						{%- assign menu_setting = 'menu_' | append: i -%}
+						{% if block.settings[enable_column_setting] %}
+							<div class="mega-menu__column">
+								<div class="mega-menu__column-info mega-menu__column-info--only-heading">
+									{%- if block.settings[heading_setting] != blank -%}
+										<div class="mega-menu__column-heading">
+											{{ block.settings[heading_setting] }}
+										</div>
+									{%- endif -%}
+								</div>
+								{%- if block.settings[menu_setting] != blank -%}
+									<ul class="mega-menu__column-list list-unstyled" role="list">
+										{%- for link in block.settings[menu_setting].links -%}
+											<li class="mega-menu__column-list-item">
+												<a
+													href="{{ link.url }}"
+													class="mega-menu__column-list-link focus-inset small-font"
+													aria-disabled="true"
+													aria-label="{{ link.title | escape }}"
+												>
+													{{- link.title | escape -}}
+												</a>
+											</li>
+										{% endfor %}
+									</ul>
+								{%- endif -%}
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+				{% if block.settings.enable_promo_1 or block.settings.enable_promo_2 %}
+					<div class="mega-menu__promo">
+						{% if block.settings.enable_promo_1 %}
+							{% if block.settings.promo_link_1 != blank %}
+								<a href="{{ block.settings.promo_link_1 }}" class="mega-menu__promo-wrapper color-inverse mega-menu__promo-link unstyled-link{% if block.settings.promo_image_1 == blank %} mega-menu__promo-link-without-image{% endif %}">
+							{% else %}
+								<div class="mega-menu__promo-wrapper color-inverse">
+							{% endif %}
+								{% if block.settings.promo_heading_1 != blank
+									or block.settings.promo_logo_1 != blank
+								%}
+									<div class="mega-menu__promo-block">
+										{% if block.settings.promo_logo_1 != blank %}
+											<div class="promo_logo-wrapper">
+												{% liquid
+													assign image_height = block.settings.promo_logo_1.width | divided_by: block.settings.promo_logo_1.aspect_ratio
+												%}
+												{{
+													block.settings.promo_logo_1
+													| image_url: width: block.settings.promo_logo_1.width
+													| image_tag:
+														class: 'promo_logo promo_logo_1',
+														loading: 'lazy',
+														width: block.settings.promo_logo_1.width,
+														height: image_height,
+														sizes: '100vw',
+														widths: '55, 110, 220, 550'
+												}}
+											</div>
+										{% endif %}
+										{% if block.settings.promo_heading_1 != blank %}
+											<h5 class="mega-menu__promo-heading">
+												{{ block.settings.promo_heading_1 }}
+											</h5>
+										{% endif %}
+									</div>
+								{% endif %}
+								{%- if block.settings.promo_image_1 != blank -%}
+									<div class="promo_image-wrapper">
+										{% liquid
+											assign image_height = block.settings.promo_image_1.width | divided_by: block.settings.promo_image_1.aspect_ratio
+										%}
+										{{
+											block.settings.promo_image_1
+											| image_url: width: block.settings.promo_image_1.width
+											| image_tag:
+												class: 'promo_image promo_image_1',
+												loading: 'lazy',
+												width: block.settings.promo_image_1.width,
+												height: image_height,
+												sizes: '100vw',
+												widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000'
+										}}
+									</div>
+								{%- endif -%}
+							{% if block.settings.promo_link_1 != blank %}
+								</a>
+							{% else %}
+								</div>
+							{% endif %}
+						{% endif %}
+						{%- if block.settings.enable_promo_2 -%}
+							{% if block.settings.promo_link_2 != blank %}
+								<a href="{{ block.settings.promo_link_2 }}" class="mega-menu__promo-wrapper color-inverse mega-menu__promo-link unstyled-link{% if block.settings.promo_image_2 == blank %} mega-menu__promo-link-without-image{% endif %}">
+							{% else %}
+								<div class="mega-menu__promo-wrapper color-inverse">
+							{% endif %}
+								{% if block.settings.promo_heading_2 != blank
+									or block.settings.promo_logo_2 != blank
+								%}
+									<div class="mega-menu__promo-block">
+										{% if block.settings.promo_logo_2 != blank %}
+											<div class="promo_logo-wrapper">
+												{% liquid
+													assign image_height = block.settings.promo_logo_2.width | divided_by: block.settings.promo_logo_2.aspect_ratio
+												%}
+												{{
+													block.settings.promo_logo_2
+													| image_url: width: block.settings.promo_logo_2.width
+													| image_tag:
+														class: 'promo_logo promo_logo_2',
+														loading: 'lazy',
+														width: block.settings.promo_logo_2.width,
+														height: image_height,
+														sizes: '100vw',
+														widths: '55, 110, 220, 550'
+												}}
+											</div>
+										{% endif %}
+										{% if block.settings.promo_heading_2 != blank %}
+											<h5 class="mega-menu__promo-heading">
+												{{ block.settings.promo_heading_2 }}
+											</h5>
+										{% endif %}
+									</div>
+								{% endif %}
+								{% if block.settings.promo_image_2 != blank %}
+									<div class="promo_image-wrapper">
+										{% liquid
+											assign image_height_2 = block.settings.promo_image_2.width | divided_by: block.settings.promo_image_2.aspect_ratio
+										%}
+										{{
+											block.settings.promo_image_2
+											| image_url: width: block.settings.promo_image_2.width
+											| image_tag:
+												class: 'promo_image promo_image_2',
+												loading: 'lazy',
+												width: block.settings.promo_image_2.width,
+												height: image_height_2,
+												sizes: '100vw',
+												widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000'
+										}}
+									</div>
+								{% endif %}
+							{% if block.settings.promo_link_2 != blank %}
+								</a>
+							{% else %}
+								</div>
+							{% endif %}
+						{%- endif -%}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	{% endif %}
+{% endfor %}

@@ -1,0 +1,298 @@
+{{ 'grid-card-with-ticker.css' | asset_url | stylesheet_tag }}
+{{ 'section-countdown.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'countdown.js' | asset_url }}" defer="defer"></script>
+
+{% liquid
+	assign timezone = 'now' | date: '%Z' | plus: 0 | append: ''
+
+	if timezone.size > 1
+		assign timezone = 'now' | date: '%Z' | divided_by: 100 | times: 3600.0 | plus: 1800
+	else
+		assign timezone = 'now' | date: '%Z' | minus: 1 | times: 3600.0
+	endif
+
+	assign date_merge = block.settings.date_picker | append: '-' | append: block.settings.time_picker | append: ':00'
+	assign date_now = 'now' | date: '%s' | minus: 0
+	assign date_settings = date_merge | date: '%s' | minus: 0
+
+	if date_now < date_settings
+		assign distance = date_settings | minus: date_now
+		assign days = distance | divided_by: 3600 | divided_by: 24 | floor | append: ''
+		assign hours = distance | modulo: 86400 | divided_by: 3600 | floor | append: ''
+		assign minutes = distance | modulo: 3600 | divided_by: 60 | floor | append: ''
+		assign seconds = distance | modulo: 60 | floor | append: ''
+	else
+		assign days = '00'
+		assign hours = '00'
+		assign minutes = '00'
+		assign seconds = '00'
+	endif
+%}
+
+{% liquid
+	assign card_image = block.settings.image
+	assign overlay_opacity = block.settings.overlay_opacity
+	assign overlay_opacity_mobile = block.settings.overlay_opacity_mobile
+	assign title = block.settings.heading
+	assign description = block.settings.description
+	assign heading_size = block.settings.heading_size
+	assign button_label = block.settings.button_label
+	assign first_ticker_speed = block.settings.first_ticker_speed
+	assign second_ticker_speed = block.settings.second_ticker_speed
+%}
+
+{% liquid
+	assign image_size = image_size
+
+	case image_size
+		when 'square'
+			assign section_size = '100%'
+			assign slide_class = image_size
+		when 'landscape'
+			assign section_size = '72.414%'
+			assign slide_class = image_size
+		else
+			assign section_size = '133%'
+			assign slide_class = image_size
+	endcase
+%}
+<div
+	style="
+		--image-height: {{ section_size }}; --padding: {{ block.settings.card_padding }}px;  --first-ticker-speed : {{ first_ticker_speed }}s;
+		--second-ticker-speed : {{ second_ticker_speed }}s;
+	"
+	class="banner-grid__card grid-card-ticker grid-card-ticker-{{ block.id }} color-{{ block.settings.color_scheme }} full_image_card "
+>
+	<div class="grid-card-ticker__details">
+		<div class="grid-card-ticker__details--container">
+			<div class="grid-card-ticker__details--container__top">
+				{% if block.settings.small_badege_text != blank %}
+					<div
+						class="grid-card-ticker__details__badge"
+						style="background: {{ block.settings.small_badge_bg_color }}"
+					>
+						{%- if block.settings.small_badge_image != blank -%}
+							{{
+								block.settings.small_badge_image
+								| image_url: width: block.settings.small_badge_image.width
+								| image_tag:
+									loading: 'lazy',
+									sizes: '100vw',
+									widths: '550, 720',
+									height: 16,
+									width: 16,
+									class: 'grid-card-ticker__details__badge_image'
+							}}
+						{% endif %}
+						{% if block.settings.small_badege_text != blank %}
+							<span
+								class="grid-card-ticker__details__badge_text"
+								style="color: {{ block.settings.small_badge_text_color }}"
+							>
+								{{ block.settings.small_badege_text }}
+							</span>
+						{% endif %}
+					</div>
+				{% endif %}
+				{% if title != blank %}
+					<h3 class="grid-card-ticker__details__heading  {{ heading_size }}">
+						{{ title }}
+					</h3>
+				{% endif %}
+				{% if description != blank %}
+					<p class="grid-card-ticker__details__desc">{{ description }}</p>
+				{% endif %}
+			</div>
+			{% if block.settings.enable_countdown %}
+				<countdown-timer
+					class="countdown js-countdown countdown-section js-countdown-{{ section.id }}"
+					data-date="{{ block.settings.date_picker }}"
+					data-time="{{ block.settings.time_picker }}"
+					data-enable-mock-timer="{{ block.settings.enable_mock_timer | default: false }}"
+					data-enable-mock-picker-day="{{ block.settings.mock_date_picker_day | default: 2 }}"
+					data-enable-mock-picker-hours="{{ block.settings.mock_date_picker_hours | default: 3 }}"
+					data-completed="{{ block.settings.completed_countdown }}"
+				>
+					<div class="countdown__container">
+						{%- if block.settings.date_picker != blank
+							or block.settings.countdown_heading
+						-%}
+							<div>
+								{%- if block.settings.date_picker != blank -%}
+									<div class="countdown__main">
+										<div class="countdown__block">
+											<div class="countdown__block_num countdown-block-font">
+												<span class="countdown_block_days h3">
+													{% if days.size > 1 %}
+														{{ days }}
+													{% else %}
+														{{ 0 | append: days }}
+													{% endif %}
+												</span>
+												<span class="extra-small-font">
+													{{- 'general.countdown.days' | t }}
+												</span>
+											</div>
+										</div>
+										{% render 'icon-colon' %}
+										<div class="countdown__block">
+											<div class="countdown__block_num countdown-block-font">
+												<span class="countdown_block_hours h3">
+													{% if hours.size > 1 %}
+														{{ hours }}
+													{% else %}
+														{{ 0 | append: hours }}
+													{% endif %}
+												</span>
+												<span class="extra-small-font">
+													{{- 'general.countdown.hours' | t -}}
+												</span>
+											</div>
+										</div>
+										{% render 'icon-colon' %}
+										<div class="countdown__block">
+											<div class="countdown__block_num countdown-block-font">
+												<span class="countdown_block_minutes h3">
+													{% if minutes.size > 1 %}
+														{{ minutes }}
+													{% else %}
+														{{ 0 | append: minutes }}
+													{% endif %}
+												</span>
+												<span class="extra-small-font">
+													{{- 'general.countdown.minutes' | t -}}
+												</span>
+											</div>
+										</div>
+										{% render 'icon-colon' %}
+										<div class="countdown__block">
+											<div class="countdown__block_num countdown-block-font">
+												<span class="countdown_block_seconds h3">
+													{% if seconds.size > 1 %}
+														{{ seconds }}
+													{% else %}
+														{{ 0 | append: seconds }}
+													{% endif %}
+												</span>
+												<span class="extra-small-font">
+													{{- 'general.countdown.seconds' | t -}}
+												</span>
+											</div>
+										</div>
+									</div>
+								{%- endif -%}
+								{% if block.settings.countdown_heading %}
+									<div class="countdown__end-info">
+										<h3 class="h3 countdown__end-info-text">
+											{{ block.settings.countdown_heading }}
+										</h3>
+									</div>
+								{% endif %}
+							</div>
+						{%- endif -%}
+					</div>
+				</countdown-timer>
+			{% endif %}
+			{% if button_label != blank %}
+				{% render 'button', layout: block %}
+			{% endif %}
+		</div>
+		{% if block.settings.first_ticker_heading != blank
+			or block.settings.second_ticker_heading != blank
+		%}
+			<div class="tickers_area">
+				<div class="ticker ticker_first ">
+					<div class="marquee ticker_container">
+						{%- if block.settings.first_ticker_heading != blank -%}
+							<div
+								class="marquee-content {% if block.settings.first_ticker_enable %} marquee-content-paused {% endif %}"
+								style="background:{{ block.settings.first_ticker_background_color }}"
+							>
+								{%- if block.settings.first_ticker_heading != blank -%}
+									{% for i in (1..50) %}
+										<div class="marquee-tag">
+											<div class="ticker__title">
+												<h2
+													class="ticker_heading large-font"
+													style="color:{{ block.settings.first_ticker_heading_color }}"
+												>
+													{{ block.settings.first_ticker_heading }}
+												</h2>
+											</div>
+										</div>
+									{% endfor %}
+								{%- endif -%}
+							</div>
+						{%- endif -%}
+					</div>
+				</div>
+				{%- if block.settings.second_ticker_heading != blank -%}
+					<div class="ticker ticker_second">
+						<div class="marquee ticker_container">
+							<div
+								class="marquee-content {% if block.settings.second_ticker_enable %} marquee-content-paused {% endif %}"
+								style="background:{{ block.settings.second_ticker_background_color }}"
+							>
+								{%- if block.settings.second_ticker_heading != blank -%}
+									{% for i in (1..50) %}
+										<div class="marquee-tag">
+											<div class="ticker__title">
+												<h2
+													class="ticker_heading large-font"
+													style="color:{{ block.settings.second_ticker_heading_color }}"
+												>
+													{{ block.settings.second_ticker_heading }}
+												</h2>
+											</div>
+										</div>
+									{% endfor %}
+								{%- endif -%}
+							</div>
+						</div>
+					</div>
+				{%- endif -%}
+			</div>
+		{% endif %}
+	</div>
+	{%- if card_image != blank -%}
+		{% liquid
+			assign image_height = card_image.width | divided_by: card_image.aspect_ratio
+		%}
+		{% style %}
+			.grid-card-ticker-{{ block.id }} {
+				--overlay-opacity-card-ticker: {{ overlay_opacity }};
+				--overlay-opacity-mobile-card-ticker: {{ overlay_opacity_mobile }}
+			}
+		{% endstyle %}
+		<div class="grid-card-ticker__image {{ slide_class }}">
+			{% if block.settings.overlay_link != blank %}
+				<a
+					class="grid-card-ticker__image__overlay grid-card-ticker__image__overlay--link overlay-link-hover"
+					href="{{ block.settings.overlay_link }}"
+					style="opacity: 0"
+				>
+					<span class="visibility-hidden">
+						{{- block.settings.overlay_link -}}
+					</span>
+				</a>
+			{% endif %}
+			<div
+				class="grid-card-ticker__image__overlay"
+			></div>
+			{%- if card_image != blank -%}
+				{{
+					card_image
+					| image_url: width: card_image.width
+					| image_tag:
+						loading: 'lazy',
+						sizes: '100vw',
+						widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000',
+						height: image_height,
+						width: card_image.width,
+						class: 'overlay-link-image-hover'
+				}}
+			{%- endif -%}
+		</div>
+	{%- endif -%}
+</div>

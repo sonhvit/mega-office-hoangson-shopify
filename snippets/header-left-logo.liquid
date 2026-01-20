@@ -1,0 +1,101 @@
+{% liquid
+	assign has_shop_all_and_search = false
+
+	if section.settings.shop_all_show_button and section.settings.enable_search
+		assign has_shop_all_and_search = true
+	endif
+%}
+
+<div class="header__top_menu header-row">
+	<div class="header-row__overlay"></div>
+	{% comment %}{%- if section.settings.menu != blank -%}{% endcomment %}
+	{% render 'header-drawer', section: section %}
+	{% comment %}{%- endif -%}{% endcomment %}
+
+	{% render 'header-logo', tag: 'h1' %}
+	{%- if has_shop_all_and_search -%}
+		<div class="header-shop-all-search-wrapper" id="header-mega-menu-root">
+			{% render 'button',
+				btn_label: section.settings.shop_all_button_label,
+				btn_style: section.settings.shop_all_button_style,
+				btn_link: section.settings.shop_all_button_link,
+				shop_all: section.settings.shop_all_use_for_mega_menu,
+				shop_all_show_icon: section.settings.shop_all_button_show_icon,
+				shop_all_enable_mobile: section.settings.shop_all_show_button_mobile,
+				class: 'header-shop-all-button'
+			%}
+
+			{% render 'header-search', section: section %}
+		</div>
+	{%- else -%}
+		{%- if section.settings.shop_all_show_button -%}
+			<div class="header-shop-all-search-wrapper" id="header-mega-menu-root">
+				{% render 'button',
+					btn_label: section.settings.shop_all_button_label,
+					btn_style: section.settings.shop_all_button_style,
+					btn_link: section.settings.shop_all_button_link,
+					shop_all: section.settings.shop_all_use_for_mega_menu,
+					shop_all_show_icon: section.settings.shop_all_button_show_icon,
+					shop_all_enable_mobile: section.settings.shop_all_show_button_mobile,
+					class: 'header-shop-all-button'
+				%}
+			</div>
+		{%- endif -%}
+
+		{%- if section.settings.enable_search -%}
+			<div class="header-shop-all-search-wrapper" id="header-mega-menu-root">
+				{% render 'header-search', section: section %}
+			</div>
+		{%- endif -%}
+	{%- endif -%}
+	<div class="header__column">
+		<div class="header__icons">
+			{% comment %}
+				{%- if section.settings.enable_search -%}
+					{% render 'header-search', section: section %}
+				{%- endif -%}
+			{% endcomment %}
+			{%- if shop.customer_accounts_enabled -%}
+				{% render 'header-account' %}
+			{%- endif -%}
+
+			{% render 'header-cart' %}
+		</div>
+	</div>
+</div>
+{%
+	if section.settings.menu != blank
+	or section.settings.toolbar_items_position == 'bottom'
+%}
+	{% if section.settings.hide_desktop_menu != true
+		or section.settings.toolbar_items_position == 'bottom'
+	%}
+		<div class="header__bottom_menu">
+			{% render 'header-inline-menu', section: section %}
+
+			{% if section.settings.toolbar_items_position == 'bottom' %}
+				{%- if section.settings.enable_country_selector
+					or section.settings.enable_language_selector
+					or section.settings.enable_color_scheme
+				-%}
+					<div class="header__bottom_menu-left">
+						{%- if section.settings.enable_country_selector
+							and localization.available_countries.size > 1
+						-%}
+							{% render 'header-localization' %}
+						{%- endif -%}
+
+						{%- if section.settings.enable_language_selector
+							and localization.available_languages.size > 1
+						-%}
+							{% render 'header-language' %}
+						{%- endif -%}
+						{% if section.settings.enable_color_scheme %}
+							{% render 'color-scheme' %}
+						{% endif %}
+					</div>
+				{% endif %}
+			{% endif %}
+		</div>
+	{% endif %}
+{% endif %}
