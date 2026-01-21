@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'custom-font';
+  src: url('../../../assets/custom-font.eot') format('embedded-opentype'),
+    url('../../../assets/custom-font.woff2') format('woff2'),
+    url('../../../assets/custom-font.woff') format('woff'),
+    url('../../../assets/custom-font.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'custom-font-bold';
+  src: url('../../../assets/custom-font.eot') format('embedded-opentype'),
+    url('../../../assets/custom-font.woff2') format('woff2'),
+    url('../../../assets/custom-font.woff') format('woff'),
+    url('../../../assets/custom-font.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+// scss variables
+$font-body: 'custom-font', sans-serif; // 400
+$font-body-bold: 'custom-font-bold', sans-serif; // 600
+
+// css variables
+:root {
+  --font-body: 'custom-font', sans-serif; // 400
+  --font-body-bold: 'custom-font-bold', sans-serif; // 600
+}

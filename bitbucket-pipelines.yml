@@ -1,0 +1,103 @@
+# Set the default docker image to use for the build
+# And login to Docker Hub
+image:
+  name: moustacherepublic1/mr-shopify-cli:v4.0.0
+  email: developer+dockerhub@moustacherepublic.com
+  username: $DOCKER_HUB_USER
+  password: $DOCKER_HUB_API_KEY
+
+# Define the pipeline steps
+definitions:
+
+  steps:
+
+    # Linting
+    - step: &linting
+        name: Linting
+        services:
+          - docker
+        caches:
+          - node
+          - docker
+        script:
+          - npm ci
+          - bun run lint:js
+
+    # Staging
+    - step: &deploymentStaging
+        name: Staging
+        deployment: staging
+        services:
+          - docker
+        caches:
+          - node
+          - docker
+        script:
+            - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID && \
+              aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY && \
+              aws configure set region $AWS_REGION
+            # Install dependencies (using ci for deterministic builds)
+            - npm ci
+            # Using bun as a runner
+            - bun run get_env
+            - bun run build:production
+            - bun run push:staging
+
+    # UAT
+    - step: &deploymentUat
+        name: UAT
+        deployment: uat
+        services:
+          - docker
+        caches:
+          - node
+          - docker
+        script:
+            - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID && \
+              aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY && \
+              aws configure set region $AWS_REGION
+            # Install dependencies (using ci for deterministic builds)
+            - npm ci
+            # Using bun as a runner
+            - bun run get_env
+            - bun run build:production
+            - bun run push:uat
+
+    # Production
+    - step: &deploymentProduction
+        name: Production
+        deployment: production
+        trigger: manual
+        services:
+          - docker
+        caches:
+          - node
+          - docker
+        script:
+            - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID && \
+              aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY && \
+              aws configure set region $AWS_REGION
+            # Install dependencies (using ci for deterministic builds)
+            - npm ci
+            # Using bun as a runner
+            - bun run get_env
+            - bun run build:production
+            - bun run push:production
+
+pipelines:
+  branches:
+    # Staging/UAT Theme deployments
+    staging:
+      - step: *deploymentStaging
+      - step: *deploymentUat
+      
+    # Production Theme deployments
+    release/*:
+      - step:
+          name: "Require Manual Approval"
+          script:
+            - echo "Approval required..."
+      - step: *deploymentProduction
+  pull-requests:
+    "**":
+      - step: *linting

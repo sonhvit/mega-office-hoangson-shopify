@@ -1,0 +1,61 @@
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6{
+  font-family: var(--font-heading);
+  font-style: normal;
+  line-height: 100%;
+  font-weight: 500;
+}
+
+.p1-medium,
+.p2-medium {
+  --font-heading-transform: initial;
+}
+
+.p2-medium {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: -0.12px;
+  @include respond-to("medium-up") {
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: -0.14px;
+  }
+}
+
+.p1-medium {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: -0.14px;
+  @include respond-to("medium-up") {
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: -0.16px;
+  }
+}
+
+.p1-medium-semibold {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 120%;
+  letter-spacing: -0.14px;
+  @include respond-to("medium-up") {
+    font-size: 16px;
+    letter-spacing: -0.16px;
+  }
+}
+
+.text-base p {
+  @extend .p1-medium;
+}

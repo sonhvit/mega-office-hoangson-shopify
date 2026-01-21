@@ -1,0 +1,68 @@
+{
+  "name": "mega-office-supplies",
+  "version": "1.0.0",
+  "description": "Mega Office Supplies Shopify Store",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "node .husky/install.mjs",
+    "build": "webpack",
+    "eslint": "./node_modules/.bin/eslint",
+    "shopify": "./node_modules/.bin/shopify",
+    "get_env": "aws s3 cp s3://mr-configuration-settings/shopify/mega-office-supplies/shopify.theme.toml shopify.theme.toml",
+    "format:js": "prettier ./src/js/**/*.js --write",
+    "start": "npm-run-all --parallel dev build:watch lint:watch",
+    "dev": "shopify theme dev --environment development",
+    "build:watch": "cross-env NODE_ENV=development webpack --watch",
+    "build:development": "cross-env NODE_ENV=development webpack",
+    "build:production": "cross-env NODE_ENV=production webpack",
+    "lint:js": "eslint --color ./src/js",
+    "lint:watch": "onchange './src/js/**/*.js' -- npm-run-all --sequential lint:js",
+    "push:staging": "shopify theme push --environment staging",
+    "push:uat": "shopify theme push --environment uat",
+    "push:production": "shopify theme push --environment production"
+  },
+  "author": "MR",
+  "private": true,
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "^7.13.5",
+    "@shopify/cli": "^3.82.0",
+    "@shopify/prettier-plugin-liquid": "^1.10.0",
+    "babel-loader": "^10.0.0",
+    "cross-env": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "dotenv-webpack": "^8.1.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "file-loader": "^6.2.0",
+    "glob": "^11.0.3",
+    "json-loader": "^0.5.7",
+    "lint-staged": "^16.2.0",
+    "mini-css-extract-plugin": "^2.7.2",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "path": "^0.12.7",
+    "remove": "^0.1.5",
+    "sass": "^1.93.2",
+    "sass-loader": "^16.0.5",
+    "source-map-loader": "^5.0.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.21.2",
+    "webpack-cli": "^6.0.1",
+    "webpack-fix-style-only-entries": "^0.6.1"
+  },
+  "devDependencies": {
+    "husky": "^9.0.11",
+    "prettier": "^3.2.5"
+  },
+  "lint-staged": {
+    "./src/js/**/*.js": [
+      "prettier --write"
+    ],
+    "./src/scss/**/*.scss": [
+      "prettier --write"
+    ]
+  }
+}

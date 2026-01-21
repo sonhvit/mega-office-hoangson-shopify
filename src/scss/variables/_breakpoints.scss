@@ -1,0 +1,48 @@
+// Breakpoint values
+$grid-small: 375px;
+$grid-medium: 768px;
+$grid-large: 1024px;
+$grid-xlarge: 1440px;
+
+// CSS custom properties
+:root {
+  --grid-small: #{$grid-small};
+  --grid-medium: #{$grid-medium};
+  --grid-large: #{$grid-large};
+  --grid-xlarge: #{$grid-xlarge};
+}
+
+// Breakpoint map
+$breakpoints: (
+  'small': '(min-width: #{$grid-small + 1px}) and (max-width: #{$grid-medium})',
+  'small-down': '(max-width: #{$grid-small})',
+  'small-up': '(min-width: #{$grid-small + 1px})',
+
+  'medium': '(min-width: #{$grid-medium + 1px}) and (max-width: #{$grid-large})',
+  'medium-down': '(max-width: #{$grid-medium})',
+  'medium-up': '(min-width: #{$grid-medium + 1px})',
+
+  'large': '(min-width: #{$grid-large + 1px}) and (max-width: #{$grid-xlarge})',
+  'large-down': '(max-width: #{$grid-large})',
+  'large-up': '(min-width: #{$grid-large + 1px})',
+
+  'xlarge': '(min-width: #{$grid-xlarge + 1px})',
+  'xlarge-down': '(max-width: #{$grid-xlarge})',
+  'xlarge-up': '(min-width: #{$grid-xlarge + 1px})',
+);
+
+// Media query mixin
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media only screen and #{map-get($breakpoints, $breakpoint)} {
+      @content;
+    }
+  } @else {
+    @warn 'Unknown breakpoint: #{$breakpoint}';
+  }
+}
+
+// Usage example:
+// @include respond-to('large-down') {
+//   margin: 16px auto;
+// }

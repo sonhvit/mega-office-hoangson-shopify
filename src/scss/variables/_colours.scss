@@ -1,0 +1,35 @@
+// Primary
+$colour-black: #1b1b1e;
+$colour-white: #ffffff;
+$colour-off-white: #f5f5f5;
+$colour-red: #9c0411;
+$colour-warrior: $colour-red;
+$colour-brown: #b78d3a;
+$colour-gladiator: $colour-brown;
+$colour-black-rgb: 27, 27, 30;
+
+// Secondary
+$colour-green: #049c13;
+$colour-in-stock: $colour-green;
+$colour-orange: #dd8820;
+$colour-low-stock: $colour-orange;
+$colour-grey: #888889;
+$colour-out-stock: $colour-grey;
+
+// CSS Variables
+:root {
+  --colour-black: #{$colour-black};
+  --colour-black-rgb: #{$colour-black-rgb};
+  --colour-white: #{$colour-white};
+  --colour-off-white: #{$colour-off-white};
+  --colour-red: #{$colour-red};
+  --colour-warrior: #{$colour-warrior};
+  --colour-brown: #{$colour-brown};
+  --colour-gladiator: #{$colour-gladiator};
+  --colour-green: #{$colour-green};
+  --colour-in-stock: #{$colour-in-stock};
+  --colour-orange: #{$colour-orange};
+  --colour-low-stock: #{$colour-low-stock};
+  --colour-grey: #{$colour-grey};
+  --colour-out-stock: #{$colour-out-stock};
+}
