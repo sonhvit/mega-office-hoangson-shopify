@@ -1029,6 +1029,7 @@
         "color_scheme": "background-2",
         "color_scheme_mobile": "",
         "image_variant": "static",
+        "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
         "overlay_opacity": 0.1,
         "overlay_opacity_mobile": 0.1,
         "height": "landscape",
