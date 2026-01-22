@@ -505,6 +505,7 @@
         "button_label": "Shop All",
         "button_link": "",
         "button_style": "tertiary",
+        "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
         "overlay_opacity": 0,
         "heading_collection": "Sound Without Compromise",
         "description_collection": "Turn up the sound, turn down the price.",
@@ -544,54 +545,69 @@
         "logo_fBpVkD": {
           "type": "logo",
           "settings": {
+            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
             "logo_width": 90
           }
         },
-        "logo_7h4HbW": {
+        "logo_89fjff": {
           "type": "logo",
           "settings": {
-            "logo_width": 120
+            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
+            "logo_width": 90
           }
         },
-        "logo_UxGLw7": {
+        "logo_BUgqwd": {
           "type": "logo",
           "settings": {
-            "logo_width": 110
+            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
+            "logo_width": 90
           }
         },
-        "logo_zDCecy": {
+        "logo_XhnK4f": {
           "type": "logo",
           "settings": {
-            "logo_width": 95
+            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
+            "logo_width": 90
           }
         },
-        "logo_AEJLkn": {
+        "logo_beXTYA": {
           "type": "logo",
           "settings": {
-            "logo_width": 95
+            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
+            "logo_width": 90
           }
         },
-        "logo_dc6XH4": {
+        "logo_RPHHwN": {
           "type": "logo",
           "settings": {
-            "logo_width": 95
+            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
+            "logo_width": 90
           }
         },
-        "logo_qxLR9L": {
+        "logo_4rTzbz": {
           "type": "logo",
           "settings": {
+            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
+            "logo_width": 90
+          }
+        },
+        "logo_fGb6NG": {
+          "type": "logo",
+          "settings": {
+            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
             "logo_width": 90
           }
         }
       },
       "block_order": [
         "logo_fBpVkD",
-        "logo_7h4HbW",
-        "logo_UxGLw7",
-        "logo_zDCecy",
-        "logo_AEJLkn",
-        "logo_dc6XH4",
-        "logo_qxLR9L"
+        "logo_89fjff",
+        "logo_BUgqwd",
+        "logo_XhnK4f",
+        "logo_beXTYA",
+        "logo_RPHHwN",
+        "logo_4rTzbz",
+        "logo_fGb6NG"
       ],
       "name": "t:sections.logo-list.name",
       "settings": {
@@ -617,6 +633,7 @@
           "type": "card_with_copy",
           "settings": {
             "color_scheme": "background-3",
+            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
             "card_padding": "40",
             "overlay_opacity": 0.2,
             "overlay_opacity_mobile": 0.2,
@@ -649,6 +666,7 @@
           "settings": {
             "color_scheme": "",
             "color_scheme_mobile": "",
+            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
             "heading_position": "top",
             "overlay_opacity": 0,
             "overlay_opacity_mobile": 0.2,
@@ -670,6 +688,7 @@
           "settings": {
             "color_scheme": "",
             "color_scheme_mobile": "",
+            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
             "heading_position": "top",
             "overlay_opacity": 0,
             "overlay_opacity_mobile": 0.2,
@@ -690,6 +709,7 @@
           "type": "card_horizontal",
           "settings": {
             "color_scheme": "",
+            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
             "full_image": true,
             "card_padding": "20",
             "overlay_opacity": 0,
@@ -801,6 +821,8 @@
         "show_inventory": true,
         "show_desc": false,
         "show_background_image": true,
+        "background_image_desktop": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
+        "background_image_mobile": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
         "background_image_overlay_opacity": 0.5,
         "margin_top": "no-indent",
         "margin_bottom": "l"
