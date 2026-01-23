@@ -1,0 +1,131 @@
+.mos-rich-text {
+  margin: auto;
+  text-align: center;
+}
+.mos-rich-text--align-left {
+  text-align: left;
+}
+.mos-rich-text--align-left .mos-rich-text__heading,
+.mos-rich-text--align-left .mos-rich-text__text {
+  margin-right: auto;
+}
+.mos-rich-text--align-right {
+  text-align: left;
+}
+.mos-rich-text--align-right .mos-rich-text__heading,
+.mos-rich-text--align-right .mos-rich-text__text {
+  margin-left: auto;
+}
+.mos-rich-text--align-right .mos-rich-text__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+@media screen and (min-width: 750px) {
+  .mos-rich-text--align-right .mos-rich-text__text ol,
+.mos-rich-text--align-right .mos-rich-text__text ul {
+    width: max-content;
+    max-width: 100%;
+  }
+}
+.mos-rich-text--align-right .mos-rich-text__text ol > li,
+.mos-rich-text--align-right .mos-rich-text__text ul > li {
+  padding-left: 1.4rem;
+}
+@media screen and (min-width: 576px) {
+  .mos-rich-text--align-right {
+    text-align: right;
+  }
+}
+.mos-rich-text--align-center .mos-rich-text__heading,
+.mos-rich-text--align-center .mos-rich-text__text {
+  margin-inline: auto;
+}
+.mos-rich-text--align-center .mos-rich-text__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+}
+.mos-rich-text--align-center .mos-rich-text__text p{
+  line-height: 1.14;
+}
+@media screen and (min-width: 750px) {
+  .mos-rich-text--align-center .mos-rich-text__text p{
+    line-height: 1.2;
+  }
+  .mos-rich-text--align-center .mos-rich-text__text ol,
+.mos-rich-text--align-center .mos-rich-text__text ul {
+    width: max-content;
+    max-width: 100%;
+  }
+}
+.mos-rich-text--align-center .mos-rich-text__text ol > li,
+.mos-rich-text--align-center .mos-rich-text__text ul > li {
+  padding-left: 1.4rem;
+}
+.mos-rich-text--align-center {
+  text-align: center;
+}
+.mos-rich-text__heading {
+  max-width: 101rem;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+@media screen and (max-width: 576px) {
+  .mos-rich-text__heading {
+    font-size: 18px;
+    letter-spacing: 0px;
+  }
+}
+.mos-rich-text__subheading {
+  display: block;
+}
+.mos-rich-text__text * {
+  color: rgb(var(--color-foreground-secondary));
+}
+.mos-rich-text__text{
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 400;
+  max-width: 878px;
+}
+@media(min-width: 750px) {
+  .mos-rich-text__text{
+    font-size: 14px;
+  }
+}
+.mos-rich-text__text p a{
+  font-weight: 600;
+}
+.mos-rich-text--full-width {
+  max-width: initial;
+  width: 100%;
+}
+.mos-rich-text:not(.mos-rich-text--full-width) .mos-rich-text__blocks {
+  border-radius: 0.4rem;
+  padding-inline: 2rem;
+}
+@media screen and (min-width: 1150px) {
+  .mos-rich-text:not(.mos-rich-text--full-width) .mos-rich-text__blocks {
+    padding-inline: 4rem;
+  }
+}
+.mos-rich-text__blocks {
+  margin: auto;
+}
+.mos-rich-text__blocks > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.mos-rich-text__blocks * {
+  overflow-wrap: break-word;
+}
+.mos-rich-text__blocks > * + * {
+  margin-top: 1.5rem;
+}
+.mos-rich-text__blocks > * + a {
+  margin-top: 2.4rem;
+}
