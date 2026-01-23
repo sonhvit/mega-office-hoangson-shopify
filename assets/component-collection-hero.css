@@ -7,6 +7,32 @@
   flex-direction: column;
   border-radius: var(--border-radius-large);
 }
+.collection-hero-content .page-header .title--page{
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  line-height: 1.125;
+}
+.collection-hero__description.rte p{
+  color: #666666;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+}
+.collection-hero .breadcrumb a{
+  color: #666;  
+}
+.collection-hero .breadcrumb__delimiter{
+  margin-inline: 9px;
+}
+@media(min-width: 1200px){
+  .collection-hero>.container{
+    padding: 0 58px;
+  }
+  .collection-hero__image-wrapper{
+    padding-left: 9px;
+  }
+}
 @media screen and (min-width: 750px) {
   .collection-hero__wrapper {
     flex-direction: row;
@@ -22,7 +48,6 @@
   gap: 0.8rem;
   flex: 1;
   max-width: 50rem;
-  padding: 3.2rem;
 }
 @media screen and (min-width: 750px) {
   .collection-hero__text-wrapper {
@@ -33,7 +58,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.8rem;
+  gap: 8px;
+  flex: 1;
+  margin-bottom: 36px;
 }
 .collection-hero__text-wrapper .page-header {
   margin-bottom: 0;
@@ -50,13 +77,39 @@
 .collection-hero__description.rte *:last-child {
   margin-bottom: 0;
 }
-.collection-hero__description.rte *:not(a) {
-  color: inherit;
-}
 .collection-hero__image-wrapper {
   position: relative;
   flex: 1;
   max-width: 67rem;
   border-radius: var(--border-radius-large);
   overflow: hidden;
+}
+.collection-hero .breadcrumb a,
+.collection-hero .breadcrumb span{
+  font-size: 12px;
+}
+.collection-hero .breadcrumb{
+  margin-bottom: 6px;
+}
+@media(min-width: 992px){
+  .collection-hero__text-wrapper .collection-hero-content{
+    gap: 12px;
+    margin-bottom: 0;
+  }
+  .collection-hero__description.rte p{
+    font-size: 14px;
+  }
+  .collection-hero .breadcrumb{
+    margin-bottom: 24px;
+  }
+  .collection-hero-content .page-header .title--page{
+    font-size: 48px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    line-height: 1.1;
+  }
+  .collection-hero .breadcrumb a,
+  .collection-hero .breadcrumb span{
+    font-size: 14px;
+  }
 }
