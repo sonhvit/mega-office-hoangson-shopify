@@ -3784,22 +3784,36 @@ deferred-media {
   font-size: 1.2rem;
   color: rgb(var(--color-foreground));
   align-items: center;
-  gap: 0.8rem;
+  gap: 24px;
   flex-wrap: wrap;
 }
 @media screen and (max-width: 576px) {
   .announcement-bar {
     padding: 0.4rem 0;
-    gap: 0.6rem;
+    gap: 16px;
   }
 }
 .announcement-bar .button_announcment .button-label-small {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.2rem;
-  font-size: 1.4rem !important;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 12px !important;
+  line-height: 14px;
+  letter-spacing: -0.2px;
+}
+.button_announcment.button--primary {
+  min-width: unset;
+  min-height: unset;
+  padding: 2px 6px;
+}
+@media screen and (min-width: 750px) {
+  .announcement-bar .button_announcment .button-label-small {
+    font-size: 14px !important;
+  }
+  .button_announcment.button--primary {
+    padding: 4px 8px;
+  }
 }
 .announcement-bar .button_announcment svg {
   width: 1.4rem;
@@ -3930,11 +3944,22 @@ deferred-media {
   height: 100%;
 }
 
-.announcement-bar__text {
-  line-height: 145%;
+.announcement-bar__text, .announcement-bar__text > * {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: -0.2px;
+  text-align: center;
 }
 .announcement-bar__text p {
   margin: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .announcement-bar__text, .announcement-bar__text > * {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
 
 .announcement-bar__link {
