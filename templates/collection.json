@@ -46,10 +46,43 @@
         "padding_top": "no-indent",
         "padding_bottom": "m"
       }
+    },
+    "mos_rich_text_ipwXMy": {
+      "type": "mos-rich-text",
+      "blocks": {
+        "heading_FEGgnx": {
+          "type": "heading",
+          "settings": {
+            "heading": "Here can be a compelling message summarizing the section’s focus",
+            "heading_size": "h1"
+          }
+        },
+        "text_nhpWxb": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Here can be a detailed paragraph that expands on the heading, providing insights, background information, or key details.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_FEGgnx",
+        "text_nhpWxb"
+      ],
+      "name": "Mos Rich Text",
+      "settings": {
+        "color_scheme": "",
+        "full_width": true,
+        "alignment": "center",
+        "margin_top": "no-indent",
+        "margin_bottom": "no-indent",
+        "padding_top": "m",
+        "padding_bottom": "m"
+      }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "mos_rich_text_ipwXMy"
   ]
 }
