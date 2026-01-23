@@ -55,10 +55,25 @@
 					{% render 'header-search', section: section %}
 				{%- endif -%}
 			{% endcomment %}
+			<div class="header__item">
+				<a href="/cart" class=" header__icon link link--text focus-inset"  role="button">
+					{% render 'icon-heart' %}
+					<span class="small-font">
+						{{ 'general.wishlist' | t }}
+					</span>
+				</a>
+			</div>
 			{%- if shop.customer_accounts_enabled -%}
 				{% render 'header-account' %}
 			{%- endif -%}
-
+			<div class="header__item">
+				<a href="/cart" class=" header__icon link link--text focus-inset" role="button">
+					{% render 'icon-paper' %}
+					<span class="small-font">
+						{{ 'general.get_a_quote' | t }}
+					</span>
+				</a>
+			</div>
 			{% render 'header-cart' %}
 		</div>
 	</div>

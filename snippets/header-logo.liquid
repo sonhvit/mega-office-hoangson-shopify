@@ -6,12 +6,14 @@
 <{{- tag }} class="header__heading">
 {%- endif -%}
 	<a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+		{%- assign logo_width_mobile = section.settings.logo_width | times: 90 | divided_by: 162 -%}
 		{%- if section.settings.logo != blank -%}
 			{%- assign image_size = section.settings.logo_width | append: 'x' -%}
 			{%- assign image_size_2x = section.settings.logo_width | times: 2 | at_most: 5760 -%}
 			<img srcset="{{ section.settings.logo | image_url: width: image_size }} 1x, {{ section.settings.logo | image_url: width: image_size_2x }} 2x"
 						src="{{ section.settings.logo | image_url: width: image_size }}"
 						class="header__heading-logo"
+						style="--logo-width-desktop: {{ section.settings.logo_width }}px; --logo-width-mobile: {{ logo_width_mobile }}px;"
 						width="{{ section.settings.logo_width }}"
 						height="auto"
 						alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
@@ -21,6 +23,7 @@
 				<img srcset="{{ section.settings.logo_2 | image_url: width: image_size }} 1x, {{ section.settings.logo_2 | image_url: width: image_size_2x }} 2x"
 							src="{{ section.settings.logo_2 | image_url: width: image_size }}"
 							class="header__heading-logo header__heading-logo--overlay"
+							style="--logo-width-desktop: {{ section.settings.logo_width }}px; --logo-width-mobile: {{ logo_width_mobile }}px;"
 							width="{{ section.settings.logo_width }}"
 							height="auto"
 							alt="{{ section.settings.logo_2.alt | default: shop.name | escape }}"
@@ -33,6 +36,7 @@
 				<img srcset="{{ section.settings.logo_2 | image_url: width: image_size }} 1x, {{ section.settings.logo_2 | image_url: width: image_size_2x }} 2x"
 							src="{{ section.settings.logo_2 | image_url: width: image_size }}"
 							class="header__heading-logo header__heading-logo--overlay"
+							style="--logo-width-desktop: {{ section.settings.logo_width }}px; --logo-width-mobile: {{ logo_width_mobile }}px;"
 							width="{{ section.settings.logo_width }}"
 							height="auto"
 							alt="{{ section.settings.logo_2.alt | default: shop.name | escape }}"
