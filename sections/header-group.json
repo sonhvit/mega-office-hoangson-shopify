@@ -15,8 +15,8 @@
       "type": "announcement-bar",
       "settings": {
         "height": 38,
-        "height_mobile": 46,
-        "color_scheme": "",
+        "height_mobile": 34,
+        "color_scheme": "background-3",
         "text": "FREE MYSTERY BOX ON ORDERS OVER $300",
         "enable_countdown": false,
         "enable_mock_timer": false,
@@ -27,7 +27,7 @@
         "completed_countdown": "show_text",
         "countdown_heading": "Header after countdown",
         "button_label": "Shop Now",
-        "button_link": ""
+        "button_link": "shopify://collections"
       }
     },
     "header": {
