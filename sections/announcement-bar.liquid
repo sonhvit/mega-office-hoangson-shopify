@@ -153,7 +153,7 @@
 			{% if section.settings.button_link != blank %}
 				href="{{ section.settings.button_link }}"
 			{% endif %}
-			class="button button_announcment button--tertiary focus-inset"
+			class="button button_announcment button--primary focus-inset"
 			{% if section.settings.button_link == blank %}
 				aria-disabled="true"
 			{% endif %}
@@ -161,7 +161,7 @@
 			<span class="button-label-small button-label small-font">
 				{{- section.settings.button_label | strip }}
 			</span>
-			{% render 'icon-swiper-next' %}
+			{% comment %} {% render 'icon-swiper-next' %} {% endcomment %}
 		</a>
 	{% endif %}
 </div>
@@ -187,10 +187,10 @@
 		{
 			"type": "range",
 			"id": "height_mobile",
-			"min": 40,
-			"max": 101,
+			"min": 34,
+			"max": 70,
 			"step": 1,
-			"default": 46,
+			"default": 34,
 			"label": "t:sections.announcement-bar.settings.height_mobile.label"
 		},
 		{
