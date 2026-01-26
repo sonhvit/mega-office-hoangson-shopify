@@ -872,6 +872,12 @@
 			},
 			{
 				"type": "text",
+				"id": "social_linkedin_link",
+				"label": "t:settings_schema.social-media.settings.social_linkedin_link.label",
+				"info": "t:settings_schema.social-media.settings.social_linkedin_link.info"
+			},
+			{
+				"type": "text",
 				"id": "social_vimeo_link",
 				"label": "t:settings_schema.social-media.settings.social_vimeo_link.label",
 				"info": "t:settings_schema.social-media.settings.social_vimeo_link.info"
@@ -1076,7 +1082,7 @@
 				"type": "checkbox",
 				"id": "show_view_cart",
 				"label": "t:settings_schema.cart.settings.show_view_cart.label",
-        "default": false
+				"default": false
 			},
 			{
 				"type": "select",

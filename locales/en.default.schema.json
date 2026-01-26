@@ -488,6 +488,10 @@
 					"label": "YouTube",
 					"info": "https://www.youtube.com/shopify"
 				},
+				"social_linkedin_link": {
+					"label": "LinkedIn",
+					"info": "https://www.linkedin.com/shopify"
+				},
 				"social_vimeo_link": {
 					"label": "Vimeo",
 					"info": "https://vimeo.com/shopify"
@@ -1098,7 +1102,6 @@
 						"label": "Adapt"
 					}
 				},
-
 				"aspect_ratio": {
 					"label": "Aspect ratio",
 					"options__1": {
@@ -1497,11 +1500,11 @@
 				"label": "Image"
 			},
 			"mobile_image": {
-        "label": "Mobile image"
-      },
+				"label": "Mobile image"
+			},
 			"desktop_image": {
-        "label": "Desktop image"
-      },
+				"label": "Desktop image"
+			},
 			"video": {
 				"header__1": {
 					"content": "Shopify-hosted video"
@@ -2777,7 +2780,6 @@
 						"label": "Round"
 					}
 				},
-
 				"header__1": {
 					"label": "Slider options"
 				}
@@ -3162,6 +3164,20 @@
 						},
 						"default_open": {
 							"label": "Mobile menu is open by default"
+						}
+					}
+				},
+				"footer_info": {
+					"name": "Footer info",
+					"settings": {
+						"footer_info_title": {
+							"label": "Title",
+						},
+						"footer_info_subtitle": {
+							"label": "Subtitle",
+						},
+						"footer_info_text": {
+							"label": "Text"
 						}
 					}
 				},
@@ -5370,7 +5386,6 @@
 				}
 			}
 		},
-
 		"product_markers": {
 			"name": "Product markers",
 			"settings": {
@@ -6646,7 +6661,6 @@
 					"options__2": {
 						"label": "Static"
 					},
-
 					"label": "Layout"
 				},
 				"header__1": {
