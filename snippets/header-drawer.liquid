@@ -81,6 +81,24 @@
 															aria-current="page"
 														{% endif %}
 													>
+														{%- assign icon_block = nil -%}
+														{%- assign link_index = forloop.index -%}
+														{%- for b in section.blocks -%}
+															{%- if b.type == 'menu_icon' and b.settings.position == link_index -%}
+																{%- assign icon_block = b -%}
+																{%- break -%}
+															{%- endif -%}
+														{%- endfor -%}
+														{% if icon_block %}
+															<span class="header-menu__icon">
+																{% if icon_block.settings.icon_svg != blank %}
+																	{{ icon_block.settings.icon_svg }}
+																{% elsif icon_block.settings.icon_image != blank %}
+																	{% assign icon_alt = icon_block.settings.icon_alt | default: link.title %}
+																	{{ icon_block.settings.icon_image | image_url: width: 18, height: 18 | image_tag: width: 18, height: 18, alt: icon_alt, class: 'header-menu__icon-img' }}
+																{% endif %}
+															</span>
+														{% endif %}
 														{{ link.title | escape }}
 													</a>
 													{% render 'icon-caret' %}
@@ -133,8 +151,25 @@
 														{% if childlink.current %}
 															aria-current="page"
 														{% endif %}
-													>
-														{{ link.title | escape }}
+													>													
+													{%- assign icon_block = nil -%}
+													{%- assign link_index = forloop.index -%}
+													{%- for b in section.blocks -%}
+														{%- if b.type == 'menu_icon' and b.settings.position == link_index -%}
+															{%- assign icon_block = b -%}
+															{%- break -%}
+														{%- endif -%}
+													{%- endfor -%}
+													{% if icon_block %}
+														<span class="header-menu__icon">
+															{% if icon_block.settings.icon_svg != blank %}
+																{{ icon_block.settings.icon_svg }}
+															{% elsif icon_block.settings.icon_image != blank %}
+																{% assign icon_alt = icon_block.settings.icon_alt | default: link.title %}
+																{{ icon_block.settings.icon_image | image_url: width: 18, height: 18 | image_tag: width: 18, height: 18, alt: icon_alt, class: 'header-menu__icon-img' }}
+															{% endif %}
+														</span>
+													{% endif %}														{{ link.title | escape }}
 													</a>
 													{% render 'icon-caret' %}
 												</summary>
@@ -237,8 +272,24 @@
 													and section.settings.main_menu_sale_icon
 												-%}
 													{% render 'icon-menu-sale' %}
+												{%- endif -%}											{%- assign icon_block = nil -%}
+											{%- assign link_index = forloop.index -%}
+											{%- for b in section.blocks -%}
+												{%- if b.type == 'menu_icon' and b.settings.position == link_index -%}
+													{%- assign icon_block = b -%}
+													{%- break -%}
 												{%- endif -%}
-												<span title="{{ link.title | escape }}" class="{% if link.title == section.settings.main_menu_sale_trigger %} menu-drawer__menu-link-label--sale-color{% endif %}">
+											{%- endfor -%}
+											{% if icon_block %}
+												<span class="header-menu__icon">
+													{% if icon_block.settings.icon_svg != blank %}
+														{{ icon_block.settings.icon_svg }}
+													{% elsif icon_block.settings.icon_image != blank %}
+														{% assign icon_alt = icon_block.settings.icon_alt | default: link.title %}
+														{{ icon_block.settings.icon_image | image_url: width: 18, height: 18 | image_tag: width: 18, height: 18, alt: icon_alt, class: 'header-menu__icon-img' }}
+													{% endif %}
+												</span>
+											{% endif %}												<span title="{{ link.title | escape }}" class="{% if link.title == section.settings.main_menu_sale_trigger %} menu-drawer__menu-link-label--sale-color{% endif %}">
 													{{ link.title | escape }}
 												</span>
 											</a>
@@ -459,6 +510,16 @@
 										href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
 										class="button button--primary menu-drawer__account link focus-inset"
 									>
+										
+										<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<mask id="mask0_2189_18680" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="18" height="18">
+											<rect width="18" height="18" fill="#D9D9D9"/>
+											</mask>
+											<g mask="url(#mask0_2189_18680)">
+											<path d="M9 8.76917C8.27812 8.76917 7.66019 8.51217 7.14619 7.99817C6.63206 7.48404 6.375 6.86604 6.375 6.14417C6.375 5.42229 6.63206 4.80435 7.14619 4.29035C7.66019 3.77623 8.27812 3.51917 9 3.51917C9.72188 3.51917 10.3398 3.77623 10.8538 4.29035C11.3679 4.80435 11.625 5.42229 11.625 6.14417C11.625 6.86604 11.3679 7.48404 10.8538 7.99817C10.3398 8.51217 9.72188 8.76917 9 8.76917ZM3.375 13.3414V12.8134C3.375 12.4461 3.47475 12.106 3.67425 11.793C3.87375 11.48 4.14037 11.2394 4.47412 11.0711C5.21537 10.7077 5.96319 10.4352 6.71756 10.2534C7.47194 10.0717 8.23275 9.98079 9 9.98079C9.76725 9.98079 10.5281 10.0717 11.2824 10.2534C12.0368 10.4352 12.7846 10.7077 13.5259 11.0711C13.8596 11.2394 14.1263 11.48 14.3258 11.793C14.5252 12.106 14.625 12.4461 14.625 12.8134V13.3414C14.625 13.6576 14.5142 13.9266 14.2926 14.1484C14.0709 14.37 13.8019 14.4808 13.4856 14.4808H4.51444C4.19806 14.4808 3.92906 14.37 3.70744 14.1484C3.48581 13.9266 3.375 13.6576 3.375 13.3414ZM4.5 13.3558H13.5V12.8134C13.5 12.6615 13.456 12.5209 13.368 12.3915C13.28 12.2622 13.1606 12.1567 13.0097 12.075C12.3634 11.7567 11.7046 11.5156 11.0331 11.3516C10.3614 11.1877 9.68375 11.1058 9 11.1058C8.31625 11.1058 7.63856 11.1877 6.96694 11.3516C6.29544 11.5156 5.63656 11.7567 4.99031 12.075C4.83944 12.1567 4.72 12.2622 4.632 12.3915C4.544 12.5209 4.5 12.6615 4.5 12.8134V13.3558ZM9 7.64417C9.4125 7.64417 9.76563 7.49729 10.0594 7.20354C10.3531 6.90979 10.5 6.55666 10.5 6.14417C10.5 5.73167 10.3531 5.37854 10.0594 5.08479C9.76563 4.79104 9.4125 4.64417 9 4.64417C8.5875 4.64417 8.23438 4.79104 7.94063 5.08479C7.64687 5.37854 7.5 5.73167 7.5 6.14417C7.5 6.55666 7.64687 6.90979 7.94063 7.20354C8.23438 7.49729 8.5875 7.64417 9 7.64417Z" fill="white"/>
+											</g>
+										</svg>
+
 										{%- liquid
 											if customer
 												echo 'customer.account_fallback' | t
@@ -478,7 +539,6 @@
 											<span class="button-label">
 												{{- 'customer.login_page.create_account' | t -}}
 											</span>
-											{% render 'icon-button-arrow' %}
 										</a>
 									</div>
 								{%- endif -%}
@@ -496,7 +556,6 @@
 						-%}
 							<div class="menu-drawer__localization-wrapper">
 								{%- if section.settings.enable_country_selector
-									and localization.available_countries.size > 1
 								-%}
 									<div class="header__localization menu-drawer__localization">
 										<localization-form>
@@ -560,7 +619,6 @@
 									</div>
 								{%- endif -%}
 								{%- if section.settings.enable_language_selector
-									and localization.available_languages.size > 1
 								-%}
 									<div class="header__localization menu-drawer__localization header__localization--language">
 										<localization-form>
@@ -577,7 +635,7 @@
 															aria-controls="HeaderLanguageListMobile"
 														>
 															<span class="value">
-																{{- localization.language.iso_code | upcase }}
+																{{- localization.language.endonym_name }}
 															</span>
 															{% render 'icon-caret' -%}
 														</button>

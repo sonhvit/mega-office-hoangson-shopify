@@ -4969,7 +4969,7 @@ details[open] > .header__icon--menu .icon-hamburger {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 2.4rem;
+  gap: 10px;
 }
 .menu-opening .header__localization--language {
   margin-left: 0;
