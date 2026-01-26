@@ -53,7 +53,7 @@
         "heading_FEGgnx": {
           "type": "heading",
           "settings": {
-            "heading": "Business Essentials for Every Workplace",
+            "heading": "{{ collection.metafields.custom.seo_title.value }}",
             "heading_size": "h1"
           }
         },
@@ -75,8 +75,8 @@
         "alignment": "center",
         "margin_top": "no-indent",
         "margin_bottom": "no-indent",
-        "padding_top": "m",
-        "padding_bottom": "m"
+        "padding_top_mb": 50,
+        "padding_bottom_mb": 50
       }
     }
   },
