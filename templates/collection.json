@@ -53,14 +53,14 @@
         "heading_FEGgnx": {
           "type": "heading",
           "settings": {
-            "heading": "Business Essentials for Every Workplace",
+            "heading": "{{ collection.metafields.custom.seo_title.value }}",
             "heading_size": "h1"
           }
         },
         "text_nhpWxb": {
           "type": "text",
           "settings": {
-            "text": "<p>Keep your office running smoothly with our full range of business essentials, including forms, receipt books, diaries, planners, stamps, ID products and whiteboard supplies. Whether you're restocking for a small office or managing procurement for a large organisation, we offer reliable brands, bulk pricing and fast delivery to keep your workflow moving. <a href=\"/pages/contact\" title=\"Contact\">Read more</a></p>"
+            "text": "{{ collection.metafields.custom.seo_description | metafield_tag }}"
           }
         }
       },
@@ -75,8 +75,8 @@
         "alignment": "center",
         "margin_top": "no-indent",
         "margin_bottom": "no-indent",
-        "padding_top": "m",
-        "padding_bottom": "m"
+        "padding_top_mb": 50,
+        "padding_bottom_mb": 50
       }
     }
   },
