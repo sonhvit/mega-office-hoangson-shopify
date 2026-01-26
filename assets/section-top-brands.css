@@ -1,0 +1,117 @@
+.top-brands {
+  overflow: hidden;
+}
+
+.top-brands__heading {
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 4rem;
+  font-weight: 500;
+  font-size: 32px;
+  letter-spacing: 0.5px;
+}
+
+.top-brands__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  row-gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .top-brands__grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2rem;
+    row-gap: 38px;
+  }
+}
+
+.top-brands__item {
+  position: relative;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-brands__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.top-brands__image-wrapper {
+  width: 100%;
+  background: #f6f6f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.4rem;
+  padding: 15px;
+  aspect-ratio: 1;
+  border-radius: 15px;
+}
+
+.top-brands__image {
+  max-width: 100%;
+  width: 154px;
+  height: auto;
+  object-fit: contain;
+}
+
+.top-brands__placeholder {
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--color-background-secondary), 1);
+  border-radius: 0.4rem;
+}
+
+.top-brands__placeholder svg {
+  width: 4rem;
+  height: 4rem;
+  opacity: 0.3;
+}
+
+.top-brands__name {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin: 0;
+  color: rgba(var(--color-foreground), 1);
+  line-height: 1.2;
+}
+
+.top-brands .top-brands__button {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .top-brands__heading {
+    font-size: 24px;
+    letter-spacing: -0.4px;
+  }
+
+  .top-brands__image-wrapper {
+    min-height: 5rem;
+    margin-bottom: 12.5px;
+  }
+
+  .top-brands__image {
+    max-height: 5rem;
+  }
+
+  .top-brands__name {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+}

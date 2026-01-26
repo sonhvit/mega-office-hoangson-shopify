@@ -1,0 +1,214 @@
+.az-brands {
+  overflow: hidden;
+}
+
+.az-brands__heading {
+  text-align: left;
+  margin-bottom: 43px;
+  margin-top: -3px;
+  font-size: 32px;
+  letter-spacing: 0.5px;
+}
+
+.az-brands__description {
+  margin-bottom: 3rem;
+  color: rgba(var(--color-foreground-secondary), 1);
+}
+
+.az-brands__wrapper {
+  column-count: 1;
+  column-gap: 20px;
+  width: 100%;
+}
+
+.az-brands__content{
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.az-brands__content p{
+  line-height: 21px;
+}
+
+.az-brands__content.rte a {
+  text-decoration: none;
+}
+
+.az-brands__content.rte a:hover{
+  text-decoration: underline;
+  color: #000;
+}
+
+/* Letter Toggle (Mobile Accordion) */
+.az-brands__letter-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.az-brands__letter-toggle:hover {
+  color: rgba(var(--color-accent), 1);
+}
+
+.az-brands__letter {
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin: 0;
+  color: rgba(var(--color-foreground), 1);
+}
+
+@media screen and (min-width: 768px) {
+  .az-brands__letter {
+    margin-bottom: 20px;
+  }
+}
+
+/* Toggle Icon */
+.az-brands__toggle-icon {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.az-brands__letter-toggle[aria-expanded="true"] .az-brands__toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* Brand List */
+.az-brands__list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.az-brands__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+}
+
+@media screen and (min-width: 768px) {
+  .az-brands__items {
+    gap: 1rem;
+  }
+}
+
+.az-brands__item {
+  margin: 0;
+  padding: 0;
+}
+
+/* Brand Links */
+.az-brands__link,
+.az-brands__text {
+  display: inline-block;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: rgba(var(--color-foreground), 1);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.az-brands__link:hover {
+  color: rgba(var(--color-accent), 1);
+  text-decoration: underline;
+}
+
+.az-brands__text {
+  cursor: default;
+}
+
+/* Active State */
+.az-brands__letter-group.active .az-brands__list {
+  max-height: 2000px;
+}
+
+/* Animation improvements */
+@media screen and (prefers-reduced-motion: reduce) {
+  .az-brands__list,
+  .az-brands__toggle-icon {
+    transition: none;
+  }
+}
+
+/* Desktop Layout - Multi-column */
+@media screen and (min-width: 768px) {
+  .az-brands__wrapper{
+    column-count: 3;
+  }
+  .az-brands__letter-toggle {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .az-brands__toggle-icon {
+    display: none;
+  }
+
+  .az-brands__list {
+    display: block !important;
+    max-height: none !important;
+  }
+
+  .az-brands__letter-group {
+    break-inside: avoid;
+  }
+  .az-brands__letter-group[data-letter="Q"]{
+    break-after: column;
+  }
+  .az-brands__letter-group[data-letter="F"]{
+    break-after: column;
+  }
+  .az-brands__letter-group {
+    border-bottom: none;
+    margin-bottom: 38px;
+  }
+}
+@media(max-width: 767px){
+  .az-brands__letter{
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .az-brands{
+    padding-top: 55px !important;
+  }
+  .active .az-brands__letter-toggle{
+    padding-top: 16px;
+    padding-bottom: 12px;
+  }
+  .az-brands__heading{
+    font-size: 24px;
+    letter-spacing: -0.5px;
+    margin-bottom: 39px;
+  }
+  .az-brands__letter-group{
+    background: #F6F6F6;
+    margin-bottom: 12px;
+    border-radius: 15px;
+  }
+  .az-brands__letter-group.active{
+    margin-bottom: 20px;
+  }
+  .az-brands__letter-toggle{
+    padding: 14px 14px 14px 12px;
+  }
+  .az-brands__list{
+    padding: 0 12px 0;
+  }
+  .active .az-brands__list{
+    padding-bottom: 10px;
+  }
+}
