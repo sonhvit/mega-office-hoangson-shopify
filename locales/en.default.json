@@ -4,6 +4,8 @@
     "breadcrumbs": {
       "home": "Home"
     },
+    "wishlist": "Wishlist",
+    "get_a_quote": "Get a Quote",
     "password_page": {
       "login_form_heading": "Enter store using password:",
       "login_password_button": "Enter using password",
