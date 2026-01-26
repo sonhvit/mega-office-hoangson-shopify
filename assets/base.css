@@ -4281,6 +4281,7 @@ body.body--hidden {
     align-items: center;
     gap: 2rem;
     width: 100%;
+    padding-inline: 11px;
   }
 }
 @media screen and (min-width: 1150px) {
@@ -5023,7 +5024,7 @@ details[open] > .header__icon--menu .icon-hamburger {
 
 .list-menu--inline {
   align-items: center;
-  gap: 0 1rem;
+  gap: 0 4px;
 }
 .list-menu--inline > .list-menu-item {
   font-weight: 700;
@@ -5052,16 +5053,20 @@ details[open] > .header__icon--menu .icon-hamburger {
   display: flex;
   align-items: center;
   overflow: visible;
+  padding: 8px;
 }
 .list-menu--inline .header__menu-item span {
   display: flex;
   align-items: center;
-  padding: 0.3rem;
   transition: color var(--duration-default) linear;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.2px;
 }
 .list-menu--inline .header__menu-item span .icon-caret {
   position: static;
-  margin-left: 0.4rem;
+  margin-left: 2.44px;
 }
 .list-menu--inline .header__menu-item + .header__submenu {
   opacity: 0;
@@ -5108,6 +5113,7 @@ details[open] > .header__icon--menu .icon-hamburger {
 
 .header__inline-menu .header__menu-item {
   align-items: center;
+  padding: 8px;
 }
 
 .header__menu-item > span {
@@ -5168,8 +5174,8 @@ details[open] > .header__icon--menu .icon-hamburger {
 
 .header__menu-item .icon-caret {
   flex: none;
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 16px;
+  height: 16px;
   z-index: 0;
 }
 
@@ -8009,4 +8015,12 @@ details[open] > .header__icon--menu .icon-hamburger {
   pointer-events: none;
   transition: all 0.4s ease;
   background: rgba(var(--color-overlay), var(--overlay-alpha));
+}
+.header-menu__icon {
+  display:inline-flex;
+  align-items:center;
+  margin-right:4px;
+  width:18px;
+  height:18px;
+  flex:0 0 auto;
 }

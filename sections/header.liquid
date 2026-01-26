@@ -1192,6 +1192,38 @@
         }
       ]
     }
+	,
+	{
+		"type": "menu_icon",
+		"name": "Menu icon",
+		"settings": [
+			{
+				"type": "range",
+				"id": "position",
+				"min": 1,
+				"max": 20,
+				"step": 1,
+				"default": 1,
+				"label": "Menu item position"
+			},
+			{
+				"type": "textarea",
+				"id": "icon_svg",
+				"label": "SVG icon",
+				"info": "Paste inline <svg> markup; used if provided"
+			},
+			{
+				"type": "image_picker",
+				"id": "icon_image",
+				"label": "Image icon (fallback)"
+			},
+			{
+				"type": "text",
+				"id": "icon_alt",
+				"label": "Icon alt text",
+			}
+		]
+	}
 	],
 	"default": {}
 }

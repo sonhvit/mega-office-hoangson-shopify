@@ -46,11 +46,30 @@
 						-%}
 							{% render 'icon-menu-sale' %}
 						{%- endif -%}
+						{%- assign icon_block = nil -%}
+						{%- assign link_index = forloop.index -%}
+						{%- for b in section.blocks -%}
+							{%- if b.type == 'menu_icon' and b.settings.position == link_index -%}
+								{%- assign icon_block = b -%}
+								{%- break -%}
+							{%- endif -%}
+						{%- endfor -%}
+						{% if icon_block %}
+							<span class="header-menu__icon">
+								{% if icon_block.settings.icon_svg != blank %}
+									{{ icon_block.settings.icon_svg }}
+								{% elsif icon_block.settings.icon_image != blank %}
+									{% assign icon_alt = icon_block.settings.icon_alt | default: link.title %}
+									{{ icon_block.settings.icon_image | image_url: width: 18, height: 18 | image_tag: width: 18, height: 18, alt: icon_alt, class: 'header-menu__icon-img' }}
+								{% endif %}
+							</span>
+						{% endif %}
 						<span
 							title="{{ link.title | escape }}"
 							class="{% if link.title == section.settings.main_menu_sale_trigger %} menu-drawer__menu-link-label--sale-color{% endif %}"
 						>
 							{{ link.title | escape }}
+							
 							{% if mega_menu or mega_menu_tabs or link.links != blank %}
 								{% render 'icon-caret' -%}
 							{% endif %}
