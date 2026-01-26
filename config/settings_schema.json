@@ -315,14 +315,18 @@
 		"settings": [
 			{
 				"type": "header",
-				"content": "t:settings_schema.typography.settings.header__1.content"
+				"content": "Font"
 			},
 			{
 				"type": "font_picker",
-				"id": "type_header_font",
-				"default": "dm_sans_n7",
-				"label": "t:settings_schema.typography.settings.type_header_font.label",
-				"info": "t:settings_schema.typography.settings.type_header_font.info"
+				"id": "type_body_font",
+				"default": "dm_sans_n5",
+				"label": "t:settings_schema.typography.settings.type_body_font.label",
+				"info": "t:settings_schema.typography.settings.type_body_font.info"
+			},
+			{
+				"type": "header",
+				"content": "t:settings_schema.typography.settings.header__1.content"
 			},
 			{
 				"type": "range",
@@ -422,13 +426,6 @@
 				"content": "t:settings_schema.typography.settings.header__1_1.content"
 			},
 			{
-				"type": "font_picker",
-				"id": "type_header_font_card",
-				"default": "dm_sans_n7",
-				"label": "t:settings_schema.typography.settings.type_header_font_card.label",
-				"info": "t:settings_schema.typography.settings.type_header_font_card.info"
-			},
-			{
 				"type": "range",
 				"id": "heading_scale_card",
 				"min": 100,
@@ -449,13 +446,6 @@
 				"label": "t:settings_schema.typography.settings.letter_spacing.label"
 			},
 			{
-				"type": "font_picker",
-				"id": "type_text_font_card",
-				"default": "dm_sans_n5",
-				"label": "t:settings_schema.typography.settings.type_text_font_card.label",
-				"info": "t:settings_schema.typography.settings.type_text_font_card.info"
-			},
-			{
 				"type": "range",
 				"id": "text_scale_card",
 				"min": 100,
@@ -464,13 +454,6 @@
 				"unit": "%",
 				"label": "t:settings_schema.typography.settings.text_scale_card.label",
 				"default": 100
-			},
-			{
-				"type": "font_picker",
-				"id": "type_prcie_font_card",
-				"default": "dm_sans_n7",
-				"label": "t:settings_schema.typography.settings.type_price_font_card.label",
-				"info": "t:settings_schema.typography.settings.type_price_font_card.info"
 			},
 			{
 				"type": "range",
@@ -495,13 +478,6 @@
 			{
 				"type": "header",
 				"content": "t:settings_schema.typography.settings.header__2.content"
-			},
-			{
-				"type": "font_picker",
-				"id": "type_body_font",
-				"default": "dm_sans_n5",
-				"label": "t:settings_schema.typography.settings.type_body_font.label",
-				"info": "t:settings_schema.typography.settings.type_body_font.info"
 			},
 			{
 				"type": "range",
@@ -567,13 +543,6 @@
 				"content": "t:settings_schema.typography.settings.header__2_1.content"
 			},
 			{
-				"type": "font_picker",
-				"id": "type_subtitle_font",
-				"default": "dm_sans_n5",
-				"label": "t:settings_schema.typography.settings.type_subtitle_font.label",
-				"info": "t:settings_schema.typography.settings.type_subtitle_font.info"
-			},
-			{
 				"type": "select",
 				"id": "subtitle_text_transform",
 				"label": "t:settings_schema.typography.settings.text_transform.label",
@@ -610,13 +579,6 @@
 			{
 				"type": "header",
 				"content": "t:settings_schema.typography.settings.header__3.content"
-			},
-			{
-				"type": "font_picker",
-				"id": "type_button_font",
-				"default": "dm_sans_n7",
-				"label": "t:settings_schema.typography.settings.type_button_font.label",
-				"info": "t:settings_schema.typography.settings.type_button_font.info"
 			},
 			{
 				"type": "select",
@@ -677,13 +639,6 @@
 				"content": "t:settings_schema.typography.settings.header__4.content"
 			},
 			{
-				"type": "font_picker",
-				"id": "type_header_menu_font",
-				"default": "dm_sans_n5",
-				"label": "t:settings_schema.typography.settings.type_header_menu_font.label",
-				"info": "t:settings_schema.typography.settings.type_header_menu_font.info"
-			},
-			{
 				"type": "select",
 				"id": "header_menu_text_transform",
 				"label": "t:settings_schema.typography.settings.header_menu_text_transform.label",
@@ -702,35 +657,6 @@
 					}
 				],
 				"default": "none"
-			},
-			{
-				"type": "header",
-				"content": "t:settings_schema.typography.settings.header__6.content"
-			},
-			{
-				"type": "font_picker",
-				"id": "type_footer_menu_font",
-				"default": "dm_sans_n5",
-				"label": "t:settings_schema.typography.settings.type_footer_menu_font.label",
-				"info": "t:settings_schema.typography.settings.type_footer_menu_font.info"
-			},
-			{
-				"type": "header",
-				"content": "t:settings_schema.typography.settings.header__7.content"
-			},
-			{
-				"type": "font_picker",
-				"id": "type_popups_heading_font",
-				"default": "dm_sans_n7",
-				"label": "t:settings_schema.typography.settings.type_popups_heading_font.label",
-				"info": "t:settings_schema.typography.settings.type_popups_heading_font.info"
-			},
-			{
-				"type": "font_picker",
-				"id": "type_popups_text_font",
-				"default": "dm_sans_n5",
-				"label": "t:settings_schema.typography.settings.type_popups_text_font.label",
-				"info": "t:settings_schema.typography.settings.type_popups_text_font.info"
 			},
 			{
 				"type": "range",
