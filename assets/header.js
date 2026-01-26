@@ -132,6 +132,19 @@
 
 			menu.addEventListener("mouseleave", resetRight);
 			menu.addEventListener("focusout", resetRight);
+
+			const submenuParents = document.querySelectorAll(
+				".list-menu-item.list-menu--submenu"
+			);
+			submenuParents.forEach((li) => {
+				const topLink = li.querySelector("a.header__menu-item");
+				const activate = () => li.classList.add("list-menu--submenu-active");
+				const deactivate = () => li.classList.remove("list-menu--submenu-active");
+				li.addEventListener("mouseenter", activate);
+				li.addEventListener("mouseleave", deactivate);
+				topLink?.addEventListener("focus", activate);
+				topLink?.addEventListener("blur", deactivate);
+			});
 		}
 
 		const megaMenuTabs = () => {
