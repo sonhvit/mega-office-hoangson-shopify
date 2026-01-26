@@ -21,7 +21,7 @@
 			>
 		{%- endif -%}
 
-		{%- unless settings.type_header_font.system? -%}
+		{%- unless settings.type_body_font.system? -%}
 			<link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
 		{%- endunless -%}
 
@@ -66,15 +66,6 @@
 				rel="preload"
 				as="font"
 				href="{{ settings.type_body_font | font_url }}"
-				type="font/woff2"
-				crossorigin
-			>
-		{%- endunless -%}
-		{%- unless settings.type_header_font.system? -%}
-			<link
-				rel="preload"
-				as="font"
-				href="{{ settings.type_header_font | font_url }}"
 				type="font/woff2"
 				crossorigin
 			>
