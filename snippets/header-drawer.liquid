@@ -23,6 +23,25 @@
 						</span>
 					</span>
 					{% render 'header-logo', tag: 'h2' %}
+					<div class="header-icons">
+						<div class="header__item">
+							<a href="/cart" class=" header__icon link link--text focus-inset"  role="button">
+								{% render 'icon-heart' %}
+								<span class="small-font">
+									{{ 'general.wishlist' | t }}
+								</span>
+							</a>
+						</div>
+						<div class="header__item">
+							<a href="/cart" class=" header__icon link link--text focus-inset" role="button">
+								{% render 'icon-paper' %}
+								<span class="small-font">
+									{{ 'general.get_a_quote' | t }}
+								</span>
+							</a>
+						</div>
+						{% render 'header-cart' %}
+					</div> 
 				</div>
 				<div class="menu-drawer__main">
 					<div class="menu-drawer__navigation-container">

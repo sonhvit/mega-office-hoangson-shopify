@@ -1181,7 +1181,9 @@ summary::-webkit-details-marker {
 .header__heading-logo {
     width: var(--logo-width-mobile, var(--logo-width-desktop, auto));
 }
-
+#menu-drawer .header__heading-logo {
+    width: 80px;
+}
 @media (min-width: 750px) {
   
   .header__heading-logo {
