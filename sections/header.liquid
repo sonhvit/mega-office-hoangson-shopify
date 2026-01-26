@@ -71,6 +71,38 @@
 		color: {{ section.settings.colors_custom_button_labels_hover }};
 		background-color: {{ section.settings.colors_custom_button_background_hover }};
 	}
+
+	.header__inline-menu .icon-caret {
+		transition: transform var(--duration-default);
+		transform-origin: 50% 50%;
+	}
+	.header__inline-menu .header__menu-item span {
+		transition: color 80ms linear;
+	}
+	.header__inline-menu .list-menu-item.list-menu--megamenu-visible > a.header__menu-item,
+	.header__inline-menu .list-menu-item.list-menu--submenu-active > a.header__menu-item,
+	.header__inline-menu .list-menu-item.list-menu--submenu:hover > a.header__menu-item {
+		background-color: #0F49A0;
+		border-radius: 200px;
+	}
+	.header__inline-menu .list-menu-item.list-menu--megamenu-visible > a.header__menu-item .menu__title,
+	.header__inline-menu .list-menu-item.list-menu--submenu-active > a.header__menu-item .menu__title,
+	.header__inline-menu .list-menu-item.list-menu--submenu:hover > a.header__menu-item .menu__title {
+		color: #FFFFFF;
+	}
+	.header__inline-menu .list-menu-item.list-menu--megamenu-visible .icon-caret,
+	.header__inline-menu .list-menu-item.list-menu--submenu-active .icon-caret,
+	.header__inline-menu .list-menu-item.list-menu--submenu:hover .icon-caret {
+		transform: rotate(180deg);
+		color: #FFFFFF;
+	}
+
+	.header__inline-menu .list-menu-item.list-menu--megamenu-visible .header-menu__icon svg path,
+	.header__inline-menu .list-menu-item.list-menu--submenu-active .header-menu__icon svg path,
+	.header__inline-menu .list-menu-item.list-menu--submenu:hover .header-menu__icon svg path{
+		fill: #FFFFFF;
+	}
+
 </style>
 
 <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
@@ -1192,6 +1224,38 @@
         }
       ]
     }
+	,
+	{
+		"type": "menu_icon",
+		"name": "Menu icon",
+		"settings": [
+			{
+				"type": "range",
+				"id": "position",
+				"min": 1,
+				"max": 20,
+				"step": 1,
+				"default": 1,
+				"label": "Menu item position"
+			},
+			{
+				"type": "textarea",
+				"id": "icon_svg",
+				"label": "SVG icon",
+				"info": "Paste inline <svg> markup; used if provided"
+			},
+			{
+				"type": "image_picker",
+				"id": "icon_image",
+				"label": "Image icon (fallback)"
+			},
+			{
+				"type": "text",
+				"id": "icon_alt",
+				"label": "Icon alt text",
+			}
+		]
+	}
 	],
 	"default": {}
 }

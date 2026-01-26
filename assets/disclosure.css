@@ -99,6 +99,19 @@
   width: 100%;
   z-index: 2;
 }
+.menu-drawer__localization-wrapper .localization-selector.link .value, .header__localization .localization-selector.link .currency-country {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: -0.2px;
+}
+.menu-drawer__localization-wrapper .localization-selector.link {
+  gap: 0;
+}
+.header__localization .localization-selector.link svg {
+  width: 15px;
+  height: 15px;
+}
 .localization-selector.link span,
 .localization-selector.link .icon {
   transition: color var(--duration-default) linear;
