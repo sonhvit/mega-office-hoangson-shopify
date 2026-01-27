@@ -1,7 +1,17 @@
 {{ 'section-newsletter.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-	{% render 'section-padding' %}
+	.section-{{ section.id }}-padding {
+		padding-top: {{ section.settings.padding_top_mb}}px;
+		padding-bottom: {{ section.settings.padding_bottom_mb}}px;
+	}
+
+	@media screen and (min-width: 750px) {
+		.section-{{ section.id }}-padding {
+		padding-top: {{ section.settings.padding_top }}px;
+		padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
 {%- endstyle -%}
 
 {% liquid
@@ -429,68 +439,28 @@
 			"content": "t:sections.all.section-padding.header.content"
 		},
 		{
-			"type": "select",
+			"type": "number",
 			"id": "padding_top",
-			"options": [
-				{
-					"value": "no-indent",
-					"label": "t:sections.all.section-padding.options__1.label"
-				},
-				{
-					"value": "xs",
-					"label": "t:sections.all.section-padding.options__2.label"
-				},
-				{
-					"value": "s",
-					"label": "t:sections.all.section-padding.options__3.label"
-				},
-				{
-					"value": "m",
-					"label": "t:sections.all.section-padding.options__4.label"
-				},
-				{
-					"value": "l",
-					"label": "t:sections.all.section-padding.options__5.label"
-				},
-				{
-					"value": "xl",
-					"label": "t:sections.all.section-padding.options__6.label"
-				}
-			],
-			"default": "no-indent",
+			"default": 80,
 			"label": "t:sections.all.section-padding.padding_top.label"
 		},
 		{
-			"type": "select",
+			"type": "number",
+			"id": "padding_top_mb",
+			"default": 50,
+			"label": "Padding Top Mobile"
+		},
+		{
+			"type": "number",
 			"id": "padding_bottom",
-			"options": [
-				{
-					"value": "no-indent",
-					"label": "t:sections.all.section-padding.options__1.label"
-				},
-				{
-					"value": "xs",
-					"label": "t:sections.all.section-padding.options__2.label"
-				},
-				{
-					"value": "s",
-					"label": "t:sections.all.section-padding.options__3.label"
-				},
-				{
-					"value": "m",
-					"label": "t:sections.all.section-padding.options__4.label"
-				},
-				{
-					"value": "l",
-					"label": "t:sections.all.section-padding.options__5.label"
-				},
-				{
-					"value": "xl",
-					"label": "t:sections.all.section-padding.options__6.label"
-				}
-			],
-			"default": "xl",
+			"default": 80,
 			"label": "t:sections.all.section-padding.padding_bottom.label"
+		},
+		{
+			"type": "number",
+			"id": "padding_bottom_mb",
+			"default": 50,
+			"label": "Padding Bottom Mobile"
 		}
 	],
 	"presets": [
