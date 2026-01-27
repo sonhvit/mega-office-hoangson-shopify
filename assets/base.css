@@ -4216,7 +4216,7 @@ body.body--hidden {
   justify-content: center;
   gap: 0.4rem;
   min-width: 4.4rem;
-  padding-inline: 0.4rem;
+  padding-inline: 0;
 }
 .header__localization .disclosure__button:hover, .header__localization .disclosure__button:focus {
   box-shadow: none;
@@ -4969,7 +4969,7 @@ details[open] > .header__icon--menu .icon-hamburger {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
+  gap: 18px;
 }
 .menu-opening .header__localization--language {
   margin-left: 0;
@@ -8120,4 +8120,68 @@ details[open] > .header__icon--menu .icon-hamburger {
     font-size: 10px;
     line-height: 1;
   }
+}
+.search-drawer__inner {
+  width: 100%;
+  margin: 0;
+}
+.search-drawer__inner .search__form-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.search-drawer__inner .search .search__form-inner .field {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    gap: .8rem;
+}
+.search-drawer__inner .search__form-inner .field {
+    z-index: 2;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: -0.2px;
+    position: relative;
+}
+.search-drawer__inner .search .search__form-inner .field .field__inner {
+    width: 100%;
+    max-width: 54.7rem;
+    position: relative;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: -0.2px;
+}
+.search-drawer__inner .search__form-inner .field input[type=search] {
+    min-height: 48px;
+    color: #C6C6C6;
+    background-color: #FFFFFF;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: -0.2px;
+    border-radius: 100px;
+    padding: 12px 50px 12px 16px;
+    border-width: 1px;
+}
+.search-drawer__inner .button {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  background-color: transparent;
+  height: 24px;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+.search-drawer__inner .field input[type=search]::placeholder {
+    color: #C6C6C6;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: -0.2px;
 }
