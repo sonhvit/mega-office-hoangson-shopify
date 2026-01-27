@@ -99,13 +99,14 @@ menu-drawer > details[open] > summary::before {
 }
 .menu-drawer__bottom {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
   margin-top: 5px;
-  padding: 11px 16px;
+  padding: 11px 20px;
   background-color: #F6F6F6;
   z-index: 2;
+  flex-direction: column;
 }
 .menu-drawer__overlay {
   display: block;

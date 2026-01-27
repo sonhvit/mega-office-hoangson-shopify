@@ -51,6 +51,7 @@
       "articles": "Articles",
       "pages": "Pages",
       "placeholder": "Search for anything...",
+      "placeholder_drawer": "Search by product, brand, or code",
       "popular_products": "Most popular products"
     },
     "card": {
