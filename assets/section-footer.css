@@ -819,11 +819,6 @@ footer details[open] summary ~ * {
     min-width: 52rem;
   }
 }
-@media screen and (min-width: 1536px) {
-  .footer .footer-block--logo {
-    margin-right: 9rem;
-  }
-}
 @media screen and (min-width: 1150px) {
   .footer .footer-block:first-child.contacts {
     margin-right: auto;
