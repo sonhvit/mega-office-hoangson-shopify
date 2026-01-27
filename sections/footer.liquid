@@ -52,48 +52,93 @@
                     class="footer-block footer-block--logo"
                     {{ block.shopify_attributes }}
                   >
-                    <a
-                      href="{{ routes.root_url }}"
-                      class="footer__logo-link link link--text focus-inset"
-                    >
-                      {%- if block.settings.logo != blank -%}
-                        {%- assign logo_height = block.settings.logo_width
-                          | divided_by: block.settings.logo.aspect_ratio
-                        -%}
-                        {%- assign logo_alt = block.settings.logo.alt | default: shop.name | escape -%}
-                        {%- assign image_size_2x = block.settings.logo_width | times: 2 -%}
-                        {% capture srcset %}
-                          {{ block.settings.logo | image_url: width: block.settings.logo_width }}, {{ block.settings.logo | image_url: width: image_size_2x }} 2x
-                        {% endcapture %}
-                        {{
-                          block.settings.logo
-                          | image_url: width: block.settings.logo_width
-                          | image_tag:
-                            class: 'footer__logo header__heading-logo',
-                            srcset: srcset,
-                            height: logo_height,
-                            width: block.settings.logo_width,
-                            alt: logo_alt
-                        }}
-                        {%- if block.settings.logo_2 != blank -%}
-                          {% capture srcset %}
-                          {{ block.settings.logo_2 | image_url: width: block.settings.logo_width }}, {{ block.settings.logo_2 | image_url: width: image_size_2x }} 2x
-                        {% endcapture %}
-                          {{
-                            block.settings.logo_2
-                            | image_url: width: block.settings.logo_width
-                            | image_tag:
-                              class: 'footer__logo header__heading-logo header__heading-logo--overlay',
-                              srcset: srcset,
-                              height: logo_height,
-                              width: block.settings.logo_width,
-                              alt: logo_alt
-                          }}
-                        {%- endif -%}
-                      {%- else -%}
-                        <span class="h5">{{ shop.name }}</span>
+                    <div class="footer-info">
+                      <a class="footer-phone" href="tel:{{ block.settings.phone }}" title="{{ block.settings.phone }}">
+                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M15.9402 17C14.0557 17 12.1625 16.5618 10.2605 15.6855C8.35867 14.8092 6.61125 13.573 5.01825 11.977C3.42542 10.3808 2.19083 8.63333 1.3145 6.7345C0.438167 4.83583 0 2.94425 0 1.05975C0 0.756917 0.1 0.504583 0.3 0.30275C0.5 0.100916 0.75 0 1.05 0H4.3115C4.564 0 4.78675 0.082417 4.97975 0.24725C5.17275 0.411917 5.2955 0.615417 5.348 0.85775L5.92125 3.8C5.96092 4.073 5.95258 4.30758 5.89625 4.50375C5.83975 4.69992 5.73842 4.86467 5.59225 4.998L3.28275 7.24625C3.65442 7.92692 4.07908 8.57083 4.55675 9.178C5.03425 9.785 5.55125 10.3648 6.10775 10.9173C6.65642 11.4661 7.23975 11.9757 7.85775 12.4462C8.47575 12.9167 9.14308 13.3546 9.85975 13.7598L12.1038 11.4963C12.2603 11.3334 12.4498 11.2193 12.6723 11.1538C12.8946 11.0884 13.1257 11.0724 13.3655 11.1058L16.1423 11.6713C16.3948 11.7379 16.6008 11.8667 16.7605 12.0577C16.9202 12.2487 17 12.4654 17 12.7078V15.95C17 16.25 16.8991 16.5 16.6973 16.7C16.4954 16.9 16.2431 17 15.9402 17ZM2.573 5.827L4.35775 4.11925C4.38975 4.09358 4.41058 4.05833 4.42025 4.0135C4.42992 3.96867 4.42833 3.927 4.4155 3.8885L3.98075 1.65375C3.96792 1.60258 3.9455 1.56417 3.9135 1.5385C3.8815 1.51283 3.83983 1.5 3.7885 1.5H1.65C1.6115 1.5 1.57942 1.51283 1.55375 1.5385C1.52825 1.56417 1.5155 1.59625 1.5155 1.63475C1.56667 2.31808 1.6785 3.01225 1.851 3.71725C2.02333 4.42242 2.264 5.12567 2.573 5.827ZM11.273 14.4693C11.9358 14.7783 12.6272 15.0145 13.347 15.178C14.067 15.3413 14.7397 15.4384 15.3652 15.4693C15.4037 15.4693 15.4358 15.4564 15.4615 15.4307C15.4872 15.4051 15.5 15.373 15.5 15.3345V13.2308C15.5 13.1794 15.4872 13.1377 15.4615 13.1058C15.4358 13.0738 15.3974 13.0513 15.3462 13.0385L13.2462 12.6115C13.2077 12.5987 13.1741 12.5971 13.1453 12.6067C13.1164 12.6164 13.0859 12.6372 13.0538 12.6692L11.273 14.4693Z" fill="black"/>
+                        </svg>
+                        {{ block.settings.phone }}
+                      </a>
+                      <a class="footer-email" href="mailto:{{ block.settings.email }}" title="Email us">
+                        <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.80775 15C1.30258 15 0.875 14.825 0.525 14.475C0.175 14.125 0 13.6974 0 13.1923V1.80775C0 1.30258 0.175 0.875 0.525 0.525C0.875 0.175 1.30258 0 1.80775 0H17.1923C17.6974 0 18.125 0.175 18.475 0.525C18.825 0.875 19 1.30258 19 1.80775V13.1923C19 13.6974 18.825 14.125 18.475 14.475C18.125 14.825 17.6974 15 17.1923 15H1.80775ZM17.5 2.94225L9.9865 7.752C9.90967 7.7955 9.83017 7.82975 9.748 7.85475C9.666 7.87975 9.58333 7.89225 9.5 7.89225C9.41667 7.89225 9.334 7.87975 9.252 7.85475C9.16983 7.82975 9.09033 7.7955 9.0135 7.752L1.5 2.94225V13.1923C1.5 13.2821 1.52883 13.3558 1.5865 13.4135C1.64417 13.4712 1.71792 13.5 1.80775 13.5H17.1923C17.2821 13.5 17.3558 13.4712 17.4135 13.4135C17.4712 13.3558 17.5 13.2821 17.5 13.1923V2.94225ZM9.5 6.5L17.3463 1.5H1.65375L9.5 6.5ZM1.5 3.173V2.02975V2.0595V2.02775V3.173Z" fill="black"/>
+                        </svg>
+                        {{ block.settings.email }}
+                      </a>
+                    </div>
+                    <h2>{{ block.settings.title }}</h2>
+                    <p>{{ block.settings.subtitle }}</p>
+                    <div class="newsletter__form--action">
+                    {% form 'customer', class: 'newsletter-form' %}
+                      <div class="newsletter-form__inner">
+                        <input type="hidden" name="contact[tags]" value="newsletter">
+                        <div class="newsletter-form__field-wrapper">
+                          <div class="field">
+                            <input
+                              id="NewsletterForm--{{ section.id }}"
+                              type="email"
+                              name="contact[email]"
+                              class="field__input field"
+                              value="{{ form.email }}"
+                              aria-required="true"
+                              autocorrect="off"
+                              autocapitalize="off"
+                              autocomplete="email"
+                              pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                              {% if form.errors %}
+                                autofocus
+                                aria-invalid="true"
+                                aria-describedby="Newsletter-error--{{ section.id }}"
+                              {% elsif form.posted_successfully? %}
+                                aria-describedby="Newsletter-success--{{ section.id }}"
+                              {% endif %}
+                              placeholder="{{ 'newsletter.label' | t }}"
+                              required
+                            >
+                            <label
+                              class="visually-hidden"
+                              for="NewsletterForm--{{ section.id }}"
+                            >
+                              {{ 'newsletter.label' | t }}
+                            </label>
+                          </div>
+                          {%- if form.errors -%}
+                            <small
+                              class="newsletter-form__message form__message"
+                              id="Newsletter-error--{{ section.id }}"
+                            >
+                              {%- render 'icon-error' -%}
+                              {{- form.errors.translated_fields.email | capitalize }}
+                              {{ form.errors.messages.email -}}
+                            </small>
+                          {%- endif -%}
+                        </div>
+                        <button
+                          type="submit"
+                          class="newsletter__button button button--{{ section.settings.button_style }} focus-inset"
+                          name="commit"
+                        >
+                          <span>{{ 'newsletter.button_label' | t }}</span>
+                        </button>
+                      </div>
+                      {%- if form.posted_successfully? -%}
+                        <h3
+                          class="newsletter-form__message newsletter-form__message--success form__message"
+                          id="Newsletter-success--{{ section.id }}"
+                          tabindex="-1"
+                          autofocus
+                        >
+                          {% render 'icon-success' -%}
+                          {{- 'newsletter.success' | t }}
+                        </h3>
                       {%- endif -%}
-                    </a>
+                    {% endform %}
+                    {% if section.settings.newsletter_text %}
+                      <div class="newsletter__text extra-small-font">
+                        {{ section.settings.newsletter_text }}
+                      </div>
+                    {% endif %}
+                  </div>
                     <div class="footer-block__text small-font">
                       {{ block.settings.description }}
                     </div>
@@ -197,6 +242,19 @@
                                 {%- render 'icon-snapchat' -%}
                                 <span class="visually-hidden">
                                   {{- 'general.social.links.snapchat' | t -}}
+                                </span>
+                              </a>
+                            </li>
+                          {%- endif -%}
+                          {%- if settings.social_linkedin_link != blank -%}
+                            <li class="list-social__item">
+                              <a
+                                href="{{ settings.social_linkedin_link }}"
+                                class="link link--text list-social__link"
+                                aria-describedby="a11y-external-message"
+                              >
+                                {%- render 'icon-linkedin' -%}
+                                <span class="visually-hidden">
                                 </span>
                               </a>
                             </li>
@@ -422,207 +480,214 @@
   -%}
     <div class="footer__content-middle">
       <div class="footer__content-middle-container container">
-        <div class="footer__content-middle-main">
-          <div class="footer__content-middle-main--left">
-            <div class="footer__copyright">
-              <span class="copyright__content extra-small-font ">
-                {% if section.settings.enable_copyright_shopname %}
-                  &copy;
-                {% endif %}
-                {% if section.settings.enable_copyright_date %}
-                  {{ 'now' | date: '%Y' }}
-                {% endif %}
-                {% if section.settings.enable_copyright_shopname %}
-                  {{ shop.name | link_to: routes.root_url }}.
-                {% endif %}
-              </span>
-              <span class="copyright__content extra-small-font ">
-                {{- powered_by_link -}}
-              </span>
-            </div>
-            {%- if section.settings.enable_country_selector or section.settings.enable_language_selector -%}
-              <div
-                class="footer__column footer__column--localization"
-                {{ block.shopify_attributes }}
-              >
-                <div class="footer__localization">
-                  {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
-                    <noscript>
-                      {%- form 'localization', id: 'FooterCountryFormNoScript', class: 'localization-form' -%}
-                        <div class="localization-form__select">
-                          <select
-                            class="localization-selector link"
-                            name="country_code"
-                            aria-labelledby="FooterCountryLabelNoScript"
+        <div class="footer-border-bottom">
+          {%- if section.settings.enable_country_selector or section.settings.enable_language_selector -%}
+            <div
+              class="footer__column footer__column--localization"
+              {{ block.shopify_attributes }}
+            >
+              <div class="footer__localization">
+                {%- if section.settings.enable_country_selector -%}
+                  <noscript>
+                    {%- form 'localization', id: 'FooterCountryFormNoScript', class: 'localization-form' -%}
+                      <div class="localization-form__select">
+                        <select
+                          class="localization-selector link"
+                          name="country_code"
+                          aria-labelledby="FooterCountryLabelNoScript"
+                        >
+                          {%- for country in localization.available_countries -%}
+                            <option
+                              value="{{ country.iso_code }}"
+                              {%- if country.iso_code == localization.country.iso_code %}
+                                selected
+                              {% endif %}
+                            >
+                              {% comment %} {{ country.name }} ( {% endcomment %}
+                              {{- country.currency.iso_code }}
+                              {{ country.currency.symbol }}
+                              {% comment %} ) {% endcomment %}
+                            </option>
+                          {%- endfor -%}
+                        </select>
+                        {% render 'icon-caret' %}
+                      </div>
+                      <button class="button button--primary focus-inset">
+                        {{ 'localization.update_country' | t }}
+                      </button>
+                    {%- endform -%}
+                  </noscript>
+                  <localization-form>
+                    {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
+                      <div class="no-js-hidden">
+                        <div class="disclosure">
+                          <button
+                            type="button"
+                            class="disclosure__button localization-form__select localization-selector link link--text focus-inset"
+                            aria-expanded="false"
+                            aria-controls="FooterCountryList"
+                          >
+                            <span class="value small-font">
+                              {% comment %} {{ localization.country.name }}( {% endcomment %}
+                              {{ localization.country.currency.iso_code }}
+                              {{- localization.country.currency.symbol -}}
+                              {% comment %} ) {% endcomment %}
+                            </span>
+                            {% render 'icon-caret' %}
+                          </button>
+                          <ul
+                            id="FooterCountryList"
+                            role="list"
+                            class="disclosure__list list-unstyled"
+                            hidden
                           >
                             {%- for country in localization.available_countries -%}
-                              <option
-                                value="{{ country.iso_code }}"
-                                {%- if country.iso_code == localization.country.iso_code %}
-                                  selected
-                                {% endif %}
-                              >
-                                {{ country.name }} (
-                                {{- country.currency.iso_code }}
-                                {{ country.currency.symbol }})
-                              </option>
+                              <li class="disclosure__item" tabindex="-1">
+                                <a
+                                  class="link link--text disclosure__link small-font{% if country.iso_code == localization.country.iso_code %} disclosure__link--active{% endif %} focus-inset"
+                                  href="#"
+                                  {% if country.iso_code == localization.country.iso_code %}
+                                    aria-current="true"
+                                  {% endif %}
+                                  data-value="{{ country.iso_code }}"
+                                >
+                                  <span>
+                                    {{ country.name }}, {{ country.currency.iso_code }}
+                                    {{ country.currency.symbol }}
+                                  </span>
+                                </a>
+                              </li>
                             {%- endfor -%}
-                          </select>
-                          {% render 'icon-caret' %}
+                          </ul>
                         </div>
-                        <button class="button button--primary focus-inset">
-                          {{ 'localization.update_country' | t }}
-                        </button>
-                      {%- endform -%}
-                    </noscript>
-                    <localization-form>
-                      {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
-                        <div class="no-js-hidden">
-                          <div class="disclosure">
-                            <button
-                              type="button"
-                              class="disclosure__button localization-form__select localization-selector link link--text focus-inset"
-                              aria-expanded="false"
-                              aria-controls="FooterCountryList"
-                            >
-                              <span class="value small-font">
-                                {{ localization.country.name }}
-                                ({{ localization.country.currency.iso_code }}
-                                {{- localization.country.currency.symbol -}})
-                              </span>
-                              {% render 'location-icon' -%}
-                            </button>
-                            <ul
-                              id="FooterCountryList"
-                              role="list"
-                              class="disclosure__list list-unstyled"
-                              hidden
-                            >
-                              {%- for country in localization.available_countries -%}
-                                <li class="disclosure__item" tabindex="-1">
-                                  <a
-                                    class="link link--text disclosure__link small-font{% if country.iso_code == localization.country.iso_code %} disclosure__link--active{% endif %} focus-inset"
-                                    href="#"
-                                    {% if country.iso_code == localization.country.iso_code %}
-                                      aria-current="true"
-                                    {% endif %}
-                                    data-value="{{ country.iso_code }}"
-                                  >
-                                    <span>
-                                      {{ country.name }}, {{ country.currency.iso_code }}
-                                      {{ country.currency.symbol }}
-                                    </span>
-                                  </a>
-                                </li>
-                              {%- endfor -%}
-                            </ul>
-                          </div>
-                          <input
-                            type="hidden"
-                            name="country_code"
-                            value="{{ localization.country.iso_code }}"
-                          >
-                        </div>
-                      {%- endform -%}
-                    </localization-form>
-                  {%- endif -%}
+                        <input
+                          type="hidden"
+                          name="country_code"
+                          value="{{ localization.country.iso_code }}"
+                        >
+                      </div>
+                    {%- endform -%}
+                  </localization-form>
+                {%- endif -%}
 
-                  {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
-                    <noscript>
-                      {%- form 'localization', id: 'FooterLanguageFormNoScript', class: 'localization-form' -%}
-                        <div class="localization-form__select">
-                          <select
-                            class="localization-selector link small-font"
-                            name="locale_code"
-                            aria-labelledby="FooterLanguageLabelNoScript"
+                {%- if section.settings.enable_language_selector -%}
+                  <noscript>
+                    {%- form 'localization', id: 'FooterLanguageFormNoScript', class: 'localization-form' -%}
+                      <div class="localization-form__select">
+                        <select
+                          class="localization-selector link small-font"
+                          name="locale_code"
+                          aria-labelledby="FooterLanguageLabelNoScript"
+                        >
+                          {%- for language in localization.available_languages -%}
+                            <option
+                              value="{{ language.iso_code }}"
+                              lang="{{ language.iso_code }}"
+                              {%- if language.iso_code == localization.language.iso_code %}
+                                selected
+                              {% endif %}
+                            >
+                              {{ language.endonym_name | capitalize }}
+                            </option>
+                          {%- endfor -%}
+                        </select>
+                        {% render 'icon-caret' %}
+                      </div>
+                      <button class="button button--primary">
+                        {{ 'localization.update_language' | t }}
+                      </button>
+                    {%- endform -%}
+                  </noscript>
+                  <localization-form>
+                    {%- form 'localization', id: 'FooterLanguageForm', class: 'localization-form' -%}
+                      <div class="no-js-hidden">
+                        <div class="disclosure">
+                          <button
+                            type="button"
+                            class="disclosure__button localization-form__select localization-selector link link--text focus-inset"
+                            aria-expanded="false"
+                            aria-controls="FooterLanguageList"
+                          >
+                            <span class="value small-font">
+                              {{- localization.language.endonym_name | capitalize }}
+                            </span>
+                            {% render 'icon-caret' -%}
+                          </button>
+                          <ul
+                            id="FooterLanguageList"
+                            role="list"
+                            class="disclosure__list list-unstyled"
+                            hidden
                           >
                             {%- for language in localization.available_languages -%}
-                              <option
-                                value="{{ language.iso_code }}"
-                                lang="{{ language.iso_code }}"
-                                {%- if language.iso_code == localization.language.iso_code %}
-                                  selected
-                                {% endif %}
-                              >
-                                {{ language.endonym_name | capitalize }}
-                              </option>
+                              <li class="disclosure__item" tabindex="-1">
+                                <a
+                                  class="link link--text disclosure__link small-font{% if language.iso_code == localization.language.iso_code %} disclosure__link--active{% endif %} focus-inset"
+                                  href="#"
+                                  hreflang="{{ language.iso_code }}"
+                                  lang="{{ language.iso_code }}"
+                                  {% if language.iso_code == localization.language.iso_code %}
+                                    aria-current="true"
+                                  {% endif %}
+                                  data-value="{{ language.iso_code }}"
+                                >
+                                  <span>
+                                    {{ language.endonym_name | capitalize }}
+                                  </span>
+                                </a>
+                              </li>
                             {%- endfor -%}
-                          </select>
-                          {% render 'icon-caret' %}
+                          </ul>
                         </div>
-                        <button class="button button--primary">
-                          {{ 'localization.update_language' | t }}
-                        </button>
-                      {%- endform -%}
-                    </noscript>
-                    <localization-form>
-                      {%- form 'localization', id: 'FooterLanguageForm', class: 'localization-form' -%}
-                        <div class="no-js-hidden">
-                          <div class="disclosure">
-                            <button
-                              type="button"
-                              class="disclosure__button localization-form__select localization-selector link link--text focus-inset"
-                              aria-expanded="false"
-                              aria-controls="FooterLanguageList"
-                            >
-                              <span class="value small-font">
-                                {{- localization.language.endonym_name | capitalize }}
-                              </span>
-                              {% render 'icon-caret' -%}
-                            </button>
-                            <ul
-                              id="FooterLanguageList"
-                              role="list"
-                              class="disclosure__list list-unstyled"
-                              hidden
-                            >
-                              {%- for language in localization.available_languages -%}
-                                <li class="disclosure__item" tabindex="-1">
-                                  <a
-                                    class="link link--text disclosure__link small-font{% if language.iso_code == localization.language.iso_code %} disclosure__link--active{% endif %} focus-inset"
-                                    href="#"
-                                    hreflang="{{ language.iso_code }}"
-                                    lang="{{ language.iso_code }}"
-                                    {% if language.iso_code == localization.language.iso_code %}
-                                      aria-current="true"
-                                    {% endif %}
-                                    data-value="{{ language.iso_code }}"
-                                  >
-                                    <span>
-                                      {{ language.endonym_name | capitalize }}
-                                    </span>
-                                  </a>
-                                </li>
-                              {%- endfor -%}
-                            </ul>
-                          </div>
-                          <input
-                            type="hidden"
-                            name="locale_code"
-                            value="{{ localization.language.iso_code }}"
-                          >
-                        </div>
-                      {%- endform -%}
-                    </localization-form>
-                  {%- endif -%}
-                </div>
+                        <input
+                          type="hidden"
+                          name="locale_code"
+                          value="{{ localization.language.iso_code }}"
+                        >
+                      </div>
+                    {%- endform -%}
+                  </localization-form>
+                {%- endif -%}
               </div>
-            {%- endif -%}
+            </div>
+          {%- endif -%}
+          {%- if section.settings.payment_enable -%}
+            <div class="footer__column footer__column--payment">
+              <div class="footer__payment">
+                <ul class="list list-payment" role="list">
+                  {%- for block in section.blocks -%}
+                    {%- if block.type == 'payment' and block.settings.enable_payment -%}
+                      <li class="list-payment__item" {{ block.shopify_attributes }}>
+                        {%- if block.settings.payment_image -%}
+                          <img
+                            src="{{ block.settings.payment_image | image_url: width: 60 }}"
+                            alt="{{ block.settings.payment_name }}"
+                            class="payment-icon"
+                            loading="lazy"
+                            width="60"
+                            height="40"
+                          >
+                        {%- else -%}
+                          <div class="payment-icon-placeholder">{{ block.settings.payment_name }}</div>
+                        {%- endif -%}
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+      <div class="footer__content-middle-container container">
+        <div class="footer__content-middle-main">
+          <div class="footer__copyright">
+            <span class="copyright__content">
+              {{ section.settings.copyright_text }}
+            </span>
           </div>
           <div>
-            {%- if section.settings.payment_enable -%}
-              <div class="footer__column footer__column--payment">
-                <div class="footer__payment">
-                  <ul class="list list-payment" role="list">
-                    {%- for type in shop.enabled_payment_types -%}
-                      <li class="list-payment__item">
-                        {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-                      </li>
-                    {%- endfor -%}
-                  </ul>
-                </div>
-              </div>
-            {%- endif -%}
+            <span>{{ section.settings.made_by_text }}</span>
           </div>
         </div>
       </div>
@@ -734,7 +799,7 @@ if (!customElements.get("localization-form")) {
 {% schema %}
 {
   "name": "t:sections.footer.name",
-  "max_blocks": 9,
+  "max_blocks": 15,
   "blocks": [
     {
       "type": "link_list",
@@ -764,35 +829,62 @@ if (!customElements.get("localization-form")) {
     },
     {
       "type": "logo_info",
-      "name": "t:sections.footer.blocks.logo_info.name",
+      "name": "t:sections.footer.blocks.footer_info.name",
       "limit": 1,
       "settings": [
         {
-          "type": "image_picker",
-          "id": "logo",
-          "label": "t:sections.footer.blocks.logo_info.settings.logo.label"
+          "type": "text",
+          "id": "phone",
+          "default": "1300 783 961",
+          "label": "Phone"
         },
         {
-          "type": "image_picker",
-          "id": "logo_2",
-          "label": "t:sections.footer.blocks.logo_info.settings.logo_2.label",
-          "info": "t:sections.footer.blocks.logo_info.settings.logo_2.info"
-        },
-        {
-          "type": "range",
-          "id": "logo_width",
-          "min": 50,
-          "max": 250,
-          "step": 5,
-          "default": 100,
-          "unit": "t:sections.footer.blocks.logo_info.settings.logo_width.unit",
-          "label": "t:sections.footer.blocks.logo_info.settings.logo_width.label"
+          "type": "text",
+          "id": "email",
+          "default": "team@megaofficesupplies.com.au",
+          "label": "Email"
         },
         {
           "type": "inline_richtext",
+          "id": "title",
+          "default": "Join our mailing list",
+          "label": "t:sections.footer.blocks.footer_info.settings.footer_info_title.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "subtitle",
+          "default": "Get exclusive deals, new arrivals and workplace tips.",
+          "label": "t:sections.footer.blocks.footer_info.settings.footer_info_subtitle.label"
+        },
+        {
+          "type": "richtext",
           "id": "description",
-          "default": "Description",
-          "label": "t:sections.all.text.label"
+          "default": "<p>By clicking on the “Sign Up” button, I confirm my agreement with the</p>",
+          "label": "t:sections.footer.blocks.footer_info.settings.footer_info_text.label"
+        }
+      ]
+    },
+    {
+      "type": "payment",
+      "name": "Payment Method",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "payment_name",
+          "default": "Payment Name",
+          "label": "Payment Method Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_image",
+          "label": "Payment Icon"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_payment",
+          "default": true,
+          "label": "Show this payment method"
         }
       ]
     }
@@ -879,6 +971,18 @@ if (!customElements.get("localization-form")) {
       "id": "enable_follow_on_shop",
       "default": true,
       "label": "t:sections.footer.settings.enable_follow_on_shop.label"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© 2025 Mega Office Supplies Australia."
+    },
+    {
+      "type": "text",
+      "id": "made_by_text",
+      "label": "Made By Text",
+      "default": "Made by Moustache Republic"
     }
   ],
   "default": {
