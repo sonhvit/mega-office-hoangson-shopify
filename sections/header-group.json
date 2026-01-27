@@ -32,6 +32,19 @@
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "menu_icon_Vygp8c": {
+          "type": "menu_icon",
+          "settings": {
+            "position": 1,
+            "icon_svg": "",
+            "icon_alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "menu_icon_Vygp8c"
+      ],
       "settings": {
         "color_scheme": "",
         "logo": "shopify://shop_images/MOS_Logo.webp",
