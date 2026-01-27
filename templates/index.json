@@ -859,6 +859,22 @@
         "margin_bottom": "l"
       }
     },
+    "mos_banner_grid_MzKAtg": {
+      "type": "mos-banner-grid",
+      "name": "Mos Banner Grid",
+      "settings": {
+        "layout": "type_1",
+        "color_scheme": "",
+        "height": "landscape",
+        "heading": "",
+        "heading_size": "h2",
+        "description": "",
+        "padding_top": 80,
+        "padding_top_mb": 50,
+        "padding_bottom": 80,
+        "padding_bottom_mb": 50
+      }
+    },
     "collapsible_content_UHQPpw": {
       "type": "collapsible-content",
       "blocks": {
@@ -1065,6 +1081,7 @@
     "featured_slider_E9Yykf",
     "popular_products_Gxjwih",
     "collapsible_content_UHQPpw",
+    "mos_banner_grid_MzKAtg",
     "multicolumn_rmqAa9",
     "newsletter_JRqGNU"
   ]
