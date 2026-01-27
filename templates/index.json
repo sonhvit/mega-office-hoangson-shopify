@@ -964,10 +964,11 @@
         "column_with_icon_wKbKTC": {
           "type": "column_with_icon",
           "settings": {
-            "heading": "Returns & Exchanges",
-            "text": "Not happy? Return or exchange your items quickly and hassle-free.",
+            "image": "shopify://shop_images/USPs_1.svg",
+            "heading": "Fast Delivery",
+            "text": "Australia-wide delivery with quick dispatch on all orders.",
             "text_align": "center",
-            "button_label": "Learn More",
+            "button_label": "",
             "button_link": "",
             "button_style": "tertiary"
           }
@@ -975,10 +976,11 @@
         "column_with_icon_qirLhD": {
           "type": "column_with_icon",
           "settings": {
-            "heading": "Check Your Order Status",
-            "text": "Stay updated every step of the way — from purchase to delivery.",
+            "image": "shopify://shop_images/USPs_2.svg",
+            "heading": "Bulk Pricing",
+            "text": "Save more with volume discounts for workplaces & schools.",
             "text_align": "center",
-            "button_label": "Learn More",
+            "button_label": "",
             "button_link": "",
             "button_style": "tertiary"
           }
@@ -986,10 +988,11 @@
         "column_with_icon_jfkjbt": {
           "type": "column_with_icon",
           "settings": {
-            "heading": "Visit Our Support Center",
-            "text": "Need assistance? Find answers and support anytime, anywhere.",
+            "image": "shopify://shop_images/USPs_3.svg",
+            "heading": "Local Support",
+            "text": "Get help from our Australian-based customer service team.",
             "text_align": "center",
-            "button_label": "Learn More",
+            "button_label": "",
             "button_link": "",
             "button_style": "tertiary"
           }
@@ -997,10 +1000,11 @@
         "column_with_icon_K4b4An": {
           "type": "column_with_icon",
           "settings": {
-            "heading": "Price-Match Guarantee",
-            "text": "Found a better price? We’ll match it so you get the best deal.",
+            "image": "shopify://shop_images/USPs_4.svg",
+            "heading": "<strong>Price-Match Guarantee</strong>",
+            "text": "Found a lower price? We’ll match it.",
             "text_align": "center",
-            "button_label": "Learn More",
+            "button_label": "",
             "button_link": "",
             "button_style": "tertiary"
           }
@@ -1014,10 +1018,12 @@
       ],
       "name": "t:sections.multicolumn.name",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "background-2",
         "multicolumn_to_show": 4,
-        "padding_top_mb": 50,
-        "padding_bottom_mb": 50
+        "padding_top": 58,
+        "padding_top_mb": 20,
+        "padding_bottom": 58,
+        "padding_bottom_mb": 20
       }
     },
     "newsletter_JRqGNU": {
