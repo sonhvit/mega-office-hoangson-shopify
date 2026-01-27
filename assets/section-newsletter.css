@@ -22,7 +22,10 @@
 }
 .newsletter__inner .newsletter-heading {
   margin: 0;
-  max-width: 50.4rem;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: 0.2px;
 }
 .newsletter__inner--image {
   position: relative;
@@ -78,7 +81,8 @@
   width: 100%;
 }
 .newsletter__inner .newsletter__form .newsletter__form--details--image {
-  margin-bottom: 1.6rem;
+  margin-bottom: 14px;
+  max-width: 127px;
 }
 @media (min-width: 990px) {
   .newsletter__inner .newsletter__form {
@@ -111,13 +115,10 @@
   padding-right: 4rem;
   padding-left: 4rem;
 }
-@media (min-width: 990px) {
-  .newsletter__inner--right .newsletter__form {
-    padding-right: 12.6rem;
-  }
-}
 .newsletter__inner--right .newsletter__image {
   margin: 0;
+  border-radius: 15px;
+  overflow: hidden;
 }
 .newsletter__inner--overlay::before {
   content: "";
@@ -261,10 +262,72 @@
 }
 
 @media (max-width: 989px) {
-  .newsletter--mobile-force-dark-logo .header__heading-logo:not(.header__heading-logo--overlay) {
-    display: none !important;
-  }
   .newsletter--mobile-force-dark-logo .header__heading-logo--overlay {
     display: block !important;
+  }
+}
+.newsletter .newsletter-form__field-wrapper input{
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+}
+.newsletter .newsletter-form__field-wrapper input::placeholder{
+  color: #C6C6C6;
+  font-size: 14px;
+  font-weight: 600;
+}
+.newsletter .newsletter-form__inner .newsletter__button{
+  background: #0F49A0;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 16px;
+  letter-spacing: -0.2px;
+  padding: 0 32px;
+}
+.newsletter .newsletter__text{
+  color: #666;
+  margin-top: 5px;
+  letter-spacing: -0.2px;
+}
+.newsletter .newsletter__text a{
+  color: #666;
+}
+.newsletter .newsletter__inner .newsletter__form{
+  padding-bottom: 34px;
+}
+@media(max-width: 767px){
+  .newsletter .newsletter__inner .newsletter__form{
+    padding: 20px;
+  }
+  .newsletter .newsletter__inner{
+    gap: 0;
+  }
+  .newsletter__inner .newsletter__form .newsletter__form--details--image{
+    max-width: 90px;
+    margin-bottom: 10px;
+  }
+  .newsletter__inner--right .newsletter__inner--image{
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .newsletter .newsletter__inner .newsletter-heading{
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+  .newsletter .newsletter-form__field-wrapper input{
+    min-height: 34px;
+    font-size: 12px;
+  }
+  .newsletter .newsletter-form__field-wrapper input::placeholder{
+    font-size: 12px;
+  }
+  .newsletter .newsletter-form__inner .newsletter__button{
+    min-height: 34px;
+    font-size: 14px;
+  }
+  .newsletter .newsletter__text{
+    font-size: 10px;
   }
 }
