@@ -4969,7 +4969,7 @@ details[open] > .header__icon--menu .icon-hamburger {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 18px;
+  gap: 17px;
 }
 .menu-opening .header__localization--language {
   margin-left: 0;
@@ -5636,7 +5636,7 @@ details[open] > .header__icon--menu .icon-hamburger {
 }
 .mega-menu__column {
   position: relative;
-  display: grid;
+  display: flex;
   grid-template-columns: auto 1fr;
   flex-direction: column;
   gap: 5px 0;
@@ -5743,7 +5743,6 @@ details[open] > .header__icon--menu .icon-hamburger {
 }
 .menu-drawer .mega-menu__column:not(:first-child) {
   padding-top: 2rem;
-  border-top: 0.1rem solid rgb(var(--color-border));
 }
 .menu-drawer .mega-menu__column-list {
   z-index: 3;
@@ -8086,12 +8085,15 @@ details[open] > .header__icon--menu .icon-hamburger {
 .header-menu__icon {
   display:inline-flex;
   align-items:center;
-  margin-right:4px;
+  margin-right:12px;
   width:18px;
   height:18px;
   flex:0 0 auto;
 }
 @media screen and (min-width: 1150px) {
+  .header-menu__icon {
+    margin-right:4px;
+  }
   .header__icon .icon-heart {
     width: 19px;
     height: 16.56px;

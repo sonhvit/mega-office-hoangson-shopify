@@ -10,46 +10,36 @@
         {%- assign description_setting = 'description_' | append: i -%}
         {%- assign menu_setting = 'menu_' | append: i -%}
         {% if block.settings[enable_column_setting] %}
-          <div class="mega-menu__column {% if block.settings[link_setting].url != blank and block.settings.menu_1 == blank %}mega-menu__column--overlay{%- endif -%}">
-            {%- if block.settings[icon_setting] != 'none' -%}
-              <div class="mega-menu__icon mega-menu__icon--{{- block.settings.icon_size }} {% if block.settings.box_shadow %}mega-menu__icon--shadow {% endif %} mega-menu__icon--{{- block.settings.icon_style }} mega-menu__icon--{{- block.settings.icon_fill_type }} color-{{ block.settings.icon_color_scheme }}">
-                <i
-                  class="icon icon-pack icon-{{ block.settings[icon_setting] }} {% if block.settings.icon_style == 'colored' and block.settings.icon_fill_type == 'gradient' %} text-gradient {% endif %}"
-                ></i>
-              </div>
-            {%- endif -%}
-            <div class="mega-menu__column-info {% if block.settings[description_setting] == blank %}mega-menu__column-info--only-heading{% endif %}">
-              {%- if block.settings[heading_setting] != blank -%}
-                <div class="mega-menu__column-heading">
-                  {{ block.settings[heading_setting] }}
+          {%- if block.settings[menu_setting] != blank -%}
+            <details class="mega-menu__column mega-menu__column--collapsible">
+              <summary class="mega-menu__column-summary">
+                {%- if block.settings[icon_setting] != 'none' -%}
+                  <div class="mega-menu__icon mega-menu__icon--{{- block.settings.icon_size }} {% if block.settings.box_shadow %}mega-menu__icon--shadow {% endif %} mega-menu__icon--{{- block.settings.icon_style }} mega-menu__icon--{{- block.settings.icon_fill_type }} color-{{ block.settings.icon_color_scheme }}">
+                    <i
+                      class="icon icon-pack icon-{{ block.settings[icon_setting] }} {% if block.settings.icon_style == 'colored' and block.settings.icon_fill_type == 'gradient' %} text-gradient {% endif %}"
+                    ></i>
+                  </div>
+                {%- endif -%}
+                <div class="mega-menu__column-info {% if block.settings[description_setting] == blank %}mega-menu__column-info--only-heading{% endif %}">
+                  {%- if block.settings[heading_setting] != blank -%}
+                    <div class="mega-menu__column-heading">
+                      {{ block.settings[heading_setting] }}
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings[description_setting] != blank -%}
+                    <p class="mega-menu__column-text body-small">
+                      {{ block.settings[description_setting] }}
+                    </p>
+                  {%- endif -%}
                 </div>
-              {%- endif -%}
-              {%- if block.settings[description_setting] != blank -%}
-                <p class="mega-menu__column-text body-small">
-                  {{ block.settings[description_setting] }}
-                </p>
-              {%- endif -%}
-              {%- if block.settings[link_setting].url != blank -%}
-                <a
-                  {% if block.settings[link_setting].url != blank %}
-                    href="{{ block.settings[link_setting] }}"
-                  {% endif %}
-                  class="mega-menu__column-link-overlay"
-                  {% if block.settings[link_setting].url == blank %}
-                    aria-disabled="true"
-                  {% endif %}
-                  aria-label=""
-                ></a>
-              {%- endif -%}
-            </div>
-            {%- if block.settings[menu_setting] != blank -%}
+                {% render 'icon-caret' %}
+              </summary>
               <ul class="mega-menu__column-list list-unstyled" role="list">
                 {%- for link in block.settings[menu_setting].links -%}
                   <li class="mega-menu__column-list-item body-small">
                     <a
                       href="{{ link.url }}"
                       class="mega-menu__column-list-link focus-inset"
-                      aria-disabled="true"
                       aria-label="{{ link.title | escape }}"
                     >
                       {{- link.title | escape -}}
@@ -57,12 +47,159 @@
                   </li>
                 {% endfor %}
               </ul>
-            {%- endif -%}
-          </div>
+            </details>
+          {%- else -%}
+            <div class="mega-menu__column {% if block.settings[link_setting].url != blank %}mega-menu__column--overlay{%- endif -%}">
+              {%- if block.settings[icon_setting] != 'none' -%}
+                <div class="mega-menu__icon mega-menu__icon--{{- block.settings.icon_size }} {% if block.settings.box_shadow %}mega-menu__icon--shadow {% endif %} mega-menu__icon--{{- block.settings.icon_style }} mega-menu__icon--{{- block.settings.icon_fill_type }} color-{{ block.settings.icon_color_scheme }}">
+                  <i
+                    class="icon icon-pack icon-{{ block.settings[icon_setting] }} {% if block.settings.icon_style == 'colored' and block.settings.icon_fill_type == 'gradient' %} text-gradient {% endif %}"
+                  ></i>
+                </div>
+              {%- endif -%}
+              <div class="mega-menu__column-info {% if block.settings[description_setting] == blank %}mega-menu__column-info--only-heading{% endif %}">
+                {%- if block.settings[heading_setting] != blank -%}
+                  <div class="mega-menu__column-heading">
+                    {{ block.settings[heading_setting] }}
+                  </div>
+                {%- endif -%}
+                {%- if block.settings[description_setting] != blank -%}
+                  <p class="mega-menu__column-text body-small">
+                    {{ block.settings[description_setting] }}
+                  </p>
+                {%- endif -%}
+                {%- if block.settings[link_setting].url != blank -%}
+                  <a
+                    href="{{ block.settings[link_setting] }}"
+                    class="mega-menu__column-link-overlay"
+                    aria-label=""
+                  ></a>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
         {% endif %}
       {% endfor %}
     </div>
-    {% if block.settings.enable_promo %}
+    {% if block.settings.enable_promo_1 or block.settings.enable_promo_2 %}
+      <div class="mega-menu__promo">
+        {% if block.settings.enable_promo_1 %}
+          {% if block.settings.promo_link_1 != blank %}
+            <a href="{{ block.settings.promo_link_1 }}" class="mega-menu__promo-wrapper color-inverse mega-menu__promo-link unstyled-link{% if block.settings.promo_image_1 == blank %} mega-menu__promo-link-without-image{% endif %}">
+          {% else %}
+            <div class="mega-menu__promo-wrapper color-inverse">
+          {% endif %}
+            {% if block.settings.promo_heading_1 != blank or block.settings.promo_logo_1 != blank %}
+              <div class="mega-menu__promo-block">
+                {% if block.settings.promo_logo_1 != blank %}
+                  <div class="promo_logo-wrapper">
+                    {% liquid
+                      assign image_height = block.settings.promo_logo_1.width | divided_by: block.settings.promo_logo_1.aspect_ratio
+                    %}
+                    {{
+                      block.settings.promo_logo_1
+                      | image_url: width: block.settings.promo_logo_1.width
+                      | image_tag:
+                        class: 'promo_logo promo_logo_1',
+                        loading: 'lazy',
+                        width: block.settings.promo_logo_1.width,
+                        height: image_height,
+                        sizes: '100vw',
+                        widths: '55, 110, 220, 550'
+                    }}
+                  </div>
+                {% endif %}
+                {% if block.settings.promo_heading_1 != blank %}
+                  <h5 class="mega-menu__promo-heading">
+                    {{ block.settings.promo_heading_1 }}
+                  </h5>
+                {% endif %}
+              </div>
+            {% endif %}
+            {%- if block.settings.promo_image_1 != blank -%}
+              <div class="promo_image-wrapper">
+                {% liquid
+                  assign image_height = block.settings.promo_image_1.width | divided_by: block.settings.promo_image_1.aspect_ratio
+                %}
+                {{
+                  block.settings.promo_image_1
+                  | image_url: width: block.settings.promo_image_1.width
+                  | image_tag:
+                    class: 'promo_image promo_image_1',
+                    loading: 'lazy',
+                    width: block.settings.promo_image_1.width,
+                    height: image_height,
+                    sizes: '100vw',
+                    widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000'
+                }}
+              </div>
+            {%- endif -%}
+          {% if block.settings.promo_link_1 != blank %}
+            </a>
+          {% else %}
+            </div>
+          {% endif %}
+        {% endif %}
+
+        {% if block.settings.enable_promo_2 %}
+          {% if block.settings.promo_link_2 != blank %}
+            <a href="{{ block.settings.promo_link_2 }}" class="mega-menu__promo-wrapper color-inverse mega-menu__promo-link unstyled-link{% if block.settings.promo_image_2 == blank %} mega-menu__promo-link-without-image{% endif %}">
+          {% else %}
+            <div class="mega-menu__promo-wrapper color-inverse">
+          {% endif %}
+            {% if block.settings.promo_heading_2 != blank or block.settings.promo_logo_2 != blank %}
+              <div class="mega-menu__promo-block">
+                {% if block.settings.promo_logo_2 != blank %}
+                  <div class="promo_logo-wrapper">
+                    {% liquid
+                      assign image_height = block.settings.promo_logo_2.width | divided_by: block.settings.promo_logo_2.aspect_ratio
+                    %}
+                    {{
+                      block.settings.promo_logo_2
+                      | image_url: width: block.settings.promo_logo_2.width
+                      | image_tag:
+                        class: 'promo_logo promo_logo_2',
+                        loading: 'lazy',
+                        width: block.settings.promo_logo_2.width,
+                        height: image_height,
+                        sizes: '100vw',
+                        widths: '55, 110, 220, 550'
+                    }}
+                  </div>
+                {% endif %}
+                {% if block.settings.promo_heading_2 != blank %}
+                  <h5 class="mega-menu__promo-heading">
+                    {{ block.settings.promo_heading_2 }}
+                  </h5>
+                {% endif %}
+              </div>
+            {% endif %}
+            {%- if block.settings.promo_image_2 != blank -%}
+              <div class="promo_image-wrapper">
+                {% liquid
+                  assign image_height_2 = block.settings.promo_image_2.width | divided_by: block.settings.promo_image_2.aspect_ratio
+                %}
+                {{
+                  block.settings.promo_image_2
+                  | image_url: width: block.settings.promo_image_2.width
+                  | image_tag:
+                    class: 'promo_image promo_image_2',
+                    loading: 'lazy',
+                    width: block.settings.promo_image_2.width,
+                    height: image_height_2,
+                    sizes: '100vw',
+                    widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000'
+                }}
+              </div>
+            {%- endif -%}
+          {% if block.settings.promo_link_2 != blank %}
+            </a>
+          {% else %}
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    {% elsif block.settings.enable_promo %}
       <div class="mega-menu__promo">
         <div class="mega-menu__promo-info">
           {%- if block.settings.promo_heading != blank -%}
