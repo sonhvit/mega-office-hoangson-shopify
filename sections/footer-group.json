@@ -1,1 +1,153 @@
-{"type":"footer","name":"t:sections.footer.settings.footer-group.label","sections":{"footer":{"type":"footer","blocks":{"footer-0":{"type":"logo_info","settings":{"logo_width":90}},"footer-1":{"type":"link_list","settings":{"heading":"Categories","menu":"footer"}},"footer-2":{"type":"link_list","settings":{"heading":"Get to Know Us","menu":"footer"}},"footer-3":{"type":"link_list","settings":{"heading":"Let Us Help You","menu":"footer"}}},"block_order":["footer-0","footer-1","footer-2","footer-3"],"settings":{"color_scheme":"background-1","enable_country_selector":true,"enable_language_selector":true,"payment_enable":true,"show_social":true}}},"order":["footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "t:sections.footer.settings.footer-group.label",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "logo_info_xfMj33": {
+          "type": "logo_info",
+          "settings": {
+            "title": "Join our mailing list",
+            "subtitle": "Get exclusive deals, new arrivals and workplace tips.",
+            "description": "<p>By clicking on the “Sign Up” button, I confirm my agreement with the <a href=\"#\" title=\"#\">Privacy Policy</a> and <a href=\"#\" title=\"#\">Terms of Use</a></p>"
+          }
+        },
+        "payment_HNYyaj": {
+          "type": "payment",
+          "settings": {
+            "payment_name": "Payment Name",
+            "payment_image": "shopify://shop_images/Vector6.svg",
+            "enable_payment": true
+          }
+        },
+        "payment_qxnVFB": {
+          "type": "payment",
+          "settings": {
+            "payment_name": "Payment Name",
+            "payment_image": "shopify://shop_images/Vector.svg",
+            "enable_payment": true
+          }
+        },
+        "payment_gUE8E7": {
+          "type": "payment",
+          "settings": {
+            "payment_name": "Payment Name",
+            "payment_image": "shopify://shop_images/Vector_1.svg",
+            "enable_payment": true
+          }
+        },
+        "payment_jgMMyP": {
+          "type": "payment",
+          "settings": {
+            "payment_name": "Payment Name",
+            "payment_image": "shopify://shop_images/Vector_2.svg",
+            "enable_payment": true
+          }
+        },
+        "payment_Dtd8wM": {
+          "type": "payment",
+          "settings": {
+            "payment_name": "Payment Name",
+            "payment_image": "shopify://shop_images/Vector_3.svg",
+            "enable_payment": true
+          }
+        },
+        "payment_diqqgx": {
+          "type": "payment",
+          "settings": {
+            "payment_name": "Payment Name",
+            "payment_image": "shopify://shop_images/Vector_4.svg",
+            "enable_payment": true
+          }
+        },
+        "payment_UQRNHU": {
+          "type": "payment",
+          "settings": {
+            "payment_name": "Payment Name",
+            "payment_image": "shopify://shop_images/Vector6.svg",
+            "enable_payment": true
+          }
+        },
+        "payment_rDqY9L": {
+          "type": "payment",
+          "settings": {
+            "payment_name": "Payment Name",
+            "payment_image": "shopify://shop_images/Vector7.svg",
+            "enable_payment": true
+          }
+        },
+        "link_list_H3kXiX": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "menu": "menu-shop",
+            "default_open": false
+          }
+        },
+        "footer-1": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Company",
+            "menu": "menu-company",
+            "default_open": false
+          }
+        },
+        "footer-2": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Business & Services",
+            "menu": "menu-business",
+            "default_open": false
+          }
+        },
+        "footer-3": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Help & Support",
+            "menu": "menu-help",
+            "default_open": false
+          }
+        }
+      },
+      "block_order": [
+        "logo_info_xfMj33",
+        "payment_HNYyaj",
+        "payment_qxnVFB",
+        "payment_gUE8E7",
+        "payment_jgMMyP",
+        "payment_Dtd8wM",
+        "payment_diqqgx",
+        "payment_UQRNHU",
+        "payment_rDqY9L",
+        "link_list_H3kXiX",
+        "footer-1",
+        "footer-2",
+        "footer-3"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_social": true,
+        "enable_copyright_date": true,
+        "enable_copyright_shopname": true,
+        "show_policy": false,
+        "enable_follow_on_shop": true
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}
