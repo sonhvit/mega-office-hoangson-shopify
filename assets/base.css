@@ -4257,7 +4257,7 @@ body.body--hidden {
 }
 @media screen and (min-width: 1150px) {
   .header--left-logo {
-    gap: 2.4rem;
+    gap: 27px;
   }
 }
 .header--left-logo .header__top_menu {
@@ -4308,7 +4308,7 @@ body.body--hidden {
     align-items: center;
     gap: 2rem;
     width: 100%;
-    padding-inline: 11px;
+    padding-inline: 3px;
   }
 }
 @media screen and (min-width: 1150px) {
@@ -5447,7 +5447,7 @@ details[open] > .header__icon--menu .icon-hamburger {
   position: absolute;
   top: auto;
   display: none;
-  max-height: calc(100vh - var(--header-height) - var(--announcement-height) - 3.2rem);
+  max-height: unset;
   opacity: 0;
   pointer-events: none;
   overflow-y: auto;
@@ -5483,18 +5483,19 @@ details[open] > .header__icon--menu .icon-hamburger {
   left: 0;
   display: grid;
   align-items: flex-start;
-  padding: 2rem 0;
+  padding: 32px 0;
   border-radius: 0;
 }
 .mega-menu--columns .header__mega-menu-wrapper {
   display: grid;
-  grid-template-columns: 1fr minmax(auto, 320px);
+  grid-template-columns: 1fr minmax(auto, 252px);
+  gap: 45px 20px;
 }
 .mega-menu__columns {
   display: grid;
   grid-template-columns: 1fr;
   align-items: flex-start;
-  gap: 4rem 3.2rem;
+  gap: 46px 20px;
   grid-template-columns: repeat(var(--column-count), 1fr);
 }
 .mega-menu__columns--1 {
@@ -5512,16 +5513,16 @@ details[open] > .header__icon--menu .icon-hamburger {
 .mega-menu__promo {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 20px;
 }
 .mega-menu__promo .mega-menu__promo-wrapper {
   position: relative;
   width: 100%;
   display: flex;
   background-color: rgb(var(--color-background-secondary));
-  border-radius: var(--border-radius-large);
+  border-radius: 15px;
   overflow: hidden;
 }
 .mega-menu__promo .mega-menu__promo-wrapper::before {
@@ -5538,22 +5539,23 @@ details[open] > .header__icon--menu .icon-hamburger {
 .mega-menu__promo .mega-menu__promo-block {
   width: 100%;
   z-index: 1;
-  padding: 1.2rem;
+  padding: 16px 19px 16px 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .mega-menu__promo .mega-menu__promo-heading {
-  margin: auto 0 0 0;
-  max-width: 140px;
+  margin: 41px 0 0 0;
   color: rgb(var(--color-foreground-secondary));
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.2px;
 }
 .mega-menu__promo .promo_logo-wrapper {
-  max-width: 6rem;
+  max-width: unset;
 }
 .mega-menu__promo .promo_logo-wrapper .promo_logo {
-  width: auto;
-  height: auto;
   max-width: 100%;
   max-height: 100%;
 }
@@ -5612,7 +5614,7 @@ details[open] > .header__icon--menu .icon-hamburger {
   line-height: 1.4;
 }
 .mega-menu__column-list-item .mega-menu__column-list-link, .mega-menu__tab-list-item .mega-menu__column-list-link {
-  padding: 0.4rem 0;
+  padding: 2.7px 0;
   display: inline-block;
 }
 .mega-menu__column-list-item:first-child .mega-menu__column-list-link, .mega-menu__tab-list-item:first-child .mega-menu__column-list-link {
@@ -5637,7 +5639,7 @@ details[open] > .header__icon--menu .icon-hamburger {
   display: grid;
   grid-template-columns: auto 1fr;
   flex-direction: column;
-  gap: 1.6rem 0;
+  gap: 5px 0;
 }
 .mega-menu__column--overlay .mega-menu__column-text {
   transition: color var(--duration-default);
@@ -5672,7 +5674,10 @@ details[open] > .header__icon--menu .icon-hamburger {
 .list-menu--megamenu .mega-menu {
   opacity: 0;
   pointer-events: none;
-  border-top: 1px solid rgb(var(--color-border));
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  /* display: grid !important;
+  opacity: 1 !important; */
 }
 .list-menu--megamenu:focus > .mega-menu,
 .list-menu--megamenu:focus .mega-menu__list-item--visible .mega-menu__submenu,
@@ -8184,4 +8189,36 @@ details[open] > .header__icon--menu .icon-hamburger {
     font-size: 14px;
     line-height: 1;
     letter-spacing: -0.2px;
+}
+.header__mega-menu-wrapper.container {
+  padding-left: 58px;
+  padding-right: 42px;
+}
+.mega-menu__column .mega-menu__column-heading, .mega-menu__tab-heading {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: -0.2px;
+}
+.mega-menu-button__button {
+  width: max-content;
+  padding: 14px 32px;
+  background-color: #0F49A0;
+  border-radius: 200px;
+  border: 1px solid #0F49A0;
+}
+.mega-menu-button__button:hover {
+  background-color: #FFFFFF !important;
+  color: #0F49A0 !important;
+  border: 1px solid #0F49A0;
+}
+.mega-menu-button__button:focus {
+  outline: 2px solid #FF7322;
+  outline-offset: 0;
+}
+.mega-menu-button__button span {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: -0.2px;
 }

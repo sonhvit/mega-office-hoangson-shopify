@@ -162,6 +162,12 @@
 						{%- endif -%}
 					</div>
 				{% endif %}
+				{% render 'button',
+					btn_label: block.settings.shop_all_button_label,
+					btn_style: block.settings.shop_all_button_style,
+					btn_link: block.settings.shop_all_button_link,
+					class: 'mega-menu-button'
+				%}
 			</div>
 		</div>
 	{% endif %}

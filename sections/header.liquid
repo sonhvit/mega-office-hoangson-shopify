@@ -892,7 +892,70 @@
 					"type": "image_picker",
 					"id": "promo_logo_2",
 					"label": "t:sections.all.image.logo"
-				}
+				},
+				{
+					"type": "text",
+					"id": "shop_all_button_label",
+					"label": "Button label",
+				},
+				{
+					"type": "select",
+					"id": "shop_all_button_style",
+					"options": [
+						{
+							"value": "primary",
+							"label": "t:sections.all.button.style.options__1.label"
+						},
+						{
+							"value": "secondary",
+							"label": "t:sections.all.button.style.options__2.label"
+						},
+						{
+							"value": "outlined",
+							"label": "t:sections.all.button.style.options__4.label"
+						},
+						{
+							"value": "custom",
+							"label": "t:sections.all.button.style.options__5.label"
+						}
+					],
+					"default": "primary",
+					"label": "t:sections.all.button.style.label"
+				},
+				{
+					"type": "color",
+					"id": "colors_custom_button_labels",
+					"default": "#000000",
+					"label": "t:settings_schema.colors.settings.colors_solid_button_labels.label",
+					"visible_if": "{{ block.settings.shop_all_button_style == 'custom' }}"
+				},
+				{
+					"type": "color",
+					"id": "colors_custom_button_labels_hover",
+					"default": "#000000",
+					"label": "t:settings_schema.colors.settings.colors_solid_button_labels_hover.label",
+					"visible_if": "{{ block.settings.shop_all_button_style == 'custom' }}"
+				},
+				{
+					"type": "color",
+					"id": "colors_custom_button_background",
+					"default": "#FFDE1B",
+					"label": "t:settings_schema.colors.settings.colors_solid_button_background.label",
+					"visible_if": "{{ block.settings.shop_all_button_style == 'custom' }}"
+				},
+				{
+					"type": "color",
+					"id": "colors_custom_button_background_hover",
+					"default": "#FFDE1B",
+					"label": "t:settings_schema.colors.settings.colors_solid_button_background_hover.label",
+					"visible_if": "{{ block.settings.shop_all_button_style == 'custom' }}"
+				},
+				{
+					"type": "url",
+					"id": "shop_all_button_link",
+					"label": "t:sections.all.button.button_link.label",
+					"default": "/collections/all"
+				},
 			]
 		},
 		{
