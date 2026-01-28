@@ -1,1 +1,91 @@
-{"sections":{"main":{"type":"main-page","settings":{}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": "no-indent",
+        "padding_bottom": "m"
+      }
+    },
+    "mos_collapsible_content_nVEcWx": {
+      "type": "mos-collapsible-content",
+      "blocks": {
+        "accordion_WwDhaH": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Here can be a commonly asked question.",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": true,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_KWAXTi": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Here can be a commonly asked question.",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_WqWrjC": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Here can be a commonly asked question.",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_WwDhaH",
+        "accordion_KWAXTi",
+        "accordion_WqWrjC"
+      ],
+      "name": "Mos FAQ",
+      "settings": {
+        "color_scheme": "",
+        "heading": "Some heading",
+        "heading_size": "h2",
+        "text": "Here can be a brief overview of the information available in this section, explaining its purpose and how users can interact with it.",
+        "info_desc": 14,
+        "info_desc_mobile": 12,
+        "button_label": "Learn more",
+        "button_link": "",
+        "button_style": "secondary",
+        "enable_second_button": false,
+        "button_label_2": "",
+        "button_link_2": "",
+        "button_style_2": "secondary",
+        "padding_top": 3,
+        "padding_top_mb": 27,
+        "padding_bottom": 80,
+        "padding_bottom_mb": 46
+      }
+    }
+  },
+  "order": [
+    "main",
+    "mos_collapsible_content_nVEcWx"
+  ]
+}
