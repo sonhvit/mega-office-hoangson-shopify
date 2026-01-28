@@ -772,105 +772,6 @@
         "margin_bottom": "l"
       }
     },
-    "collapsible_content_UHQPpw": {
-      "type": "collapsible-content",
-      "blocks": {
-        "accordion_DMVNWm": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "Shipping",
-            "question": "How long does it typically take to process an order?",
-            "answer": "<p>Yes, international shipping is available. Delivery times and costs vary based on your location and selected shipping method.</p>",
-            "opened": true,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_hDYrig": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "",
-            "question": "Can I change the contents of my order?",
-            "answer": "<p>Yes, changes can be made if the order hasn’t entered processing. Make sure to update your order details promptly after purchase.</p>",
-            "opened": false,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_qt3wKb": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "",
-            "question": "Do you ship internationally?",
-            "answer": "<p>Yes, international shipping is available. Delivery times and costs vary based on your location and selected shipping method.</p>",
-            "opened": false,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_AEMxyw": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "",
-            "question": "Is my personal information secure during checkout?",
-            "answer": "<p>You can return most items within 30 days of delivery for a full refund or exchange.</p>",
-            "opened": false,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_RcxMQq": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "returns & refund",
-            "question": "What is your return policy?",
-            "answer": "<p>Refunds are usually processed within 5-7 business days after we receive your returned item.</p>",
-            "opened": false,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_hiUFAN": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "",
-            "question": "How long does it take to process a refund?",
-            "answer": "<p>Return shipping is free if the return is due to our error or a defective product.</p>",
-            "opened": false,
-            "button_label": "Read All",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        }
-      },
-      "block_order": [
-        "accordion_DMVNWm",
-        "accordion_hDYrig",
-        "accordion_qt3wKb",
-        "accordion_AEMxyw",
-        "accordion_RcxMQq",
-        "accordion_hiUFAN"
-      ],
-      "name": "t:sections.collapsible-content.name",
-      "settings": {
-        "color_scheme": "",
-        "heading": "24/7 Assistance, Whenever You Need It",
-        "heading_size": "h3",
-        "text": "Round-the-clock support for a smooth shopping experience.",
-        "button_label": "Contact Support",
-        "button_link": "",
-        "button_style": "secondary",
-        "padding_top": "no-indent",
-        "padding_bottom": "no-indent",
-        "margin_top": "no-indent",
-        "margin_bottom": "l"
-      }
-    },
     "logo_list_KjUJtq": {
       "type": "logo-list",
       "blocks": {
@@ -960,7 +861,9 @@
         "button_link": "",
         "button_style": "tertiary",
         "speed_slider_1": 500,
+        "padding_top": 80,
         "padding_top_mb": 50,
+        "padding_bottom": 80,
         "padding_bottom_mb": 50
       }
     },
@@ -1154,7 +1057,6 @@
     "popular_products_LJD4eJ",
     "featured_slider_E9Yykf",
     "popular_products_Gxjwih",
-    "collapsible_content_UHQPpw",
     "logo_list_KjUJtq",
     "mos_banner_grid_rq4GKQ",
     "multicolumn_rmqAa9",
