@@ -20,13 +20,97 @@
     "mos_collapsible_content_nVEcWx": {
       "type": "mos-collapsible-content",
       "blocks": {
+        "accordion_3AwAQE": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "Ordering",
+            "question": "Can I cancel or change my order after placing it?",
+            "answer": "<p>If your order hasn’t been picked, packed or shipped yet, we may be able to cancel or adjust it. Please contact our Customer Service team as soon as possible.</p>",
+            "opened": true,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_8FnCWE": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Can I change the contents of my order?",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_HnyWQD": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Do you ship internationally?",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_Uh8kbb": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Is my personal information secure during checkout?",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_pxe4WC": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "Shipping & Delivery",
+            "question": "Where do you deliver?",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_YhBdEH": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "How are shipping costs calculated?",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_MJcUec": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "Returns, Refunds & Replacements",
+            "question": "What is your returns policy?",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
         "accordion_WwDhaH": {
           "type": "accordion",
           "settings": {
             "subheading": "",
-            "question": "Here can be a commonly asked question.",
+            "question": "What if the item arrives damaged or faulty?",
             "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
-            "opened": true,
+            "opened": false,
             "button_label": "",
             "button_link": "",
             "button_style": "tertiary"
@@ -35,8 +119,8 @@
         "accordion_KWAXTi": {
           "type": "accordion",
           "settings": {
-            "subheading": "",
-            "question": "Here can be a commonly asked question.",
+            "subheading": "Payment",
+            "question": "What payment methods do you accept?",
             "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
             "opened": false,
             "button_label": "",
@@ -48,7 +132,7 @@
           "type": "accordion",
           "settings": {
             "subheading": "",
-            "question": "Here can be a commonly asked question.",
+            "question": "Is it safe to use my credit/debit card on your site?",
             "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
             "opened": false,
             "button_label": "",
@@ -58,6 +142,13 @@
         }
       },
       "block_order": [
+        "accordion_3AwAQE",
+        "accordion_8FnCWE",
+        "accordion_HnyWQD",
+        "accordion_Uh8kbb",
+        "accordion_pxe4WC",
+        "accordion_YhBdEH",
+        "accordion_MJcUec",
         "accordion_WwDhaH",
         "accordion_KWAXTi",
         "accordion_WqWrjC"
