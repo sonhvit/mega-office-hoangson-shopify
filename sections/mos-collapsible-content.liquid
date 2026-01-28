@@ -1,0 +1,375 @@
+{{ 'section-collapsible-content.css' | asset_url | stylesheet_tag }}
+{{ 'mos-section-collapsible-content.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top_mb}}px;
+  padding-bottom: {{ section.settings.padding_bottom_mb}}px;
+  }
+
+  .section-{{ section.id }}-padding.mos-collapsible-content .collapsible-content_info--desc {
+  font-size: {{ section.settings.info_desc_mobile }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .section-{{ section.id }}-padding.mos-collapsible-content .collapsible-content_info--desc {
+  font-size: {{ section.settings.info_desc }}px;
+  }
+  }
+{%- endstyle -%}
+
+
+<script src="{{ 'collapsible-content.js' | asset_url }}" defer="defer"></script>
+
+<div class="collapsible-content mos-collapsible-content color-{{ section.settings.color_scheme }} background section-{{ section.id }}-padding" style="
+    --mos-color-button: 15, 73, 160;
+    --mos-color-text: 15, 73, 160;
+    --mos-font-button-weight: 600;
+    --mos-font-heading-weight: 600;
+    --mos-color-background: 246, 246, 246;">
+  <div class="container">
+    <div class="collapsible-content__main">
+      {%- if section.settings.heading != blank
+      or section.settings.text != blank
+      or section.settings.button_label != blank
+      -%}
+        <div class="collapsible-content_info">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="{{ section.settings.heading_size }} collapsible-content_info--heading">
+              {{ section.settings.heading }}
+            </h2>
+          {%- endif -%}
+          {%- if section.settings.text != blank -%}
+            <p class="collapsible-content_info--desc">
+              {{ section.settings.text }}
+            </p>
+          {%- endif -%}
+          <div class="collapsible-content__buttons">
+            {% render 'button', layout: section %}
+
+            {% if section.settings.enable_second_button
+            and section.settings.button_label_2 != blank %}
+
+              <a
+                {% if section.settings.button_link_2 != blank %}
+                  href="{{ section.settings.button_link_2 }}"
+                {% endif %}
+                class="button button--{{ section.settings.button_style_2 }} focus-inset"
+                {% if section.settings.button_link_2 == blank %}
+                  aria-disabled="true"
+                {% endif %}
+              >
+                <span class="button-label">{{ section.settings.button_label_2 | strip }}</span>
+              </a>
+            {% endif %}
+          </div>
+
+        </div>
+      {%- endif -%}
+
+      <div class="collapsible-content__content content">
+        <div class="collapsible-content__items">
+          {%- for block in section.blocks -%}
+            {%- if block.settings.question != blank -%}
+              <div class="collapsible-content__item">
+                {%- if block.settings.subheading != blank -%}
+                  <p class="collapsible-content__item--subheading large-font">
+                    {{ block.settings.subheading }}
+                  </p>
+                {% endif %}
+                <div
+                  class="collapsible-content__item--main {% if block.settings.opened %} active {% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  <button class="collapsible-content__toggle button--unstyled focus-inset">
+                    <div class="collapsible-content__toggle-group">
+                      {%- if block.settings.question != blank -%}
+                        <h5 class="collapsible-content__question h5">
+                          {{ block.settings.question | escape }}
+                        </h5>
+                      {%- endif -%}
+                    </div>
+                    <div class="collapsible-content__icon">
+                      {% render 'icon-accardion-arrow' %}
+                    </div>
+                  </button>
+
+                  {%- if block.settings.answer != blank -%}
+                    <div
+                      class="collapsible-content__answer"
+                      {% if block.settings.opened %}
+                        style="display: block;"
+                      {% endif %}
+                    >
+                      <div class="collapsible-content__answer-inner">
+                        {{ block.settings.answer }}
+                      </div>
+                    </div>
+                  {%- endif -%}
+                </div>
+                {% render 'button', layout: block, class: 'collapsible-content__item' %}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Mos FAQ",
+  "tag": "section",
+  "class": "collapsible-content-section spaced-section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "t:sections.collapsible-content.blocks.accordion.name",
+      "limit": 20,
+      "settings": [
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "t:sections.all.subheading.label"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "default": "t:sections.collapsible-content.settings.default_contents.question",
+          "label": "t:sections.all.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "default": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+          "label": "t:sections.all.text.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "opened",
+          "label": "t:sections.collapsible-content.blocks.accordion.settings.opened.label",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.button.header.content"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.all.button.label.label",
+          "info": "t:sections.all.button.label.info"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.all.button.link.label"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "t:sections.all.button.style.options__1.label"
+            },
+            {
+              "value": "secondary",
+              "label": "t:sections.all.button.style.options__2.label"
+            },
+            {
+              "value": "tertiary",
+              "label": "t:sections.all.button.style.options__3.label"
+            }
+          ],
+          "default": "tertiary",
+          "label": "t:sections.all.button.style.label"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "background-1",
+      "label": "t:sections.all.color_scheme.label"
+    },
+
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "t:sections.all.heading.default",
+      "label": "t:sections.all.heading.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__2.label"
+        }
+      ],
+      "default": "h2",
+      "label": "t:sections.all.heading_size.label"
+    },
+
+    {
+      "type": "textarea",
+      "id": "text",
+      "default": "t:sections.collapsible-content.settings.default_contents.description",
+      "label": "t:sections.all.text.label"
+    },
+    {
+      "type": "number",
+      "id": "info_desc",
+      "default": 14,
+      "label": "Description Size"
+    },
+    {
+      "type": "number",
+      "id": "info_desc_mobile",
+      "default": 12,
+      "label": "Description Size Mobile"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.button.header.content"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "t:sections.all.button.label.default_3",
+      "label": "t:sections.all.button.label.label",
+      "info": "t:sections.all.button.label.info"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.all.button.link.label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.all.button.style.options__1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.all.button.style.options__2.label"
+        },
+        {
+          "value": "tertiary",
+          "label": "t:sections.all.button.style.options__3.label"
+        }
+      ],
+      "default": "secondary",
+      "label": "t:sections.all.button.style.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_second_button",
+      "default": false,
+      "label": "Enable second button"
+    },
+    {
+      "type": "header",
+      "content": "Second button"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "t:sections.all.button.label.label",
+      "info": "t:sections.all.button.label.info"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "t:sections.all.button.link.label"
+    },
+    {
+      "type": "select",
+      "id": "button_style_2",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.all.button.style.options__1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.all.button.style.options__2.label"
+        },
+        {
+          "value": "tertiary",
+          "label": "t:sections.all.button.style.options__3.label"
+        }
+      ],
+      "default": "secondary",
+      "label": "t:sections.all.button.style.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-padding.header.content"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "default": 80,
+      "label": "t:sections.all.section-padding.padding_top.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mb",
+      "default": 50,
+      "label": "Padding Top Mobile"
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "default": 80,
+      "label": "t:sections.all.section-padding.padding_bottom.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mb",
+      "default": 50,
+      "label": "Padding Bottom Mobile"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mos FAQ",
+      "blocks": [
+        {
+          "type": "accordion",
+          "settings": {
+            "opened": true
+          }
+        },
+        {
+          "type": "accordion"
+        },
+        {
+          "type": "accordion"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
