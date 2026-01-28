@@ -539,93 +539,6 @@
         "margin_bottom": "l"
       }
     },
-    "logo_list_KjUJtq": {
-      "type": "logo-list",
-      "blocks": {
-        "logo_fBpVkD": {
-          "type": "logo",
-          "settings": {
-            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
-            "logo_width": 90
-          }
-        },
-        "logo_89fjff": {
-          "type": "logo",
-          "settings": {
-            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
-            "logo_width": 90
-          }
-        },
-        "logo_BUgqwd": {
-          "type": "logo",
-          "settings": {
-            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
-            "logo_width": 90
-          }
-        },
-        "logo_XhnK4f": {
-          "type": "logo",
-          "settings": {
-            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
-            "logo_width": 90
-          }
-        },
-        "logo_beXTYA": {
-          "type": "logo",
-          "settings": {
-            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
-            "logo_width": 90
-          }
-        },
-        "logo_RPHHwN": {
-          "type": "logo",
-          "settings": {
-            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
-            "logo_width": 90
-          }
-        },
-        "logo_4rTzbz": {
-          "type": "logo",
-          "settings": {
-            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
-            "logo_width": 90
-          }
-        },
-        "logo_fGb6NG": {
-          "type": "logo",
-          "settings": {
-            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
-            "logo_width": 90
-          }
-        }
-      },
-      "block_order": [
-        "logo_fBpVkD",
-        "logo_89fjff",
-        "logo_BUgqwd",
-        "logo_XhnK4f",
-        "logo_beXTYA",
-        "logo_RPHHwN",
-        "logo_4rTzbz",
-        "logo_fGb6NG"
-      ],
-      "name": "t:sections.logo-list.name",
-      "settings": {
-        "layout": "horizontal-carousel",
-        "color_scheme": "",
-        "heading": "Shop by Brands",
-        "heading_size": "h3",
-        "description": "",
-        "button_label": "View All",
-        "button_link": "",
-        "button_style": "tertiary",
-        "speed_slider_1": 500,
-        "padding_top": "no-indent",
-        "padding_bottom": "no-indent",
-        "margin_top": "no-indent",
-        "margin_bottom": "l"
-      }
-    },
     "banner_grid_rAgXmp": {
       "type": "banner-grid",
       "blocks": {
@@ -859,91 +772,6 @@
         "margin_bottom": "l"
       }
     },
-    "mos_banner_grid_MzKAtg": {
-      "type": "mos-banner-grid",
-      "blocks": {
-        "card_horizontal_MMBqdV": {
-          "type": "card_horizontal",
-          "settings": {
-            "color_scheme": "",
-            "image": "shopify://shop_images/banner1.webp",
-            "full_image": true,
-            "card_padding": "40",
-            "overlay_opacity": 0,
-            "overlay_opacity_mobile": 0.2,
-            "overlay_link": "",
-            "heading": "Furniture Deals",
-            "heading_size": "h2",
-            "description": "Save on office chairs, desks & workplace essentials.",
-            "small_badge_bg_color": "#ff7322",
-            "small_badge_text_color": "#ffffff",
-            "small_badege_text": "NEW",
-            "show_badge": true,
-            "badge_position": "top",
-            "badge_subheading": "-25%",
-            "badge_heading": "$750.00",
-            "enable_prefix": "$",
-            "enable_new": "600.00",
-            "button_label": "Save Now",
-            "button_link": "shopify://pages/contact",
-            "button_style": "primary"
-          }
-        },
-        "card_with_ticker_mEKPMA": {
-          "type": "card_with_ticker",
-          "settings": {
-            "color_scheme": "background-3",
-            "image": "shopify://shop_images/aa9efdb83695e5d67edf3245215c436c4d861060.webp",
-            "card_padding": "40",
-            "overlay_opacity": 0,
-            "overlay_opacity_mobile": 0.2,
-            "overlay_link": "",
-            "heading": "Back to School Deals",
-            "heading_size": "h2",
-            "description": "Big savings on stationery, art supplies & must-have school essentials.",
-            "small_badge_bg_color": "#ff7322",
-            "small_badge_text_color": "#ffffff",
-            "small_badege_text": "SALE",
-            "enable_countdown": true,
-            "enable_mock_timer": true,
-            "date_picker": "2025-10-01",
-            "time_picker": "00:00",
-            "mock_date_picker_day": 2,
-            "mock_date_picker_hours": 3,
-            "completed_countdown": "show_text",
-            "countdown_heading": "Header after countdown",
-            "first_ticker_heading": "Sale up to 50%",
-            "first_ticker_heading_color": "#000000",
-            "first_ticker_speed": 6,
-            "first_ticker_background_color": "#ff7322",
-            "second_ticker_heading": "Sale up to 50%",
-            "second_ticker_heading_color": "#74b3ea",
-            "second_ticker_speed": 6,
-            "second_ticker_background_color": "#000000",
-            "button_label": "Shop Back to School",
-            "button_link": "shopify://pages/contact",
-            "button_style": "primary"
-          }
-        }
-      },
-      "block_order": [
-        "card_horizontal_MMBqdV",
-        "card_with_ticker_mEKPMA"
-      ],
-      "name": "Mos Banner Grid",
-      "settings": {
-        "layout": "columns",
-        "color_scheme": "",
-        "height": "landscape",
-        "heading": "",
-        "heading_size": "h2",
-        "description": "",
-        "padding_top": 80,
-        "padding_top_mb": 50,
-        "padding_bottom": 80,
-        "padding_bottom_mb": 50
-      }
-    },
     "collapsible_content_UHQPpw": {
       "type": "collapsible-content",
       "blocks": {
@@ -1043,6 +871,184 @@
         "margin_bottom": "l"
       }
     },
+    "logo_list_KjUJtq": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_fBpVkD": {
+          "type": "logo",
+          "settings": {
+            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
+            "logo_width": 90
+          }
+        },
+        "logo_89fjff": {
+          "type": "logo",
+          "settings": {
+            "image_1": "shopify://shop_images/brand2_861d824f-b2d1-47df-9208-7e93b13abad2.webp",
+            "logo_width": 90
+          }
+        },
+        "logo_BUgqwd": {
+          "type": "logo",
+          "settings": {
+            "image_1": "shopify://shop_images/brand3_c4c21d7b-0758-460a-85c1-6a069601bf3a.webp",
+            "logo_width": 90
+          }
+        },
+        "logo_XhnK4f": {
+          "type": "logo",
+          "settings": {
+            "image_1": "shopify://shop_images/brand4_3a127cbb-e585-4804-88a1-7f171db27753.webp",
+            "logo_width": 90
+          }
+        },
+        "logo_w3G47K": {
+          "type": "logo",
+          "settings": {
+            "image_1": "shopify://shop_images/brand5_9c7f23b4-d9be-488e-aed7-fea9b4df047f.webp",
+            "logo_width": 100
+          }
+        },
+        "logo_beXTYA": {
+          "type": "logo",
+          "settings": {
+            "image_1": "shopify://shop_images/brand6_60c958e1-85ce-4e0c-aaeb-40ecfebb4d8d.webp",
+            "logo_width": 90
+          }
+        },
+        "logo_RPHHwN": {
+          "type": "logo",
+          "settings": {
+            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
+            "logo_width": 90
+          }
+        },
+        "logo_4rTzbz": {
+          "type": "logo",
+          "settings": {
+            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
+            "logo_width": 90
+          }
+        },
+        "logo_fGb6NG": {
+          "type": "logo",
+          "settings": {
+            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
+            "logo_width": 90
+          }
+        }
+      },
+      "block_order": [
+        "logo_fBpVkD",
+        "logo_89fjff",
+        "logo_BUgqwd",
+        "logo_XhnK4f",
+        "logo_w3G47K",
+        "logo_beXTYA",
+        "logo_RPHHwN",
+        "logo_4rTzbz",
+        "logo_fGb6NG"
+      ],
+      "name": "t:sections.logo-list.name",
+      "settings": {
+        "layout": "horizontal-carousel",
+        "color_scheme": "",
+        "heading": "Shop by Brands",
+        "heading_size": "h3",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "speed_slider_1": 500,
+        "padding_top_mb": 50,
+        "padding_bottom_mb": 50
+      }
+    },
+    "mos_banner_grid_rq4GKQ": {
+      "type": "mos-banner-grid",
+      "blocks": {
+        "card_horizontal_MMBqdV": {
+          "type": "card_horizontal",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/banner1.webp",
+            "full_image": true,
+            "card_padding": "40",
+            "overlay_opacity": 0,
+            "overlay_opacity_mobile": 0.2,
+            "overlay_link": "",
+            "heading": "Furniture Deals",
+            "heading_size": "h2",
+            "description": "Save on office chairs, desks & workplace essentials.",
+            "small_badge_bg_color": "#ff7322",
+            "small_badge_text_color": "#ffffff",
+            "small_badege_text": "NEW",
+            "show_badge": true,
+            "badge_position": "top",
+            "badge_subheading": "-25%",
+            "badge_heading": "$750.00",
+            "enable_prefix": "$",
+            "enable_new": "600.00",
+            "button_label": "Save Now",
+            "button_link": "shopify://pages/contact",
+            "button_style": "primary"
+          }
+        },
+        "card_with_ticker_mEKPMA": {
+          "type": "card_with_ticker",
+          "settings": {
+            "color_scheme": "background-3",
+            "image": "shopify://shop_images/aa9efdb83695e5d67edf3245215c436c4d861060.webp",
+            "card_padding": "40",
+            "overlay_opacity": 0,
+            "overlay_opacity_mobile": 0.2,
+            "overlay_link": "",
+            "heading": "Back to School Deals",
+            "heading_size": "h2",
+            "description": "Big savings on stationery, art supplies & must-have school essentials.",
+            "small_badge_bg_color": "#ff7322",
+            "small_badge_text_color": "#ffffff",
+            "small_badege_text": "SALE",
+            "enable_countdown": true,
+            "enable_mock_timer": true,
+            "date_picker": "2025-10-01",
+            "time_picker": "00:00",
+            "mock_date_picker_day": 2,
+            "mock_date_picker_hours": 3,
+            "completed_countdown": "show_text",
+            "countdown_heading": "Header after countdown",
+            "first_ticker_heading": "Sale up to 50%",
+            "first_ticker_heading_color": "#000000",
+            "first_ticker_speed": 6,
+            "first_ticker_background_color": "#ff7322",
+            "second_ticker_heading": "Sale up to 50%",
+            "second_ticker_heading_color": "#74b3ea",
+            "second_ticker_speed": 6,
+            "second_ticker_background_color": "#000000",
+            "button_label": "Shop Back to School",
+            "button_link": "shopify://pages/contact",
+            "button_style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "card_horizontal_MMBqdV",
+        "card_with_ticker_mEKPMA"
+      ],
+      "name": "Mos Banner Grid",
+      "settings": {
+        "layout": "columns",
+        "color_scheme": "",
+        "height": "landscape",
+        "heading": "",
+        "heading_size": "h2",
+        "description": "",
+        "padding_top": 80,
+        "padding_top_mb": 50,
+        "padding_bottom": 80,
+        "padding_bottom_mb": 50
+      }
+    },
     "multicolumn_rmqAa9": {
       "type": "multicolumn",
       "blocks": {
@@ -1130,9 +1136,9 @@
         "heading_size": "h2",
         "button_style": "primary",
         "newsletter_text": "By clicking on the “Sign Up” button, I confirm my agreement with the <a href=\"#\" title=\"#\">Privacy Policy</a> and <a href=\"#\" title=\"#\">Terms of Use</a>",
-        "padding_top": 82,
+        "padding_top": 80,
         "padding_top_mb": 50,
-        "padding_bottom": 82,
+        "padding_bottom": 84,
         "padding_bottom_mb": 50
       }
     }
@@ -1144,13 +1150,13 @@
     "popular_products_8RwxJe",
     "banner_grid_AVBfTG",
     "featured_collection_RRqReE",
-    "logo_list_KjUJtq",
     "banner_grid_rAgXmp",
     "popular_products_LJD4eJ",
     "featured_slider_E9Yykf",
     "popular_products_Gxjwih",
     "collapsible_content_UHQPpw",
-    "mos_banner_grid_MzKAtg",
+    "logo_list_KjUJtq",
+    "mos_banner_grid_rq4GKQ",
     "multicolumn_rmqAa9",
     "newsletter_JRqGNU"
   ]
