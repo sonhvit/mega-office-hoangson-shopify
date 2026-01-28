@@ -77,7 +77,8 @@
     "cart": {
       "view": "View Cart",
       "item_added": "Cart",
-      "empty_cart": "Your Cart is Empty...",
+      "your_cart": "Your Cart",
+      "empty_cart": "Your cart is empty",
       "button_label": "Start Shopping",
       "item_count": {
         "one": "{{ count }} Item",

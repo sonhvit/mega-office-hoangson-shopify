@@ -25,7 +25,7 @@
 			<div class="drawer__header">
 				<div class="drawer__header_main">
 					<h2 class="drawer__heading h4">
-						{{ 'general.cart.item_added' | t }}
+						{{ 'general.cart.your_cart' | t }}
 						<span class="small-font">
 							{{ 'general.cart.item_count' | t: count: cart.item_count -}}
 						</span>
@@ -71,7 +71,7 @@
 
 					<a
 						href="{{ routes.all_products_collection_url }}"
-						class="button button--{{ settings.cart_button_style }} button--full-width focus-inset"
+						class="button button--{{ settings.cart_button_style }} button--full-width focus-inset cart-empty__button"
 					>
 						{{ 'general.cart.button_label' | t }}
 					</a>

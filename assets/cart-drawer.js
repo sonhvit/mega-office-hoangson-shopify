@@ -47,11 +47,16 @@ class CartDrawer extends HTMLElement {
 		const cartLink = document.querySelector("#cart-icon-bubble");
 		cartLink.setAttribute("role", "button");
 		cartLink.setAttribute("aria-haspopup", "dialog");
-		cartLink.addEventListener("click", (event) => {
-			event.preventDefault();
-			if (!this.classList.contains("active")) this.open(cartLink);
-			else this.close();
+		
+		document.addEventListener("click", (event) => {
+			const target = event.target.closest("#cart-icon-bubble");
+			if (target) {
+				event.preventDefault();
+				if (!this.classList.contains("active")) this.open(target);
+				else this.close();
+			}
 		});
+		
 		cartLink.addEventListener("keydown", (event) => {
 			if (event.code.toUpperCase() === "SPACE") {
 				event.preventDefault();
