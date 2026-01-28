@@ -67,6 +67,14 @@
 											endif
 										%}
 									{% endfor %}
+									{%- assign menu_icon_block = nil -%}
+									{%- assign menu_link_index = forloop.index -%}
+									{%- for b in section.blocks -%}
+										{%- if b.type == 'menu_icon' and b.settings.position == menu_link_index -%}
+											{%- assign menu_icon_block = b -%}
+											{%- break -%}
+										{%- endif -%}
+									{%- endfor -%}
 									<li>
 										{%- if section.blocks.size > 0
 											and mega_menu
@@ -74,117 +82,98 @@
 										-%}
 											<details>
 												<summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
-													<a
-														href="{{ link.url }}"
-														class="menu-drawer__menu-link link link--text list-menu__item focus-inset"
-														{% if childlink.current %}
-															aria-current="page"
-														{% endif %}
-													>
-														{%- assign icon_block = nil -%}
-														{%- assign link_index = forloop.index -%}
-														{%- for b in section.blocks -%}
-															{%- if b.type == 'menu_icon' and b.settings.position == link_index -%}
-																{%- assign icon_block = b -%}
-																{%- break -%}
-															{%- endif -%}
-														{%- endfor -%}
-														{% if icon_block %}
-															<span class="header-menu__icon">
-																{% if icon_block.settings.icon_svg != blank %}
-																	{{ icon_block.settings.icon_svg }}
-																{% elsif icon_block.settings.icon_image != blank %}
-																	{% assign icon_alt = icon_block.settings.icon_alt | default: link.title %}
-																	{{ icon_block.settings.icon_image | image_url: width: 18, height: 18 | image_tag: width: 18, height: 18, alt: icon_alt, class: 'header-menu__icon-img' }}
-																{% endif %}
-															</span>
-														{% endif %}
-														{{ link.title | escape }}
-													</a>
+													{% if menu_icon_block %}
+														<span class="header-menu__icon">
+															{% if menu_icon_block.settings.icon_svg != blank %}
+																{{ menu_icon_block.settings.icon_svg }}
+															{% elsif menu_icon_block.settings.icon_image != blank %}
+																{% assign icon_alt = menu_icon_block.settings.icon_alt | default: link.title %}
+																{{ menu_icon_block.settings.icon_image | image_url: width: 18, height: 18 | image_tag: width: 18, height: 18, alt: icon_alt, class: 'header-menu__icon-img' }}
+															{% endif %}
+														</span>
+													{% endif %}
+													<span class="menu-drawer__menu-link">{{ link.title | escape }}</span>
 													{% render 'icon-caret' %}
 												</summary>
 												<div
 													id="link-{{ link.title | escape }}"
-													class="menu-drawer__submenu motion-reduce"
+													class="menu-drawer__submenu has-submenu motion-reduce"
 													tabindex="-1"
 												>
 													<div class="menu-drawer__inner-submenu">
 														<button
-															class="menu-drawer__close-button link link--text focus-inset"
+															class="menu-drawer__close-button menu-drawer__back-button link link--text focus-inset"
 															aria-expanded="true"
 														>
-															{% render 'icon-arrow' %}
-															{{ link.title | escape }}
+															{% render 'icon-caret' %}
+															{% if menu_icon_block %}
+																<span class="header-menu__icon">
+																	{% if menu_icon_block.settings.icon_svg != blank %}
+																		{{ menu_icon_block.settings.icon_svg }}
+																	{% elsif menu_icon_block.settings.icon_image != blank %}
+																		{% assign icon_alt = menu_icon_block.settings.icon_alt | default: link.title %}
+																		{{ menu_icon_block.settings.icon_image | image_url: width: 18, height: 18 | image_tag: width: 18, height: 18, alt: icon_alt, class: 'header-menu__icon-img' }}
+																	{% endif %}
+																</span>
+															{% endif %}
+															<span class="menu-drawer__back-title">{{ link.title | escape }}</span>
 														</button>
+														<div class="menu-drawer__submenu-content">
+															{% for block in section.blocks %}
+																{% if mega_menu
+																	and block.type == 'mega_menu'
+																	and forloop.index == index
+																%}
+																	{% render 'mega-menu-columns-mobile', link: link, blocks: section.blocks %}
+																{% elsif mega_menu_tabs
+																	and block.type == 'mega_menu_tabs'
+																	and forloop.index == index_tabs
+																%}
+																	{% render 'mega-menu-tabs-mobile', link: link, blocks: section.blocks %}
+																{% endif %}
+															{% endfor %}
+														</div>
 													</div>
 												</div>
-												{% for block in section.blocks %}
-													{% if mega_menu
-														and block.type == 'mega_menu'
-														and forloop.index == index
-													%}
-														<div class="menu-drawer__mega-menu menu-drawer__mega-menu--columns">
-															{% render 'mega-menu-columns-mobile',
-																link: link,
-																blocks: section.blocks
-															%}
-														</div>
-													{% elsif mega_menu_tabs
-														and block.type == 'mega_menu_tabs'
-														and forloop.index == index_tabs
-													%}
-														<div class="menu-drawer__mega-menu menu-drawer__mega-menu--tabs">
-															{% render 'mega-menu-tabs-mobile',
-																link: link,
-																blocks: section.blocks
-															%}
-														</div>
-													{% endif %}
-												{% endfor %}
 											</details>
 										{%- elsif link.links != blank -%}
 											<details>
 												<summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
-													<a
-														href="{{ link.url }}"
-														class="menu-drawer__menu-link link link--text list-menu__item focus-inset"
-														{% if childlink.current %}
-															aria-current="page"
-														{% endif %}
-													>													
-													{%- assign icon_block = nil -%}
-													{%- assign link_index = forloop.index -%}
-													{%- for b in section.blocks -%}
-														{%- if b.type == 'menu_icon' and b.settings.position == link_index -%}
-															{%- assign icon_block = b -%}
-															{%- break -%}
-														{%- endif -%}
-													{%- endfor -%}
-													{% if icon_block %}
+													{% if menu_icon_block %}
 														<span class="header-menu__icon">
-															{% if icon_block.settings.icon_svg != blank %}
-																{{ icon_block.settings.icon_svg }}
-															{% elsif icon_block.settings.icon_image != blank %}
-																{% assign icon_alt = icon_block.settings.icon_alt | default: link.title %}
-																{{ icon_block.settings.icon_image | image_url: width: 18, height: 18 | image_tag: width: 18, height: 18, alt: icon_alt, class: 'header-menu__icon-img' }}
+															{% if menu_icon_block.settings.icon_svg != blank %}
+																{{ menu_icon_block.settings.icon_svg }}
+															{% elsif menu_icon_block.settings.icon_image != blank %}
+																{% assign icon_alt = menu_icon_block.settings.icon_alt | default: link.title %}
+																{{ menu_icon_block.settings.icon_image | image_url: width: 18, height: 18 | image_tag: width: 18, height: 18, alt: icon_alt, class: 'header-menu__icon-img' }}
 															{% endif %}
 														</span>
-													{% endif %}														{{ link.title | escape }}
-													</a>
+													{% endif %}
+													<span class="menu-drawer__menu-link">{{ link.title | escape }}</span>
 													{% render 'icon-caret' %}
 												</summary>
 												<div
 													id="link-{{ link.title | escape }}"
-													class="menu-drawer__submenu motion-reduce"
+												class="menu-drawer__submenu has-submenu motion-reduce"
 													tabindex="-1"
 												>
 													<div class="menu-drawer__inner-submenu">
 														<button
-															class="menu-drawer__close-button link link--text focus-inset"
+														class="menu-drawer__close-button menu-drawer__back-button link link--text focus-inset"
 															aria-expanded="true"
 														>
-															{% render 'icon-arrow' %}
-															{{ link.title | escape }}
+													{% render 'icon-caret' %}
+													{% if menu_icon_block %}
+														<span class="header-menu__icon">
+															{% if menu_icon_block.settings.icon_svg != blank %}
+																{{ menu_icon_block.settings.icon_svg }}
+															{% elsif menu_icon_block.settings.icon_image != blank %}
+																{% assign icon_alt = menu_icon_block.settings.icon_alt | default: link.title %}
+																{{ menu_icon_block.settings.icon_image | image_url: width: 18, height: 18 | image_tag: width: 18, height: 18, alt: icon_alt, class: 'header-menu__icon-img' }}
+														{% endif %}
+													</span>
+												{% endif %}
+													<span class="menu-drawer__back-title">{{ link.title | escape }}</span>
 														</button>
 														<ul
 															class="menu-drawer__menu list-menu"
@@ -204,35 +193,15 @@
 																			{{ childlink.title | escape }}
 																		</a>
 																	{%- else -%}
-																		<details>
+																		<details class="submenu-accordion">
 																			<summary class="menu-drawer__menu-item link link--text list-menu__item focus-inset">
-																				<a
-																					href="{{ childlink.url }}"
-																					class="menu-drawer__menu-link link link--text list-menu__item focus-inset no-padding"
-																					{% if childlink.current %}
-																						aria-current="page"
-																					{% endif %}
-																				>
+																				<span class="menu-drawer__menu-link link link--text list-menu__item focus-inset no-padding">
 																					{{ childlink.title | escape }}
-																				</a>
+																				</span>
 																				{% render 'icon-caret' %}
 																			</summary>
-																			<div
-																				id="childlink-{{ childlink.title | escape }}"
-																				class="menu-drawer__submenu motion-reduce"
-																			>
-																				<button
-																					class="menu-drawer__close-button link link--text focus-inset"
-																					aria-expanded="true"
-																				>
-																					{% render 'icon-arrow' %}
-																					{{ childlink.title | escape }}
-																				</button>
-																				<ul
-																					class="menu-drawer__menu list-menu"
-																					role="list"
-																					tabindex="-1"
-																				>
+																			<div class="submenu-accordion__content">
+																				<ul class="menu-drawer__menu list-menu" role="list">
 																					{%- for grandchildlink in childlink.links -%}
 																						<li>
 																							<a
@@ -242,10 +211,7 @@
 																									aria-current="page"
 																								{% endif %}
 																							>
-																								{{
-																									grandchildlink.title
-																									| escape
-																								}}
+																								{{ grandchildlink.title | escape }}
 																							</a>
 																						</li>
 																					{%- endfor -%}
@@ -258,7 +224,7 @@
 														</ul>
 													</div>
 												</div>
-											</details>
+												</details>
 										{%- else -%}
 											<a
 												href="{{ link.url }}"
@@ -272,24 +238,18 @@
 													and section.settings.main_menu_sale_icon
 												-%}
 													{% render 'icon-menu-sale' %}
-												{%- endif -%}											{%- assign icon_block = nil -%}
-											{%- assign link_index = forloop.index -%}
-											{%- for b in section.blocks -%}
-												{%- if b.type == 'menu_icon' and b.settings.position == link_index -%}
-													{%- assign icon_block = b -%}
-													{%- break -%}
 												{%- endif -%}
-											{%- endfor -%}
-											{% if icon_block %}
-												<span class="header-menu__icon">
-													{% if icon_block.settings.icon_svg != blank %}
-														{{ icon_block.settings.icon_svg }}
-													{% elsif icon_block.settings.icon_image != blank %}
-														{% assign icon_alt = icon_block.settings.icon_alt | default: link.title %}
-														{{ icon_block.settings.icon_image | image_url: width: 18, height: 18 | image_tag: width: 18, height: 18, alt: icon_alt, class: 'header-menu__icon-img' }}
+												{% if menu_icon_block %}
+													<span class="header-menu__icon">
+														{% if menu_icon_block.settings.icon_svg != blank %}
+															{{ menu_icon_block.settings.icon_svg }}
+														{% elsif menu_icon_block.settings.icon_image != blank %}
+															{% assign icon_alt = menu_icon_block.settings.icon_alt | default: link.title %}
+															{{ menu_icon_block.settings.icon_image | image_url: width: 18, height: 18 | image_tag: width: 18, height: 18, alt: icon_alt, class: 'header-menu__icon-img' }}
 													{% endif %}
 												</span>
-											{% endif %}												<span title="{{ link.title | escape }}" class="{% if link.title == section.settings.main_menu_sale_trigger %} menu-drawer__menu-link-label--sale-color{% endif %}">
+											{% endif %}
+											<span title="{{ link.title | escape }}" class="{% if link.title == section.settings.main_menu_sale_trigger %} menu-drawer__menu-link-label--sale-color{% endif %}">
 													{{ link.title | escape }}
 												</span>
 											</a>

@@ -352,8 +352,9 @@ function trapFocus(container, elementToFocus = container) {
 
 	document.addEventListener("focusout", trapFocusHandlers.focusout);
 	document.addEventListener("focusin", trapFocusHandlers.focusin);
-
-	elementToFocus.focus();
+	if (elementToFocus){
+		elementToFocus.focus();
+	}
 }
 
 function pauseAllMedia() {

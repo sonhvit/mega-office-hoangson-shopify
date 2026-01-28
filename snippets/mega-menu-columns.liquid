@@ -162,6 +162,14 @@
 						{%- endif -%}
 					</div>
 				{% endif %}
+				{% if block.settings.shop_all_button_label != blank and block.settings.shop_all_button_link != blank %}
+					{% render 'button',
+						btn_label: block.settings.shop_all_button_label,
+						btn_style: block.settings.shop_all_button_style,
+						btn_link: block.settings.shop_all_button_link,
+						class: 'mega-menu-button'
+					%}
+				{% endif %}
 			</div>
 		</div>
 	{% endif %}

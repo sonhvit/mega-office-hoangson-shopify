@@ -106,7 +106,7 @@
   letter-spacing: -0.2px;
 }
 .menu-drawer__localization-wrapper .localization-selector.link {
-  gap: 2px;
+  gap: 4px;
 }
 .header__localization .localization-selector.link svg {
   width: 15px;
