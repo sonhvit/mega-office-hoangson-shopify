@@ -8239,3 +8239,15 @@ details[open] > .header__icon--menu .icon-hamburger {
   line-height: 16px;
   letter-spacing: -0.2px;
 }
+.menu-drawer__inner-submenu .mega-menu-button__button {
+  margin-left: 20px;
+  padding: 10px 23px;
+  min-width: unset;
+  min-height: unset;
+}
+.menu-drawer__inner-submenu .mega-menu-button__button span {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.2px;
+}

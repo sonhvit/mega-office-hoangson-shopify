@@ -164,12 +164,6 @@ details[open] > .menu-drawer__submenu {
   overflow-y: auto;
 }
 
-.menu-drawer__inner-submenu {
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
 .menu-drawer__inner-submenu * {
   text-transform: none;
 }
@@ -254,7 +248,17 @@ details[open] > .menu-drawer__submenu {
   z-index: 10;
   transform: translateX(100%);
   visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-drawer__inner-submenu {
+  flex: 1;
+  overflow-x: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 81px;
 }
 
 .no-js details[open] > .menu-drawer__submenu,
