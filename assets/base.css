@@ -5679,8 +5679,8 @@ details[open] > .header__icon--menu .icon-hamburger {
   pointer-events: none;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  display: grid !important;
-  opacity: 1 !important;
+  /* display: grid !important;
+  opacity: 1 !important; */
 }
 .list-menu--megamenu:focus > .mega-menu,
 .list-menu--megamenu:focus .mega-menu__list-item--visible .mega-menu__submenu,
@@ -8250,4 +8250,17 @@ details[open] > .header__icon--menu .icon-hamburger {
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.2px;
+}
+.menu-drawer__submenu-content .mega-menu__column-list-item .mega-menu__column-list-link {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: -0.2px;
+  padding: 11.5px 0;
+}
+.menu-drawer .menu-drawer__submenu-content .mega-menu__column {
+  gap: 10px;
+}
+.menu-drawer .menu-drawer__submenu-content .mega-menu__column[open] {
+  gap: 13px;
 }

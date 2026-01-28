@@ -420,7 +420,7 @@ details[open] > .menu-drawer__submenu {
 }
 
 .mega-menu__column--collapsible[open] .mega-menu__column-summary .icon-caret {
-  transform: rotate(0deg) !important;
+  transform: rotate(180deg) !important;
 }
 
 .mega-menu__column--collapsible:not([open]) .mega-menu__column-list {
@@ -431,8 +431,11 @@ details[open] > .menu-drawer__submenu {
   padding-top: 0;
   padding-bottom: 1.6rem;
   width: 100vw;
+  padding-inline: 20px;
 }
-
+.mega-menu__column--collapsible[open] .mega-menu__column-list {
+  padding-bottom: 7px;
+}
 .mega-menu__column--collapsible .mega-menu__column-list-item {
   padding-left: 0;
   width: 100%;
@@ -603,4 +606,8 @@ details[open] > .menu-drawer__submenu {
 .menu-opening[open] .menu-drawer__mega-menu {
   transform: translateX(0);
   visibility: visible;
+}
+
+.menu-drawer__inner-submenu .menu-drawer__submenu-content li:last-child {
+  border-bottom: 0.1rem solid rgb(var(--color-border));
 }
