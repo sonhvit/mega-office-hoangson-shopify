@@ -10,25 +10,29 @@
 {
   "current": {
     "color_scheme": "light",
-    "type_heading_font": "inter_n4",
     "type_button_font": "inter_n4",
-    "social_youtube_link": "",
-    "type_header_font": "inter_n4",
+    "social_instagram_link": "#",
+    "social_facebook_link": "#",
+    "social_twitter_link": "",
+    "social_pinterest_link": "",
+    "social_youtube_link": "#",
+    "type_body_font": "inter_n4",
     "type_header_letter_spacing": -0.2,
     "type_header_line_height": 1.1,
+    "badge_sale_type": "percentage",
+    "social_linkedin_link": "#",
+    "quickview_show": true,
+    "show_view_cart": true,
+    "show_shipping": true,
+    "type_header_font": "inter_n4",
     "type_header_font_card": "inter_n4",
     "type_text_font_card": "inter_n4",
     "type_prcie_font_card": "inter_n4",
-    "type_body_font": "inter_n4",
     "type_subtitle_font": "inter_n4",
     "type_header_menu_font": "inter_n4",
     "type_footer_menu_font": "inter_n4",
     "type_popups_heading_font": "inter_n4",
     "type_popups_text_font": "inter_n4",
-    "badge_sale_type": "percentage",
-    "quickview_show": true,
-    "show_view_cart": true,
-    "show_shipping": true,
     "card_new_price_color": "#000000",
     "show_color_swatch": true,
     "cart_color_scheme": "background-1",
@@ -47,94 +51,16 @@
     "content_for_index": [],
     "color_schemes": {
       "background-1": {
-        "settings": {
-          "section_bg": "#ffffff",
-          "section_heading": "#000",
-          "section_text": "#000",
-          "section_bg_gradient": "",
-          "btn_primary_bg": "#6d52ff",
-          "btn_secondary_bg": "#DDD8F5",
-          "accent": "#004AC7",
-          "lines_and_border": "#eee",
-          "overlay": "#0000004D",
-          "links": "#000",
-          "quick_add_bg_color": "#ffffff",
-          "quick_add_text_color": "#000000",
-          "upsells_bg_color": "#F1EFE8",
-          "upsells_text_color": "#0B0B0B"
-        }
+        "settings": {}
       },
       "background-2": {
-        "settings": {
-          "section_bg": "#ffffff",
-          "section_heading": "#000",
-          "section_text": "#000",
-          "section_bg_gradient": "",
-          "btn_primary_bg": "#6d52ff",
-          "btn_secondary_bg": "#DDD8F5",
-          "accent": "#004AC7",
-          "lines_and_border": "#eee",
-          "overlay": "#0000004D",
-          "links": "#000",
-          "quick_add_bg_color": "#ffffff",
-          "quick_add_text_color": "#000000",
-          "upsells_bg_color": "#F1EFE8",
-          "upsells_text_color": "#0B0B0B"
-        }
+        "settings": {}
       },
       "background-3": {
-        "settings": {
-          "section_bg": "#ffffff",
-          "section_heading": "#000",
-          "section_text": "#000",
-          "section_bg_gradient": "",
-          "btn_primary_bg": "#6d52ff",
-          "btn_secondary_bg": "#DDD8F5",
-          "accent": "#004AC7",
-          "lines_and_border": "#eee",
-          "overlay": "#0000004D",
-          "links": "#000",
-          "quick_add_bg_color": "#ffffff",
-          "quick_add_text_color": "#000000",
-          "upsells_bg_color": "#F1EFE8",
-          "upsells_text_color": "#0B0B0B"
-        }
+        "settings": {}
       },
       "background-4": {
-        "settings": {
-          "section_bg": "#ffffff",
-          "section_heading": "#000",
-          "section_text": "#000",
-          "section_bg_gradient": "",
-          "btn_primary_bg": "#6d52ff",
-          "btn_secondary_bg": "#DDD8F5",
-          "accent": "#004AC7",
-          "lines_and_border": "#eee",
-          "overlay": "#0000004D",
-          "links": "#000",
-          "quick_add_bg_color": "#ffffff",
-          "quick_add_text_color": "#000000",
-          "upsells_bg_color": "#F1EFE8",
-          "upsells_text_color": "#0B0B0B"
-        }
-      },
-      "scheme-7381e11a-7daa-4ce2-b5dc-31c77494b956": {
-        "settings": {
-          "section_bg": "#ffffff",
-          "section_heading": "#000",
-          "section_text": "#000",
-          "section_bg_gradient": "",
-          "btn_primary_bg": "#6d52ff",
-          "btn_secondary_bg": "#DDD8F5",
-          "accent": "#004AC7",
-          "lines_and_border": "#eee",
-          "overlay": "#0000004D",
-          "links": "#000",
-          "quick_add_bg_color": "#ffffff",
-          "quick_add_text_color": "#000000",
-          "upsells_bg_color": "#F1EFE8",
-          "upsells_text_color": "#0B0B0B"
-        }
+        "settings": {}
       }
     }
   },
