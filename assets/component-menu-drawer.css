@@ -219,8 +219,9 @@ details[open] > .menu-drawer__submenu {
   align-items: center;
   gap: 0.8rem;
 }
-.menu-drawer__inner-submenu .link {
-  padding: 2rem;
+.menu-drawer__close-button.link {
+  padding: 12px 20px;
+  background-color: #F6F6F6;
 }
 
 .menu-drawer__menu-item {
@@ -243,7 +244,7 @@ details[open] > .menu-drawer__submenu {
 
 .js .menu-drawer__submenu {
   position: absolute;
-  top: 0;
+  top: 61px;
   width: 100%;
   bottom: 0;
   left: 0;
@@ -289,26 +290,27 @@ details[open] > .menu-drawer__submenu {
 .menu-drawer__back-button {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  padding: 1.5rem 2rem;
+  gap: 4px;
   margin-top: 0;
 }
 
 .menu-drawer__back-button .icon-caret {
-  width: 2rem;
-  height: 2rem;
+  width: 24px;
+  height: 24px;
   transform: rotate(90deg);
   flex-shrink: 0;
 }
 
 .menu-drawer__back-title {
-  font-weight: var(--font-body-weight-bold);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.2px;
   display: flex;
   align-items: center;
   gap: 0.8rem;
 }
 
-/* Accordion styling for nested submenu items */
 .submenu-accordion {
   border-top: 0.1rem solid rgb(var(--color-border));
 }
@@ -383,12 +385,13 @@ details[open] > .menu-drawer__submenu {
   cursor: pointer;
   display: flex !important;
   align-items: center;
-  gap: 1.2rem;
-  padding: 1.6rem 3.2rem 1.6rem 0;
+  padding-inline: 20px;
   position: relative;
   width: 100%;
 }
-
+.mega-menu__column--collapsible:first-child .mega-menu__column-summary {
+  margin-top: 24px;
+}
 .mega-menu__column-summary::-webkit-details-marker {
   display: none;
 }
@@ -403,12 +406,13 @@ details[open] > .menu-drawer__submenu {
 
 .mega-menu__column-summary .icon-caret {
   position: absolute !important;
-  right: 0;
-  width: 2rem;
-  height: 2rem;
-  transform: rotate(-90deg) !important;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  transform: rotate(0deg) !important;
   transition: transform 0.2s ease;
   flex-shrink: 0;
+  top: calc(50% - 12px) !important;
 }
 
 .mega-menu__column--collapsible[open] .mega-menu__column-summary .icon-caret {

@@ -5525,6 +5525,9 @@ details[open] > .header__icon--menu .icon-hamburger {
   border-radius: 15px;
   overflow: hidden;
 }
+.menu-drawer__inner-submenu .mega-menu__promo .mega-menu__promo-wrapper {
+  max-width: 252px;
+}
 .mega-menu__promo .mega-menu__promo-wrapper::before {
   content: "";
   display: block;
@@ -5660,9 +5663,9 @@ details[open] > .header__icon--menu .icon-hamburger {
 .mega-menu__column-info {
   grid-column: 2/3;
 }
-.mega-menu__column-info--only-heading {
+/* .mega-menu__column-info--only-heading {
   align-self: center;
-}
+} */
 .mega-menu__column-list {
   margin: 0;
   grid-column: 2/3;
@@ -5676,8 +5679,8 @@ details[open] > .header__icon--menu .icon-hamburger {
   pointer-events: none;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  /* display: grid !important;
-  opacity: 1 !important; */
+  display: grid !important;
+  opacity: 1 !important;
 }
 .list-menu--megamenu:focus > .mega-menu,
 .list-menu--megamenu:focus .mega-menu__list-item--visible .mega-menu__submenu,
@@ -5727,9 +5730,12 @@ details[open] > .header__icon--menu .icon-hamburger {
 }
 .menu-drawer .mega-menu__columns {
   padding: 0;
-  padding-bottom: 2.4rem;
+  padding-bottom: 13px;
   grid-template-columns: 1fr;
   gap: 2.4rem;
+}
+.menu-drawer .menu-drawer__inner-submenu .mega-menu__columns {
+  gap: 15px;
 }
 .menu-drawer .mega-menu__column, .menu-drawer .mega-menu__tab {
   gap: 1.2rem;
@@ -5742,7 +5748,7 @@ details[open] > .header__icon--menu .icon-hamburger {
   gap: 1rem 1.2rem;
 }
 .menu-drawer .mega-menu__column:not(:first-child) {
-  padding-top: 2rem;
+  padding-top: 0;
 }
 .menu-drawer .mega-menu__column-list {
   z-index: 3;
@@ -5750,9 +5756,9 @@ details[open] > .header__icon--menu .icon-hamburger {
 .menu-drawer .mega-menu__promo {
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.2rem;
-  margin-bottom: 2.4rem;
-  padding: 2.4rem;
+  gap: 20px;
+  margin-bottom: 40px;
+  padding-inline: 20px;
   border-radius: var(--border-radius-large);
 }
 .menu-drawer .mega-menu__tabs {
@@ -8090,6 +8096,9 @@ details[open] > .header__icon--menu .icon-hamburger {
   height:18px;
   flex:0 0 auto;
 }
+.menu-drawer__close-button .header-menu__icon {
+  margin-right: 7px;
+}
 @media screen and (min-width: 1150px) {
   .header-menu__icon {
     margin-right:4px;
@@ -8200,6 +8209,12 @@ details[open] > .header__icon--menu .icon-hamburger {
   font-weight: 600;
   font-size: 14px;
   line-height: 17px;
+  letter-spacing: -0.2px;
+}
+.menu-drawer__submenu-content .mega-menu__column .mega-menu__column-heading {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
   letter-spacing: -0.2px;
 }
 .mega-menu-button__button {
