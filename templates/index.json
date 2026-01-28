@@ -666,37 +666,6 @@
         "margin_bottom": "l"
       }
     },
-    "popular_products_LJD4eJ": {
-      "type": "popular-products",
-      "name": "t:sections.popular-products.presets.name",
-      "settings": {
-        "product_list": [],
-        "per_row": 6,
-        "layout": "static",
-        "heading": "Trending Now",
-        "heading_size": "h3",
-        "button_label": "Shop All",
-        "button_link": "",
-        "button_style": "tertiary",
-        "autoplay": false,
-        "stop_autoplay": true,
-        "show_arrows": true,
-        "slideshow_speed": 1.1,
-        "slideshow_delay": 3,
-        "image_ratio": "portrait",
-        "image_fit": "cover",
-        "show_two_cards": true,
-        "show_secondary_image": true,
-        "show_sku": false,
-        "show_vendor": false,
-        "show_collection_name": true,
-        "show_color_swatch": true,
-        "show_inventory": true,
-        "show_desc": false,
-        "margin_top": "no-indent",
-        "margin_bottom": "l"
-      }
-    },
     "featured_slider_E9Yykf": {
       "type": "featured-slider",
       "name": "t:sections.featured-slider.presets.name",
@@ -741,14 +710,14 @@
         "margin_bottom": "l"
       }
     },
-    "popular_products_Gxjwih": {
+    "popular_products_LJD4eJ": {
       "type": "popular-products",
       "name": "t:sections.popular-products.presets.name",
       "settings": {
         "product_list": [],
         "per_row": 6,
-        "layout": "slider",
-        "heading": "Most Popular",
+        "layout": "static",
+        "heading": "Trending Now",
         "heading_size": "h3",
         "button_label": "Shop All",
         "button_link": "",
@@ -765,7 +734,7 @@
         "show_sku": false,
         "show_vendor": false,
         "show_collection_name": true,
-        "show_color_swatch": false,
+        "show_color_swatch": true,
         "show_inventory": true,
         "show_desc": false,
         "margin_top": "no-indent",
@@ -1054,9 +1023,8 @@
     "banner_grid_AVBfTG",
     "featured_collection_RRqReE",
     "banner_grid_rAgXmp",
-    "popular_products_LJD4eJ",
     "featured_slider_E9Yykf",
-    "popular_products_Gxjwih",
+    "popular_products_LJD4eJ",
     "logo_list_KjUJtq",
     "mos_banner_grid_rq4GKQ",
     "multicolumn_rmqAa9",
