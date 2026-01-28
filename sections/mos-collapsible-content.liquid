@@ -26,7 +26,12 @@
 
 <script src="{{ 'collapsible-content.js' | asset_url }}" defer="defer"></script>
 
-<div class="collapsible-content mos-collapsible-content color-{{ section.settings.color_scheme }} background section-{{ section.id }}-padding">
+<div class="collapsible-content mos-collapsible-content color-{{ section.settings.color_scheme }} background section-{{ section.id }}-padding" style="
+    --mos-color-button: 15, 73, 160;
+    --mos-color-text: 15, 73, 160;
+    --mos-font-button-weight: 600;
+    --mos-font-heading-weight: 600;
+    --mos-color-background: 246, 246, 246;">
   <div class="container">
     <div class="collapsible-content__main">
       {%- if section.settings.heading != blank

@@ -1,11 +1,3 @@
-:root {
-    --mos-color-button: 15, 73, 160;
-    --mos-color-text: 15, 73, 160;
-    --mos-font-button-weight: 600;
-    --mos-font-heading-weight: 600;
-    --mos-color-background: 246, 246, 246;
-}
-
 .collapsible-content.mos-collapsible-content .collapsible-content__main {
     grid-gap: 3.7rem;
 }
