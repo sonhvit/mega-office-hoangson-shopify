@@ -73,9 +73,9 @@
 					slidesPerView: el.classList.contains(
 						"logo-list__content--horizontal-carousel"
 					)
-						? 2
+						? 2.18
 						: 3,
-					spaceBetween: 16,
+					spaceBetween: 20,
 					autoplay: false,
 					direction: "horizontal",
 					loop: false,
