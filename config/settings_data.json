@@ -11,28 +11,23 @@
   "current": {
     "color_scheme": "light",
     "type_button_font": "inter_n4",
-    "social_instagram_link": "#",
-    "social_facebook_link": "#",
-    "social_twitter_link": "",
-    "social_pinterest_link": "",
-    "social_youtube_link": "#",
-    "type_body_font": "inter_n4",
+    "social_youtube_link": "",
+    "type_header_font": "inter_n4",
     "type_header_letter_spacing": -0.2,
     "type_header_line_height": 1.1,
-    "badge_sale_type": "percentage",
-    "social_linkedin_link": "#",
-    "quickview_show": true,
-    "show_view_cart": true,
-    "show_shipping": true,
-    "type_header_font": "inter_n4",
     "type_header_font_card": "inter_n4",
     "type_text_font_card": "inter_n4",
     "type_prcie_font_card": "inter_n4",
+    "type_body_font": "inter_n4",
     "type_subtitle_font": "inter_n4",
     "type_header_menu_font": "inter_n4",
     "type_footer_menu_font": "inter_n4",
     "type_popups_heading_font": "inter_n4",
     "type_popups_text_font": "inter_n4",
+    "badge_sale_type": "percentage",
+    "quickview_show": true,
+    "show_view_cart": true,
+    "show_shipping": true,
     "card_new_price_color": "#000000",
     "show_color_swatch": true,
     "cart_color_scheme": "background-1",
@@ -60,6 +55,9 @@
         "settings": {}
       },
       "background-4": {
+        "settings": {}
+      },
+      "scheme-7381e11a-7daa-4ce2-b5dc-31c77494b956": {
         "settings": {}
       }
     }
