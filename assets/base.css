@@ -5682,8 +5682,8 @@ details[open] > .header__icon--menu .icon-hamburger {
   pointer-events: none;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  /* display: grid !important;
-  opacity: 1 !important; */
+  display: grid !important;
+  opacity: 1 !important;
 }
 .list-menu--megamenu:focus > .mega-menu,
 .list-menu--megamenu:focus .mega-menu__list-item--visible .mega-menu__submenu,
@@ -8226,6 +8226,8 @@ details[open] > .header__icon--menu .icon-hamburger {
   background-color: #0F49A0;
   border-radius: 200px;
   border: 1px solid #0F49A0;
+  margin-left: 57px;
+  margin-top: 43px;
 }
 .mega-menu-button__button:hover {
   background-color: #FFFFFF !important;
