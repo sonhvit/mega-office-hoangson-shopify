@@ -31,14 +31,14 @@
 
 @media only screen and (min-width: 1200px) {
     .mos-header-banner.including-breadcrumbs .header-banner__container .breadcrumb {
-        margin-top: 2.4rem;
+        margin-top: 2.6rem;
         margin-bottom: 4rem;
     }
 }
 
 @media only screen and (min-width: 1400px) {
     .mos-header-banner.including-breadcrumbs .header-banner__container .breadcrumb {
-        margin-bottom: 6.4rem;
+        margin-bottom: 6.2rem;
     }
 }
 
@@ -97,11 +97,12 @@
         font-size: calc(var(--font-heading-h3-scale) * 4.8rem);
         margin-bottom: 1.4rem;
         padding-right: 5rem;
+        letter-spacing: 1px;
     }
 
     .mos-header-banner .header-banner-text__text p {
         font-size: calc(var(--font-heading-h3-scale) * 1.2rem);
-        letter-spacing: 0.7px;
+        letter-spacing: 0.75px;
         line-height: 1.4;
     }
 }
