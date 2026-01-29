@@ -21,6 +21,7 @@
     "social_youtube_link": "#",
     "social_linkedin_link": "#",
     "quickview_show": true,
+    "text_empty": "Not sure where to start? Try these collections:",
     "collections": [
       "office",
       "education",
