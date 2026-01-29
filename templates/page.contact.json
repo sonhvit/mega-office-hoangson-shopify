@@ -1,34 +1,41 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "main": {
+    "main-page": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
-        "padding_top": "no-indent",
-        "padding_bottom": "m"
+        "padding_top": "60",
+        "padding_bottom": "60"
       }
     },
-    "form": {
-      "type": "contact-form",
+    "mf_contact_form_C8jnhK": {
+      "type": "mf-contact-form",
+      "name": "MF Contact Form with Map",
       "settings": {
-        "position": "center",
-        "color_scheme": "",
-        "heading": "",
-        "heading_size": "h2",
-        "description": "",
-        "heading_form": "Contact form",
-        "heading_form_size": "h2",
-        "text_form": "Required fields are marked with *.",
-        "additional_text": "",
-        "button_style": "primary",
-        "padding_top": "no-indent",
-        "padding_bottom": "no-indent",
-        "margin_top": "no-indent",
-        "margin_bottom": "l"
+        "map_image": "shopify://shop_images/6996b58ed77716d8fe3fea60d84352055ccc3f65.webp",
+        "contact_title_1": "Primary Distribution Centre",
+        "contact_content_1": "<p>5/12 Greenway Drive | Tweed Heads South | NSW | 2486<br/>ABN 18 634 002 609</p>",
+        "contact_title_2": "Also shipping from:",
+        "contact_content_2": "<p><strong>Queensland</strong><br/>Murrarie & Zillmere<br/><br/><strong>New South Wales</strong><br/>Bankstown & Eastern Creek<br/><br/><strong>Victoria</strong><br/>Keysborough & Sunshine West<br/><br/><strong>South Australia</strong><br/>Beverley & Marleston<br/><br/><strong>Western Australia</strong><br/>Belmont, Jandakot & Wangara</p>",
+        "heading_form": "Contact Us",
+        "text_form": "We're thrilled for the opportunity to assist with all your office needs. Whether you're reaching out with a question, feedback, a request for order support, a return, or a delivery change-consider us at your service! Simply fill out the form below, and our team will be in touch to ensure you have everything you need to keep your workspace running smoothly.",
+        "require_text": "Required fields are marked with *.",
+        "padding_top": 0,
+        "padding_bottom": 88
       }
     }
   },
   "order": [
-    "main",
-    "form"
+    "main-page",
+    "mf_contact_form_C8jnhK"
   ]
 }
