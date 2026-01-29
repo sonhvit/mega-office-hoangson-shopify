@@ -8267,3 +8267,29 @@ details[open] > .header__icon--menu .icon-hamburger {
 .menu-drawer .menu-drawer__submenu-content .mega-menu__column[open] {
   gap: 13px;
 }
+.button-primary {
+  background-color: #0F49A0 !important;
+  border: 1px solid #0F49A0 !important;
+  color: #FFFFFF !important;
+}
+.button-primary:hover {
+  background-color: transparent !important;
+  color: #0F49A0 !important;
+}
+.button-primary:focus {
+  outline: 2px solid #FF7322;
+  outline-offset: 0;
+}
+.button-secondary {
+  background-color: transparent !important;
+  border: 1px solid #0F49A0 !important;
+  color: #0F49A0 !important;
+}
+.button-secondary:hover {
+  background-color: #0F49A0 !important;
+  color: #FFFFFF !important;
+}
+.button-secondary:focus {
+  outline: 2px solid #FF7322;
+  outline-offset: 0;
+}

@@ -225,7 +225,8 @@
         "from_price_html": "From {{ price }}",
         "regular_price": "Regular price",
         "sale_price": "Sale price",
-        "unit_price": "Unit price"
+        "unit_price": "Unit price",
+        "rrp": "RRP"
       },
       "read_more": "Read More",
       "read_less": "Read Less",
@@ -361,7 +362,7 @@
       "shipping": "Shipping",
       "shipping_free": "Free",
       "shipping_at_checkout": "Calculated at checkout",
-      "subtotal": "Subtotal",
+      "subtotal": "Estimated total",
       "new_subtotal": "New subtotal",
       "note": "Order special instructions",
       "note_placeholder": "Add Your Comment",
@@ -370,7 +371,7 @@
       "empty": "Your Cart is Empty",
       "cart_error": "There was an error while updating your cart. Please try again.",
       "cart_quantity_error_html": "You can only add [quantity] of this item to your cart.",
-      "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping</a> calculated at checkout",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes and shipping calculated at checkout",
       "taxes_included_but_shipping_at_checkout": "Shipping , taxes and discount codes calculated at checkout",
       "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
       "taxes_and_shipping_at_checkout": "Shipping, taxes, & promos calculated at checkout.",
@@ -381,7 +382,9 @@
         "quantity": "Quantity"
       },
       "update": "Update",
-      "remove": "Remove"
+      "remove": "Remove",
+      "move_to_quote": "Move to Quote",
+      "back_to_cart": "Back to Cart"
     },
     "categories-list": {
       "more": "More"
