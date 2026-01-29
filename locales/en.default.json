@@ -72,7 +72,8 @@
       "collection_name": "Collection name",
       "view__more": "View Full Details",
       "in_stock": "In stock",
-      "out_of_stock": "Out of stock"
+      "out_of_stock": "Out of stock",
+      "available": "Available",
     },
     "cart": {
       "view": "View Cart",
@@ -336,7 +337,7 @@
     "404": {
       "title": "404. Page Not Found",
       "text": "The page you’re looking for doesn’t exist. It may have been removed, renamed, or never existed.",
-			"second_text": "Try searching to find what you need."
+      "second_text": "Try searching to find what you need."
     }
   },
   "sections": {
@@ -502,7 +503,7 @@
       "personal": "Personal Info",
       "company_group": "Company"
     },
-		"login": "Login",
+    "login": "Login",
     "log_in": "Log In",
     "log_out": "Log Out",
     "login_page": {
