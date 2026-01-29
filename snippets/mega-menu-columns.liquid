@@ -4,7 +4,11 @@
 		| strip
 	%}
 	{% if link.handle == mega_menu_trigger and block.type == 'mega_menu' %}
-		<div class="header__mega-menu mega-menu mega-menu--columns mega-menu--columns-{{ block.settings.column_to_show }}  color-background-1">
+		{% assign has_promo = false %}
+		{% if block.settings.enable_promo_1 or block.settings.enable_promo_2 %}
+			{% assign has_promo = true %}
+		{% endif %}
+		<div class="header__mega-menu mega-menu mega-menu--columns mega-menu--columns-{{ block.settings.column_to_show }}{% unless has_promo %} mega-menu--no-promo{% endunless %}  color-background-1">
 			<div class="header__mega-menu-wrapper container">
 				<div class="mega-menu__columns mega-menu__columns--{{ block.settings.column_to_show }}">
 					{% for i in (1..8) %}
@@ -162,15 +166,16 @@
 						{%- endif -%}
 					</div>
 				{% endif %}
-				{% if block.settings.shop_all_button_label != blank and block.settings.shop_all_button_link != blank %}
-					{% render 'button',
-						btn_label: block.settings.shop_all_button_label,
-						btn_style: block.settings.shop_all_button_style,
-						btn_link: block.settings.shop_all_button_link,
-						class: 'mega-menu-button'
-					%}
-				{% endif %}
+				
 			</div>
+			{% if block.settings.shop_all_button_label != blank and block.settings.shop_all_button_link != blank %}
+				{% render 'button',
+					btn_label: block.settings.shop_all_button_label,
+					btn_style: block.settings.shop_all_button_style,
+					btn_link: block.settings.shop_all_button_link,
+					class: 'mega-menu-button'
+				%}
+			{% endif %}
 		</div>
 	{% endif %}
 {% endfor %}

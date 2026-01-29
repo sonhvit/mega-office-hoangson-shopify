@@ -202,7 +202,7 @@ details[open] > .menu-drawer__submenu {
 .menu-drawer__menu summary .icon-caret {
   top: calc(50% - 2px);
 }
-.menu-drawer__inner-submenu li {
+.menu-drawer__inner-submenu .mega-menu__column-list li {
   border-top: 0.1rem solid rgb(var(--color-border));
 }
 .menu-drawer__inner-submenu li .menu-drawer__menu-item {
@@ -610,4 +610,16 @@ details[open] > .menu-drawer__submenu {
 
 .menu-drawer__inner-submenu .menu-drawer__submenu-content li:last-child {
   border-bottom: 0.1rem solid rgb(var(--color-border));
+}
+@media screen and (max-width: 1149px) {
+  .menu-drawer__inner-submenu li {
+    border: none;
+  }
+  .menu-drawer__inner-submenu li .menu-drawer__menu-item {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: -0.2px;
+    padding-left: 20px;
+  }
 }
