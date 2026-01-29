@@ -113,7 +113,7 @@
             "icon_alt": "icon"
           }
         },
-       "mega_menu_eYQrtQ": {
+        "mega_menu_eYQrtQ": {
           "type": "mega_menu",
           "settings": {
             "mega_menu_trigger": "Office",
@@ -281,6 +281,7 @@
         "tab_2",
         "tab_3"
       ],
+      "disabled": true,
       "settings": {
         "enable_promo_1": true,
         "promo_link_1": "",
