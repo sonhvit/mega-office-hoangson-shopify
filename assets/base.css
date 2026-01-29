@@ -6831,6 +6831,7 @@ details[open] > .header__icon--menu .icon-hamburger {
   text-decoration: none;
   transition: color var(--duration-default);
   font-size: 12px;
+  color: #666;
 }
 .breadcrumb a:hover {
   color: rgba(var(--color-foreground), 0.5);
@@ -6840,8 +6841,39 @@ details[open] > .header__icon--menu .icon-hamburger {
   font-weight: 700;
   font-size: 12px;
 }
+
+/* Breadcrumb mobile/desktop layout for PDP */
+.breadcrumb__desktop {
+  display: flex;
+  align-items: center;
+}
+.breadcrumb__mobile {
+  display: none;
+  align-items: center;
+}
+.breadcrumb__ellipsis {
+  color: rgba(var(--color-foreground));
+  font-weight: 700;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 767px) {
+  .template-product .breadcrumb__desktop {
+    display: none;
+  }
+  .template-product .breadcrumb__mobile {
+    display: flex;
+  }
+  .breadcrumb__delimiter{
+    margin-inline: 8px;
+  }
+}
+
 @media(min-width: 768px){
   .breadcrumb span,.breadcrumb a{
+    font-size: 14px;
+  }
+  .breadcrumb__ellipsis {
     font-size: 14px;
   }
 }

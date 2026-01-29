@@ -1,6 +1,6 @@
 (function () {
 	function swiperInit() {
-		subSliderInit(true, 10);
+		subSliderInit(true, 8);
 		sliderInit(true);
 		popupSliderInit(true);
 	}
