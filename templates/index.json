@@ -406,9 +406,7 @@
         "show_collection_name": true,
         "show_color_swatch": true,
         "show_inventory": true,
-        "show_desc": false,
-        "margin_top": "no-indent",
-        "margin_bottom": "l"
+        "show_desc": false
       }
     },
     "banner_grid_AVBfTG": {
@@ -710,24 +708,38 @@
         "margin_bottom": "l"
       }
     },
-    "popular_products_LJD4eJ": {
+    "popular_products_7hmC8h": {
       "type": "popular-products",
       "name": "t:sections.popular-products.presets.name",
       "settings": {
-        "product_list": [],
+        "color_scheme": "background-2",
+        "product_list": [
+          "collins-vanessa-diary-2026-285-v99-a5-2-days-to-a-page-black-1",
+          "kleenex-78931-alcohol-foam-hand-sanitiser-clear-1000ml-cartridge-case-of-6",
+          "cleanlink-dustpan-and-brush-blue",
+          "italplast-cleaning-wipes-30cm-x-50cm-pack-20",
+          "collins-vanessa-diary-2026-285-v99-a5-2-days-to-a-page-black-2",
+          "kleenex-78931-alcohol-foam-hand-sanitiser-clear-1000ml-cartridge-case-of-6-2",
+          "kleenex-78931-alcohol-foam-hand-sanitiser-clear-1000ml-cartridge-case-of-6-3",
+          "cleanlink-dustpan-and-brush-blue-2",
+          "collins-vanessa-diary-2026-285-v99-a5-2-days-to-a-page-black-3",
+          "kleenex-78931-alcohol-foam-hand-sanitiser-clear-1000ml-cartridge-case-of-6-4",
+          "italplast-cleaning-wipes-30cm-x-50cm-pack-20-2",
+          "collins-vanessa-diary-2026-285-v99-a5-2-days-to-a-page-black-4"
+        ],
         "per_row": 6,
         "layout": "static",
-        "heading": "Trending Now",
+        "heading": "Top Products",
         "heading_size": "h3",
         "button_label": "Shop All",
-        "button_link": "",
-        "button_style": "tertiary",
+        "button_link": "shopify://pages/brands",
+        "button_style": "primary",
         "autoplay": false,
         "stop_autoplay": true,
         "show_arrows": true,
         "slideshow_speed": 1.1,
         "slideshow_delay": 3,
-        "image_ratio": "portrait",
+        "image_ratio": "square",
         "image_fit": "cover",
         "show_two_cards": true,
         "show_secondary_image": true,
@@ -737,8 +749,10 @@
         "show_color_swatch": true,
         "show_inventory": true,
         "show_desc": false,
-        "margin_top": "no-indent",
-        "margin_bottom": "l"
+        "padding_top": 58,
+        "padding_top_mb": 20,
+        "padding_bottom": 58,
+        "padding_bottom_mb": 20
       }
     },
     "logo_list_KjUJtq": {
@@ -831,9 +845,9 @@
         "button_style": "tertiary",
         "speed_slider_1": 500,
         "padding_top": 80,
-        "padding_top_mb": 50,
-        "padding_bottom": 80,
-        "padding_bottom_mb": 50
+        "padding_top_mb": 30,
+        "padding_bottom": 0,
+        "padding_bottom_mb": 0
       }
     },
     "mos_banner_grid_rq4GKQ": {
@@ -1024,7 +1038,7 @@
     "featured_collection_RRqReE",
     "banner_grid_rAgXmp",
     "featured_slider_E9Yykf",
-    "popular_products_LJD4eJ",
+    "popular_products_7hmC8h",
     "logo_list_KjUJtq",
     "mos_banner_grid_rq4GKQ",
     "multicolumn_rmqAa9",
