@@ -21,8 +21,18 @@
     "social_youtube_link": "#",
     "social_linkedin_link": "#",
     "quickview_show": true,
+    "collections": [
+      "office",
+      "education",
+      "healthcare",
+      "hospitality",
+      "cleaning",
+      "technology"
+    ],
     "show_view_cart": true,
+    "cart_image_ratio": "1/1",
     "show_shipping": true,
+    "message_shipping": "Spend ||amount|| more to reach free shipping",
     "type_header_font": "inter_n4",
     "type_header_font_card": "inter_n4",
     "type_text_font_card": "inter_n4",
