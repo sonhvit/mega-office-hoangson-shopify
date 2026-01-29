@@ -160,6 +160,54 @@
             "colors_custom_button_background_hover": "#ffde1b",
             "shop_all_button_link": "shopify://collections/all"
           }
+        },
+        "mega_menu_MRdW4c": {
+          "type": "mega_menu",
+          "settings": {
+            "mega_menu_trigger": "Education",
+            "column_to_show": 4,
+            "enable_column_1": true,
+            "heading_1": "Stationery",
+            "menu_1": "stationery",
+            "enable_column_2": true,
+            "heading_2": "Paper & Filing",
+            "menu_2": "paper-filing",
+            "enable_column_3": true,
+            "heading_3": "Desk Supplies",
+            "menu_3": "desk-supplies",
+            "enable_column_4": true,
+            "heading_4": "Office Equipment",
+            "menu_4": "office-equipment",
+            "enable_column_5": true,
+            "heading_5": "Mail & Packaging",
+            "menu_5": "mail-packaging",
+            "enable_column_6": true,
+            "heading_6": "Ink & Printing Supplies",
+            "menu_6": "ink-printing-supplies",
+            "enable_column_7": true,
+            "heading_7": "Business Essentials",
+            "menu_7": "business-essentials",
+            "enable_column_8": true,
+            "heading_8": "Breakroom & Amenities",
+            "menu_8": "breakroom-amenities",
+            "enable_promo_1": false,
+            "promo_image_1": "shopify://shop_images/e81c732d130cee9eca171d7abb5c9427b29cc91c.webp",
+            "promo_link_1": "shopify://collections",
+            "promo_heading_1": "Up to 50% off all Brother products",
+            "promo_logo_1": "shopify://shop_images/Brother_idz-HEE71I_1_1.png",
+            "enable_promo_2": false,
+            "promo_image_2": "shopify://shop_images/9678488d87eafce1d44f30d5131c35aa8a6f00b4.webp",
+            "promo_link_2": "shopify://collections",
+            "promo_heading_2": "Up to 50% off all Staedtler products",
+            "promo_logo_2": "shopify://shop_images/staedtler_1.png",
+            "shop_all_button_label": "See All Office",
+            "shop_all_button_style": "primary",
+            "colors_custom_button_labels": "#000000",
+            "colors_custom_button_labels_hover": "#000000",
+            "colors_custom_button_background": "#ffde1b",
+            "colors_custom_button_background_hover": "#ffde1b",
+            "shop_all_button_link": "shopify://collections/all"
+          }
         }
       },
       "block_order": [
@@ -173,7 +221,8 @@
         "menu_icon_jrUPNC",
         "menu_icon_D8EzB7",
         "menu_icon_xpBA6T",
-        "mega_menu_eYQrtQ"
+        "mega_menu_eYQrtQ",
+        "mega_menu_MRdW4c"
       ],
       "settings": {
         "color_scheme": "",
