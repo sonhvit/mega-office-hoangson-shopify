@@ -25,7 +25,7 @@
 			<div class="drawer__header">
 				<div class="drawer__header_main">
 					<h2 class="drawer__heading h4">
-						{{ 'general.cart.item_added' | t }}
+						{{ 'general.cart.your_cart' | t }}
 						<span class="small-font">
 							{{ 'general.cart.item_count' | t: count: cart.item_count -}}
 						</span>
@@ -71,7 +71,7 @@
 
 					<a
 						href="{{ routes.all_products_collection_url }}"
-						class="button button--{{ settings.cart_button_style }} button--full-width focus-inset"
+						class="button button--{{ settings.cart_button_style }} button--full-width focus-inset cart-empty__button"
 					>
 						{{ 'general.cart.button_label' | t }}
 					</a>
@@ -194,7 +194,7 @@
 															</div>
 
 															<div class="cart-item__price-wrapper">
-																{%- if item.original_price != item.final_price
+																{%- if item.variant.compare_at_price != item.final_price
 																-%}
 																	<div class="cart-item__discounted-prices">
 																		<span class="visually-hidden">
@@ -220,25 +220,29 @@
 																			}}
 																		</span>
 																		<s class="cart-item__old-price small-font">
+																			{{ 'products.product.price.rrp'
+																				| t }}
 																			{% if settings.currency_code_enabled %}
 																				{{-
-																					item.original_price
+																					item.variant.compare_at_price
 																					| money_with_currency
 																				-}}
 																			{% else %}
-																				{{- item.original_price | money -}}
+																				{{- item.variant.compare_at_price | money -}}
 																			{% endif %}
 																		</s>
 																	</div>
 																{%- else -%}
 																	<div class="cart-item__final-price small-font">
+																		{{ 'products.product.price.rrp'
+																				| t }}
 																		{% if settings.currency_code_enabled %}
 																			{{
-																				item.original_price
+																				item.variant.compare_at_price
 																				| money_with_currency
 																			}}
 																		{% else %}
-																			{{ item.original_price | money }}
+																			{{ item.variant.compare_at_price | money }}
 																		{% endif %}
 																	</div>
 																{%- endif -%}
@@ -354,6 +358,18 @@
 													</div>
 												</div>
 												<div class="cart-item__actions">
+													<cart-remove-button
+														id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
+														data-index="{{ item.index | plus: 1 }}"
+													>
+														<button
+															type="button"
+															class="button button--tertiary button--tertiary_link focus-inset"
+															aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+														>
+															{% render 'icon-bin' %}
+														</button>
+													</cart-remove-button>
 													<div class="cart-item__quantity-wrapper">
 														<label
 															class="visually-hidden"
@@ -462,21 +478,7 @@
 															</div>
 														{% endif %}
 													</div>
-													<cart-remove-button
-														id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
-														data-index="{{ item.index | plus: 1 }}"
-													>
-														<button
-															type="button"
-															class="button button--tertiary button--tertiary_link focus-inset"
-															aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
-														>
-															<span class="extra-small-font button-label">
-																{{- 'sections.cart.remove' | t -}}
-															</span>
-															{% render 'icon-bin' %}
-														</button>
-													</cart-remove-button>
+													
 												</div>
 
 												{% comment %}<div class="cart-item__bottom"></div>{% endcomment %}
@@ -529,7 +531,7 @@
 							{{ 'sections.cart.subtotal' | t }}
 						</p>
 						<p class="totals__subtotal-value h5">
-							{{ cart.total_price | money_with_currency }}
+							{{ cart.total_price | money }}
 						</p>
 						{%- if cart.cart_level_discount_applications.size > 0 -%}
 							<ul
@@ -563,7 +565,7 @@
 						-%}
 							{{
 								'sections.cart.taxes_included_and_shipping_policy_html'
-								| t: link: shop.shipping_policy.url
+								| t
 							}}
 						{%- elsif cart.taxes_included -%}
 							{{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
@@ -576,14 +578,22 @@
 							{{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
 						{%- endif -%}
 					</small>
-				</div>
-
-				<div class="cart-drawer__bottom">
-					<div class="cart__ctas" {{ block.shopify_attributes }}>
+					<div class="cart__ctas cart-drawer__ctas" {{ block.shopify_attributes }}>
+						<button
+							id="CartDrawer-quote"
+							class="cart__checkout-button button button-secondary button--full-width focus-inset"
+							name="quote"
+							form="CartDrawer-quote"
+							{% if cart == empty %}
+								disabled
+							{% endif %}
+						>
+							{{ 'sections.cart.move_to_quote' | t }}
+						</button>
 						<noscript>
 							<button
 								type="submit"
-								class="cart__update-button button button--primary focus-inset"
+								class="cart__update-button button button-primary focus-inset"
 								form="CartDrawer-Form"
 							>
 								{{ 'sections.cart.update' | t }}
@@ -593,7 +603,7 @@
 						<button
 							type="submit"
 							id="CartDrawer-Checkout"
-							class="cart__checkout-button button button--{{ settings.cart_button_style }} button--full-width focus-inset"
+							class="cart__checkout-button button button-primary button--full-width focus-inset"
 							name="checkout"
 							form="CartDrawer-Form"
 							{% if cart == empty %}
@@ -602,15 +612,20 @@
 						>
 							{{ 'sections.cart.checkout' | t }}
 						</button>
+					</div>
+				</div>
+
+				<div class="cart-drawer__bottom">
+					<div class="cart__ctas" {{ block.shopify_attributes }}>
 						{% if settings.show_view_cart %}
 							<a
 								href="{{ routes.cart_url }}"
 								class="cart__link button button--simple button--arrow focus-inset"
 							>
-								<span class="button-label">
-									{{- 'general.cart.view' | t: count: cart.item_count -}}
-								</span>
 								{% render 'icon-button-arrow' %}
+								<span class="button-label">
+									{{- 'sections.cart.back_to_cart' | t -}}
+								</span>
 							</a>
 						{% endif %}
 					</div>
