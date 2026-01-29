@@ -1,0 +1,331 @@
+{{ 'mos-header-banner.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign media_count = 0
+  if section.settings.image_1 != blank
+    assign media_width_desktop = 100 | divided_by: 2 | append: 'vw'
+  else
+    assign media_width_desktop = '100vw'
+  endif
+  assign media_width_mobile = '100vw'
+  assign sizes = '(min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
+  assign widths = '832, 1200, 1600, 1920, 2560, 3840'
+
+  assign has_image_1 = false
+  assign has_media = false
+  if section.settings.image_1 != blank
+    assign has_image_1 = true
+    assign has_media = true
+  endif
+
+  assign fetch_priority = 'auto'
+
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+%}
+
+{% capture media %}
+  {%- if has_image_1 -%}
+    {% assign media_count = media_count | plus: 1 %}
+    {{
+      section.settings.image_1
+      | image_url: width: 3840
+      | image_tag:
+        width: section.settings.image_1.width,
+        widths: widths,
+        height: section.settings.image_1.height,
+        alt: section.settings.image_1.alt,
+        class: 'header-banner__image',
+        sizes: sizes,
+        fetchpriority: fetch_priority
+    }}
+  {%- endif -%}
+
+  {% if has_media == false %}
+    {{ 'hero-apparel-1' | placeholder_svg_tag: 'header-banner__image' }}
+  {%- endif -%}
+{% endcapture %}
+
+{%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mb}}px;
+      padding-bottom: {{ section.settings.padding_bottom_mb}}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+{%- endstyle -%}
+
+<div
+  id="mos-header-banner-{{ section.id }}"
+  class="header-banner mos-header-banner color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding {% if section.settings.including_breadcrumbs != blank %} including-breadcrumbs {% endif %}"
+  style="--mos-color-subtext-header-banner: 102, 102, 102;"
+>
+  <div class="container">
+    <div
+        class="header-banner__container spacing-style section section--full-width"
+        style="background-color: {{ section.settings.background_color_banner }};"
+    >
+        {%- if section.settings.link != blank -%}
+        <a
+            href="{{ section.settings.link }}"
+            class="header-banner__link"
+            {% if section.settings.open_in_new_tab %}
+            target="_blank" rel="noopener"
+            {% endif %}
+        ></a>
+        {%- endif -%}
+        <div
+        class="
+            header-banner__content-wrapper
+            section-content-wrapper
+        "
+        >
+          {%- if section.settings.including_breadcrumbs != blank -%}
+            {% comment %}{% if settings.show_breadcrumbs %}{% endcomment %}
+              <nav class="breadcrumb small-font" role="navigation" aria-label="breadcrumbs">
+                <a
+                  href="{{ routes.root_url }}"
+                  title="{{ 'general.breadcrumbs.home' | t }}"
+                  class="breadcrumb__link"
+                >
+                  {{ 'general.breadcrumbs.home' | t }}
+                </a>
+                
+                <div class="breadcrumb__delimiter">{% render 'icon-breadcrumbs' %}</div>
+                <span>{{ page.title }}</span>
+              </nav>
+            {% comment %}{% endif %}{% endcomment %}
+          {%- endif -%}
+          
+          {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                  {%- when 'subheading' -%}
+                      <div
+                          class="header-banner-text__subheading subtitle small-font"
+                          {{ block.shopify_attributes }}
+                      >
+                          {{ block.settings.subheading | escape }}
+                      </div>
+                  {%- when 'heading' -%}
+                      <{{ block.settings.heading_size }}
+                          class="header-banner-text__heading title--section"
+                          {{ block.shopify_attributes }}
+                      >
+                          {{ block.settings.heading }}
+                      </{{ block.settings.heading_size }}>
+                  {%- when 'text' -%}
+                      <div class="header-banner-text__text rte" {{ block.shopify_attributes }}>
+                          {{ block.settings.text }}
+                      </div>
+                  {%- when 'button' -%}
+                      {% render 'button', layout: block %}
+              {%- endcase -%}
+          {%- endfor -%}
+        </div>
+
+        <div
+        class="header-banner__media-wrapper"
+        style="--header-banner-media-count: {{ media_count }};{%- if section.settings.image_1 != blank -%} --header-banner-media-aspect-ratio: {{ section.settings.image_1.aspect_ratio }};{% endif %}"
+        >
+            {{ media }}
+        </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Mos Header Banner",
+  "tag": "section",
+  "class": "header-banner-wrapper section-wrapper",
+  "blocks": [
+		{
+			"type": "subheading",
+			"name": "t:sections.rich-text.blocks.subheading.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "text",
+					"id": "subheading",
+					"default": "t:sections.rich-text.blocks.subheading.settings.heading.default",
+					"label": "t:sections.rich-text.blocks.subheading.settings.heading.label"
+				}
+			]
+		},
+		{
+			"type": "heading",
+			"name": "t:sections.rich-text.blocks.heading.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "text",
+					"id": "heading",
+					"default": "t:sections.rich-text.blocks.heading.settings.heading.default",
+					"label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+				},
+				{
+					"type": "select",
+					"id": "heading_size",
+					"options": [
+						{
+							"value": "h2",
+							"label": "t:sections.rich-text.blocks.heading.settings.heading_size.options__1.label"
+						},
+						{
+							"value": "h1",
+							"label": "t:sections.rich-text.blocks.heading.settings.heading_size.options__2.label"
+						}
+					],
+					"default": "h1",
+					"label": "t:sections.rich-text.blocks.heading.settings.heading_size.label"
+				}
+			]
+		},
+		{
+			"type": "text",
+			"name": "t:sections.rich-text.blocks.text.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "richtext",
+					"id": "text",
+					"default": "t:sections.rich-text.blocks.text.settings.text.default",
+					"label": "t:sections.rich-text.blocks.text.settings.text.label"
+				}
+			]
+		},
+		{
+			"type": "button",
+			"name": "t:sections.rich-text.blocks.button.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "header",
+					"content": "t:sections.all.button.header.content"
+				},
+				{
+					"type": "text",
+					"id": "button_label",
+					"default": "t:sections.all.button.label.default_3",
+					"label": "t:sections.all.button.label.label",
+					"info": "t:sections.all.button.label.info"
+				},
+				{
+					"type": "url",
+					"id": "button_link",
+					"label": "t:sections.all.button.link.label"
+				},
+				{
+					"type": "select",
+					"id": "button_style",
+					"options": [
+						{
+							"value": "primary",
+							"label": "t:sections.all.button.style.options__1.label"
+						},
+						{
+							"value": "secondary",
+							"label": "t:sections.all.button.style.options__2.label"
+						},
+						{
+							"value": "tertiary",
+							"label": "t:sections.all.button.style.options__3.label"
+						}
+					],
+					"default": "primary",
+					"label": "t:sections.all.button.style.label"
+				}
+			]
+		}
+	],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Section link"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "Open link in new tab",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+        "type": "color",
+        "id": "background_color_banner",
+        "label": "Background Color Banner",
+        "default": "#F6F6F6"
+    },
+    {
+      "type": "checkbox",
+      "id": "including_breadcrumbs",
+      "label": "Including breadcrumbs",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-padding.header.content"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "default": 80,
+      "label": "t:sections.all.section-padding.padding_top.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mb",
+      "default": 50,
+      "label": "Padding Top Mobile"
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "default": 80,
+      "label": "t:sections.all.section-padding.padding_bottom.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mb",
+      "default": 50,
+      "label": "Padding Bottom Mobile"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mos Header Banner",
+      "blocks": [
+            {
+                "type": "subheading"
+            },
+            {
+                "type": "text"
+            }
+        ]
+    }
+  ]
+}
+{% endschema %}
