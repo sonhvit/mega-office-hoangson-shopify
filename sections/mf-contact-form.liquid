@@ -1,0 +1,246 @@
+{{ 'section-mf-contact-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<div class="mf-contact-form">
+  <div class="container mf-contact-form__container section-{{ section.id }}-padding">
+    <div class="mf-contact-form__left">
+      {%- if section.settings.map_image != blank -%}
+        <div class="mf-contact-form__map">
+          {{ section.settings.map_image
+            | image_url: width: 3840
+            | image_tag:
+              loading: 'lazy',
+              class: 'mf-contact-form__map-image'
+          }}
+        </div>
+      {%- else -%}
+        <div class="mf-contact-form__map mf-contact-form__map--placeholder">
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {%- endif -%}
+
+      <div class="mf-contact-form__info">
+        {% if section.settings.contact_title_1 != blank %}
+          <p class="mf-contact-info__title">
+            {{ section.settings.contact_title_1 }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.contact_content_1 != blank %}
+          <div class="mf-contact-info__content mf-contact-info__content--first">
+            {{ section.settings.contact_content_1 }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.contact_title_2 != blank %}
+          <p class="mf-contact-info__title">
+            {{ section.settings.contact_title_2 }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.contact_content_2 != blank %}
+          <div class="mf-contact-info__content mf-contact-info__content--second">
+            {{ section.settings.contact_content_2 }}
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+
+    <div class="mf-contact-form__right">
+      <div class="mf-contact-form__wrapper">
+
+        {% if section.settings.heading_form != blank %}
+          <h2 class="mf-contact-form__title">
+            {{ section.settings.heading_form }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.text_form != blank %}
+          <p class="mf-contact-form__text">
+            {{ section.settings.text_form }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.require_text != blank %}
+          <p class="mf-contact-form__require-text">
+            {{ section.settings.require_text }}
+          </p>
+        {% endif %}
+
+        {%- form 'contact', id: 'MFContactForm' -%}
+
+          <div class="field field--floating">
+            <label class="field__label">First name</label>
+            <input
+              class="field__input"
+              type="text"
+              name="contact[name]"
+              placeholder="First name"
+            >
+          </div>
+
+          <div class="field field--floating">
+            <label class="field__label">Last name</label>
+            <input
+              class="field__input"
+              type="text"
+              name="contact[last_name]"
+              placeholder="Last name"
+            >
+          </div>
+
+          <div class="field field--floating">
+            <label class="field__label">Email*</label>
+            <input
+              class="field__input"
+              type="email"
+              name="contact[email]"
+              placeholder="Email*"
+              required
+            >
+          </div>
+
+          <div class="field field--floating">
+            <label class="field__label">Phone number*</label>
+            <input
+              class="field__input"
+              type="tel"
+              name="contact[phone]"
+              placeholder="Phone number*"
+              required
+            >
+          </div>
+
+          <div class="field field--floating">
+            <label class="field__label">Order number</label>
+            <input
+              class="field__input"
+              type="tel"
+              name="contact[order_number]"
+              placeholder="Order number (for current orders)"
+            >
+          </div>
+
+          <div class="field field--floating">
+            <label class="field__label">Postcode</label>
+            <input
+              class="field__input"
+              type="tel"
+              name="contact[postcode]"
+              placeholder="Postcode (for quote requests only)"
+            >
+          </div>
+
+          <div class="field field--floating">
+            <label class="field__label">Message*</label>
+            <textarea
+              class="field__input text-area"
+              name="contact[body]"
+              placeholder="Message*"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="button mf-button--primary">
+            Submit
+          </button>
+
+        {%- endform -%}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MF Contact Form (Map)",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "map_image",
+      "label": "Map image"
+    },
+    {
+      "type": "text",
+      "id": "contact_title_1",
+      "label": "Contact title 1",
+      "default": "Primary Distribution Centre"
+    },
+    {
+      "type": "header",
+      "content": "Contact information"
+    },
+    {
+      "type": "richtext",
+      "id": "contact_content_1",
+      "label": "Contact content 1"
+    },
+    {
+      "type": "text",
+      "id": "contact_title_2",
+      "label": "Contact title 2",
+      "default": "Also shipping from:"
+    },
+    {
+      "type": "richtext",
+      "id": "contact_content_2",
+      "label": "Contact content 2"
+    },
+    {
+      "type": "header",
+      "content": "Form contact"
+    },
+    {
+      "type": "text",
+      "id": "heading_form",
+      "default": "Contact Us",
+      "label": "Form heading"
+    },
+    {
+      "type": "textarea",
+      "id": "text_form",
+      "default": "This is form description",
+      "label": "Form description"
+    },
+    {
+      "type": "textarea",
+      "id": "require_text",
+      "default": "Required fields are marked with *.",
+      "label": "Required fields text"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "label": "Padding top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "label": "Padding bottom"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MF Contact Form with Map"
+    }
+  ]
+}
+{% endschema %}
