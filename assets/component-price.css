@@ -14,6 +14,26 @@
   letter-spacing: calc(var(--font-price-card-letter-spacing) * 0.1);
   color: rgb(var(--color-price-regular));
 }
+.product__info-container .price-item{
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.product .product__info-container .price-wrapper .price dd:not(:last-child){
+  margin-right: 15px;
+}
+.product__info-container .product__badge .badge{
+  background: #74B3EA;
+  color: #FFFFFF;
+  height: 16px;
+  border-radius: 10px;
+}
+.product__info-container .price--product.price--on-sale .price__compare,.product__info-container .price--product.price--on-sale .price-item--regular{
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
 @media screen and (min-width: 1150px) {
   .price {
     font-size: calc(var(--font-price-card-scale) * 1rem);
