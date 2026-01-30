@@ -1,0 +1,19 @@
+.multicolumn--solid.mos-multicolumn-icon .multicolumn-card.column_with_icon {
+    background-color: transparent;
+    border: 1px solid rgba(198, 198, 198, 0.4);
+    border-radius: 10px;
+}
+
+.multicolumn--solid.mos-multicolumn-icon .multicolumn-list__wrapper {
+    gap: 1.8rem;
+}
+
+.multicolumn--solid.mos-multicolumn-icon .multicolumn-card__text {
+    color: #666;
+}
+
+@media screen and (min-width: 990px) {
+    .multicolumn--solid.mos-multicolumn-icon .multicolumn-card__info {
+        flex-grow: unset;
+    }
+}
