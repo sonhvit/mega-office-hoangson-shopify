@@ -1,0 +1,104 @@
+{% liquid
+	assign slideshow_speed = slider_settings.slideshow_speed
+	assign slideshow_delay = slider_settings.slideshow_delay
+	assign autoplay = slider_settings.autoplay
+	assign per_row = slider_settings.per_row
+	assign stop_autoplay = slider_settings.stop_autoplay
+	assign show_arrows = slider_settings.show_arrows
+	assign layout = slider_settings.layout
+	
+	assign mobile = 2
+	assign placeholder = 7
+	if layout == 'static'
+		assign placeholder = 12
+	endif
+%}
+
+<div
+	class="collection-slider"
+	data-id="{{ section_id }}"
+	data-speed="{{ slideshow_speed }}"
+	data-delay="{{ slideshow_delay }}"
+	data-autoplay="{{ autoplay }}"
+	data-stop-autoplay="{{ stop_autoplay }}"
+	data-show-arrows="{{ show_arrows }}"
+	data-per-row="{{ per_row }}"
+	data-mobile="{{ mobile }}"
+	style="--slider-per-row : {{ per_row }}"
+>
+<div class="{% if container %} container{% endif %}">
+	<div class="collection-slider__container">
+
+		<div class="collection-slider__wrapper">
+
+			<div class="collection-slider__swiper {% if section.settings.layout == 'slider' %} swiper mySwiper {% endif %}">
+				<div class="collection-slider__swiper-wrapper {% if section.settings.layout == 'slider' %} swiper-wrapper {% else %}collection-no-slider {% endif %}
+					">
+					{% for collection in collection_list %}
+						<div
+							data-type="{{ collection.type }}"
+							class="collection-slider__slide  {% if section.settings.layout == 'slider' %} swiper-slide {% endif %}"
+						>
+							{% render 'collection-card', collection: collection, section: section %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+			{% if show_arrows and layout == 'slider' %}
+				<button class="swiper-button swiper-button-prev swiper-button-disabled">
+					{%- render 'icon-swiper-next' -%}
+				</button>
+				<button class="swiper-button swiper-button-next">
+					{%- render 'icon-swiper-next' -%}
+				</button>
+
+				{% comment %}<script>
+					(function () {
+						function adjustButtonPosition(height) {
+							document
+								.querySelectorAll(
+									`#shopify-section-{{ section.id }} .swiper-button`
+								)
+								.forEach((button) => {
+									button.style.top = height / 2 + 'px';
+								});
+						}
+						function changePosition() {
+							if (window.innerWidth < 1150) return;
+							const image = document.querySelector(
+								`#shopify-section-{{ section.id }} .media  img`
+							);
+							if (image) {
+								if (image.tagName === 'IMG') {
+									if (image.complete) {
+										adjustButtonPosition(image.offsetHeight);
+									} else {
+										image.addEventListener('load', function () {
+											adjustButtonPosition(this.offsetHeight);
+										});
+									}
+								} else if (image.tagName === 'svg') {
+									const height = image.getBoundingClientRect().height;
+									adjustButtonPosition(height);
+								}
+							}
+						}
+						changePosition();
+						document.addEventListener(
+							'shopify:section:load',
+							changePosition
+						);
+						let resizeTimeout;
+						window.addEventListener('resize', function () {
+							clearTimeout(resizeTimeout);
+							resizeTimeout = setTimeout(changePosition, 100);
+						});
+					})();
+				</script>{% endcomment %}
+				<div class="swiper-pagination swiper-pagination-1 swiper-pagination-default {% if section.settings.enable_autoplay == false %} not-autoplay{% else %} bullet-autoplay{% endif %}"></div>
+			{% endif %}
+
+	</div>
+</div>
+</div>
