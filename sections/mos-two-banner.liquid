@@ -1,0 +1,365 @@
+{{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
+{{ 'section-two-banner.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  if section.settings.image != blank
+    assign media_width_desktop = 100 | divided_by: 2 | append: 'vw'
+  else
+    assign media_width_desktop = '100vw'
+  endif
+
+  assign media_width_mobile = '100vw'
+
+  assign sizes = '(min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
+%}
+
+{% style %}
+	.section-{{ section.id }}-padding {
+		padding-top: {{ section.settings.padding_top_mb}}px;
+		padding-bottom: {{ section.settings.padding_bottom_mb}}px;
+	}
+
+	@media screen and (min-width: 750px) {
+		.section-{{ section.id }}-padding {
+		padding-top: {{ section.settings.padding_top }}px;
+		padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+{% endstyle %}
+
+<div class="multicolumn mos-two-banner color-{{ section.settings.color_scheme }} background section-{{ section.id }}-padding multicolumn--solid">
+	<div class="container">
+		{%- if section.blocks.size > 0 -%}
+			<div class="multicolumn-list__wrapper multicolumn-list__wrapper--{{ section.settings.multicolumn_to_show }} multicolumn-list__wrapper--static content">
+				{% for block in section.blocks %}
+					{%- case block.type -%}
+						{%- when 'column_with_icon' -%}
+							<div
+								class="multicolumn-card multicolumn-card--{{ block.settings.text_align}} column_with_icon"
+								{{ block.shopify_attributes }}
+							>
+								{% if block.settings.button_link != blank %}
+									<a
+										class="multicolumn-card__full-link"
+										href="{{ block.settings.button_link }}"
+									></a>
+								{% endif %}
+
+								<div class="multicolumn-card__info">
+									{%- if block.settings.heading != blank -%}
+										<p class="multicolumn-card__heading">
+											{{ block.settings.heading }}
+										</p>
+									{%- endif -%}
+									{%- if block.settings.text != blank -%}
+										<div class="multicolumn-card__text small-font">
+											{{ block.settings.text }}
+										</div>
+									{%- endif -%}
+								</div>
+								{%- if block.settings.image != blank -%}
+									<div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--image">
+										<picture>
+											{%- if block.settings.image_mobile != blank -%}
+												<source
+												media="(max-width: 749px)"
+												srcset="
+													{{ block.settings.image_mobile | image_url: width: 360 }} 360w,
+													{{ block.settings.image_mobile | image_url: width: 720 }} 720w,
+													{{ block.settings.image_mobile | image_url: width: 1080 }} 1080w
+												"
+												>
+											{%- endif -%}
+
+											{{
+												block.settings.image
+												| image_url: width: 3840
+												| image_tag:
+												widths: '360, 535, 720, 940, 1100, 1150, 1440',
+												loading: 'lazy',
+												sizes: sizes,
+												alt: block.settings.image.alt
+											}}
+										</picture>
+									</div>
+								{%- endif -%}
+								{% render 'button', layout: block, class: 'multicolumn-card' %}
+							</div>
+						{%- when 'column_without_icon' -%}
+							<div
+								class="multicolumn-card multicolumn-card__secondary multicolumn-card--{{ block.settings.text_align}}"
+								{{ block.shopify_attributes }}
+							>
+								{% if block.settings.button_link != blank %}
+									<a
+										class="multicolumn-card__full-link"
+										href="{{ block.settings.button_link }}"
+									></a>
+								{% endif %}
+								<div class="multicolumn-card__info">
+									{%- if block.settings.heading != blank -%}
+										<h3 class="multicolumn-card__heading {{ block.settings.card_heading_size }}">
+											{{ block.settings.heading }}
+										</h3>
+									{%- endif -%}
+									{%- if block.settings.text != blank -%}
+										<div class="multicolumn-card__text ">
+											{{ block.settings.text }}
+										</div>
+									{%- endif -%}
+								</div>
+								{% render 'button', layout: block, class: 'multicolumn-card' %}
+							</div>
+					{%- endcase -%}
+				{% endfor %}
+			</div>
+		{%- endif -%}
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "Mos Two Banner",
+	"class": "spaced-section multicolumn-section",
+	"tag": "section",
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"default": "background-1",
+			"label": "t:sections.all.color_scheme.label"
+		},
+		{
+			"type": "range",
+			"id": "multicolumn_to_show",
+			"min": 1,
+			"max": 4,
+			"step": 1,
+			"default": 4,
+			"label": "t:sections.multicolumn.settings.multicolumn_to_show.label"
+		},
+
+		{
+			"type": "header",
+			"content": "t:sections.all.section-padding.header.content"
+		},
+		{
+			"type": "number",
+			"id": "padding_top",
+			"default": 80,
+			"label": "t:sections.all.section-padding.padding_top.label"
+		},
+		{
+			"type": "number",
+			"id": "padding_top_mb",
+			"default": 50,
+			"label": "Padding Top Mobile"
+		},
+		{
+			"type": "number",
+			"id": "padding_bottom",
+			"default": 80,
+			"label": "t:sections.all.section-padding.padding_bottom.label"
+		},
+		{
+			"type": "number",
+			"id": "padding_bottom_mb",
+			"default": 50,
+			"label": "Padding Bottom Mobile"
+		}
+	],
+	"blocks": [
+		{
+			"type": "column_with_icon",
+			"name": "Column with image",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+				},
+				{
+				"type": "image_picker",
+				"id": "image_mobile",
+				"label": "Image (Mobile)"
+				},
+				{
+					"type": "inline_richtext",
+					"id": "heading",
+					"default": "t:sections.all.heading.default",
+					"label": "t:sections.all.heading.label"
+				},
+
+				{
+					"type": "textarea",
+					"id": "text",
+					"default": "t:sections.multicolumn.blocks.column_with_icon.settings.default_contents.description",
+					"label": "t:sections.all.text.label"
+				},
+				{
+					"type": "select",
+					"id": "text_align",
+					"label": "t:sections.all.text_align.label",
+					"options": [
+						{
+							"value": "left",
+							"label": "t:sections.all.text_align.options__1.label"
+						},
+						{
+							"value": "center",
+							"label": "t:sections.all.text_align.options__2.label"
+						}
+					],
+					"default": "center"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.all.button.header.content"
+				},
+				{
+					"type": "text",
+					"id": "button_label",
+					"default": "t:sections.all.button.label.default_3",
+					"label": "t:sections.all.button.label.label",
+					"info": "t:sections.all.button.label.info"
+				},
+				{
+					"type": "url",
+					"id": "button_link",
+					"label": "t:sections.all.button.link.label"
+				},
+				{
+					"type": "select",
+					"id": "button_style",
+					"options": [
+						{
+							"value": "primary",
+							"label": "t:sections.all.button.style.options__1.label"
+						},
+						{
+							"value": "secondary",
+							"label": "t:sections.all.button.style.options__2.label"
+						},
+						{
+							"value": "tertiary",
+							"label": "t:sections.all.button.style.options__3.label"
+						}
+					],
+					"default": "tertiary",
+					"label": "t:sections.all.button.style.label"
+				}
+			]
+		},
+		{
+			"type": "column_without_icon",
+			"name": "t:sections.multicolumn.blocks.column_without_icon.name",
+			"settings": [
+				{
+					"type": "richtext",
+					"id": "heading",
+					"default": "<p>Some heading</p>",
+					"label": "t:sections.all.heading.label"
+				},
+				{
+					"type": "select",
+					"id": "card_heading_size",
+					"options": [
+						{
+							"value": "h6",
+							"label": "t:sections.all.heading_size.options__5.label"
+						},
+						{
+							"value": "h4",
+							"label": "t:sections.all.heading_size.options__4.label"
+						},
+						{
+							"value": "h3",
+							"label": "t:sections.all.heading_size.options__1.label"
+						},
+						{
+							"value": "h2",
+							"label": "t:sections.all.heading_size.options__2.label"
+						}
+					],
+					"default": "h4",
+					"label": "t:sections.multicolumn.settings.card_heading_size.label"
+				},
+				{
+					"type": "textarea",
+					"id": "text",
+					"default": "t:sections.multicolumn.blocks.column_with_icon.settings.default_contents.description",
+					"label": "t:sections.all.text.label"
+				},
+				{
+					"type": "select",
+					"id": "text_align",
+					"label": "t:sections.all.text_align.label",
+					"options": [
+						{
+							"value": "left",
+							"label": "t:sections.all.text_align.options__1.label"
+						},
+						{
+							"value": "center",
+							"label": "t:sections.all.text_align.options__2.label"
+						}
+					],
+					"default": "center"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.all.button.header.content"
+				},
+				{
+					"type": "text",
+					"id": "button_label",
+					"default": "t:sections.all.button.label.default_3",
+					"label": "t:sections.all.button.label.label",
+					"info": "t:sections.all.button.label.info"
+				},
+				{
+					"type": "url",
+					"id": "button_link",
+					"label": "t:sections.all.button.link.label"
+				},
+				{
+					"type": "select",
+					"id": "button_style",
+					"options": [
+						{
+							"value": "primary",
+							"label": "t:sections.all.button.style.options__1.label"
+						},
+						{
+							"value": "secondary",
+							"label": "t:sections.all.button.style.options__2.label"
+						},
+						{
+							"value": "tertiary",
+							"label": "t:sections.all.button.style.options__3.label"
+						}
+					],
+					"default": "tertiary",
+					"label": "t:sections.all.button.style.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Mos Two Banner",
+			"blocks": [
+				{
+					"type": "column_with_icon"
+				},
+				{
+					"type": "column_with_icon"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

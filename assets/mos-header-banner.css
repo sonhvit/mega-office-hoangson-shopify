@@ -1,4 +1,5 @@
-.template-page-about-us #breadcrumbs {
+.template-page-about-us #breadcrumbs,
+.template-page-about #breadcrumbs {
     display: none;
 }
 
