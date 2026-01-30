@@ -1,0 +1,261 @@
+{{ 'mos-hero-banner-about.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  if section.settings.image != blank
+    assign media_width_desktop = 100 | divided_by: 2 | append: 'vw'
+  else
+    assign media_width_desktop = '100vw'
+  endif
+
+  assign media_width_mobile = '100vw'
+
+  assign sizes = '(min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
+%}
+
+{% style %}
+	.section-{{ section.id }}-padding {
+		padding-top: {{ section.settings.padding_top_mb}}px;
+		padding-bottom: {{ section.settings.padding_bottom_mb}}px;
+	}
+
+	@media screen and (min-width: 750px) {
+		.section-{{ section.id }}-padding {
+		padding-top: {{ section.settings.padding_top }}px;
+		padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+{% endstyle %}
+
+<div
+  id="mos-hero-banner-{{ section.id }}"
+  class="hero-banner mos-hero-banner-about color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding"
+>
+  <div class="container">
+    <div
+        class="
+            hero-banner__content-wrapper
+            section-content-wrapper
+        "
+    >
+        {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                  {%- when 'subheading' -%}
+                      <div
+                          class="hero-banner-text__subheading subtitle small-font"
+                          {{ block.shopify_attributes }}
+                      >
+                          {{ block.settings.subheading | escape }}
+                      </div>
+                  {%- when 'heading' -%}
+                      <{{ block.settings.heading_size }}
+                          class="header-banner-text__heading title--section"
+                          {{ block.shopify_attributes }}
+                      >
+                          {{ block.settings.heading }}
+                      </{{ block.settings.heading_size }}>
+                  {%- when 'text' -%}
+                      <div class="hero-banner-text__text rte" {{ block.shopify_attributes }}>
+                          {{ block.settings.text }}
+                      </div>
+                  {%- when 'button' -%}
+                      {% render 'button', layout: block %}
+              {%- endcase -%}
+          {%- endfor -%}
+    </div>
+  </div>
+    {%- if section.settings.image != blank -%}
+        <div
+            class="hero-banner__media-wrapper container"
+        >
+            <div class="hero-banner__image-wrapper hero-banner__image-wrapper--image">
+                <picture>
+                    {%- if section.settings.image_mobile != blank -%}
+                        <source
+                        media="(max-width: 749px)"
+                        srcset="
+                            {{ section.settings.image_mobile | image_url: width: 360 }} 360w,
+                            {{ section.settings.image_mobile | image_url: width: 720 }} 720w,
+                            {{ section.settings.image_mobile | image_url: width: 1080 }} 1080w
+                        "
+                        >
+                    {%- endif -%}
+
+                    {{
+                        section.settings.image
+                        | image_url: width: 3840
+                        | image_tag:
+                        widths: '360, 535, 720, 940, 1100, 1150, 1440',
+                        loading: 'lazy',
+                        sizes: sizes,
+                        alt: section.settings.image.alt
+                    }}
+                </picture>
+            </div>
+        </div>
+    {%- endif -%}
+</div>
+
+{% schema %}
+{
+     "name": "Mos Hero Banner About",
+    "tag": "section",
+    "class": "header-banner-wrapper section-wrapper",
+    "blocks": [
+		{
+			"type": "subheading",
+			"name": "t:sections.rich-text.blocks.subheading.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "text",
+					"id": "subheading",
+					"default": "t:sections.rich-text.blocks.subheading.settings.heading.default",
+					"label": "t:sections.rich-text.blocks.subheading.settings.heading.label"
+				}
+			]
+		},
+		{
+			"type": "heading",
+			"name": "t:sections.rich-text.blocks.heading.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "text",
+					"id": "heading",
+					"default": "t:sections.rich-text.blocks.heading.settings.heading.default",
+					"label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+				},
+				{
+					"type": "select",
+					"id": "heading_size",
+					"options": [
+						{
+							"value": "h2",
+							"label": "t:sections.rich-text.blocks.heading.settings.heading_size.options__1.label"
+						},
+						{
+							"value": "h1",
+							"label": "t:sections.rich-text.blocks.heading.settings.heading_size.options__2.label"
+						}
+					],
+					"default": "h1",
+					"label": "t:sections.rich-text.blocks.heading.settings.heading_size.label"
+				}
+			]
+		},
+		{
+			"type": "text",
+			"name": "t:sections.rich-text.blocks.text.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "richtext",
+					"id": "text",
+					"default": "t:sections.rich-text.blocks.text.settings.text.default",
+					"label": "t:sections.rich-text.blocks.text.settings.text.label"
+				}
+			]
+		},
+		{
+			"type": "button",
+			"name": "t:sections.rich-text.blocks.button.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "header",
+					"content": "t:sections.all.button.header.content"
+				},
+				{
+					"type": "text",
+					"id": "button_label",
+					"default": "t:sections.all.button.label.default_3",
+					"label": "t:sections.all.button.label.label",
+					"info": "t:sections.all.button.label.info"
+				},
+				{
+					"type": "url",
+					"id": "button_link",
+					"label": "t:sections.all.button.link.label"
+				},
+				{
+					"type": "select",
+					"id": "button_style",
+					"options": [
+						{
+							"value": "primary",
+							"label": "t:sections.all.button.style.options__1.label"
+						},
+						{
+							"value": "secondary",
+							"label": "t:sections.all.button.style.options__2.label"
+						},
+						{
+							"value": "tertiary",
+							"label": "t:sections.all.button.style.options__3.label"
+						}
+					],
+					"default": "primary",
+					"label": "t:sections.all.button.style.label"
+				}
+			]
+		}
+	],
+    "settings": [
+    {
+        "type": "header",
+        "content": "Media"
+    },
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+    },
+    {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Image (Mobile)"
+    },
+    {
+        "type": "header",
+        "content": "t:sections.all.section-padding.header.content"
+    },
+    {
+        "type": "number",
+        "id": "padding_top",
+        "default": 80,
+        "label": "t:sections.all.section-padding.padding_top.label"
+    },
+    {
+        "type": "number",
+        "id": "padding_top_mb",
+        "default": 50,
+        "label": "Padding Top Mobile"
+    },
+    {
+        "type": "number",
+        "id": "padding_bottom",
+        "default": 80,
+        "label": "t:sections.all.section-padding.padding_bottom.label"
+    },
+    {
+        "type": "number",
+        "id": "padding_bottom_mb",
+        "default": 50,
+        "label": "Padding Bottom Mobile"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mos Hero Banner About",
+      "blocks": [
+            {
+                "type": "heading"
+            },
+            {
+                "type": "text"
+            }
+        ]
+    }
+  ]
+}
+{% endschema %}
