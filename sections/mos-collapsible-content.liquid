@@ -30,6 +30,8 @@
     --mos-color-button: 15, 73, 160;
     --mos-color-text: 15, 73, 160;
     --mos-font-button-weight: 600;
+    --mos-color-subheading-change: 102, 102, 102;
+    --mos-font-subheading-change-weight: 500;
     --mos-font-heading-weight: 600;
     --mos-color-background: 246, 246, 246;">
   <div class="container">
@@ -78,7 +80,7 @@
             {%- if block.settings.question != blank -%}
               <div class="collapsible-content__item">
                 {%- if block.settings.subheading != blank -%}
-                  <p class="collapsible-content__item--subheading large-font">
+                  <p class="collapsible-content__item--subheading large-font {%- if section.settings.change_subheading != blank %} change-subheading {% endif %}">
                     {{ block.settings.subheading }}
                   </p>
                 {% endif %}
@@ -245,6 +247,16 @@
       "id": "info_desc_mobile",
       "default": 12,
       "label": "Description Size Mobile"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "change_subheading",
+      "default": false,
+      "label": "Change Subheading"
     },
     {
       "type": "header",
