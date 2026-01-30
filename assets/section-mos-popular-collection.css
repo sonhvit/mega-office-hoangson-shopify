@@ -1,0 +1,299 @@
+.mos-popular-collection {
+  z-index: 11;
+  position: relative;
+}
+.mos-popular-collection .section-header {
+  margin-bottom: 41px;
+}
+.mos-popular-collection .popular-products__wrapper {
+  display: grid;
+  gap: 2rem;
+  grid-column: span 2;
+}
+@media screen and (min-width: 576px) {
+  .mos-popular-collection .popular-products__wrapper {
+    gap: 4rem 2rem;
+  }
+  .mos-popular-collection .popular-products__wrapper--2, .popular-products__wrapper--3, .popular-products__wrapper--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 990px) {
+  .popular-products__wrapper--3, .popular-products__wrapper--5, .popular-products__wrapper--6 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .mos-popular-collection .mos-popular-collection .products-slider__container .products-slider__swiper-wrapper.products-no-slider{
+    row-gap: 40px;
+  }
+}
+@media screen and (min-width: 1150px) {
+  .mos-popular-collection .popular-products__wrapper--4, .popular-products__wrapper--5, .popular-products__wrapper--6 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (min-width: 1360px) {
+  .mos-popular-collection .popular-products__wrapper--5, .popular-products__wrapper--6 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media screen and (min-width: 1536px) {
+  .mos-popular-collection .popular-products__wrapper--6 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+.mos-popular-collection .products-slider__swiper {
+  overflow-y: unset;
+  overflow-x: clip;
+}
+.mos-popular-collection .section-header__content {
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+}
+@media screen and (min-width: 576px) {
+  .mos-popular-collection .section-header__content {
+    align-items: flex-end;
+    flex-direction: row;
+  }
+}
+.mos-popular-collection .section-header__content .section-header__title {
+  max-width: 48rem;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.mos-popular-collection .section-header .button--primary {
+  padding: 0 32px;
+  background-color: transparent;
+  border: 1px solid #0F49A0;
+  color: #0F49A0;
+}
+@media screen and (min-width: 990px) {
+  .mos-popular-collection .section-header__content .section-header__title {
+    letter-spacing: 0.2px;
+  }
+
+  .mos-popular-collection .section-header .button--primary {
+    margin-right: -1.7rem;
+  }
+
+  .mos-popular-collection .section-header {
+    margin-bottom: 50px;
+  }
+
+  .mos-popular-collection .collections__card__title {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .mos-popular-collection .popular-products--2-mobile:not(.popular-products__wrapper--1) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 575px) {
+  .mos-popular-collection .popular-products--2-mobile .collection-product-card .card-information__group {
+    flex-direction: column;
+  }
+  .mos-popular-collection .popular-products--2-mobile .collection-product-card .card__more {
+    display: none;
+  }
+  .mos-popular-collection .popular-products--2-mobile .collection-product-card .card__title {
+    font-size: calc(var(--font-heading-card-scale) * 0.9rem);
+  }
+  .mos-popular-collection .popular-products--2-mobile .collection-product-card .badge .icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+  .mos-popular-collection .popular-products--2-mobile .collection-product-card .button--link {
+    right: 0.8rem;
+    bottom: 0.8rem;
+    width: 4.4rem;
+    height: 4.4rem;
+    min-height: auto;
+    padding: 0;
+  }
+  .mos-popular-collection .popular-products--2-mobile .collection-product-card .button--link .icon {
+    width: 2rem;
+    height: 2rem;
+  }
+  .mos-popular-collection .popular-products--2-mobile .collection-product-card .card__description {
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
+  }
+  .popular-products--2-mobile .collection-product-card .card__badge {
+    position: absolute;
+    top: 0.8rem;
+    left: 0.8rem;
+    right: 0.8rem;
+    max-width: 100%;
+  }
+  .mos-popular-collection .popular-products--2-mobile .collection-product-card .badge {
+    font-size: 1.1rem;
+    padding: 0.3rem 0.7rem;
+  }
+  .mos-popular-collection .popular-products--2-mobile .collection-product-card .card-information {
+    padding: 1rem 0 0 0;
+  }
+  .mos-popular-collection .popular-products--2-mobile .collection-product-card .price {
+    font-size: 1.2rem;
+  }
+  .mos-popular-collection .popular-products--2-mobile .collection-product-card .price--on-sale .price__sale {
+    flex-direction: row;
+    align-items: flex-start;
+    column-gap: 0.4rem;
+  }
+  .mos-popular-collection .popular-products--2-mobile .collection-product-card .price--on-sale .price__sale dt {
+    order: 1;
+  }
+}
+@media(max-width: 767px){
+  .mos-popular-collection .section-header__content .section-header__title{
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+  }
+  .mos-popular-collection .section-header__content{
+    align-items: center;
+  }
+  .mos-popular-collection .section-header .button--primary{
+    width: auto;
+    height: 34px;
+    font-size: 14px;
+    padding: 0 24px;
+    min-height: inherit;
+  }
+  .mos-popular-collection .section-header{
+    margin-bottom: 35px;
+  }
+}
+
+.mos-popular-collection .swiper-pagination.swiper-pagination-default {
+  display: none;
+}
+
+.mos-popular-collection .swiper-button-next,
+.mos-popular-collection .swiper-button-prev {
+  position: absolute;
+  border-radius: 50%;
+  flex: none;
+  top: 47%;
+  width: 3rem;
+  height: 3rem;
+}
+
+@media screen and (min-width: 990px) {
+  .mos-popular-collection .swiper-button-next,
+  .mos-popular-collection .swiper-button-prev {
+    width: 4rem;
+    height: 4rem;
+    top: 50%;
+  }
+}
+
+.mos-popular-collection .swiper-button-next svg,
+.mos-popular-collection .swiper-button-prev svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.mos-popular-collection .swiper-button-next span,
+.mos-popular-collection .swiper-button-prev span {
+  display: flex;
+}
+.mos-popular-collection .swiper-button-next {
+  right: -1rem;
+  transform: translateY(-50%);
+}
+@media screen and (min-width: 1150px) {
+  .mos-popular-collection .swiper-button-next {
+    right: 1rem;
+    transform: translate(50%, -50%);
+  }
+}
+.mos-popular-collection .swiper-button-prev {
+  left: -1rem;
+  transform: translateY(-50%) rotate(180deg);
+}
+@media screen and (min-width: 1150px) {
+  .mos-popular-collection .swiper-button-prev {
+    left: 1rem;
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+}
+.mos-popular-collection .swiper-button-next:after,
+.mos-popular-collection .swiper-button-prev:after {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .mos-popular-collection .swiper-button {
+    display: flex;
+  }
+}
+
+.mos-popular-collection .collections__card {
+  padding: 0 1rem;
+}
+
+.mos-popular-collection .collection-slider__container {
+  position: relative;
+  margin: -10px;
+}
+
+.mos-popular-collection .collections__card--simple .collections__card--image {
+  padding-bottom: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F6F6F6;
+  border-radius: 15px;
+}
+
+.mos-popular-collection .collections__card--image > img, 
+.mos-popular-collection .collections__card--image > svg {
+  border-radius: 0;
+}
+
+.mos-popular-collection .collections__card--image > img, 
+.mos-popular-collection .collections__card--image > svg {
+  max-width: 110px;
+  height: auto;
+  inset: 0;
+  margin: auto;
+}
+
+.mos-popular-collection .collections__card--image::before {
+  display: none;
+}
+
+@media screen and (min-width: 750px) {
+  .mos-popular-collection .collections__card--image > img, 
+  .mos-popular-collection .collections__card--image > svg {
+      max-width: 154px;
+    }
+}
+
+.mos-popular-collection .collections__card__title {
+  font-weight: 500;
+}
+
+@media screen and (min-width: 1150px) and (max-width: 1440px) {
+  .mos-popular-collection .collection-slider .container {
+    padding: 0;
+  }
+
+  .mos-popular-collection .collection-slider .container .swiper {
+    padding-right: 5.8rem;
+    padding-left: 5.8rem;
+  }
+
+  .mos-popular-collection .swiper-button-next {
+    right: 66px;
+  }
+
+  .mos-popular-collection .swiper-button-prev {
+    left: 66px;
+  }
+}

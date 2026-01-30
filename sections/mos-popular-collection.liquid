@@ -1,0 +1,230 @@
+{{ 'section-mos-popular-collection.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'mos-collection-list-slider.js' | asset_url }}" defer="defer"></script>
+
+{% style %}
+	#shopify-section-{{ section.id }} {
+		--per-row: {{ section.settings.per_row }};
+				--slide_duration : {{ section.settings.slideshow_delay }}s;
+	}
+{% endstyle %}
+
+{%- style -%}
+	.section-{{ section.id }}-padding {
+		padding-top: {{ section.settings.padding_top_mb}}px;
+		padding-bottom: {{ section.settings.padding_bottom_mb}}px;
+	}
+
+	@media screen and (min-width: 750px) {
+		.section-{{ section.id }}-padding {
+		padding-top: {{ section.settings.padding_top }}px;
+		padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+{%- endstyle -%}
+
+{% assign collection_list = section.settings.collections %}
+{% assign section_id = 'shopify-section-' | append: section.id %}
+
+{% liquid
+	if section.settings.show_arrows
+		assign show_arrows = true
+	else
+		assign show_arrows = false
+	endif 
+%}
+
+<div class="popular-collection mos-popular-collection color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
+	{% render 'section-header', show_arrows: show_arrows %}
+	{%
+		render 'mos-collection-slider',
+		slider_settings: section.settings,
+		collection_list: collection_list,
+		section_id: section_id,
+		container: true,
+	%}
+</div>
+
+{% schema %}
+{
+	"name": "Mos Shop to Category",
+	"tag": "section",
+	"class": "mos-popular-collection-section spaced-section",
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+		"type": "color_scheme",
+		"id": "color_scheme",
+		"default": "background-1",
+		"label": "t:sections.all.color_scheme.label"
+		},
+		{
+			"type": "collection_list",
+			"id": "collections",
+			"label": "Collections",
+			"limit": 12
+		},
+		{
+			"type": "range",
+			"id": "per_row",
+			"min": 2,
+			"max": 7,
+			"step": 1,
+			"default": 6,
+			"label": "t:sections.all.column_per_row.label",
+			"info": "t:sections.all.column_per_row.info"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_arrows",
+			"default": true,
+			"label": "t:sections.all.slider_options.navigation.label"
+		},
+		{
+			"type": "select",
+			"id": "layout",
+			"options": [
+				{
+					"value": "slider",
+					"label": "t:sections.banner-slider.settings.layout.options__1.label"
+				},
+				{
+					"value": "static",
+					"label": "t:sections.banner-slider.settings.layout.options__2.label"
+				}
+			],
+			"default": "slider",
+			"label": "t:sections.banner-slider.settings.layout.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading",
+			"default": "Shop by Category",
+			"label": "t:sections.all.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h3",
+					"label": "t:sections.all.heading_size.options__1.label"
+				},
+				{
+					"value": "h2",
+					"label": "t:sections.all.heading_size.options__2.label"
+				}
+			],
+			"default": "h2",
+			"label": "t:sections.all.heading_size.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.button.header.content"
+		},
+		{
+			"type": "text",
+			"id": "button_label",
+			"default": "Shop All",
+			"label": "t:sections.all.button.label.label",
+			"info": "t:sections.all.button.label.info"
+		},
+		{
+			"type": "url",
+			"id": "button_link",
+			"label": "t:sections.all.button.link.label"
+		},
+		{
+			"type": "select",
+			"id": "button_style",
+			"options": [
+				{
+					"value": "primary",
+					"label": "t:sections.all.button.style.options__1.label"
+				},
+				{
+					"value": "secondary",
+					"label": "t:sections.all.button.style.options__2.label"
+				},
+				{
+					"value": "tertiary",
+					"label": "t:sections.all.button.style.options__3.label"
+				}
+			],
+			"default": "tertiary",
+			"label": "t:sections.all.button.style.options__1.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.slider_options.header.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "autoplay",
+			"default": false,
+			"label": "t:sections.all.slider_options.slider_is_autoplay.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "stop_autoplay",
+			"default": true,
+			"label": "t:sections.all.slider_options.slider_hover_autoplay_stop.label"
+		},
+		{
+			"type": "range",
+			"id": "slideshow_speed",
+			"min": 0.1,
+			"max": 6,
+			"step": 0.1,
+			"default": 1.1,
+			"unit": "s",
+			"label": "t:sections.all.slider_options.speed.label"
+		},
+		{
+			"type": "range",
+			"id": "slideshow_delay",
+			"min": 0.1,
+			"max": 8,
+			"step": 0.1,
+			"default": 3,
+			"unit": "s",
+			"label": "t:sections.all.slider_options.delay.label"
+		},
+		
+		{
+			"type": "header",
+			"content": "t:sections.all.section-padding.header.content"
+		},
+		{
+			"type": "number",
+			"id": "padding_top",
+			"default": 80,
+			"label": "t:sections.all.section-padding.padding_top.label"
+		},
+		{
+			"type": "number",
+			"id": "padding_top_mb",
+			"default": 50,
+			"label": "Padding Top Mobile"
+		},
+		{
+			"type": "number",
+			"id": "padding_bottom",
+			"default": 80,
+			"label": "t:sections.all.section-padding.padding_bottom.label"
+		},
+		{
+			"type": "number",
+			"id": "padding_bottom_mb",
+			"default": 50,
+			"label": "Padding Bottom Mobile"
+		}
+	],
+	"presets": [
+		{
+			"name": "Mos Shop to Category"
+		}
+	]
+}
+{% endschema %}
