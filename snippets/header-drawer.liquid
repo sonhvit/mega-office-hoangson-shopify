@@ -51,19 +51,28 @@
 									{% liquid
 										assign mega_menu_tabs = false
 										assign mega_menu = false
+										assign mega_menu_logo = false
 									%}
 									{% for block in section.blocks %}
 										{% liquid
 											assign mega_menu_trigger = block.settings.mega_menu_trigger | handle | strip
 											assign mega_menu_tabs_trigger = block.settings.mega_menu_tabs_trigger | handle | strip
+											assign menu_logo_trigger = block.settings.menu_logo_trigger | handle | strip
 											if link.handle == mega_menu_trigger
 												assign mega_menu = true
 												assign mega_menu_tabs = false
+												assign mega_menu_logo = false
 												assign index = forloop.index
 											elsif link.handle == mega_menu_tabs_trigger
 												assign mega_menu_tabs = true
 												assign mega_menu = false
+												assign mega_menu_logo = false
 												assign index_tabs = forloop.index
+											elsif link.handle == menu_logo_trigger
+												assign mega_menu_logo = true
+												assign mega_menu = false
+												assign mega_menu_tabs = false
+												assign index_logo = forloop.index
 											endif
 										%}
 									{% endfor %}
@@ -79,6 +88,7 @@
 										{%- if section.blocks.size > 0
 											and mega_menu
 											or mega_menu_tabs
+											or mega_menu_logo
 										-%}
 											<details>
 												<summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
@@ -130,6 +140,11 @@
 																	and forloop.index == index_tabs
 																%}
 																	{% render 'mega-menu-tabs-mobile', link: link, blocks: section.blocks %}
+																{% elsif mega_menu_logo
+																	and block.type == 'menu_logo'
+																	and forloop.index == index_logo
+																%}
+																	{% render 'mega-menu-logo-mobile', link: link, blocks: section.blocks %}
 																{% endif %}
 															{% endfor %}
 														</div>

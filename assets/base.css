@@ -5686,6 +5686,8 @@ details[open] > .header__icon--menu .icon-hamburger {
 .list-menu--megamenu .mega-menu {
   opacity: 0;
   pointer-events: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   /* display: grid !important;
@@ -8267,10 +8269,16 @@ details[open] > .header__icon--menu .icon-hamburger {
   margin-left: 57px;
   margin-top: 43px;
 }
+.mega-menu--logo .mega-menu-button__button {
+  margin-top: 38px;
+}
+.mega-menu--logo-mobile .mega-menu-button__button {
+  margin-top: 20px;
+}
 .mega-menu-button__button:hover {
   background-color: #FFFFFF !important;
   color: #0F49A0 !important;
-  border: 1px solid #0F49A0;
+  border: 1px solid #0F49A0 !important;
 }
 .mega-menu-button__button:focus {
   outline: 2px solid #FF7322;
@@ -8333,6 +8341,7 @@ details[open] > .header__icon--menu .icon-hamburger {
   outline: 2px solid #FF7322;
   outline-offset: 0;
 }
+
 @media screen and (min-width: 1150px) {
   .header__submenu .header__menu-item span {
     padding: 0;
@@ -8352,4 +8361,76 @@ details[open] > .header__icon--menu .icon-hamburger {
       border-top-right-radius: 0;
       border-top-left-radius: 0;
   }
+  .header__mega-menu.mega-menu--logo {
+    padding-bottom: 24px;
+  }
+}
+.mega-menu--logo {
+	position: fixed;
+	width: 100%;
+	top: 100% !important;
+	right: 0;
+	left: 0;
+	align-items: flex-start;
+	padding: 0;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.mega-menu--logo .header__mega-menu-wrapper {
+	padding: 24px 58px 0px 58px;
+	display: block;
+}
+
+.mega-menu__logo-grid {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 20px 18.8px;
+}
+
+.mega-menu__logo-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 205 / 90.87;
+	padding: 10px;
+	text-decoration: none;
+	transition: transform 0.2s ease;
+	background: transparent;
+	border: 1px solid #C6C6C6;
+	border-radius: 15px;
+}
+
+.mega-menu__logo-item:hover {
+	transform: scale(1.05);
+	border-color: rgba(0,0,0,0.1);
+}
+
+.mega-menu__logo-image {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+}
+.mega-menu__logo-grid-mobile {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+	padding: 20px;
+}
+
+.mega-menu__logo-item-mobile {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 157.5 / 69.81;
+	padding: 10px;
+	text-decoration: none;
+  border: 1px solid #C6C6C6;
+  border-radius: 15px;
+}
+
+.mega-menu__logo-image-mobile {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
 }

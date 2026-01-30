@@ -1,0 +1,52 @@
+{% for block in blocks %}
+	{% assign menu_logo_trigger = block.settings.menu_logo_trigger | handle | strip %}
+	{% if link.handle == menu_logo_trigger and block.type == 'menu_logo' %}
+		{% assign logo_list = block.settings.featured_item.list_menu.value %}
+		<div class="mega-menu--logo-mobile">
+            {% if logo_list %}
+                <div class="mega-menu__logo-grid-mobile">
+                    {% for logo_item in logo_list %}
+                        {% assign mobile_logo = logo_item.mobile_logo.value %}
+                        {% assign logo_url = logo_item.url.value %}
+                        
+                        {% if mobile_logo %}
+                            {% if logo_url != blank %}
+                                <a href="{{ logo_url }}" class="mega-menu__logo-item-mobile">
+                            {% else %}
+                                <div class="mega-menu__logo-item-mobile">
+                            {% endif %}
+                                {% liquid
+                                    assign mobile_width = mobile_logo.width
+                                    assign mobile_height = mobile_logo.width | divided_by: mobile_logo.aspect_ratio
+                                %}
+                                {{
+                                    mobile_logo
+                                    | image_url: width: mobile_width
+                                    | image_tag:
+                                        class: 'mega-menu__logo-image-mobile',
+                                        loading: 'lazy',
+                                        width: mobile_width,
+                                        height: mobile_height,
+                                        alt: mobile_logo.alt
+                                }}
+                            {% if logo_url != blank %}
+                                </a>
+                            {% else %}
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if block.settings.shop_all_button_label != blank and block.settings.shop_all_button_link != blank %}
+                {% render 'button',
+                    btn_label: block.settings.shop_all_button_label,
+                    btn_style: block.settings.shop_all_button_style,
+                    btn_link: block.settings.shop_all_button_link,
+                    class: 'mega-menu-button'
+                %}
+            {% endif %}
+        </div>
+	{% endif %}
+{% endfor %}
+
