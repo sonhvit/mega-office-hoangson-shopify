@@ -5,29 +5,38 @@
 				{% liquid
 					assign mega_menu = false
 					assign mega_menu_tabs = false
+					assign mega_menu_logo = false
 				%}
 
 				{% for block in section.blocks %}
 					{% liquid
 						assign mega_menu_trigger = block.settings.mega_menu_trigger | handle | strip
 						assign mega_menu_tabs_trigger = block.settings.mega_menu_tabs_trigger | handle | strip
+						assign menu_logo_trigger = block.settings.menu_logo_trigger | handle | strip
 
 						if link.handle == mega_menu_trigger
 							assign mega_menu = true
 							assign mega_menu_tabs = false
+							assign mega_menu_logo = false
 							assign shopify_attributes = block.shopify_attributes
 						elsif link.handle == mega_menu_tabs_trigger
 							assign mega_menu_tabs = true
 							assign mega_menu = false
+							assign mega_menu_logo = false
+							assign shopify_attributes = block.shopify_attributes
+						elsif link.handle == menu_logo_trigger
+							assign mega_menu_logo = true
+							assign mega_menu = false
+							assign mega_menu_tabs = false
 							assign shopify_attributes = block.shopify_attributes
 						endif
 					%}
 				{% endfor %}
 				<li
-					class="list-menu-item {% if mega_menu or mega_menu_tabs %}list-menu--megamenu list-menu--megamenu-tabs {% elsif link.links != blank %}list-menu--submenu{% endif %}{% if mega_menu_tabs %} list-menu--megamenu-only-tabs{% endif %}"
+					class="list-menu-item {% if mega_menu or mega_menu_tabs or mega_menu_logo %}list-menu--megamenu list-menu--megamenu-tabs {% elsif link.links != blank %}list-menu--submenu{% endif %}{% if mega_menu_tabs %} list-menu--megamenu-only-tabs{% endif %}"
 					{{ shopify_attributes }}
 				>
-					{% if mega_menu %}
+					{% if mega_menu or mega_menu_logo %}
 						<div class="header-row__overlay"></div>
 					{% endif %}
 					<a
@@ -70,7 +79,7 @@
 						>
 							{{ link.title | escape }}
 							
-							{% if mega_menu or mega_menu_tabs or link.links != blank %}
+							{% if mega_menu or mega_menu_tabs or mega_menu_logo or link.links != blank %}
 								{% render 'icon-caret' -%}
 							{% endif %}
 						</span>
@@ -79,6 +88,8 @@
 						{% render 'mega-menu-columns', link: link, blocks: section.blocks %}
 					{% elsif mega_menu_tabs %}
 						{% render 'mega-menu-tabs', link: link, blocks: section.blocks %}
+					{% elsif mega_menu_logo %}
+						{% render 'mega-menu-logo', link: link, blocks: section.blocks %}
 					{% elsif link.links != blank %}
 						{% render 'submenu', link: link %}
 					{% else %}

@@ -1,0 +1,63 @@
+{% for block in blocks %}
+	{% assign menu_logo_trigger = block.settings.menu_logo_trigger | handle | strip %}
+	{% if link.handle == menu_logo_trigger and block.type == 'menu_logo' %}
+		<div class="header__mega-menu mega-menu mega-menu--logo color-background-1">
+			<div class="header__mega-menu-wrapper container">
+				{% if block.settings.featured_item != blank %}
+					{% assign logo_list = block.settings.featured_item.list_menu.value %}
+					{% if logo_list != blank %}
+						<div class="mega-menu__logo-grid">
+							{% for logo_item in logo_list %}
+								{% assign desktop_logo = logo_item.desktop_logo.value %}
+								{% assign logo_url = logo_item.url.value %}
+								
+								{% if desktop_logo %}
+									{% if logo_url != blank %}
+										<a href="{{ logo_url }}" class="mega-menu__logo-item">
+									{% else %}
+										<div class="mega-menu__logo-item">
+									{% endif %}
+										{% liquid
+											assign desktop_width = desktop_logo.width
+											assign desktop_height = desktop_logo.width | divided_by: desktop_logo.aspect_ratio
+										%}
+										{{
+											desktop_logo
+											| image_url: width: desktop_width
+											| image_tag:
+												class: 'mega-menu__logo-image',
+												loading: 'lazy',
+												width: desktop_width,
+												height: desktop_height,
+												alt: desktop_logo.alt
+										}}
+									{% if logo_url != blank %}
+										</a>
+									{% else %}
+										</div>
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+						</div>
+					
+					{% endif %}
+				{% else %}
+					<div class="mega-menu__logo-grid">
+						<div class="mega-menu__logo-item" style="grid-column: 1/-1; text-align: center; padding: 40px;">
+							<p>No metaobject selected. Please select a metaobject in block settings.</p>
+						</div>
+					</div>
+				{% endif %}
+			</div>
+			{% if block.settings.shop_all_button_label != blank and block.settings.shop_all_button_link != blank %}
+				{% render 'button',
+					btn_label: block.settings.shop_all_button_label,
+					btn_style: block.settings.shop_all_button_style,
+					btn_link: block.settings.shop_all_button_link,
+					class: 'mega-menu-button'
+				%}
+			{% endif %}
+		</div>
+	{% endif %}
+{% endfor %}
+
