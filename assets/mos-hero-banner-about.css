@@ -1,0 +1,56 @@
+.mos-hero-banner-about img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.mos-hero-banner-about h2 {
+    font-size: calc(var(--font-heading-h2-scale) * 2.4rem);
+    letter-spacing: -.7px;
+    margin: 0 0 15px;
+}
+
+.mos-hero-banner-about .hero-banner-text__text p {
+    font-size: 1.2rem;
+    line-height: 1.2;
+    letter-spacing: -.2px;
+    color: #666;
+}
+
+.mos-hero-banner-about .hero-banner__media-wrapper.container {
+    margin-top: 32px;
+}
+
+@media (max-width: 749px) {
+    .mos-hero-banner-about .hero-banner__media-wrapper.container {
+        padding: 0;
+    }
+}
+
+@media (min-width: 750px) {
+    .mos-hero-banner-about img {
+        border-radius: 15px;
+    }
+}
+
+@media (min-width: 990px) {
+    .mos-hero-banner-about .hero-banner__content-wrapper {
+        max-width: 660px;
+    }
+
+    .mos-hero-banner-about h2 {
+        font-size: calc(var(--font-heading-h2-scale) * 3.2rem);
+        letter-spacing: 0;
+        margin-bottom: 24px;
+    }
+
+    .mos-hero-banner-about .hero-banner-text__text p {
+        font-size: 1.4rem;
+        line-height: 1.22;
+        letter-spacing: -.22px;
+    }
+
+    .mos-hero-banner-about .hero-banner__media-wrapper.container {
+        margin-top: 40px;
+    }
+}
