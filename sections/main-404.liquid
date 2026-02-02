@@ -42,7 +42,7 @@
           {% render 'icon-404' %}
         </div>
         <h1 class="main-page-title page-title title--page h2">
-          {{ 'templates.404.title' | t }}
+          404 Error - Page not found
         </h1>
       </div>
     </div>
@@ -54,11 +54,9 @@
     {% endif %}
     <form action="{{ routes.search_url }}" method="get" role="search" class="search">
       <p class="search__form-text">
-        {{ 'templates.404.text' | t }}
+        Uh oh, looks like the page you are looking for has moved or no longer exists.
       </p>
-      <p class="search__form-text">
-        {{ 'templates.404.second_text' | t }}
-      </p>
+      <br>
       <div class="search__form-inner">
         <div class="field color-background-1">
           <input
