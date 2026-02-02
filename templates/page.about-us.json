@@ -46,7 +46,7 @@
         "background_color_banner": "#F6F6F6",
         "including_breadcrumbs": true,
         "padding_top": 40,
-        "padding_top_mb": 50,
+        "padding_top_mb": 0,
         "padding_bottom": 80,
         "padding_bottom_mb": 50
       }
