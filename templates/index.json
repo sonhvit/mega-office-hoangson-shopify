@@ -278,6 +278,108 @@
         "margin_bottom": "l"
       }
     },
+    "banner_slider_mos_Dr64tK": {
+      "type": "banner-slider-mos",
+      "blocks": {
+        "column_wji6dD": {
+          "type": "column",
+          "settings": {
+            "color_scheme": "background-3",
+            "image_1": "shopify://shop_images/7fcbbe1a1eaf264b05f2bfd2f5671909e1307243.webp",
+            "overlay_opacity": 0.1,
+            "overlay_link": "shopify://collections",
+            "heading": "Paper",
+            "badege_text": "",
+            "badge_bg_color": "#FFDE1B",
+            "badge_text_color": "#000000"
+          }
+        },
+        "column_BV3Xte": {
+          "type": "column",
+          "settings": {
+            "color_scheme": "background-3",
+            "image_1": "shopify://shop_images/f5447932a1cfbd238fdee03aa12d623ba663f591.webp",
+            "overlay_opacity": 0.1,
+            "overlay_link": "shopify://collections",
+            "heading": "Office Basics",
+            "badege_text": "",
+            "badge_bg_color": "#FFDE1B",
+            "badge_text_color": "#000000"
+          }
+        },
+        "column_img3h7": {
+          "type": "column",
+          "settings": {
+            "color_scheme": "background-3",
+            "image_1": "shopify://shop_images/570f17195ce1d6c0cc7772f15f1189e1deff6669.webp",
+            "overlay_opacity": 0.1,
+            "overlay_link": "shopify://collections",
+            "heading": "Ink & Toner",
+            "badege_text": "",
+            "badge_bg_color": "#FFDE1B",
+            "badge_text_color": "#000000"
+          }
+        },
+        "column_NhYThX": {
+          "type": "column",
+          "settings": {
+            "color_scheme": "background-3",
+            "image_1": "shopify://shop_images/26fac8dc5ff05bfa176975ba2352c5e7d015f7c9.webp",
+            "overlay_opacity": 0.1,
+            "overlay_link": "shopify://collections",
+            "heading": "Cleaning",
+            "badege_text": "",
+            "badge_bg_color": "#FFDE1B",
+            "badge_text_color": "#000000"
+          }
+        },
+        "column_kGK9wA": {
+          "type": "column",
+          "settings": {
+            "color_scheme": "background-3",
+            "image_1": "shopify://shop_images/695364e65174a9c9356de2ce4fb97bc10a3c4b76.webp",
+            "overlay_opacity": 0.1,
+            "overlay_link": "shopify://collections",
+            "heading": "Break Room",
+            "badege_text": "",
+            "badge_bg_color": "#FFDE1B",
+            "badge_text_color": "#000000"
+          }
+        },
+        "column_M4a8YU": {
+          "type": "column",
+          "settings": {
+            "color_scheme": "background-3",
+            "image_1": "shopify://shop_images/7fcbbe1a1eaf264b05f2bfd2f5671909e1307243.webp",
+            "overlay_opacity": 0.1,
+            "overlay_link": "shopify://collections",
+            "heading": "Paper",
+            "badege_text": "",
+            "badge_bg_color": "#FFDE1B",
+            "badge_text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "column_wji6dD",
+        "column_BV3Xte",
+        "column_img3h7",
+        "column_NhYThX",
+        "column_kGK9wA",
+        "column_M4a8YU"
+      ],
+      "name": "Banner Slider MOS",
+      "settings": {
+        "layout": "slider",
+        "color_scheme": "",
+        "heading": "Workplace Essentials",
+        "heading_size": "h2",
+        "description": "",
+        "column_per_row": 5,
+        "height": "portrait",
+        "speed_slider_1": 1000
+      }
+    },
     "banner_slider_RGX3wc": {
       "type": "banner-slider",
       "blocks": {
@@ -1069,6 +1171,7 @@
   "order": [
     "slideshow_JK4hEK",
     "mos_popular_collection_HFRdyb",
+    "banner_slider_mos_Dr64tK",
     "collections_grid_DkHMUC",
     "banner_slider_RGX3wc",
     "popular_products_8RwxJe",
