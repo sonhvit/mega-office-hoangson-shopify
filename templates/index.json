@@ -15,8 +15,8 @@
         "slide_79eEy8": {
           "type": "slide",
           "settings": {
-            "color_scheme": "",
-            "color_scheme_mobile": "",
+            "color_scheme": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
+            "color_scheme_mobile": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
             "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
             "mobile_image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
             "overlay_link": "",
@@ -53,8 +53,8 @@
         "slide_WjFgrk": {
           "type": "slide",
           "settings": {
-            "color_scheme": "",
-            "color_scheme_mobile": "",
+            "color_scheme": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
+            "color_scheme_mobile": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
             "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
             "mobile_image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
             "overlay_link": "",
@@ -91,8 +91,8 @@
         "slide_EQca4X": {
           "type": "slide",
           "settings": {
-            "color_scheme": "background-3",
-            "color_scheme_mobile": "",
+            "color_scheme": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
+            "color_scheme_mobile": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
             "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
             "mobile_image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
             "overlay_link": "",
@@ -384,6 +384,7 @@
       "type": "popular-products",
       "name": "t:sections.popular-products.presets.name",
       "settings": {
+        "color_scheme": "",
         "product_list": [],
         "per_row": 6,
         "layout": "slider",
@@ -406,7 +407,11 @@
         "show_collection_name": true,
         "show_color_swatch": true,
         "show_inventory": true,
-        "show_desc": false
+        "show_desc": false,
+        "padding_top": 80,
+        "padding_top_mb": 50,
+        "padding_bottom": 80,
+        "padding_bottom_mb": 50
       }
     },
     "banner_grid_AVBfTG": {
