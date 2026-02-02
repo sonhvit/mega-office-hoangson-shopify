@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -15,19 +24,13 @@
             "heading_size": "h4"
           }
         },
-        "description": {
-          "type": "description",
-          "settings": {
-            "description": "",
-            "enable_read_more": true,
-            "heading": "About the Product"
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
             "show_size_guide": false,
+            "size_guide_header": "Some heading",
             "size_guide_decription": "",
+            "size_guide_text": "Size chart",
             "page": ""
           }
         },
@@ -46,25 +49,53 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_quantity": true,
             "show_gift_card_recipient": false
           }
         },
+        "sku_3nTYKR": {
+          "type": "sku",
+          "settings": {}
+        },
+        "mos_shipping_frY8mx": {
+          "type": "mos_shipping",
+          "settings": {}
+        },
         "dropdown_information": {
           "type": "dropdown_information",
           "settings": {
-            "heading": "Free 90-Day Returns",
-            "description": "<p>Not quite right? Return any item within 90 days, free of charge. Hassle-free and customer-friendly — just the way it should be.</p>",
-            "default_open": true
+            "heading": "Description",
+            "description": "{{ product.description }}",
+            "default_open": true,
+            "class_name_block": "description"
           }
         },
         "dropdown_information-1": {
           "type": "dropdown_information",
           "settings": {
-            "heading": "Shipping Information",
-            "description": "<p>Expect prompt delivery and easy tracking — every order comes with updates along the way.</p>",
-            "default_open": false
+            "heading": "Key Features",
+            "description": "{{ product.metafields.custom.key_features | metafield_tag }}",
+            "default_open": false,
+            "class_name_block": "lable-text"
+          }
+        },
+        "dropdown_information_DDVhDt": {
+          "type": "dropdown_information",
+          "settings": {
+            "heading": "Applications",
+            "description": "{{ product.metafields.custom.applications | metafield_tag }}",
+            "default_open": false,
+            "class_name_block": ""
+          }
+        },
+        "dropdown_information_kFFxQd": {
+          "type": "dropdown_information",
+          "settings": {
+            "heading": "Shipping & Returns",
+            "description": "<p>This is content Shipping & Returns</p>",
+            "default_open": false,
+            "class_name_block": ""
           }
         },
         "characteristics_Y4rhr9": {
@@ -77,13 +108,16 @@
       "block_order": [
         "vendor",
         "title",
-        "description",
         "variant_picker",
         "price",
         "inventory",
         "buy_buttons",
+        "sku_3nTYKR",
+        "mos_shipping_frY8mx",
         "dropdown_information",
         "dropdown_information-1",
+        "dropdown_information_DDVhDt",
+        "dropdown_information_kFFxQd",
         "characteristics_Y4rhr9"
       ],
       "settings": {
@@ -96,92 +130,33 @@
         "padding_bottom": "l"
       }
     },
-    "product-recommendations": {
-      "type": "product-recommendations",
-      "settings": {
-        "per_row": 6,
-        "layout": "slider",
-        "heading": "You May Also Like",
-        "heading_size": "h3",
-        "button_label": "Shop All",
-        "button_style": "tertiary",
-        "autoplay": false,
-        "stop_autoplay": true,
-        "show_arrows": true,
-        "slideshow_speed": 1.1,
-        "slideshow_delay": 3,
-        "image_ratio": "5/4",
-        "image_fit": "cover",
-        "show_two_cards": true,
-        "show_secondary_image": true,
-        "show_sku": false,
-        "show_vendor": false,
-        "show_collection_name": true,
-        "show_color_swatch": false,
-        "show_inventory": true,
-        "show_desc": false,
-        "margin_top": "no-indent",
-        "margin_bottom": "l"
-      }
-    },
-    "multicolumn_rmqAa9": {
-      "type": "multicolumn",
+    "mos_specifications_QkEnk6": {
+      "type": "mos-specifications",
       "blocks": {
-        "column_with_icon_wKbKTC": {
-          "type": "column_with_icon",
+        "heading_m7U7Hi": {
+          "type": "heading",
           "settings": {
-            "heading": "Returns & Exchanges",
-            "text": "Not happy? Return or exchange your items quickly and hassle-free.",
-            "text_align": "center",
-            "button_label": "Learn More",
-            "button_style": "tertiary"
+            "heading": "Specifications",
+            "heading_size": "h1"
           }
         },
-        "column_with_icon_qirLhD": {
-          "type": "column_with_icon",
+        "text_MiPjiw": {
+          "type": "text",
           "settings": {
-            "heading": "Check Your Order Status",
-            "text": "Stay updated every step of the way — from purchase to delivery.",
-            "text_align": "center",
-            "button_label": "Learn More",
-            "button_style": "tertiary"
-          }
-        },
-        "column_with_icon_jfkjbt": {
-          "type": "column_with_icon",
-          "settings": {
-            "heading": "Visit Our Support Center",
-            "text": "Need assistance? Find answers and support anytime, anywhere.",
-            "text_align": "center",
-            "button_label": "Learn More",
-            "button_style": "tertiary"
-          }
-        },
-        "column_with_icon_K4b4An": {
-          "type": "column_with_icon",
-          "settings": {
-            "heading": "Price-Match Guarantee",
-            "text": "Found a better price? We’ll match it so you get the best deal.",
-            "text_align": "center",
-            "button_label": "Learn More",
-            "button_style": "tertiary"
+            "text": "<p>{{ product.metafields.custom.specifications | metafield_tag }}</p>"
           }
         }
       },
       "block_order": [
-        "column_with_icon_wKbKTC",
-        "column_with_icon_qirLhD",
-        "column_with_icon_jfkjbt",
-        "column_with_icon_K4b4An"
+        "heading_m7U7Hi",
+        "text_MiPjiw"
       ],
-      "name": "t:sections.multicolumn.name",
+      "name": "Mos Specifications",
       "settings": {
-        "color_scheme": "",
-        "multicolumn_to_show": 4,
-        "padding_top": "no-indent",
-        "padding_bottom": "no-indent",
-        "margin_top": "no-indent",
-        "margin_bottom": "l"
+        "padding_top": 0,
+        "padding_top_mb": 0,
+        "padding_bottom": 40,
+        "padding_bottom_mb": 40
       }
     },
     "collapsible_content_UHQPpw": {
@@ -255,6 +230,7 @@
             "answer": "<p>Refunds are usually processed within 5-7 business days after we receive your returned item.</p>",
             "opened": false,
             "button_label": "Read All",
+            "button_link": "",
             "button_style": "tertiary"
           }
         }
@@ -274,9 +250,39 @@
         "heading_size": "h3",
         "text": "Round-the-clock support for a smooth shopping experience.",
         "button_label": "Contact Support",
+        "button_link": "",
         "button_style": "secondary",
         "padding_top": "no-indent",
         "padding_bottom": "no-indent",
+        "margin_top": "no-indent",
+        "margin_bottom": "l"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "per_row": 6,
+        "layout": "slider",
+        "heading": "You May Also Like",
+        "heading_size": "h3",
+        "button_label": "Shop All",
+        "button_link": "",
+        "button_style": "tertiary",
+        "autoplay": false,
+        "stop_autoplay": true,
+        "show_arrows": true,
+        "slideshow_speed": 1.1,
+        "slideshow_delay": 3,
+        "image_ratio": "5/4",
+        "image_fit": "cover",
+        "show_two_cards": true,
+        "show_secondary_image": true,
+        "show_sku": false,
+        "show_vendor": false,
+        "show_collection_name": true,
+        "show_color_swatch": false,
+        "show_inventory": true,
+        "show_desc": false,
         "margin_top": "no-indent",
         "margin_bottom": "l"
       }
@@ -284,8 +290,8 @@
   },
   "order": [
     "main",
-    "product-recommendations",
-    "multicolumn_rmqAa9",
-    "collapsible_content_UHQPpw"
+    "mos_specifications_QkEnk6",
+    "collapsible_content_UHQPpw",
+    "product-recommendations"
   ]
 }
