@@ -51,16 +51,16 @@
         "padding_bottom_mb": 60
       }
     },
-    "mos_rich_text_kCPhFK": {
-      "type": "mos-rich-text",
+    "mos_rich_text_about_EX6Fdf": {
+      "type": "mos-rich-text-about",
       "blocks": {
-        "subheading_dHw8L4": {
+        "subheading_bhjEF8": {
           "type": "subheading",
           "settings": {
             "subheading": "WHAT WE DO"
           }
         },
-        "heading_UkMeH4": {
+        "heading_B79x6z": {
           "type": "heading",
           "settings": {
             "heading": "We supply a wide range of workplace essentials to support efficient, well-run environments. With bulk pricing and flexible ordering, we make purchasing simple at any scale.",
@@ -69,10 +69,10 @@
         }
       },
       "block_order": [
-        "subheading_dHw8L4",
-        "heading_UkMeH4"
+        "subheading_bhjEF8",
+        "heading_B79x6z"
       ],
-      "name": "Mos Rich Text",
+      "name": "Mos Rich Text About",
       "settings": {
         "color_scheme": "",
         "full_width": true,
@@ -89,6 +89,6 @@
   "order": [
     "main",
     "mos_header_banner_7dH9ew",
-    "mos_rich_text_kCPhFK"
+    "mos_rich_text_about_EX6Fdf"
   ]
 }
