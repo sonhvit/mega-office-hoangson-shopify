@@ -84,11 +84,64 @@
         "padding_bottom": 80,
         "padding_bottom_mb": 60
       }
+    },
+    "mos_multicolumn_MiNxTc": {
+      "type": "mos-multicolumn",
+      "blocks": {
+        "column_with_icon_VipL7k": {
+          "type": "column_with_icon",
+          "settings": {
+            "heading": "Offices & Corporates",
+            "text": "Supporting everyday operations with reliable supply solutions for teams of all sizes, from small offices to large, multi-site organisations.",
+            "text_align": "left",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "column_with_icon_UrUFdT": {
+          "type": "column_with_icon",
+          "settings": {
+            "heading": "Education & Healthcare",
+            "text": "Providing essential supplies for learning and care environments, with flexible ordering to support ongoing, high-volume needs.",
+            "text_align": "left",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "column_with_icon_wFW897": {
+          "type": "column_with_icon",
+          "settings": {
+            "heading": "Government & Procurement",
+            "text": "Working with councils, departments and procurement teams to support structured purchasing, bulk orders and purchase-order workflows.",
+            "text_align": "left",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "column_with_icon_VipL7k",
+        "column_with_icon_UrUFdT",
+        "column_with_icon_wFW897"
+      ],
+      "name": "Mos Multicolumn",
+      "settings": {
+        "color_scheme": "",
+        "multicolumn_to_show": 3,
+        "padding_top": 80,
+        "padding_top_mb": 50,
+        "padding_bottom": 80,
+        "padding_bottom_mb": 50
+      }
     }
   },
   "order": [
     "main",
     "mos_header_banner_7dH9ew",
-    "mos_rich_text_about_EX6Fdf"
+    "mos_rich_text_about_EX6Fdf",
+    "mos_multicolumn_MiNxTc"
   ]
 }
