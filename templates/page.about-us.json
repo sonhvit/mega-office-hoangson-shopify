@@ -16,9 +16,44 @@
         "padding_top": "no-indent",
         "padding_bottom": "m"
       }
+    },
+    "mos_header_banner_7dH9ew": {
+      "type": "mos-header-banner",
+      "blocks": {
+        "heading_mjceUY": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Mega Office Supplies",
+            "heading_size": "h1"
+          }
+        },
+        "text_znGdFP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mega Office Supplies provides a broad range of workplace essentials to support efficient, well-run environments. We make it easy for businesses, schools and organisations to purchase reliably, at scale.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mjceUY",
+        "text_znGdFP"
+      ],
+      "name": "Mos Header Banner",
+      "settings": {
+        "image_1": "shopify://shop_images/hero-banner-about-us_cadad362-383c-40ee-bc30-c363fd3bc2e7.webp",
+        "link": "",
+        "open_in_new_tab": false,
+        "background_color_banner": "#F6F6F6",
+        "including_breadcrumbs": true,
+        "padding_top": 80,
+        "padding_top_mb": 50,
+        "padding_bottom": 80,
+        "padding_bottom_mb": 50
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "mos_header_banner_7dH9ew"
   ]
 }
