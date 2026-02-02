@@ -59,6 +59,7 @@
 
 .collapsible-content.mos-collapsible-content .collapsible-content__toggle {
     padding-top: 1.7rem;
+    column-gap: 1.8rem;
 }
 
 .collapsible-content.mos-collapsible-content .collapsible-content__item--main:not(.active) .collapsible-content__toggle {
