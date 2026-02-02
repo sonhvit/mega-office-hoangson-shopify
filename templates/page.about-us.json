@@ -474,7 +474,7 @@
       "settings": {
         "color_scheme": "",
         "heading": "Always Here to Help",
-        "heading_size": "h3",
+        "heading_size": "h2",
         "text": "Reliable, round-the-clock customer support for stress-free shopping.",
         "info_desc": 14,
         "info_desc_mobile": 12,
@@ -486,7 +486,7 @@
         "button_label_2": "Read all FAQs",
         "button_link_2": "shopify://pages/faq",
         "button_style_2": "secondary",
-        "padding_top": 80,
+        "padding_top": 40,
         "padding_top_mb": 50,
         "padding_bottom": 80,
         "padding_bottom_mb": 50
