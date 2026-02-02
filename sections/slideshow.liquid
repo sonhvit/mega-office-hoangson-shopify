@@ -39,6 +39,9 @@
     when '21/9'
       assign section_size = '42.8%'
       assign slide_class = image_size
+    when 'custom'
+      assign section_size = '30.19%'
+      assign slide_class = image_size
     when 'large'
       assign section_size = 'calc(100vh - var(--header-height))'
       assign slide_class = image_size
@@ -66,6 +69,8 @@
       assign section_size_mobile = '56.25%'
     when '21/9'
       assign section_size_mobile = '42.8%'
+    when 'custom'
+      assign section_size_mobile = '116%'
     when 'large'
       assign section_size_mobile = 'calc(100vh - var(--header-height))'
     else
@@ -667,6 +672,10 @@
           "label": "t:sections.all.aspect_ratio.options__5.label"
         },
         {
+          "value": "custom",
+          "label": "Custom (1325/400)"
+        },
+        {
           "value": "adapt",
           "label": "t:sections.slideshow.settings.aspect_ratio.options__6.label"
         },
@@ -705,6 +714,10 @@
         {
           "value": "21/9",
           "label": "t:sections.all.aspect_ratio.options__5.label"
+        },
+        {
+          "value": "custom",
+          "label": "Custom (375/435)"
         },
         {
           "value": "adapt",
