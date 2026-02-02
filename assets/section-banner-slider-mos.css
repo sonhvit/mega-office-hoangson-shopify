@@ -139,10 +139,7 @@
   object-fit: cover;
   transition: transform var(--duration-default) linear;
 }
-.banner-slider-mos__wrapper .banner-slider-mos-content .banner-slider-mos__content .banner-slider-mos__item:hover .banner-slider-mos__item__image > img {
-  transform: scale(1.03);
-  transition: transform var(--duration-default) linear;
-}
+
 .banner-slider-mos.color-background-2 .banner-slider-mos-content .banner-slider-mos__item {
   background-color: rgb(var(--color-background-secondary));
 }
