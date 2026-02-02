@@ -21,6 +21,29 @@
     margin-top: 32px;
 }
 
+.mos-hero-banner-about .hero-banner__content-wrapper .hero-banner-text__text.rte ol, 
+.mos-hero-banner-about .hero-banner__content-wrapper .hero-banner-text__text.rte ul{
+    margin: 0;
+    padding: 3px 0 0 15px;
+    font-size: 1.2rem;
+}
+
+.mos-hero-banner-about .hero-banner__content-wrapper .hero-banner-text__text.rte li {
+    margin-bottom: 0;
+    line-height: 113%;
+    color: #666;
+    list-style: auto;
+    letter-spacing: -.2px;
+}
+
+.mos-hero-banner-about .hero-banner__content-wrapper .hero-banner-text__text.rte li strong {
+    line-height: 120%;
+}
+
+.mos-hero-banner-about .hero-banner__content-wrapper .hero-banner-text__text.rte li::marker {
+    width: 10px;
+}
+
 @media (max-width: 749px) {
     .mos-hero-banner-about .hero-banner__media-wrapper.container {
         padding: 0;
@@ -34,8 +57,14 @@
 }
 
 @media (min-width: 990px) {
-    .mos-hero-banner-about .hero-banner__content-wrapper {
+    .mos-hero-banner-about .hero-banner__content-wrapper .hero-banner-text__text {
         max-width: 660px;
+    }
+
+    .mos-hero-banner-about .hero-banner__content-wrapper .hero-banner-text__text.rte ol, 
+    .mos-hero-banner-about .hero-banner__content-wrapper .hero-banner-text__text.rte ul{
+        font-size: 1.4rem;
+        padding: 3px 0 0 19px;
     }
 
     .mos-hero-banner-about h2 {
