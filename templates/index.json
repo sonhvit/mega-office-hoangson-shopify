@@ -183,101 +183,6 @@
         "padding_bottom_mb": 69
       }
     },
-    "collections_grid_DkHMUC": {
-      "type": "collections-grid",
-      "blocks": {
-        "collection_PrUwDa": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp"
-          }
-        },
-        "collection_xFwj87": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp"
-          }
-        },
-        "collection_H3DJ9n": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp"
-          }
-        },
-        "collection_qfNciB": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp"
-          }
-        },
-        "collection_c3Dkjg": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp"
-          }
-        },
-        "collection_kETzV8": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp"
-          }
-        },
-        "collection_UhBUye": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp"
-          }
-        },
-        "collection_pXiHTr": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp"
-          }
-        }
-      },
-      "block_order": [
-        "collection_PrUwDa",
-        "collection_xFwj87",
-        "collection_H3DJ9n",
-        "collection_qfNciB",
-        "collection_c3Dkjg",
-        "collection_kETzV8",
-        "collection_UhBUye",
-        "collection_pXiHTr"
-      ],
-      "name": "t:sections.collections-grid.name",
-      "settings": {
-        "color_scheme": "",
-        "layout": "slider",
-        "collections_to_show": 7,
-        "heading": "Shop by Category",
-        "heading_size": "h3",
-        "description": "",
-        "button_label": "Shop All",
-        "button_link": "",
-        "button_style": "tertiary",
-        "card_variant": "simple",
-        "image_ratio": "square",
-        "image_radius": "circle",
-        "text_align": "center",
-        "show_desc": false,
-        "show_button": false,
-        "speed_slider_1": 1000,
-        "columns_mobile": "1",
-        "padding_top": "no-indent",
-        "padding_bottom": "no-indent",
-        "margin_top": "no-indent",
-        "margin_bottom": "l"
-      }
-    },
     "banner_slider_mos_Dr64tK": {
       "type": "banner-slider-mos",
       "blocks": {
@@ -290,7 +195,7 @@
             "overlay_link": "shopify://collections",
             "heading": "Paper",
             "badege_text": "",
-            "badge_bg_color": "#FFDE1B",
+            "badge_bg_color": "#ffde1b",
             "badge_text_color": "#000000"
           }
         },
@@ -303,7 +208,7 @@
             "overlay_link": "shopify://collections",
             "heading": "Office Basics",
             "badege_text": "",
-            "badge_bg_color": "#FFDE1B",
+            "badge_bg_color": "#ffde1b",
             "badge_text_color": "#000000"
           }
         },
@@ -316,7 +221,7 @@
             "overlay_link": "shopify://collections",
             "heading": "Ink & Toner",
             "badege_text": "",
-            "badge_bg_color": "#FFDE1B",
+            "badge_bg_color": "#ffde1b",
             "badge_text_color": "#000000"
           }
         },
@@ -329,7 +234,7 @@
             "overlay_link": "shopify://collections",
             "heading": "Cleaning",
             "badege_text": "",
-            "badge_bg_color": "#FFDE1B",
+            "badge_bg_color": "#ffde1b",
             "badge_text_color": "#000000"
           }
         },
@@ -342,7 +247,7 @@
             "overlay_link": "shopify://collections",
             "heading": "Break Room",
             "badege_text": "",
-            "badge_bg_color": "#FFDE1B",
+            "badge_bg_color": "#ffde1b",
             "badge_text_color": "#000000"
           }
         },
@@ -355,7 +260,7 @@
             "overlay_link": "shopify://collections",
             "heading": "Paper",
             "badege_text": "",
-            "badge_bg_color": "#FFDE1B",
+            "badge_bg_color": "#ffde1b",
             "badge_text_color": "#000000"
           }
         }
@@ -377,303 +282,11 @@
         "description": "",
         "column_per_row": 5,
         "height": "portrait",
-        "speed_slider_1": 1000
-      }
-    },
-    "banner_slider_RGX3wc": {
-      "type": "banner-slider",
-      "blocks": {
-        "column_Wkt8wk": {
-          "type": "column",
-          "settings": {
-            "color_scheme": "",
-            "image_1": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-            "overlay_opacity": 0.1,
-            "overlay_link": "",
-            "heading": "Smart Style",
-            "badege_text": "",
-            "badge_bg_color": "#ffde1b",
-            "badge_text_color": "#000000"
-          }
-        },
-        "column_czGMpQ": {
-          "type": "column",
-          "settings": {
-            "color_scheme": "background-3",
-            "image_1": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-            "overlay_opacity": 0.1,
-            "overlay_link": "",
-            "heading": "Vinyl Picks",
-            "badege_text": "-5%",
-            "badge_bg_color": "#ffde1b",
-            "badge_text_color": "#000000"
-          }
-        },
-        "column_QmDYVY": {
-          "type": "column",
-          "settings": {
-            "color_scheme": "background-3",
-            "image_1": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-            "overlay_opacity": 0.1,
-            "overlay_link": "",
-            "heading": "Best Earbuds, Loved by All",
-            "badege_text": "Best Seller",
-            "badge_bg_color": "#ff0076",
-            "badge_text_color": "#ffffff"
-          }
-        },
-        "column_aALY7a": {
-          "type": "column",
-          "settings": {
-            "color_scheme": "background-3",
-            "image_1": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-            "overlay_opacity": 0.1,
-            "overlay_link": "",
-            "heading": "Hot Book Deals",
-            "badege_text": "-25%",
-            "badge_bg_color": "#ffde1b",
-            "badge_text_color": "#000000"
-          }
-        },
-        "column_AqHCKk": {
-          "type": "column",
-          "settings": {
-            "color_scheme": "background-3",
-            "image_1": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-            "overlay_opacity": 0.1,
-            "overlay_link": "",
-            "heading": "Headphone Hits",
-            "badege_text": "-5%",
-            "badge_bg_color": "#ffde1b",
-            "badge_text_color": "#000000"
-          }
-        },
-        "column_ir8AJV": {
-          "type": "column",
-          "settings": {
-            "color_scheme": "background-3",
-            "image_1": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-            "overlay_opacity": 0.1,
-            "overlay_link": "",
-            "heading": "Large Screen TV’s for Total Comfort",
-            "badege_text": "",
-            "badge_bg_color": "#ffde1b",
-            "badge_text_color": "#000000"
-          }
-        },
-        "column_N4F7xh": {
-          "type": "column",
-          "settings": {
-            "color_scheme": "background-3",
-            "image_1": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-            "overlay_opacity": 0.1,
-            "overlay_link": "",
-            "heading": "This Season’s Best in Art & Decor",
-            "badege_text": "-5%",
-            "badge_bg_color": "#ffde1b",
-            "badge_text_color": "#000000"
-          }
-        },
-        "column_JxgXHV": {
-          "type": "column",
-          "settings": {
-            "color_scheme": "background-3",
-            "image_1": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-            "overlay_opacity": 0.1,
-            "overlay_link": "",
-            "heading": "Turn Up the Season with a New Speaker",
-            "badege_text": "Mega Sale",
-            "badge_bg_color": "#fc3535",
-            "badge_text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "column_Wkt8wk",
-        "column_czGMpQ",
-        "column_QmDYVY",
-        "column_aALY7a",
-        "column_AqHCKk",
-        "column_ir8AJV",
-        "column_N4F7xh",
-        "column_JxgXHV"
-      ],
-      "name": "t:sections.banner-slider.name",
-      "settings": {
-        "layout": "slider",
-        "color_scheme": "",
-        "heading": "New Products and Current Offers",
-        "heading_size": "h3",
-        "description": "",
-        "column_per_row": 7,
-        "height": "portrait",
         "speed_slider_1": 1000,
-        "padding_top": "no-indent",
-        "padding_bottom": "no-indent",
-        "margin_top": "no-indent",
-        "margin_bottom": "l"
-      }
-    },
-    "popular_products_8RwxJe": {
-      "type": "popular-products",
-      "name": "t:sections.popular-products.presets.name",
-      "settings": {
-        "color_scheme": "",
-        "product_list": [],
-        "per_row": 6,
-        "layout": "slider",
-        "heading": "Top Products",
-        "heading_size": "h3",
-        "button_label": "Shop All",
-        "button_link": "",
-        "button_style": "tertiary",
-        "autoplay": false,
-        "stop_autoplay": true,
-        "show_arrows": true,
-        "slideshow_speed": 1.1,
-        "slideshow_delay": 3,
-        "image_ratio": "portrait",
-        "image_fit": "cover",
-        "show_two_cards": true,
-        "show_secondary_image": true,
-        "show_sku": false,
-        "show_vendor": false,
-        "show_collection_name": true,
-        "show_color_swatch": true,
-        "show_inventory": true,
-        "show_desc": false,
-        "padding_top": 80,
-        "padding_top_mb": 50,
-        "padding_bottom": 80,
-        "padding_bottom_mb": 50
-      }
-    },
-    "banner_grid_AVBfTG": {
-      "type": "banner-grid",
-      "blocks": {
-        "card_horizontal_MMBqdV": {
-          "type": "card_horizontal",
-          "settings": {
-            "color_scheme": "",
-            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-            "full_image": true,
-            "card_padding": "40",
-            "overlay_opacity": 0,
-            "overlay_opacity_mobile": 0.2,
-            "overlay_link": "",
-            "heading": "SwiftBook Laptop – Built to Perform",
-            "heading_size": "h2",
-            "description": "Everything you need in one device—power, portability, and a great deal.",
-            "small_badge_bg_color": "#9674e9",
-            "small_badge_text_color": "#ffffff",
-            "small_badege_text": "5 Years Warranty",
-            "show_badge": true,
-            "badge_position": "top",
-            "badge_subheading": "-5%",
-            "badge_heading": "$298,00",
-            "enable_prefix": "<em>$</em>",
-            "enable_new": "<em>253,50</em>",
-            "button_label": "Shop Now",
-            "button_link": "",
-            "button_style": "primary"
-          }
-        },
-        "card_with_ticker_mEKPMA": {
-          "type": "card_with_ticker",
-          "settings": {
-            "color_scheme": "background-3",
-            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-            "card_padding": "40",
-            "overlay_opacity": 0,
-            "overlay_opacity_mobile": 0.2,
-            "overlay_link": "",
-            "heading": "Sounda LX Is Here, Hear the Hype",
-            "heading_size": "h2",
-            "description": "Experience bold audio and sleek design, now on sale for a limited time.",
-            "small_badge_bg_color": "#ff0076",
-            "small_badge_text_color": "#ffffff",
-            "small_badege_text": "Best Seller",
-            "enable_countdown": true,
-            "enable_mock_timer": true,
-            "date_picker": "2025-10-01",
-            "time_picker": "00:00",
-            "mock_date_picker_day": 2,
-            "mock_date_picker_hours": 3,
-            "completed_countdown": "show_text",
-            "countdown_heading": "Header after countdown",
-            "first_ticker_heading": "Sale up to 50%",
-            "first_ticker_heading_color": "#000000",
-            "first_ticker_speed": 6,
-            "first_ticker_background_color": "#ffdf1b",
-            "second_ticker_heading": "Sale up to 50%",
-            "second_ticker_heading_color": "#ffdf1b",
-            "second_ticker_speed": 6,
-            "second_ticker_background_color": "#000000",
-            "button_label": "Shop Now",
-            "button_link": "",
-            "button_style": "primary"
-          }
-        }
-      },
-      "block_order": [
-        "card_horizontal_MMBqdV",
-        "card_with_ticker_mEKPMA"
-      ],
-      "name": "t:sections.banner-grid.name",
-      "settings": {
-        "layout": "columns",
-        "color_scheme": "",
-        "height": "landscape",
-        "heading": "",
-        "heading_size": "h2",
-        "description": "",
-        "padding_top": "no-indent",
-        "padding_bottom": "no-indent",
-        "margin_top": "no-indent",
-        "margin_bottom": "l"
-      }
-    },
-    "featured_collection_RRqReE": {
-      "type": "featured-collection",
-      "name": "t:sections.featured_collection.presets.name",
-      "settings": {
-        "heading": "Electronics",
-        "heading_size": "h3",
-        "button_label": "Shop All",
-        "button_link": "",
-        "button_style": "tertiary",
-        "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-        "overlay_opacity": 0,
-        "heading_collection": "Sound Without Compromise",
-        "description_collection": "Turn up the sound, turn down the price.",
-        "position": "top",
-        "color_scheme": "background-3",
-        "badge_bg_color": "#fc3535",
-        "badge_text_color": "#ffffff",
-        "badege_text": "Best Seller",
-        "button_label_collection": "Shop Now",
-        "button_link_collection": "",
-        "button_style_collection": "primary",
-        "is_autoplay": false,
-        "stop_autoplay": true,
-        "show_arrows": true,
-        "disable_slider": true,
-        "slideshow_speed": 1.1,
-        "slideshow_delay": 3,
-        "collection": "",
-        "product_list": [],
-        "image_ratio": "portrait",
-        "image_fit": "cover",
-        "show_two_cards": true,
-        "show_secondary_image": true,
-        "show_sku": false,
-        "show_vendor": false,
-        "show_collection_name": true,
-        "show_color_swatch": true,
-        "show_inventory": true,
-        "show_desc": false,
-        "margin_top": "no-indent",
-        "margin_bottom": "l"
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 64,
+        "padding_bottom_mobile": 64
       }
     },
     "banner_grid_rAgXmp": {
@@ -799,50 +412,6 @@
         "description": "",
         "padding_top": "no-indent",
         "padding_bottom": "no-indent",
-        "margin_top": "no-indent",
-        "margin_bottom": "l"
-      }
-    },
-    "featured_slider_E9Yykf": {
-      "type": "featured-slider",
-      "name": "t:sections.featured-slider.presets.name",
-      "settings": {
-        "color_scheme": "background-3",
-        "product_list": [],
-        "heading": "Your Favorite Electronics Now at Lower Prices",
-        "description": "Save 60% on the latest electronics—just use code MEGA30 at checkout.",
-        "promocode_text": "MEGA30",
-        "button_label": "Shop Now",
-        "button_link": "",
-        "button_style": "primary",
-        "badge_bg_color": "#fc3535",
-        "badge_text_color": "#ffffff",
-        "badege_text": "Mega Sale",
-        "show_badge": true,
-        "circle_badge_subheading": "Save Up to",
-        "circle_badge_heading": "<em>60</em>",
-        "badge_heading_font_size": 72,
-        "badge_prefix": "",
-        "badge_suffix": "%",
-        "is_autoplay": false,
-        "stop_autoplay": true,
-        "show_arrows": true,
-        "slideshow_speed": 1.1,
-        "slideshow_delay": 3,
-        "image_ratio": "portrait",
-        "image_fit": "cover",
-        "show_two_cards": true,
-        "show_secondary_image": true,
-        "show_sku": false,
-        "show_vendor": false,
-        "show_collection_name": true,
-        "show_color_swatch": false,
-        "show_inventory": true,
-        "show_desc": false,
-        "show_background_image": true,
-        "background_image_desktop": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-        "background_image_mobile": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-        "background_image_overlay_opacity": 0.5,
         "margin_top": "no-indent",
         "margin_bottom": "l"
       }
@@ -1172,13 +741,7 @@
     "slideshow_JK4hEK",
     "mos_popular_collection_HFRdyb",
     "banner_slider_mos_Dr64tK",
-    "collections_grid_DkHMUC",
-    "banner_slider_RGX3wc",
-    "popular_products_8RwxJe",
-    "banner_grid_AVBfTG",
-    "featured_collection_RRqReE",
     "banner_grid_rAgXmp",
-    "featured_slider_E9Yykf",
     "popular_products_7hmC8h",
     "logo_list_KjUJtq",
     "mos_banner_grid_rq4GKQ",
