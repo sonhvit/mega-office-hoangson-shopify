@@ -1,5 +1,6 @@
 .template-page-about-us #breadcrumbs,
-.template-page-about #breadcrumbs {
+.template-page-about #breadcrumbs,
+.template-page-content #breadcrumbs {
     display: none;
 }
 
@@ -74,6 +75,10 @@
     .mos-header-banner .header-banner__content-wrapper {
         padding: 0 2.4rem;
     }
+
+    .mos-header-banner .header-banner__content-wrapper.change_letter_space_heading {
+        padding: 0 1rem 0 2.4rem;
+    }
 }
 
 .mos-header-banner .header-banner__content-wrapper h1,
@@ -101,9 +106,64 @@
         letter-spacing: 1px;
     }
 
+    .mos-header-banner .header-banner__content-wrapper.change_letter_space_heading h1,
+    .mos-header-banner .header-banner__content-wrapper.change_letter_space_heading h2 {
+        font-size: calc(var(--font-heading-h3-scale) * 4.8rem);
+        margin-bottom: 1.4rem;
+        padding-right: 5rem;
+        letter-spacing: .5px;
+    }
+
     .mos-header-banner .header-banner-text__text p {
         font-size: calc(var(--font-heading-h3-scale) * 1.2rem);
         letter-spacing: 0.75px;
         line-height: 1.4;
+    }
+}
+
+.mos-header-banner .header-banner__content-wrapper .button-download {
+    background-color: #0F49A0;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: -0.2px;
+    display: inline-flex;
+    border: 0;
+    padding: .8rem 2.2rem .5rem 1.6rem;
+    gap: 10px;
+    margin-top: 34px;
+    min-height: 3.4rem;
+    margin-bottom: -1rem;
+}
+
+.mos-header-banner .header-banner__content-wrapper .button-download:hover {
+    background-color: #0F49A0;
+}
+
+.mos-header-banner .header-banner__content-wrapper .button-download svg {
+    width: 18px;
+    height: 18px;
+}
+
+@media only screen and (min-width: 992px) {
+    .mos-header-banner .header-banner__content-wrapper .button-download {
+        margin-top: 20px;
+        font-size: 1.6rem;
+        letter-spacing: -0.2px;
+        padding: 1rem 3.4rem 1rem 2.4rem;
+        gap: 10px;
+        min-height: 4.4rem;
+        margin-bottom: 0;
+    }
+
+    .mos-header-banner .header-banner__content-wrapper .button-download svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .mos-header-banner .header-banner__content-wrapper .button-download {
+        margin-top: 76px;
     }
 }
