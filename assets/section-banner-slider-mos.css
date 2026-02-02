@@ -139,7 +139,6 @@
   object-fit: cover;
   transition: transform var(--duration-default) linear;
 }
-
 .banner-slider-mos.color-background-2 .banner-slider-mos-content .banner-slider-mos__item {
   background-color: rgb(var(--color-background-secondary));
 }
