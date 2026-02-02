@@ -80,9 +80,9 @@
         "margin_top": "no-indent",
         "margin_bottom": "no-indent",
         "padding_top": 80,
-        "padding_top_mb": 50,
+        "padding_top_mb": 40,
         "padding_bottom": 80,
-        "padding_bottom_mb": 50
+        "padding_bottom_mb": 60
       }
     }
   },
