@@ -227,7 +227,7 @@
         "padding_top": 18,
         "padding_top_mb": 8,
         "padding_bottom": 40,
-        "padding_bottom_mb": 50
+        "padding_bottom_mb": 30
       }
     },
     "mos_two_banner_CE4HUH": {
@@ -269,7 +269,7 @@
         "color_scheme": "",
         "multicolumn_to_show": 2,
         "padding_top": 22,
-        "padding_top_mb": 50,
+        "padding_top_mb": 25,
         "padding_bottom": 80,
         "padding_bottom_mb": 50
       }
