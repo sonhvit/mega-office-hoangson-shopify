@@ -136,12 +136,106 @@
         "padding_bottom": 80,
         "padding_bottom_mb": 50
       }
+    },
+    "mos_collapsible_content_faq_6x7afw": {
+      "type": "mos-collapsible-content-faq",
+      "blocks": {
+        "accordion_rhV48L": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Reliable Australia-Wide Delivery",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_ChDVmJ": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Bulk Pricing Available",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_pQrMhV": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Australian-Based Support",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_RBheKc": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Purchase Orders Accepted",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_qrPdxk": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Trusted Brands & Suppliers",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_rhV48L",
+        "accordion_ChDVmJ",
+        "accordion_pQrMhV",
+        "accordion_RBheKc",
+        "accordion_qrPdxk"
+      ],
+      "name": "Mos collapsible FAQ",
+      "settings": {
+        "color_scheme": "",
+        "image": "shopify://shop_images/collapsiable-faq-1_e0c07b97-6497-4839-9232-0d247d9e3af8.webp",
+        "heading": "Why Choose Mega Office Supplies",
+        "heading_size": "h2",
+        "text": "",
+        "info_desc": 14,
+        "info_desc_mobile": 12,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "secondary",
+        "enable_second_button": false,
+        "button_label_2": "",
+        "button_link_2": "",
+        "button_style_2": "secondary",
+        "padding_top": 80,
+        "padding_top_mb": 50,
+        "padding_bottom": 80,
+        "padding_bottom_mb": 50
+      }
     }
   },
   "order": [
     "main",
     "mos_header_banner_7dH9ew",
     "mos_rich_text_about_EX6Fdf",
-    "mos_multicolumn_MiNxTc"
+    "mos_multicolumn_MiNxTc",
+    "mos_collapsible_content_faq_6x7afw"
   ]
 }
