@@ -43,7 +43,7 @@
 							spaceBetween: 20,
 						},
 						1250: {
-							slidesPerView: Number(columnCount) + 0.56,
+							slidesPerView: Number(columnCount) + 0.39,
 							spaceBetween: 20,
 						},
 					},

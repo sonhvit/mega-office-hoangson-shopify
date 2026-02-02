@@ -52,80 +52,95 @@
 			>
 				<div class="{% if section.settings.layout == 'slider' %}swiper-wrapper{% else %}banner-slider-mos__items banner-slider-mos__items--{{ section.settings.column_per_row }} {% endif %} ">
 					{%- for block in section.blocks -%}
-						<div
-							class="banner-slider-mos__item color-{{ block.settings.color_scheme }} {% if section.settings.layout == 'slider' %}swiper-slide{% endif %}"
-							{{ block.shopify_attributes }}
-						>
-							{% if block.settings.image_1 != blank %}
-								<div
-									class="banner-slider-mos__overlay"
-									style="opacity: {{ block.settings.overlay_opacity }}"
-								></div>
-							{% endif %}
-							{% if block.settings.overlay_link != blank %}
-								<a
-									class="banner-slider-mos__overlay_link overlay_link"
-									href="{{ block.settings.overlay_link }}"
-									tabindex="0"
-								></a>
-							{% endif %}
-
-							<div class="banner-slider-mos__item--details {% if block.settings.badege_text == blank  %} flex-end {% endif %}">
-								{% if block.settings.badege_text != blank %}
+						<div class="banner-slider-mos__card-wrapper {% if section.settings.layout == 'slider' %}swiper-slide{% endif %}" {{ block.shopify_attributes }}>
+							<div
+								class="banner-slider-mos__item color-{{ block.settings.color_scheme }}"
+							>
+								{% if block.settings.image_1 != blank %}
 									<div
-										class="banner-slider-mos__item--details__badge"
-										style="background: {{ block.settings.badge_bg_color }}"
-									>
-										{%- if block.settings.badge_image != blank -%}
+										class="banner-slider-mos__overlay"
+										style="opacity: {{ block.settings.overlay_opacity }}"
+									></div>
+								{% endif %}
+								{% if block.settings.overlay_link != blank %}
+									<a
+										class="banner-slider-mos__overlay_link overlay_link"
+										href="{{ block.settings.overlay_link }}"
+										tabindex="0"
+									></a>
+								{% endif %}
+
+								<div class="banner-slider-mos__item--badge-wrapper {% if block.settings.badege_text == blank  %} flex-end {% endif %}">
+									{% if block.settings.badege_text != blank %}
+										<div
+											class="banner-slider-mos__item--details__badge"
+											style="background: {{ block.settings.badge_bg_color }}"
+										>
+											{%- if block.settings.badge_image != blank -%}
+												{{
+													block.settings.badge_image
+													| image_url: width: block.settings.badge_image.width
+													| image_tag:
+														loading: 'lazy',
+														sizes: '100vw',
+														widths: '550, 720',
+														height: 16,
+														width: 16,
+														class: 'banner-slider-mos__badge_image'
+												}}
+											{% endif %}
+											{% if block.settings.badege_text != blank %}
+												<span
+													class="banner-slider-mos__badge_text extra-small-font"
+													style="color: {{ block.settings.badge_text_color }}"
+												>
+													{{ block.settings.badege_text }}
+												</span>
+											{% endif %}
+										</div>
+									{% endif %}
+								</div>
+
+								{%- if block.settings.image_1 != blank -%}
+									{% liquid
+										assign image_height = block.settings.image_1.width | divided_by: block.settings.image_1.aspect_ratio
+									%}
+									<div class="banner-slider-mos__item__image {{ slide_class }}">
+										{%- if block.settings.image_1 != blank -%}
 											{{
-												block.settings.badge_image
-												| image_url: width: block.settings.badge_image.width
+												block.settings.image_1
+												| image_url: width: block.settings.image_1.width
 												| image_tag:
 													loading: 'lazy',
 													sizes: '100vw',
-													widths: '550, 720',
-													height: 16,
-													width: 16,
-													class: 'banner-slider-mos__badge_image'
+													widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000',
+													height: image_height,
+													width: block.settings.image_1.width,
+													class: 'banner-slider-mos__image banner-slider-mos__image--light'
 											}}
-										{% endif %}
-										{% if block.settings.badege_text != blank %}
-											<span
-												class="banner-slider-mos__badge_text extra-small-font"
-												style="color: {{ block.settings.badge_text_color }}"
-											>
-												{{ block.settings.badege_text }}
-											</span>
-										{% endif %}
+										{%- endif -%}
 									</div>
-								{% endif %}
-								{% if block.settings.heading != blank %}
-									<p class="banner-slider-mos__item--details__heading">
-										{{ block.settings.heading }}
-									</p>
-								{% endif %}
+								{%- endif -%}
 							</div>
 
-							{%- if block.settings.image_1 != blank -%}
-								{% liquid
-									assign image_height = block.settings.image_1.width | divided_by: block.settings.image_1.aspect_ratio
-								%}
-								<div class="banner-slider-mos__item__image {{ slide_class }}">
-									{%- if block.settings.image_1 != blank -%}
-										{{
-											block.settings.image_1
-											| image_url: width: block.settings.image_1.width
-											| image_tag:
-												loading: 'lazy',
-												sizes: '100vw',
-												widths: '550, 720, 990, 1150, 1500, 1800, 2200, 2600, 3000',
-												height: image_height,
-												width: block.settings.image_1.width,
-												class: 'banner-slider-mos__image banner-slider-mos__image--light'
-										}}
-									{%- endif -%}
-								</div>
-							{%- endif -%}
+							{% if block.settings.heading != blank %}
+								{% if block.settings.overlay_link != blank %}
+									<a href="{{ block.settings.overlay_link }}" class="banner-slider-mos__item--details">
+										<p class="banner-slider-mos__item--details__heading">
+											{{ block.settings.heading }}
+										</p>
+										<span class="banner-slider-mos__item--details__arrow">
+                                            {% render 'icon-caret' %}
+                                        </span>
+									</a>
+								{% else %}
+									<div class="banner-slider-mos__item--details">
+										<p class="banner-slider-mos__item--details__heading">
+											{{ block.settings.heading }}
+										</p>
+									</div>
+								{% endif %}
+							{% endif %}
 						</div>
 					{% endfor %}
 				</div>
