@@ -151,6 +151,38 @@
         "margin_bottom": "l"
       }
     },
+    "mos_popular_collection_HFRdyb": {
+      "type": "mos-popular-collection",
+      "name": "Mos Shop to Category",
+      "settings": {
+        "color_scheme": "",
+        "collections": [
+          "office",
+          "education",
+          "healthcare",
+          "hospitality",
+          "cleaning",
+          "technology",
+          "business-essentials"
+        ],
+        "per_row": 6,
+        "show_arrows": true,
+        "layout": "slider",
+        "heading": "Shop by Category",
+        "heading_size": "h2",
+        "button_label": "Shop All",
+        "button_link": "shopify://collections",
+        "button_style": "primary",
+        "autoplay": false,
+        "stop_autoplay": true,
+        "slideshow_speed": 1.1,
+        "slideshow_delay": 3,
+        "padding_top": 37,
+        "padding_top_mb": 41,
+        "padding_bottom": 89,
+        "padding_bottom_mb": 69
+      }
+    },
     "collections_grid_DkHMUC": {
       "type": "collections-grid",
       "blocks": {
@@ -1036,6 +1068,7 @@
   },
   "order": [
     "slideshow_JK4hEK",
+    "mos_popular_collection_HFRdyb",
     "collections_grid_DkHMUC",
     "banner_slider_RGX3wc",
     "popular_products_8RwxJe",
