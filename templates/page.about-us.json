@@ -487,9 +487,9 @@
         "button_link_2": "shopify://pages/faq",
         "button_style_2": "secondary",
         "padding_top": 40,
-        "padding_top_mb": 50,
+        "padding_top_mb": 39,
         "padding_bottom": 40,
-        "padding_bottom_mb": 50
+        "padding_bottom_mb": 20
       }
     },
     "mos_popular_collection_HFRdyb": {
