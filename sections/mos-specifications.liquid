@@ -1,0 +1,130 @@
+{{ 'mos-specifications.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+	.section-{{ section.id }}-padding {
+		padding-top: {{ section.settings.padding_top_mb}}px;
+		padding-bottom: {{ section.settings.padding_bottom_mb}}px;
+	}
+
+	@media screen and (min-width: 750px) {
+		.section-{{ section.id }}-padding {
+		padding-top: {{ section.settings.padding_top }}px;
+		padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+{%- endstyle -%}
+
+<div class="container">
+	<div class="mos-specifications__blocks section-{{ section.id }}-padding">
+		{%- for block in section.blocks -%}
+			{%- case block.type -%}
+				{%- when 'heading' -%}
+					<h2
+						class="mos-specifications__heading title--section {{ block.settings.heading_size}}"
+						{{ block.shopify_attributes }}
+					>
+						{{ block.settings.heading }}
+					</h2>
+				{%- when 'text' -%}
+					<div class="mos-specifications__text rte" {{ block.shopify_attributes }}>
+						{{ block.settings.text }}
+					</div>
+			{%- endcase -%}
+		{%- endfor -%}
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "Mos Specifications",
+	"tag": "section",
+	"class": "spaced-section",
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "header",
+			"content": "t:sections.all.section-padding.header.content"
+		},
+		{
+			"type": "number",
+			"id": "padding_top",
+			"default": 80,
+			"label": "t:sections.all.section-padding.padding_top.label"
+		},
+		{
+			"type": "number",
+			"id": "padding_top_mb",
+			"default": 50,
+			"label": "Padding Top Mobile"
+		},
+		{
+			"type": "number",
+			"id": "padding_bottom",
+			"default": 80,
+			"label": "t:sections.all.section-padding.padding_bottom.label"
+		},
+		{
+			"type": "number",
+			"id": "padding_bottom_mb",
+			"default": 50,
+			"label": "Padding Bottom Mobile"
+		}
+	],
+	"blocks": [
+		{
+			"type": "heading",
+			"name": "t:sections.rich-text.blocks.heading.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "text",
+					"id": "heading",
+					"default": "t:sections.rich-text.blocks.heading.settings.heading.default",
+					"label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+				},
+				{
+					"type": "select",
+					"id": "heading_size",
+					"options": [
+						{
+							"value": "h2",
+							"label": "t:sections.rich-text.blocks.heading.settings.heading_size.options__1.label"
+						},
+						{
+							"value": "h1",
+							"label": "t:sections.rich-text.blocks.heading.settings.heading_size.options__2.label"
+						}
+					],
+					"default": "h1",
+					"label": "t:sections.rich-text.blocks.heading.settings.heading_size.label"
+				}
+			]
+		},
+		{
+			"type": "text",
+			"name": "t:sections.rich-text.blocks.text.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "richtext",
+					"id": "text",
+					"default": "t:sections.rich-text.blocks.text.settings.text.default",
+					"label": "t:sections.rich-text.blocks.text.settings.text.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Mos Specifications",
+			"blocks": [
+				{
+					"type": "heading"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

@@ -2,6 +2,17 @@
   margin-top: calc(-1 * var(--header-height));
   padding-top: var(--header-height);
 }
+.product__sku-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 10px;
+  margin-top: 12px !important;
+}
+.product__sku-wrapper p{
+  margin: 0;
+  color: #666;
+}
 .template-product main > .background {
   background: #F6F6F6;
 }
@@ -9,6 +20,79 @@
   margin: 26px 0 50px;
   white-space: nowrap;
   flex-wrap: nowrap;
+}
+.mos-specifications__media-list{
+  background: #fff;
+  padding: 50px 0;
+}
+.mos-specifications__media-item{
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  aspect-ratio: 652/367;
+}
+.mos-specifications__media-item video, .mos-specifications__media-item  img{
+  aspect-ratio: 652/367;
+  max-width: 100%;
+  height: auto;
+}
+.mos-specifications__media-list-inner video{
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  object-fit: cover;
+}
+.mos-specifications__media-list-inner{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.product-dropdown_information__accordion-item{
+  background: #F6F6F6;
+  border-radius: 15px;
+  margin-bottom: 16px;
+}
+.product-dropdown_information__accordion-item:last-child{
+  margin-bottom: 0;
+}
+.mos-shipping-information_multicolumn-item-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 64px 0;
+}
+.mos-shipping-information_multicolumn-item-box:not(:first-child){
+  border-left: 1px solid #ccc;
+}
+.mos-shipping-information_multicolumn-item-description{
+  text-align: center;
+}
+.mos-shipping-information_multicolumn-item-icon{
+  margin-bottom: 6px;
+}
+.mos-shipping-information_multicolumn-item-icon img{
+  max-width: 24px;
+}
+.mos-shipping-information_multicolumn-item-title{
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 600;
+  text-align: center;
+}
+.mos-shipping-information_multicolumn-item-description p{
+  font-size: 12px;
+  line-height: 1.2;
+  color: #666;
+}
+.mos-shipping-information_multicolumn-item-box{
+  flex: 1;
+  padding-inline: 12px;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
 }
 .template-product .breadcrumb>span{
   overflow: hidden;
@@ -131,13 +215,15 @@
   background: #fff;
   padding: 35px 40px;
   border-radius: 15px;
-  max-width: 60.8rem;
 }
 .product__outer--slider-bullets .product__info-container, .product__outer--grid-gallery .product__info-container, .product__outer--slider-previews .product__info-container, .product__outer--stacked-gallery .product__info-container {
   width: 100%;
   gap: 0 1.6rem;
 }
 @media (min-width: 1150px) {
+  .product__outer--desktop-order.product__outer--slider-previews .product__info-container{
+    max-width: 60.8rem;
+  }
   .product__outer--slider-bullets .product__info-container, .product__outer--grid-gallery .product__info-container, .product__outer--slider-previews .product__info-container, .product__outer--stacked-gallery .product__info-container {
     position: sticky;
     top: 0;
@@ -1552,7 +1638,7 @@
   align-items: center;
   justify-content: space-between;
   margin: 0;
-  padding: 1.6rem 0;
+  padding: 1.6rem;
   width: 100%;
   color: rgb(var(--color-foreground));
   cursor: pointer;
@@ -1569,17 +1655,51 @@
   align-items: center;
 }
 .about__accordion-toggle-title span {
-  font-size: calc(var(--font-body-scale) * 0.9rem);
+  font-size: 18px;
   line-height: var(--font-body-line-height);
   letter-spacing: calc(var(--font-body-letter-spacing) * 0.1);
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
-  font-weight: var(--font-body-weight);
+  font-weight: 600;
 }
-@media screen and (min-width: 1150px) {
-  .about__accordion-toggle-title span {
-    font-size: calc(var(--font-body-scale) * 1rem);
-  }
+.product-dropdown_information__accordion-item.description .about__accordion-description h4 {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.1px;
+  margin-bottom: 15px;
+}
+.product-dropdown_information__accordion-item.description .about__accordion-description h5{
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+  margin-bottom: 15px;
+  letter-spacing: -0.2px;
+}
+.product-dropdown_information__accordion-item.description .about__accordion-description p{
+  color: #666;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+}
+.product-dropdown_information__accordion-item.lable-text .metafield-rich_text_field p{
+  font-size: 14px;
+  color: #666;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+  padding-left: 170px;
+  position: relative;
+}
+.product-dropdown_information__accordion-item.lable-text .metafield-rich_text_field p strong{
+  position: absolute;
+  left: 0;
+  color: #000;
+  max-width: 165px;
+}
+.product-dropdown_information__accordion-item.lable-text .metafield-rich_text_field p:not(:last-child){
+  border-bottom: 1px solid #C6C6C6;
+  padding-bottom: 16px;
+  display: block;
+  margin-bottom: 16px;
 }
 .about__accordion-toggle-icon {
   width: 1.8rem;
@@ -1597,6 +1717,7 @@
   justify-content: center;
   width: 2.2rem;
   height: 2.2rem;
+  transform: translateY(-3px);
 }
 .about__accordion-toggle-arrow .icon {
   width: 2rem;
@@ -1606,8 +1727,8 @@
 }
 .about__accordion-description {
   display: none;
-  padding: 0 0 1.6rem;
-  max-width: 38rem;
+  padding: 1.8rem 1.6rem 1.6rem;
+  max-width: 100%;
   margin-top: -0.4rem;
 }
 .about__accordion-description h2,
@@ -1619,6 +1740,8 @@
 }
 .about__accordion-description h4 {
   margin-bottom: 0.8rem;
+  font-size: 18px;
+  line-height: 1.2;
 }
 .about__accordion-description p {
   margin: 0;
@@ -2195,10 +2318,96 @@
   z-index: 10;
 }
 @media(max-width: 767px){
+  .about__accordion-toggle-title span{
+    font-size: 16px;
+  }
+  .about__accordion-toggle{
+    padding: 10.5px 12px;
+  }
+  .product-dropdown_information__accordion-item.description .about__accordion-description h4{
+    font-size: 16px;
+  }
+  .product-dropdown_information__accordion-item.description .about__accordion-description h5{
+    font-size: 12px;
+  }
+  .product-dropdown_information__accordion-item.description .about__accordion-description p{
+    font-size: 10px;
+  }
+  .mos-shipping-information_multicolumn-item-wrapper{
+    margin-block: 37px;
+  }
+  .product__info-container>*:not(.pickup-availability){
+    margin-top: 12px;
+  }
+  .mos-specifications__media-list-inner{
+    grid-template-columns: 1fr;
+  }
+  .mos-shipping-information_multicolumn-item-icon{
+    margin-bottom: 2px;
+  }
+  .mos-shipping-information_multicolumn-item-title{
+    font-size: 12px;
+  }
+  .mos-shipping-information_multicolumn-item-description p{
+    font-size: 10px;
+  }
+  .mos-shipping-information_multicolumn-item-box{
+    padding-inline: 8px;
+  }
+  .mos-specifications__media-list{
+    padding: 20px 0;
+  }
   .template-product .breadcrumb{
     margin: 24px 0 23px;
   }
   .product__media-wrapper{
     gap: 8px;
+  }
+  .product__outer--slider-previews .product__media-list .product__media img{
+    max-height: 335px;
+  }
+  .product__outer--desktop-order.product__outer--slider-previews{
+    gap: 38px;
+  }
+  .product__outer--desktop-order.product__outer--slider-previews .product__info-container{
+    padding: 16px 20px;
+  }
+  .product__info-container .product__text.small-font{
+    font-size: 10px;
+  }
+  .product__info-container .product__title{
+    font-size: 18px;
+    letter-spacing: 0;
+  }
+  .product__info-container .product__text+.product__title__wrapper{
+    margin-top: 6px;
+    padding-bottom: 22px;
+    margin-bottom: 21px;
+  }
+  .product__info-container .price-item{
+    font-size: 18px;
+  }
+  .product__info-container .price--product.price--on-sale .price-item--regular{
+    font-size: 16px;
+  }
+  .product .product__info-container .price-wrapper .price dd:not(:last-child){
+    margin-right: 12px;
+  }
+  .product__info-container .product__badge .badge{
+    padding-inline: 7px;
+    font-size: 10px;
+  }
+  .product-form__group-name{
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  .product-form__controls-group input:checked:not(.disabled)+label:not(.color-swatch),.product-form__controls-group input[name=Size]+label{
+    font-size: 12px;
+    height: 24px;
+    min-width: 95px;
+  }
+  .product .product-parameters{
+    padding: 2px 0 23px;
+    margin-bottom: 22px;
   }
 }

@@ -568,18 +568,31 @@
 							{% endif %}
 
             {%- when 'sku' -%}
-              {% if product.selected_or_first_available_variant.sku != blank %}
-                <p
-                  class="product__sku no-js-hidden {% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
-                  id="Sku-{{ section.id }}"
-                  role="status"
-                  {{ block.shopify_attributes }}
-                >
-                  <span class="product__sku-title">{{ 'products.product.sku' | t }}: </span>
-                  {{ product.selected_or_first_available_variant.sku -}}
-                </p>
-              {% endif %}
-
+				<div class="product__sku-wrapper" >
+              	{% if product.selected_or_first_available_variant.sku != blank %}
+					<p
+					class="product__sku no-js-hidden {% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
+					id="Sku-{{ section.id }}"
+					role="status"
+					{{ block.shopify_attributes }}
+					>
+					<span class="product__sku-title">{{ 'products.product.sku' | t }}: </span>
+					{{ product.selected_or_first_available_variant.sku -}}
+					</p>
+				{% endif %}
+				{% if product.metafields.custom.upc != blank %}
+					<p>
+						<span>UPC:</span>
+						{{ product.metafields.custom.upc }}
+					</p>
+				{% endif %}	
+				{% if product.metafields.custom.mpn != blank %}	
+					<p>
+						<span>MPN:</span>
+						{{ product.metafields.custom.mpn }}
+				</p>
+				{% endif %}
+				</div>
             {%- when 'inventory' -%}
               {% if product.selected_or_first_available_variant.inventory_management == 'shopify' %}
                 <div id="Inventory-{{ section.id }}" class="product__inventory" {{ block.shopify_attributes }}>
@@ -1141,8 +1154,8 @@
               </div>
 
             {%- when 'dropdown_information' -%}
-              <div class="about">
-                <div class="about__accordion-item" {{ block.shopify_attributes }}>
+              <div class="product-dropdown_information">
+                <div class="product-dropdown_information__accordion-item {{ block.settings.class_name_block }}" {{ block.shopify_attributes }}>
                   <button
                     class="about__accordion-toggle {% if block.settings.default_open %}active{% endif %} button--unstyled"
                     area-label="toggle"
@@ -1321,6 +1334,38 @@
 									{% endif %}
                 </div>
               </div>
+            {%- when 'mos_shipping' -%}
+              {% if product.metafields.custom.multicolumn_information != blank %}
+                <div class="mos-shipping-information_multicolumn" {{ block.shopify_attributes }}>
+                  <div class="mos-shipping-information_multicolumn-item-wrapper">
+                    {% for item in product.metafields.custom.multicolumn_information.value %}
+                      <div class="mos-shipping-information_multicolumn-item-box">
+                        {%- if item.icon.value != blank -%}
+                          <div class="mos-shipping-information_multicolumn-item-icon">
+                            {{
+                              item.icon.value
+                              | image_url: width: 24
+                              | image_tag:
+                                loading: 'lazy',
+                                sizes: '100vw',
+                                widths: '360, 550, 720',
+                                height: 24,
+                                width: 24,
+                                class: 'header__heading-logo'
+                            }}
+                          </div>
+                        {%- endif -%}
+                        {% if item.title.value != blank %}
+                          <div class="mos-shipping-information_multicolumn-item-title">{{ item.title.value }}</div>
+                        {% endif %}
+                        {% if item.content != blank %}
+                          <div class="mos-shipping-information_multicolumn-item-description extra-small-font rte">{{ item.content | metafield_tag }}</div>
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
 						{%- when '@app' -%}
               {% render block %}
             {%- when 'complementary' -%}
@@ -1347,6 +1392,8 @@
         {%- endfor -%}
       </div>
     </div>
+
+
 
     {% comment %}{%- for block in section.blocks -%}
       {%- case block.type -%}
@@ -1795,7 +1842,37 @@
     }
   </script>
 </section>
-
+{%- assign media_list = product.metafields.custom.specifications_media.value -%}
+<div class="mos-specifications__media-list">
+	<div class="container">
+	<div class="mos-specifications__media-list-inner">
+		{%- for media in media_list -%}
+			<div class="mos-specifications__media-item">
+				{%- case media.media_type -%}
+					{%- when 'image' -%}
+						<img 
+							src="{{ media | image_url: width: 1000 }}"
+							alt="{{ media.alt | escape }}"
+							loading="lazy"
+							width="{{ media.width }}"
+							height="{{ media.height }}"
+						>
+					{%- when 'video' -%}
+						<video 
+							controls
+						>
+							<source src="{{ media.sources[0].url }}" type="{{ media.sources[0].mime_type }}">
+						</video>
+					{%- when 'external_video' -%}
+						<div class="mos-specifications__external-video">
+							{{ media | external_video_tag }}
+						</div>
+				{%- endcase -%}
+			</div>
+		{%- endfor -%}
+	</div>
+	</div>
+</div>
 {% javascript %}
   class ProductModal extends ModalDialog {
     constructor() {
@@ -2316,6 +2393,13 @@ customElements.define('product-recommendations--single', ProductRecommendations)
 					"id": "default_open",
 					"default": false,
 					"label": "t:sections.main-product.blocks.dropdown_information.settings.default_open.label"
+				},
+				{
+					"id": "class_name_block",
+					"type": "text",
+					"default": "description",
+					"label": "Class name block",
+					"info": "Add class name to the block for custom styling."
 				}
 			]
 		},
@@ -2407,6 +2491,17 @@ customElements.define('product-recommendations--single', ProductRecommendations)
 					"id": "description_3",
 					"default": "<p>Some description</p>",
 					"label": "t:sections.all.text.label"
+				}
+			]
+		},
+		{
+			"type": "mos_shipping",
+			"name": "Mos Shipping",
+			"limit": 6,
+			"settings": [
+				{
+					"type": "paragraph",
+					"content": "This block will display shipping information from product metafield 'custom.multicolumn_information'. Make sure to set up the metafield in product settings."
 				}
 			]
 		},
