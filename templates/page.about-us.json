@@ -225,7 +225,7 @@
         "button_link_2": "",
         "button_style_2": "secondary",
         "padding_top": 80,
-        "padding_top_mb": 40,
+        "padding_top_mb": 8,
         "padding_bottom": 80,
         "padding_bottom_mb": 50
       }
