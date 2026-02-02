@@ -273,6 +273,37 @@
         "padding_bottom": 80,
         "padding_bottom_mb": 50
       }
+    },
+    "mos_hero_banner_about_nE7NxJ": {
+      "type": "mos-hero-banner-about",
+      "blocks": {
+        "heading_JzeFnb": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Story",
+            "heading_size": "h1"
+          }
+        },
+        "text_exEgLR": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mega Office Supplies was established to simplify the way organisations source workplace essentials. Over time, we’ve grown our product range and capabilities to better support the evolving needs of modern workplaces, while maintaining a strong focus on service, reliability and value.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JzeFnb",
+        "text_exEgLR"
+      ],
+      "name": "Mos Hero Banner About",
+      "settings": {
+        "image": "shopify://shop_images/Frame_1068_1_d52bbf17-54e3-403e-a0b5-27ce8e57d2c9.webp",
+        "image_mobile": "shopify://shop_images/Frame_1068_2_47dd0dd0-565b-4a96-8ffd-9b5eaf70ca97.webp",
+        "padding_top": 80,
+        "padding_top_mb": 50,
+        "padding_bottom": 80,
+        "padding_bottom_mb": 50
+      }
     }
   },
   "order": [
@@ -281,6 +312,7 @@
     "mos_rich_text_about_EX6Fdf",
     "mos_multicolumn_MiNxTc",
     "mos_collapsible_content_faq_6x7afw",
-    "mos_two_banner_CE4HUH"
+    "mos_two_banner_CE4HUH",
+    "mos_hero_banner_about_nE7NxJ"
   ]
 }
