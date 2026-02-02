@@ -229,6 +229,50 @@
         "padding_bottom": 80,
         "padding_bottom_mb": 50
       }
+    },
+    "mos_two_banner_CE4HUH": {
+      "type": "mos-two-banner",
+      "blocks": {
+        "column_with_icon_wCmxGd": {
+          "type": "column_with_icon",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1069_2_41ec53e8-3444-47f9-b64b-91b079a93daa.webp",
+            "image_mobile": "shopify://shop_images/Frame_1069_c8e41ce9-fff6-4c4a-8e85-8aab7213ec2d.webp",
+            "heading": "How Ordering Works",
+            "text": "Order online through our catalogue or request a tailored quote for larger volumes. We support business accounts, bulk pricing and purchase orders to make procurement straightforward and flexible.",
+            "text_align": "left",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "column_with_icon_LyKfJV": {
+          "type": "column_with_icon",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1069_3_7d1c505b-6b8c-4d36-b8ed-4186fcf9e762.webp",
+            "image_mobile": "shopify://shop_images/Frame_1069_1_6a16084c-8e34-4885-8b33-5ef7fa07675e.webp",
+            "heading": "Delivery & Ongoing Support",
+            "text": "Once your order is placed, we manage fulfilment and delivery Australia-wide. Our local support team is available to assist with orders, updates and ongoing supply needs.",
+            "text_align": "left",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "column_with_icon_wCmxGd",
+        "column_with_icon_LyKfJV"
+      ],
+      "name": "Mos Two Banner",
+      "settings": {
+        "color_scheme": "",
+        "multicolumn_to_show": 2,
+        "padding_top": 80,
+        "padding_top_mb": 50,
+        "padding_bottom": 80,
+        "padding_bottom_mb": 50
+      }
     }
   },
   "order": [
@@ -236,6 +280,7 @@
     "mos_header_banner_7dH9ew",
     "mos_rich_text_about_EX6Fdf",
     "mos_multicolumn_MiNxTc",
-    "mos_collapsible_content_faq_6x7afw"
+    "mos_collapsible_content_faq_6x7afw",
+    "mos_two_banner_CE4HUH"
   ]
 }
