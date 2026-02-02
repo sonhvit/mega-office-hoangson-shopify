@@ -271,7 +271,7 @@
         "padding_top": 22,
         "padding_top_mb": 25,
         "padding_bottom": 80,
-        "padding_bottom_mb": 50
+        "padding_bottom_mb": 20
       }
     },
     "mos_hero_banner_about_nE7NxJ": {
@@ -281,7 +281,7 @@
           "type": "heading",
           "settings": {
             "heading": "Our Story",
-            "heading_size": "h1"
+            "heading_size": "h2"
           }
         },
         "text_exEgLR": {
