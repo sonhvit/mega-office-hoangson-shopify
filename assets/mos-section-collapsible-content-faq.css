@@ -10,12 +10,18 @@
     margin-bottom: 3rem;
 }
 
+.collapsible-content.mos-collapsible-content.mos-collapsible-content-faq h2.change-space-heading, 
+.collapsible-content.mos-collapsible-content.mos-collapsible-content-faq .h2.change-space-heading {
+    margin-bottom: 4.7rem;
+}
+
 .collapsible-content.mos-collapsible-content.mos-collapsible-content-faq .collapsible-content__content .collapsible-content__item .collapsible-content__item--main {
     width: 100%;
 }
 
 .collapsible-content.mos-collapsible-content.mos-collapsible-content-faq .collapsible-content__content {
     width: 100%;
+    margin-top: auto;
 }
 
 .collapsible-content.mos-collapsible-content.mos-collapsible-content-faq .collapsible-content__content .collapsible-content__question {
@@ -30,6 +36,10 @@
     width: 100%;
     height: auto;
     border-radius: 10px;
+}
+
+.collapsible-content.mos-collapsible-content.mos-collapsible-content-faq .collapsible-content__content .collapsible-content__item:last-child {
+    margin-bottom: 0;
 }
 
 @media only screen and (min-width: 750px) {
@@ -48,6 +58,11 @@
     .collapsible-content.mos-collapsible-content.mos-collapsible-content-faq .h2 {
         letter-spacing: 0;
         max-width: 100%;
+        margin-bottom: 3.8rem;
+    }
+
+    .collapsible-content.mos-collapsible-content.mos-collapsible-content-faq h2.change-space-heading, 
+    .collapsible-content.mos-collapsible-content.mos-collapsible-content-faq .h2.change-space-heading {
         margin-bottom: 3.8rem;
     }
 
