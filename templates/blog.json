@@ -27,6 +27,7 @@
       "settings": {
         "posts_per_page": 7,
         "description": "Explore the latest trends, insights, and stories — all in one place. Stay informed, inspired, and up to date.",
+        "featured_article": "",
         "overlay_opacity": 0.3,
         "featured_image_ratio": "landscape",
         "featured_show_tags": true,
@@ -39,8 +40,8 @@
         "show_date": true,
         "show_author": true,
         "show_excerpt": false,
-        // "padding_top": "no-indent",
-        // "padding_bottom": "xl"
+        "padding_top": "s",
+        "padding_bottom": "m"
       }
     },
     "newsletter_JRqGNU": {
@@ -48,16 +49,22 @@
       "name": "Newsletter",
       "settings": {
         "color_scheme": "background-2",
+        "color_scheme_mobile": "",
         "image_variant": "static",
         "overlay_opacity": 0.1,
+        "overlay_opacity_mobile": 0.1,
         "height": "landscape",
         "image_position": "right",
+        "mobile_dark_logo_enable": true,
         "logo_width": 180,
         "heading": "Join the Mix Club and Get 10% Off Your First Order!",
         "heading_size": "h2",
+        "button_style": "primary",
         "newsletter_text": "By clicking on the “Sign Up” button, I confirm my agreement with the Privacy Policy and Terms of Use",
-        // "padding_top": "no-indent",
-        // "padding_bottom": "xl"
+        "padding_top": 80,
+        "padding_top_mb": 50,
+        "padding_bottom": 80,
+        "padding_bottom_mb": 50
       }
     }
   },
