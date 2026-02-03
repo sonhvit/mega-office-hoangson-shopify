@@ -3,7 +3,7 @@
   position: relative;
   border-radius: var(--border-radius-large);
   box-sizing: border-box;
-  padding: 0.8rem;
+  padding: 12px;
   overflow: hidden;
 }
 .grid-card-small .grid-card-small-content {
@@ -27,8 +27,7 @@
   display: flex;
   position: relative;
   z-index: 3;
-  padding: 1.2rem;
-  padding-right: 2rem;
+  padding: 0;
   pointer-events: none;
 }
 .grid-card-small__details--container {
@@ -43,7 +42,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.6rem;
+  gap: 0.8rem;
 }
 .grid-card-small__details__heading {
   margin: 0;
@@ -61,11 +60,13 @@
   align-items: center;
   gap: 0.2rem;
   padding: 0.2rem 0.8rem;
-  border-radius: var(--border-radius-small);
+  border-radius: 200px;
 }
 .grid-card-small__details__badge_text {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: -0.2px;
 }
 .grid-card-small__details .button {
   pointer-events: all;
@@ -141,4 +142,24 @@
 [data-scheme=dark] .grid-card-small__image__overlay {
   --overlay-opacity-mobile-small-card: 0.4;
   --overlay-opacity-small-card: 0.4;
+}
+.grid-card-small__details__heading.h4 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+@media screen and (min-width: 990px) {
+  .grid-card-small {
+    padding: 16px;
+  }
+  .grid-card-small__details__badge_text {
+    font-size: 12px;
+  }
+  .grid-card-small__details--container__top {
+    gap: 12px;
+  }
+  .grid-card-small__details__heading.h4 {
+    font-size: 32px;
+  }
 }

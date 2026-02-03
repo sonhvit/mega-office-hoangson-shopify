@@ -225,3 +225,26 @@
   transform: scale(1.03);
   transition: transform var(--duration-default) linear;
 }
+.banner-grid .h3.section-header__title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  max-width: 250px;
+}
+.banner-grid .section-header {
+  margin-bottom: 32px;
+}
+.banner-grid .banner-grid__grid {
+  grid-gap: 16px;
+}
+@media screen and (min-width: 990px) {
+  .banner-grid .h3.section-header__title {
+    font-size: 32px;
+    letter-spacing: -1px;
+    max-width: unset;
+  }
+  .banner-grid .section-header {
+    margin-bottom: 40px;
+  }
+}

@@ -4,7 +4,7 @@
   position: relative;
   border-radius: var(--border-radius-large);
   box-sizing: border-box;
-  padding: 2rem;
+  padding: 12px;
   overflow: hidden;
 }
 .grid-card-copy .simple-price__area {
@@ -41,7 +41,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.6rem;
+  gap: 0.8rem;
   width: 100%;
   max-width: 51rem;
 }
@@ -55,9 +55,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin-top: 1rem;
+  margin-top: 0.8rem;
   align-items: center;
-  width: 100%;
+  width: max-content;
   max-width: 34rem;
 }
 .grid-card-copy__details__action .grid-card-copy__details__action-promo {
@@ -135,6 +135,7 @@
 @media screen and (min-width: 990px) {
   .grid-card-copy__details__action {
     flex-wrap: nowrap;
+    margin-top: 11px;
   }
 }
 .grid-card-copy__details__heading {
@@ -142,7 +143,7 @@
 }
 .grid-card-copy__details__desc {
   margin: 0;
-  color: rgb(var(--color-foreground-secondary));
+  color: rgb(var(--color-foreground-title));
   max-width: 30rem;
 }
 .grid-card-copy__details__badge {
@@ -159,6 +160,21 @@
 }
 .grid-card-copy__details .button {
   pointer-events: all;
+  min-width: max-content;
+  min-height: max-content;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.2px;
+  border: 1px solid rgba(var(--color-button));
+}
+@media screen and (min-width: 990px) {
+  .grid-card-copy__details .button {
+    padding: 14px 32px;
+    font-weight: 600;
+    font-size: 16px;
+  }
 }
 .grid-card-copy__image {
   position: absolute;
@@ -214,10 +230,35 @@
 }
 @media screen and (min-width: 990px) {
   .grid-card-copy {
-    padding: var(--padding);
+    padding: 16px;
   }
 }
 .grid-card-copy.color-background-3 .grid-card-copy__details__desc {
   color: rgb(var(--color-foreground));
   opacity: 0.8;
+}
+.grid-card-copy__details__heading.h2 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+.grid-card-copy .grid-card-copy__details__desc {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+  opacity: 1;
+}
+@media screen and (min-width: 990px) {
+  .grid-card-copy .grid-card-copy__details__desc {
+    font-size: 14px;
+    max-width: 620px;
+  }
+  .grid-card-copy__details__heading.h2 {
+    font-size: 32px;
+  }
+  .grid-card-copy__details--container__top {
+    gap: 12px;
+  }
 }
