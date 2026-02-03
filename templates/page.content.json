@@ -32,11 +32,18 @@
           "settings": {
             "text": "<p>Mega Office Supplies wishes to advise customers that the following Educational Colours Rainbow Sand 1.3kg products are subject to a product safety recall initiated by the supplier, Educational Vantage.</p>"
           }
+        },
+        "download_eWgW4a": {
+          "type": "download",
+          "settings": {
+            "label": "Download PDF"
+          }
         }
       },
       "block_order": [
         "heading_nNmCq3",
-        "text_PDf9LT"
+        "text_PDf9LT",
+        "download_eWgW4a"
       ],
       "name": "Mos Header Banner",
       "settings": {
@@ -46,7 +53,7 @@
         "background_color_banner": "#F6F6F6",
         "including_breadcrumbs": true,
         "change_letter_space_heading": true,
-        "download_file": "",
+        "download_file": "https://cdn.shopify.com/s/files/1/0963/2795/8891/files/Frame_873_1_b12736d7-0329-4de8-82e6-e4abe0a3e08a.webp?v=1770086818",
         "padding_top": 28,
         "padding_top_mb": 0,
         "padding_bottom": 40,
