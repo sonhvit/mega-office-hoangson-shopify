@@ -145,12 +145,106 @@
         "padding_bottom": 40,
         "padding_bottom_mb": 20
       }
+    },
+    "mos_collapsible_content_cm6T87": {
+      "type": "mos-collapsible-content",
+      "blocks": {
+        "accordion_YaR8a6": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "Recall Information",
+            "question": "What is the identified issue or risk?",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_4yDDGm": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "When was this recall issued?",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_zpLmyk": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "How was this issue identified?",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_N7F7hg": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "What You Need to Do",
+            "question": "Do I need to stop using or selling the product immediately?",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_TJagm9": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Will I receive a refund, replacement, or credit?",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_YaR8a6",
+        "accordion_4yDDGm",
+        "accordion_zpLmyk",
+        "accordion_N7F7hg",
+        "accordion_TJagm9"
+      ],
+      "name": "Mos FAQ",
+      "settings": {
+        "color_scheme": "",
+        "heading": "Need More Information?",
+        "heading_size": "h2",
+        "text": "Reliable, round-the-clock customer support for stress-free shopping.",
+        "info_desc": 14,
+        "info_desc_mobile": 12,
+        "change_subheading": true,
+        "button_label": "Contact Support",
+        "button_link": "shopify://pages/contact",
+        "button_style": "primary",
+        "enable_second_button": false,
+        "button_label_2": "",
+        "button_link_2": "",
+        "button_style_2": "secondary",
+        "padding_top": 35,
+        "padding_top_mb": 50,
+        "padding_bottom": 77,
+        "padding_bottom_mb": 58
+      }
     }
   },
   "order": [
     "main",
     "mos_header_banner_RjJEMm",
     "mos_hero_banner_about_kctaK6",
-    "mos_collapsible_content_faq_QdTtnA"
+    "mos_collapsible_content_faq_QdTtnA",
+    "mos_collapsible_content_cm6T87"
   ]
 }
