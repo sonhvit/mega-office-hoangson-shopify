@@ -28,7 +28,7 @@
         "article_footer": {
           "type": "article-footer",
           "settings": {
-            "blog_show_author": false,
+            "blog_show_author": true,
             "blog_show_tags": true,
             "blog_show_date": true,
             "show_share": true,
