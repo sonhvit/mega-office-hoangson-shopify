@@ -17,8 +17,6 @@
           "settings": {
             "color_scheme": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
             "color_scheme_mobile": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
-            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-            "mobile_image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
             "overlay_link": "",
             "overlay_opacity": 0.1,
             "overlay_opacity_mobile": 0.4,
@@ -55,8 +53,6 @@
           "settings": {
             "color_scheme": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
             "color_scheme_mobile": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
-            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-            "mobile_image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
             "overlay_link": "",
             "overlay_opacity": 0.1,
             "overlay_opacity_mobile": 0.4,
@@ -93,8 +89,6 @@
           "settings": {
             "color_scheme": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
             "color_scheme_mobile": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
-            "image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
-            "mobile_image": "shopify://shop_images/dbbb864dd57091307eb0d542c376eadb7818430f.webp",
             "overlay_link": "",
             "overlay_opacity": 0.1,
             "overlay_opacity_mobile": 0.4,
@@ -190,7 +184,6 @@
           "type": "column",
           "settings": {
             "color_scheme": "background-3",
-            "image_1": "shopify://shop_images/7fcbbe1a1eaf264b05f2bfd2f5671909e1307243.webp",
             "overlay_opacity": 0.1,
             "overlay_link": "shopify://collections",
             "heading": "Paper",
@@ -203,7 +196,6 @@
           "type": "column",
           "settings": {
             "color_scheme": "background-3",
-            "image_1": "shopify://shop_images/f5447932a1cfbd238fdee03aa12d623ba663f591.webp",
             "overlay_opacity": 0.1,
             "overlay_link": "shopify://collections",
             "heading": "Office Basics",
@@ -216,7 +208,6 @@
           "type": "column",
           "settings": {
             "color_scheme": "background-3",
-            "image_1": "shopify://shop_images/570f17195ce1d6c0cc7772f15f1189e1deff6669.webp",
             "overlay_opacity": 0.1,
             "overlay_link": "shopify://collections",
             "heading": "Ink & Toner",
@@ -229,7 +220,6 @@
           "type": "column",
           "settings": {
             "color_scheme": "background-3",
-            "image_1": "shopify://shop_images/26fac8dc5ff05bfa176975ba2352c5e7d015f7c9.webp",
             "overlay_opacity": 0.1,
             "overlay_link": "shopify://collections",
             "heading": "Cleaning",
@@ -242,7 +232,6 @@
           "type": "column",
           "settings": {
             "color_scheme": "background-3",
-            "image_1": "shopify://shop_images/695364e65174a9c9356de2ce4fb97bc10a3c4b76.webp",
             "overlay_opacity": 0.1,
             "overlay_link": "shopify://collections",
             "heading": "Break Room",
@@ -255,7 +244,6 @@
           "type": "column",
           "settings": {
             "color_scheme": "background-3",
-            "image_1": "shopify://shop_images/7fcbbe1a1eaf264b05f2bfd2f5671909e1307243.webp",
             "overlay_opacity": 0.1,
             "overlay_link": "shopify://collections",
             "heading": "Paper",
@@ -296,7 +284,6 @@
           "type": "card_with_copy",
           "settings": {
             "color_scheme": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
-            "image": "shopify://shop_images/c84724162bf64e12d5625f1616301b1498e2c643.webp",
             "card_padding": "12",
             "overlay_opacity": 0.2,
             "overlay_opacity_mobile": 0.2,
@@ -329,7 +316,6 @@
           "settings": {
             "color_scheme": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
             "color_scheme_mobile": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
-            "image": "shopify://shop_images/Image1.webp",
             "heading_position": "top",
             "overlay_opacity": 0,
             "overlay_opacity_mobile": 0.2,
@@ -351,7 +337,6 @@
           "settings": {
             "color_scheme": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
             "color_scheme_mobile": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
-            "image": "shopify://shop_images/Image2.webp",
             "heading_position": "top",
             "overlay_opacity": 0,
             "overlay_opacity_mobile": 0.2,
@@ -372,7 +357,6 @@
           "type": "card_horizontal",
           "settings": {
             "color_scheme": "scheme-6c510451-f5f4-49cc-8ed4-c34ac35c138a",
-            "image": "shopify://shop_images/image3.webp",
             "full_image": true,
             "card_padding": "12",
             "overlay_opacity": 0,
@@ -422,18 +406,15 @@
       "settings": {
         "color_scheme": "background-2",
         "product_list": [
-          "collins-vanessa-diary-2026-285-v99-a5-2-days-to-a-page-black-1",
-          "kleenex-78931-alcohol-foam-hand-sanitiser-clear-1000ml-cartridge-case-of-6",
-          "cleanlink-dustpan-and-brush-blue",
-          "italplast-cleaning-wipes-30cm-x-50cm-pack-20",
-          "collins-vanessa-diary-2026-285-v99-a5-2-days-to-a-page-black-2",
-          "kleenex-78931-alcohol-foam-hand-sanitiser-clear-1000ml-cartridge-case-of-6-2",
-          "kleenex-78931-alcohol-foam-hand-sanitiser-clear-1000ml-cartridge-case-of-6-3",
-          "cleanlink-dustpan-and-brush-blue-2",
-          "collins-vanessa-diary-2026-285-v99-a5-2-days-to-a-page-black-3",
-          "kleenex-78931-alcohol-foam-hand-sanitiser-clear-1000ml-cartridge-case-of-6-4",
-          "italplast-cleaning-wipes-30cm-x-50cm-pack-20-2",
-          "collins-vanessa-diary-2026-285-v99-a5-2-days-to-a-page-black-4"
+          "co-dining-chair",
+          "example-t-shirt",
+          "harbour-side-dining-chair",
+          "knitting-lounge-chair",
+          "oda-ottoman",
+          "t-shirt-type-new",
+          "ready-dining-chair",
+          "t-shirt-color-blue",
+          "moon-charm-bracelet"
         ],
         "per_row": 6,
         "layout": "static",
@@ -469,63 +450,54 @@
         "logo_fBpVkD": {
           "type": "logo",
           "settings": {
-            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
             "logo_width": 90
           }
         },
         "logo_89fjff": {
           "type": "logo",
           "settings": {
-            "image_1": "shopify://shop_images/brand2_861d824f-b2d1-47df-9208-7e93b13abad2.webp",
             "logo_width": 90
           }
         },
         "logo_BUgqwd": {
           "type": "logo",
           "settings": {
-            "image_1": "shopify://shop_images/brand3_c4c21d7b-0758-460a-85c1-6a069601bf3a.webp",
             "logo_width": 90
           }
         },
         "logo_XhnK4f": {
           "type": "logo",
           "settings": {
-            "image_1": "shopify://shop_images/brand4_3a127cbb-e585-4804-88a1-7f171db27753.webp",
             "logo_width": 90
           }
         },
         "logo_w3G47K": {
           "type": "logo",
           "settings": {
-            "image_1": "shopify://shop_images/brand5_9c7f23b4-d9be-488e-aed7-fea9b4df047f.webp",
             "logo_width": 100
           }
         },
         "logo_beXTYA": {
           "type": "logo",
           "settings": {
-            "image_1": "shopify://shop_images/brand6_60c958e1-85ce-4e0c-aaeb-40ecfebb4d8d.webp",
             "logo_width": 90
           }
         },
         "logo_RPHHwN": {
           "type": "logo",
           "settings": {
-            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
             "logo_width": 90
           }
         },
         "logo_4rTzbz": {
           "type": "logo",
           "settings": {
-            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
             "logo_width": 90
           }
         },
         "logo_fGb6NG": {
           "type": "logo",
           "settings": {
-            "image_1": "shopify://shop_images/Pilot_Pen_idibln_AnM_1_1.webp",
             "logo_width": 90
           }
         }
@@ -565,7 +537,6 @@
           "type": "card_horizontal",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/banner1.webp",
             "full_image": true,
             "card_padding": "40",
             "overlay_opacity": 0,
@@ -592,7 +563,6 @@
           "type": "card_with_ticker",
           "settings": {
             "color_scheme": "background-3",
-            "image": "shopify://shop_images/aa9efdb83695e5d67edf3245215c436c4d861060.webp",
             "card_padding": "40",
             "overlay_opacity": 0,
             "overlay_opacity_mobile": 0.2,
@@ -649,7 +619,6 @@
         "column_with_icon_wKbKTC": {
           "type": "column_with_icon",
           "settings": {
-            "image": "shopify://shop_images/USPs_1.svg",
             "heading": "Fast Delivery",
             "text": "Australia-wide delivery with quick dispatch on all orders.",
             "text_align": "center",
@@ -661,7 +630,6 @@
         "column_with_icon_qirLhD": {
           "type": "column_with_icon",
           "settings": {
-            "image": "shopify://shop_images/USPs_2.svg",
             "heading": "Bulk Pricing",
             "text": "Save more with volume discounts for workplaces & schools.",
             "text_align": "center",
@@ -673,7 +641,6 @@
         "column_with_icon_jfkjbt": {
           "type": "column_with_icon",
           "settings": {
-            "image": "shopify://shop_images/USPs_3.svg",
             "heading": "Local Support",
             "text": "Get help from our Australian-based customer service team.",
             "text_align": "center",
@@ -685,7 +652,6 @@
         "column_with_icon_K4b4An": {
           "type": "column_with_icon",
           "settings": {
-            "image": "shopify://shop_images/USPs_4.svg",
             "heading": "<strong>Price-Match Guarantee</strong>",
             "text": "Found a lower price? We’ll match it.",
             "text_align": "center",
@@ -718,12 +684,10 @@
         "color_scheme": "background-2",
         "color_scheme_mobile": "background-2",
         "image_variant": "static",
-        "image": "shopify://shop_images/newsletter.webp",
         "overlay_opacity": 0.1,
         "overlay_opacity_mobile": 0.1,
         "height": "landscape",
         "image_position": "right",
-        "logo_image": "shopify://shop_images/MOS_Logo.webp",
         "mobile_dark_logo_enable": true,
         "logo_width": 140,
         "heading": "Join our mailing list and get exclusive deals, new arrivals and workplace tips.",
