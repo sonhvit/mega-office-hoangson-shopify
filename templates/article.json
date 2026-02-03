@@ -46,13 +46,17 @@
       ],
       "settings": {
         "main_image_ratio": "landscape",
-        "main_image_position": "top"
+        "main_image_position": "top",
+        "padding_top": "xs",
+        "padding_bottom": "l"
       }
     },
     "popular_products_ihkXjT": {
       "type": "popular-products",
       "name": "t:sections.popular-products.presets.name",
       "settings": {
+        "color_scheme": "",
+        "product_list": [],
         "per_row": 6,
         "layout": "slider",
         "heading": "Products from the Post",
@@ -74,7 +78,11 @@
         "show_collection_name": true,
         "show_color_swatch": false,
         "show_inventory": true,
-        "show_desc": false
+        "show_desc": false,
+        "padding_top": 80,
+        "padding_top_mb": 50,
+        "padding_bottom": 80,
+        "padding_bottom_mb": 50
       }
     },
     "featured_blog": {
@@ -101,6 +109,8 @@
         "button_label": "",
         "button_link": "",
         "button_style": "tertiary",
+        "padding_top": "no-indent",
+        "padding_bottom": "no-indent",
         "margin_top": "no-indent",
         "margin_bottom": "l"
       }
@@ -110,15 +120,22 @@
       "name": "Newsletter",
       "settings": {
         "color_scheme": "background-2",
+        "color_scheme_mobile": "",
         "image_variant": "static",
         "overlay_opacity": 0.1,
+        "overlay_opacity_mobile": 0.1,
         "height": "landscape",
         "image_position": "right",
+        "mobile_dark_logo_enable": true,
         "logo_width": 140,
         "heading": "Join the Mix Club and Get 10% Off Your First Order!",
         "heading_size": "h2",
         "button_style": "primary",
-        "newsletter_text": "By clicking on the “Sign Up” button, I confirm my agreement with the Privacy Policy and Terms of Use"
+        "newsletter_text": "By clicking on the “Sign Up” button, I confirm my agreement with the Privacy Policy and Terms of Use",
+        "padding_top": 80,
+        "padding_top_mb": 50,
+        "padding_bottom": 80,
+        "padding_bottom_mb": 50
       }
     }
   },
