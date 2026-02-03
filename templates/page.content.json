@@ -17,166 +17,45 @@
         "padding_bottom": "m"
       }
     },
-    "mos_collapsible_content_nVEcWx": {
-      "type": "mos-collapsible-content",
+    "mos_header_banner_RjJEMm": {
+      "type": "mos-header-banner",
       "blocks": {
-        "accordion_3AwAQE": {
-          "type": "accordion",
+        "heading_nNmCq3": {
+          "type": "heading",
           "settings": {
-            "subheading": "Ordering",
-            "question": "Can I cancel or change my order after placing it?",
-            "answer": "<p>If your order hasn’t been picked, packed or shipped yet, we may be able to cancel or adjust it. Please contact our Customer Service team as soon as possible.</p>",
-            "opened": true,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
+            "heading": "ACCC Recall Notice",
+            "heading_size": "h1"
           }
         },
-        "accordion_8FnCWE": {
-          "type": "accordion",
+        "text_PDf9LT": {
+          "type": "text",
           "settings": {
-            "subheading": "",
-            "question": "Can I change the contents of my order?",
-            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
-            "opened": false,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_HnyWQD": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "",
-            "question": "Do you ship internationally?",
-            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
-            "opened": false,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_Uh8kbb": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "",
-            "question": "Is my personal information secure during checkout?",
-            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
-            "opened": false,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_pxe4WC": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "Shipping & Delivery",
-            "question": "Where do you deliver?",
-            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
-            "opened": false,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_YhBdEH": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "",
-            "question": "How are shipping costs calculated?",
-            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
-            "opened": false,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_MJcUec": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "Returns, Refunds & Replacements",
-            "question": "What is your returns policy?",
-            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
-            "opened": false,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_WwDhaH": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "",
-            "question": "What if the item arrives damaged or faulty?",
-            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
-            "opened": false,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_KWAXTi": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "Payment",
-            "question": "What payment methods do you accept?",
-            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
-            "opened": false,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_WqWrjC": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "",
-            "question": "Is it safe to use my credit/debit card on your site?",
-            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
-            "opened": false,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
+            "text": "<p>Mega Office Supplies wishes to advise customers that the following Educational Colours Rainbow Sand 1.3kg products are subject to a product safety recall initiated by the supplier, Educational Vantage.</p>"
           }
         }
       },
       "block_order": [
-        "accordion_3AwAQE",
-        "accordion_8FnCWE",
-        "accordion_HnyWQD",
-        "accordion_Uh8kbb",
-        "accordion_pxe4WC",
-        "accordion_YhBdEH",
-        "accordion_MJcUec",
-        "accordion_WwDhaH",
-        "accordion_KWAXTi",
-        "accordion_WqWrjC"
+        "heading_nNmCq3",
+        "text_PDf9LT"
       ],
-      "name": "Mos FAQ",
+      "name": "Mos Header Banner",
       "settings": {
-        "color_scheme": "",
-        "heading": "Always Here to Help",
-        "heading_size": "h2",
-        "text": "Reliable, round-the-clock customer support for stress-free shopping.",
-        "info_desc": 14,
-        "info_desc_mobile": 12,
-        "button_label": "Contact Support",
-        "button_link": "shopify://pages/contact",
-        "button_style": "primary",
-        "enable_second_button": false,
-        "button_label_2": "",
-        "button_link_2": "",
-        "button_style_2": "secondary",
-        "padding_top": 3,
-        "padding_top_mb": 27,
-        "padding_bottom": 80,
-        "padding_bottom_mb": 46
+        "image_1": "shopify://shop_images/Frame_873_1_b12736d7-0329-4de8-82e6-e4abe0a3e08a.webp",
+        "link": "",
+        "open_in_new_tab": false,
+        "background_color_banner": "#F6F6F6",
+        "including_breadcrumbs": true,
+        "change_letter_space_heading": true,
+        "download_file": "",
+        "padding_top": 40,
+        "padding_top_mb": 0,
+        "padding_bottom": 40,
+        "padding_bottom_mb": 20
       }
     }
   },
   "order": [
     "main",
-    "mos_collapsible_content_nVEcWx"
+    "mos_header_banner_RjJEMm"
   ]
 }
