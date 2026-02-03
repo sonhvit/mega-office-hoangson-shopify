@@ -3,6 +3,9 @@
   grid-row-start: 4;
   z-index: 10;
 }
+.quick-add-modal .product-dropdown_information{
+  display: none;
+}
 @media (max-width: 990px) {
   .quick-add.mobile-hide {
     display: none;
@@ -231,16 +234,19 @@
   height: 0.4rem;
 }
 .quick-add-modal__content-wrapper::-webkit-scrollbar-thumb {
-  background-color: rgb(var(--color-border));
+  background-color: #F6F6F6;
   border-radius: 2rem;
 }
 .quick-add-modal__content {
   position: relative;
   width: calc(100% - 3rem);
   max-width: 107rem;
-  background-color: rgb(var(--color-background));
+  background-color: #F6F6F6;
   box-sizing: border-box;
   border-radius: var(--border-radius-large);
+}
+.quick-add-modal__content:focus, .quick-add-modal__content:focus-visible {
+  outline: none;
 }
 .quick-add-modal__content img {
   max-width: 100%;
