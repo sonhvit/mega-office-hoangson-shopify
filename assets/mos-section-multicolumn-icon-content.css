@@ -1,0 +1,86 @@
+.multicolumn-icon-content .heading_section h2 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 120%;
+    letter-spacing: 0;
+    margin: 0 0 50px;
+}
+
+.multicolumn-icon-content .multicolumn-list__wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.multicolumn-icon-content .multicolumn-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF;
+  text-align: center;
+  min-height: 194px;
+  border-radius: 12px;
+}
+
+.multicolumn-icon-content .multicolumn-card .multicolumn-card__image-wrapper {
+    margin-bottom: 44px;
+}
+
+.multicolumn-icon-content .multicolumn-card .multicolumn-card__image-wrapper img {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.multicolumn-icon-content .multicolumn-card .multicolumn-card__heading {
+    margin: 0 0 11px;
+    font-weight: 600;
+    line-height: 120%;
+    font-size: 1.8rem;
+    letter-spacing: .2px;
+}
+
+.multicolumn-icon-content .multicolumn-card .multicolumn-card__heading.h4 {
+    font-size: 1.6rem;
+    letter-spacing: -.2px;
+}
+
+.multicolumn-icon-content .multicolumn-card .multicolumn-card__text p {
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 160%;
+}
+
+@media (min-width: 990px) { 
+    .multicolumn-icon-content .heading_section h2 {
+        font-size: 2.4rem;
+        margin-bottom: 40px;
+        letter-spacing: .2px;
+    }
+
+    .multicolumn-icon-content .multicolumn-card {
+        max-width: 428px;
+        min-height: 223px;
+        padding: 45px 40px;
+    }
+
+    .multicolumn-icon-content .multicolumn-list__wrapper {
+        flex-direction: row;
+    }
+
+    .multicolumn-icon-content .multicolumn-card .multicolumn-card__image-wrapper {
+        margin-bottom: 40px;
+    }
+
+    .multicolumn-icon-content .multicolumn-card .multicolumn-card__heading {
+        margin-bottom: 16px;
+    }
+
+    .multicolumn-icon-content .multicolumn-card .multicolumn-card__text p {
+        line-height: 133%;
+    }
+}
