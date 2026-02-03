@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -30,8 +39,8 @@
         "show_date": true,
         "show_author": true,
         "show_excerpt": false,
-        "padding_top": "no-indent",
-        "padding_bottom": "xl"
+        // "padding_top": "no-indent",
+        // "padding_bottom": "xl"
       }
     },
     "newsletter_JRqGNU": {
@@ -47,8 +56,8 @@
         "heading": "Join the Mix Club and Get 10% Off Your First Order!",
         "heading_size": "h2",
         "newsletter_text": "By clicking on the “Sign Up” button, I confirm my agreement with the Privacy Policy and Terms of Use",
-        "padding_top": "no-indent",
-        "padding_bottom": "xl"
+        // "padding_top": "no-indent",
+        // "padding_bottom": "xl"
       }
     }
   },
