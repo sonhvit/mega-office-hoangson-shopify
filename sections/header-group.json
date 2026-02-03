@@ -263,7 +263,7 @@
         "toolbar_items_position": "bottom",
         "color_scheme_toolbar": "",
         "enable_social": false,
-        "sticky_header_type": "on-scroll-up",
+        "sticky_header_type": "always",
         "enable_search": true,
         "recommended_products_heading": "Some heading",
         "recommended_products": [],
