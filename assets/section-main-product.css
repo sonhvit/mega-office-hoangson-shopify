@@ -1574,6 +1574,9 @@
 .product-form__quantity .quantity {
   width: 12rem;
   height: 4.4rem;
+  background: #F6F6F6;
+  border: none;
+  border-radius: 30px;
 }
 .product-form__quantity .quantity button[name=minus].disabled svg {
   color: rgb(var(--color-foreground), 0.6);
