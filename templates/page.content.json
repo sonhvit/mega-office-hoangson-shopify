@@ -90,11 +90,67 @@
         "padding_bottom": 80,
         "padding_bottom_mb": 20
       }
+    },
+    "mos_collapsible_content_faq_QdTtnA": {
+      "type": "mos-collapsible-content-faq",
+      "blocks": {
+        "accordion_hMjReU": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Quarantine all affected stock",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_w8z8Wx": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "",
+            "question": "Disposal of the goods",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_hMjReU",
+        "accordion_w8z8Wx"
+      ],
+      "name": "Mos collapsible FAQ",
+      "settings": {
+        "color_scheme": "",
+        "image": "shopify://shop_images/collapsiable-faq-1_e0c07b97-6497-4839-9232-0d247d9e3af8.webp",
+        "heading": "What You Should Do",
+        "heading_size": "h2",
+        "change_space_heading": true,
+        "text": "",
+        "info_desc": 14,
+        "info_desc_mobile": 12,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "secondary",
+        "enable_second_button": false,
+        "button_label_2": "",
+        "button_link_2": "",
+        "button_style_2": "secondary",
+        "padding_top": 60,
+        "padding_top_mb": 34,
+        "padding_bottom": 40,
+        "padding_bottom_mb": 20
+      }
     }
   },
   "order": [
     "main",
     "mos_header_banner_RjJEMm",
-    "mos_hero_banner_about_kctaK6"
+    "mos_hero_banner_about_kctaK6",
+    "mos_collapsible_content_faq_QdTtnA"
   ]
 }
