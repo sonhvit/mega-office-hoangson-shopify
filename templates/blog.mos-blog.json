@@ -1,0 +1,75 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "blog": {
+      "type": "blog",
+      "settings": {
+        "default_image": "shopify://shop_images/hero-banner-about-us_cadad362-383c-40ee-bc30-c363fd3bc2e7.webp",
+        "default_color": "accent",
+        "blog_style": "photo",
+        "post_columns": 3,
+        "image_aspect_ratio": 0.9,
+        "show_rss_icon": false,
+        "show_date": true,
+        "show_author": false,
+        "show_tags": true,
+        "show_comments_count": false,
+        "tag_alignment": "center",
+        "color_scheme": "",
+        "overlayed_text": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section-divider": {
+      "type": "section-divider",
+      "settings": {
+        "show_line": true,
+        "color_scheme": "",
+        "width": "wrapper--full",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "section-newsletter": {
+      "type": "section-newsletter",
+      "settings": {
+        "flex_align": "align--middle-split",
+        "title": "Never miss a post!",
+        "text": "<p>Get the latest fashion news straight to your inbox</p>",
+        "extra_fields": "",
+        "button_text": "Sign up",
+        "color_scheme": "",
+        "image_height": "three-fifty-height",
+        "overlay_type": "disabled",
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section-divider-0": {
+      "type": "section-divider",
+      "settings": {
+        "show_line": true,
+        "color_scheme": "",
+        "width": "wrapper--full",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "blog",
+    "section-divider",
+    "section-newsletter",
+    "section-divider-0"
+  ]
+}
