@@ -9,39 +9,123 @@
  */
 {
   "sections": {
-    "article": {
-      "type": "article",
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_author": true,
+            "blog_show_date": true
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        },
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_author": false,
+            "blog_show_tags": true,
+            "blog_show_date": true,
+            "show_share": true,
+            "show_share_facebook": true,
+            "show_share_twitter": true,
+            "show_share_pinterest": true,
+            "show_share_copy": true
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "content",
+        "article_footer"
+      ],
       "settings": {
-        "show_date": true,
-        "show_author": true,
-        "show_tags": true,
-        "show_share_button": true,
-        "text": "Share",
-        "padding_top": 60,
-        "padding_bottom": 40
+        "main_image_ratio": "landscape",
+        "main_image_position": "top"
       }
     },
-    "section-recommended-posts": {
-      "type": "section-recommended-posts",
+    "popular_products_ihkXjT": {
+      "type": "popular-products",
+      "name": "t:sections.popular-products.presets.name",
       "settings": {
-        "posts_type": "recent",
-        "title": "",
-        "default_color": "accent",
-        "blog_style": "photo",
-        "image_aspect_ratio": 0.9,
-        "show_rss_icon": false,
+        "per_row": 6,
+        "layout": "slider",
+        "heading": "Products from the Post",
+        "heading_size": "h3",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "autoplay": false,
+        "stop_autoplay": true,
+        "show_arrows": true,
+        "slideshow_speed": 1.1,
+        "slideshow_delay": 3,
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_two_cards": true,
+        "show_secondary_image": true,
+        "show_sku": false,
+        "show_vendor": false,
+        "show_collection_name": true,
+        "show_color_swatch": false,
+        "show_inventory": true,
+        "show_desc": false
+      }
+    },
+    "featured_blog": {
+      "type": "featured-blog",
+      "settings": {
+        "blog": "news",
+        "color_scheme": "",
+        "layout": "static",
+        "columns_to_show": 4,
+        "post_limit": 4,
+        "heading": "Related Posts",
+        "heading_size": "h3",
+        "description": "",
+        "post_layout": "vertical",
+        "image_ratio": "landscape",
+        "overlay_opacity": 0.3,
+        "post_heading_size": "h4",
+        "show_image": true,
+        "show_tags": true,
         "show_date": true,
         "show_author": true,
-        "show_tags": true,
-        "show_comments_count": false,
-        "width": "wrapper--narrow",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "show_excerpt": false,
+        "speed_slider_1": 1000,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "margin_top": "no-indent",
+        "margin_bottom": "l"
+      }
+    },
+    "newsletter_JRqGNU": {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": {
+        "color_scheme": "background-2",
+        "image_variant": "static",
+        "overlay_opacity": 0.1,
+        "height": "landscape",
+        "image_position": "right",
+        "logo_width": 140,
+        "heading": "Join the Mix Club and Get 10% Off Your First Order!",
+        "heading_size": "h2",
+        "button_style": "primary",
+        "newsletter_text": "By clicking on the “Sign Up” button, I confirm my agreement with the Privacy Policy and Terms of Use"
       }
     }
   },
   "order": [
-    "article",
-    "section-recommended-posts"
+    "main",
+    "popular_products_ihkXjT",
+    "featured_blog",
+    "newsletter_JRqGNU"
   ]
 }
