@@ -59,10 +59,42 @@
         "padding_bottom": 40,
         "padding_bottom_mb": 20
       }
+    },
+    "mos_hero_banner_about_kctaK6": {
+      "type": "mos-hero-banner-about",
+      "blocks": {
+        "heading_bxGxUi": {
+          "type": "heading",
+          "settings": {
+            "heading": "Affected Products Sold by Mega Office Supplies",
+            "heading_size": "h2"
+          }
+        },
+        "text_KkwrEx": {
+          "type": "text",
+          "settings": {
+            "text": "<ol><li>Educational Colours Rainbow Sand 1.3kg Yellow – <strong>EVRS1YL</strong></li><li>Educational Colours Rainbow Sand 1.3kg Red – <strong>EVRS1RD</strong></li><li>Educational Colours Rainbow Sand 1.3kg Purple – <strong>EVRS1PUR</strong></li><li>Educational Colours Rainbow Sand 1.3kg Pink – <strong>EVRS1PK</strong></li><li>Educational Colours Rainbow Sand 1.3kg Orange – <strong>EVRS1OR</strong></li><li>Educational Colours Rainbow Sand 1.3kg Dark Green – <strong>EVRS1DGR</strong></li><li>Educational Colours Rainbow Sand 1.3kg Choc Brown – <strong>EVRS1CB</strong></li><li>Educational Colours Rainbow Sand 1.3kg Black – <strong>EVRS1BLK</strong></li><li>Educational Colours Rainbow Sand 1.3kg Blue – <strong>EVRS1BL</strong></li></ol>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_bxGxUi",
+        "text_KkwrEx"
+      ],
+      "name": "Mos Hero Banner About",
+      "settings": {
+        "image": "shopify://shop_images/Frame_1068_257b153f-f80c-4f57-9cfe-f9f51197b102.webp",
+        "image_mobile": "shopify://shop_images/Frame_1068_1_1_ea0298f3-4fae-436c-a018-37dfeed75109.webp",
+        "padding_top": 43,
+        "padding_top_mb": 43,
+        "padding_bottom": 80,
+        "padding_bottom_mb": 20
+      }
     }
   },
   "order": [
     "main",
-    "mos_header_banner_RjJEMm"
+    "mos_header_banner_RjJEMm",
+    "mos_hero_banner_about_kctaK6"
   ]
 }
