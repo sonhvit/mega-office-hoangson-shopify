@@ -62,7 +62,7 @@
         "heading": "Join the Mix Club and Get 10% Off Your First Order!",
         "heading_size": "h2",
         "button_style": "primary",
-        "newsletter_text": "By clicking on the “Sign Up” button, I confirm my agreement with the <a href=\"/policies/privacy-policy\" title=\"Privacy Policy\">Privacy Policy</a> and <a href=\"/policies/terms-of-service\" title=\"Terms of Service\">Terms of Use</a>",
+        "newsletter_text": "By clicking on the “Sign Up” button, I confirm my agreement with the <a href=\"/policies/privacy-policy\" target=\"_blank\" title=\"Privacy Policy\">Privacy Policy</a>",
         "padding_top": 80,
         "padding_top_mb": 50,
         "padding_bottom": 80,
