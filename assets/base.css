@@ -2645,6 +2645,7 @@ deferred-media {
 .customer .button--secondary:not([disabled]):not([aria-disabled=true]):hover {
     color: rgb(var(--color-button-secondary-text-hover));
     background-color: rgb(var(--color-button-secondary-hover));
+    border: 1px solid rgb(var(--color-button-secondary-text-hover));
   }
   .button--secondary:not([disabled]):not([aria-disabled=true]):hover .icon-pack,
 .customer .button--secondary:not([disabled]):not([aria-disabled=true]):hover .icon-pack {
