@@ -59,6 +59,17 @@
           "color_scheme": "",
           "logo_width_2": 70
         }
+      },
+      "main-password-header": {
+        "type": "main-password-header",
+        "settings": {
+          "logo": "shopify://shop_images/MOS_Logo.webp",
+          "logo_width": 90
+        }
+      },
+      "main-password-footer": {
+        "type": "main-password-footer",
+        "settings": {}
       }
     },
     "content_for_index": [],
