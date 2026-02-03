@@ -2,6 +2,8 @@
   font-size: 32px;  
   font-weight: 500; 
   color: #1D1D1B;
+  letter-spacing: 0;
+  margin-bottom: 40px;
 }
 .mos-specifications__blocks .metafield-rich_text_field{
   font-size: 14px;
@@ -15,12 +17,17 @@
 }
 .mos-specifications__blocks .metafield-rich_text_field p{
   border-bottom: 1px solid #E1E1E0;
-  padding-bottom: 16px;
-  margin-bottom: 16px;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
   font-size: 14px;
   color: #666;
   display: grid;
   grid-template-columns: 200px 1fr;
+}
+.mos-specifications__blocks .metafield-rich_text_field p:nth-child(1),
+.mos-specifications__blocks .metafield-rich_text_field p:nth-child(2){
+  border-top: 1px solid #E1E1E0;
+  padding-top: 16px;
 }
 .mos-specifications__blocks .metafield-rich_text_field p strong{
   display: inline-block;
@@ -31,8 +38,17 @@
   margin-bottom: 16px;
 }
 @media(max-width: 767px){
+  .mos-specifications__blocks .metafield-rich_text_field p:nth-child(1){
+    padding-top: 15px;
+  }
+  .mos-specifications__blocks .metafield-rich_text_field p:nth-child(2){
+    padding-top: 0;
+    border-top: none;
+  }
   .mos-specifications__heading{
     font-size: 24px;
+    letter-spacing: -0.5px;
+    margin-bottom: 32px;
   }
   .mos-specifications__blocks .metafield-rich_text_field{
     grid-template-columns: 1fr;
