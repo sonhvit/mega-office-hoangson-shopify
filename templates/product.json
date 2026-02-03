@@ -127,7 +127,7 @@
         "aspect_ratio": "3/4",
         "image_fit": "cover",
         "image_fit_modal": "contain",
-        "padding_bottom": "l"
+        "padding_bottom": "no-indent"
       }
     },
     "mos_specifications_QkEnk6": {
@@ -159,103 +159,97 @@
         "padding_bottom_mb": 40
       }
     },
-    "collapsible_content_UHQPpw": {
-      "type": "collapsible-content",
+    "mos_collapsible_content_8CREe7": {
+      "type": "mos-collapsible-content",
       "blocks": {
-        "accordion_DMVNWm": {
+        "accordion_AK6Fya": {
           "type": "accordion",
           "settings": {
-            "subheading": "Shipping",
-            "question": "How long does it typically take to process an order?",
-            "answer": "<p>Order processing typically takes 1–2 business days before shipping. Once your order has been processed, you’ll receive a confirmation and tracking information.</p>",
-            "opened": true,
+            "subheading": "Shipping & Delivery",
+            "question": "How long will it take for my order to ship?",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
             "button_label": "",
             "button_link": "",
             "button_style": "tertiary"
           }
         },
-        "accordion_hDYrig": {
+        "accordion_6VzrqG": {
           "type": "accordion",
           "settings": {
             "subheading": "",
             "question": "Can I change the contents of my order?",
-            "answer": "<p>Yes, changes can be made if the order hasn’t entered processing. Make sure to update your order details promptly after purchase.</p>",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
             "opened": false,
             "button_label": "",
             "button_link": "",
             "button_style": "tertiary"
           }
         },
-        "accordion_qt3wKb": {
+        "accordion_imzCWn": {
           "type": "accordion",
           "settings": {
             "subheading": "",
             "question": "Do you ship internationally?",
-            "answer": "<p>Yes, international shipping is available. Delivery times and costs vary based on your location and selected shipping method.</p>",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
             "opened": false,
             "button_label": "",
             "button_link": "",
             "button_style": "tertiary"
           }
         },
-        "accordion_AEMxyw": {
+        "accordion_EgCdkE": {
+          "type": "accordion",
+          "settings": {
+            "subheading": "Returns, Refunds & Replacements",
+            "question": "What is your returns policy?",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
+            "opened": false,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "tertiary"
+          }
+        },
+        "accordion_bjQEFx": {
           "type": "accordion",
           "settings": {
             "subheading": "",
-            "question": "Is my personal information secure during checkout?",
-            "answer": "<p>Yes, all data is encrypted and processed securely to protect your privacy.</p>",
+            "question": "What if the item arrives damaged or faulty?",
+            "answer": "<p>Here can be a brief but clear response to the question, giving customers a quick answer without unnecessary details.</p>",
             "opened": false,
             "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_RcxMQq": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "returns & refund",
-            "question": "What is your return policy?",
-            "answer": "<p>You can return most items within 30 days of delivery for a full refund or exchange.</p>",
-            "opened": false,
-            "button_label": "",
-            "button_link": "",
-            "button_style": "tertiary"
-          }
-        },
-        "accordion_hiUFAN": {
-          "type": "accordion",
-          "settings": {
-            "subheading": "",
-            "question": "How long does it take to process a refund?",
-            "answer": "<p>Refunds are usually processed within 5-7 business days after we receive your returned item.</p>",
-            "opened": false,
-            "button_label": "Read All",
             "button_link": "",
             "button_style": "tertiary"
           }
         }
       },
       "block_order": [
-        "accordion_DMVNWm",
-        "accordion_hDYrig",
-        "accordion_qt3wKb",
-        "accordion_AEMxyw",
-        "accordion_RcxMQq",
-        "accordion_hiUFAN"
+        "accordion_AK6Fya",
+        "accordion_6VzrqG",
+        "accordion_imzCWn",
+        "accordion_EgCdkE",
+        "accordion_bjQEFx"
       ],
-      "name": "t:sections.collapsible-content.name",
+      "name": "Mos FAQ",
       "settings": {
         "color_scheme": "",
-        "heading": "Contact Support",
-        "heading_size": "h3",
-        "text": "Round-the-clock support for a smooth shopping experience.",
+        "heading": "Always Here to Help",
+        "heading_size": "h2",
+        "text": "Reliable, round-the-clock customer support for stress-free shopping.",
+        "info_desc": 14,
+        "info_desc_mobile": 12,
+        "change_subheading": true,
         "button_label": "Contact Support",
-        "button_link": "",
-        "button_style": "secondary",
-        "padding_top": "no-indent",
-        "padding_bottom": "no-indent",
-        "margin_top": "no-indent",
-        "margin_bottom": "l"
+        "button_link": "shopify://pages/contact",
+        "button_style": "primary",
+        "enable_second_button": true,
+        "button_label_2": "Read all FAQs",
+        "button_link_2": "shopify://pages/faq",
+        "button_style_2": "secondary",
+        "padding_top": 20,
+        "padding_top_mb": 39,
+        "padding_bottom": 40,
+        "padding_bottom_mb": 20
       }
     },
     "product-recommendations": {
@@ -283,7 +277,7 @@
         "show_color_swatch": false,
         "show_inventory": true,
         "show_desc": false,
-        "margin_top": "no-indent",
+        "margin_top": "l",
         "margin_bottom": "l"
       }
     }
@@ -291,7 +285,7 @@
   "order": [
     "main",
     "mos_specifications_QkEnk6",
-    "collapsible_content_UHQPpw",
+    "mos_collapsible_content_8CREe7",
     "product-recommendations"
   ]
 }
